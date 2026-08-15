@@ -1,0 +1,50 @@
+{
+  "ranAt": "2026-08-15T00:37:00.511823+00:00",
+  "sourcesTried": [
+    {
+      "url": "https://representantedistrito31.ceepur.org/Escrutinio_General_127/data/REPRESENTANTES_POR_DISTRITO_Resumen.xml",
+      "status": 200
+    },
+    {
+      "url": "https://elecciones2024.ceepur.org/Escrutinio_General_123/data/REPRESENTANTES_POR_DISTRITO_Resumen.xml",
+      "status": 404
+    },
+    {
+      "url": "https://elecciones2024.ceepur.org/Escrutinio_General_123/data/REPRESENTANTES_POR_ACUMULACION_Resumen.xml",
+      "status": 200
+    },
+    {
+      "url": "https://elecciones2024.ceepur.org/Escrutinio_General_121/data/REPRESENTANTES_POR_DISTRITO_Resumen.xml",
+      "status": 404
+    },
+    {
+      "url": "https://elecciones2024.ceepur.org/Escrutinio_General_121/data/REPRESENTANTES_POR_ACUMULACION_Resumen.xml",
+      "status": 200
+    },
+    {
+      "url": "https://web.archive.org/cdx/search/cdx?url=elecciones2024.ceepur.org/Escrutinio_General_121/data/*&output=json&fl=original,timestamp,statuscode&filter=statuscode:200&limit=20",
+      "status": 503
+    },
+    {
+      "url": "https://en.wikipedia.org/w/api.php?action=parse&page=2024_Puerto_Rico_House_of_Representatives_election&prop=wikitext&format=json",
+      "status": 200
+    }
+  ],
+  "ok": [
+    "cee-d31-xml",
+    "https://elecciones2024.ceepur.org/Escrutinio_General_123/data/REPRESENTANTES_POR_ACUMULACION_Resumen.xml",
+    "https://elecciones2024.ceepur.org/Escrutinio_General_121/data/REPRESENTANTES_POR_ACUMULACION_Resumen.xml",
+    "wikipedia-wikitext"
+  ],
+  "failed": [
+    "cee-2024:404:REPRESENTANTES_POR_DISTRITO_Resumen.xml",
+    "cee-2024:404:REPRESENTANTES_POR_DISTRITO_Resumen.xml",
+    "wayback-cdx:503"
+  ],
+  "reps": 53,
+  "d31": 677,
+  "minority": [
+    "adriana-gutierrez-colon",
+    "nelie-lebron-robles"
+  ]
+}
