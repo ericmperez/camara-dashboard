@@ -20,7 +20,7 @@ describe('dashboard de la Cámara', () => {
     expect(screen.getByText(/fuerza 100/i)).toBeInTheDocument()
   })
 
-  it('cambia entre caras, hemiciclo y ranking', async () => {
+  it('cambia entre caras, hemiciclo, ranking, ficha y conexiones', async () => {
     const user = userEvent.setup()
     render(<App />)
     await user.click(screen.getByRole('button', { name: 'Hemiciclo' }))
@@ -30,6 +30,12 @@ describe('dashboard de la Cámara', () => {
     const ranking = screen.getByLabelText(/ranking por fuerza/i)
     expect(within(ranking).getAllByRole('article')[0]).toHaveTextContent(/méndez/i)
     expect(within(ranking).getAllByRole('article')[0]).toHaveTextContent('100')
+    await user.click(screen.getByRole('button', { name: 'Ficha' }))
+    expect(screen.getByRole('status')).toHaveTextContent(/elige un representante para ver su ficha/i)
+    await user.click(screen.getByRole('button', { name: 'Conexiones' }))
+    expect(screen.getByRole('status')).toHaveTextContent(/elige un representante para ver sus conexiones/i)
+    await user.click(screen.getByRole('button', { name: 'Caras' }))
+    expect(screen.getAllByRole('article')).toHaveLength(53)
   })
 
   it('busca por pueblo y deja solo al titular de ese distrito', async () => {
@@ -136,13 +142,14 @@ describe('dashboard de la Cámara', () => {
     expect(within(card as HTMLElement).getByText(gabriel.phone!)).toBeInTheDocument()
   })
 
-  it('abre la ficha con fuentes, votos CEE y proyectos SUTRA', async () => {
+  it('seleccionar en Caras no cambia de vista; Ficha y Conexiones son pestañas', async () => {
     const user = userEvent.setup()
     render(<App />)
-    await user.click(screen.getByRole('button', { name: 'Ficha' }))
-    expect(screen.getByRole('status')).toHaveTextContent(/elige un representante/i)
-    await user.click(screen.getByRole('button', { name: 'Caras' }))
     await user.click(screen.getByRole('heading', { name: /lópez román/i }))
+    expect(screen.getAllByRole('article')).toHaveLength(53)
+    expect(screen.queryByLabelText(/ficha de/i)).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Ficha' }))
     const ficha = screen.getByLabelText(/ficha de/i)
     expect(ficha).toHaveTextContent(/Vimarie Peña Dávila/)
     expect(ficha).toHaveTextContent(/677/)
@@ -154,22 +161,39 @@ describe('dashboard de la Cámara', () => {
       'href',
       expect.stringContaining('wipr.pr'),
     )
-    expect(within(ficha).getAllByText(/inferencia/i).length).toBeGreaterThan(0)
-    expect(within(ficha).getAllByText(/pueblos en común/i).length).toBeGreaterThan(0)
     expect(within(ficha).getByRole('link', { name: /expediente en sutra/i })).toHaveAttribute(
       'href',
       expect.stringContaining('sutra.oslpr.org'),
     )
+    expect(within(ficha).queryByText(/INFERENCIA/)).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Conexiones' }))
+    const red = screen.getByLabelText(/^conexiones de/i)
+    expect(within(red).getAllByText('INFERENCIA').length).toBeGreaterThan(0)
+    expect(within(red).getAllByText(/pueblos en común/i).length).toBeGreaterThan(0)
+    expect(within(red).getByLabelText(/grafo de conexiones/i)).toBeInTheDocument()
   })
 
   it('deja vacía la ficha si no hay hecho verificado', async () => {
     const user = userEvent.setup()
     render(<App />)
     await user.click(screen.getByRole('heading', { name: /charbonier/i }))
+    await user.click(screen.getByRole('button', { name: 'Ficha' }))
     const ficha = screen.getByLabelText(/ficha de/i)
     expect(within(ficha).getByText(/sin biografía verificada/i)).toBeInTheDocument()
     expect(within(ficha).getByText(/sin trayectoria citada/i)).toBeInTheDocument()
     expect(within(ficha).getByText(/vacío a propósito/i)).toBeInTheDocument()
+  })
+
+  it('no inventa un porcentaje para escaños de minorías sin voto', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('heading', { name: /adriana gutiérrez/i }))
+    await user.click(screen.getByRole('button', { name: 'Ficha' }))
+    const ficha = screen.getByLabelText(/ficha de/i)
+    const votes = within(ficha).getByRole('heading', { name: /votos \(cee\)/i }).parentElement as HTMLElement
+    expect(votes).toHaveTextContent(/ley de minorías/i)
+    expect(votes).not.toHaveTextContent(/%/)
   })
 
   it('el atajo de distrito 1 no arrastra al 10 ni al 11', async () => {

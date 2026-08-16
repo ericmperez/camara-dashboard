@@ -1,36 +1,23 @@
 import { useState } from 'react'
-import { connectionsOf, fichaFor, hasVerifiedBody, repById } from '../lib/dossiers'
+import { fichaFor, hasVerifiedBody } from '../lib/dossiers'
 import { dossierFor, latestProjects } from '../lib/measures'
-import { politicalProfile } from '../lib/profile'
+import { PARTY_META } from '../lib/profile'
 import { initials, telHref } from '../lib/text'
 import { electionFor, formatVotes, voteLine } from '../lib/votes'
-import type { DossierConnection, Representative } from '../types'
-import { ConnectionGraph } from './ConnectionGraph'
+import type { Representative } from '../types'
 
 type Props = {
   rep: Representative
-  onSelect: (id: string) => void
 }
 
-function KindBadge({ kind }: { kind: DossierConnection['kind'] }) {
-  return (
-    <span className={`kind-badge kind-${kind}`}>
-      {kind === 'fact' ? 'Hecho' : 'Inferencia'}
-    </span>
-  )
-}
-
-export function Ficha({ rep, onSelect }: Props) {
+export function Ficha({ rep }: Props) {
   const [brokenPhoto, setBrokenPhoto] = useState(false)
   const showPhoto = Boolean(rep.photoUrl) && !brokenPhoto
-  const profile = politicalProfile(rep)
+  const partyMeta = PARTY_META[rep.party]
   const dossier = fichaFor(rep.id)
   const measures = dossierFor(rep.id)
   const preview = latestProjects(rep.id, 4)
   const election = electionFor(rep.id)
-  const connections = connectionsOf(rep.id)
-  const facts = connections.filter((c) => c.kind === 'fact')
-  const inferences = connections.filter((c) => c.kind === 'inference')
 
   return (
     <section className="ficha" id="ficha" aria-label={`Ficha de ${rep.name}`}>
@@ -54,7 +41,7 @@ export function Ficha({ rep, onSelect }: Props) {
           <h2>{rep.name}</h2>
           {rep.role ? <p className="rep-role">{rep.role}</p> : null}
           <p className={`party-pill party-${rep.party.toLowerCase()}`}>
-            {rep.party} · {profile.statusLabel}
+            {rep.party} · {partyMeta.statusLabel}
           </p>
         </div>
       </header>
@@ -155,41 +142,6 @@ export function Ficha({ rep, onSelect }: Props) {
           <p className="party-empty">No encontramos su expediente en SUTRA.</p>
         </section>
       )}
-
-      <section className="ficha-block">
-        <h3>Conexiones</h3>
-        {connections.length === 0 ? (
-          <p className="party-empty">Sin conexiones de hecho ni inferencias de pueblo.</p>
-        ) : (
-          <ul className="conn-list">
-            {facts.concat(inferences).map((connection) => {
-              const other = repById(connection.toId)
-              return (
-                <li key={`${connection.kind}-${connection.toId}-${connection.label}`}>
-                  <KindBadge kind={connection.kind} />
-                  <button type="button" onClick={() => onSelect(connection.toId)}>
-                    {other?.name ?? connection.toId}
-                  </button>
-                  <span> — {connection.label}</span>
-                  {connection.note ? <p className="conn-note">{connection.note}</p> : null}
-                  {connection.sources.length > 0 ? (
-                    <ul className="conn-sources">
-                      {connection.sources.map((source) => (
-                        <li key={source.url}>
-                          <a href={source.url} target="_blank" rel="noreferrer">
-                            {source.label}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </li>
-              )
-            })}
-          </ul>
-        )}
-        <ConnectionGraph center={rep} onSelect={onSelect} />
-      </section>
 
       <section className="ficha-block ficha-sources">
         <h3>Fuentes</h3>

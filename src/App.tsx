@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
+import { Connections } from './components/Connections'
 import { FaceBoard } from './components/FaceBoard'
 import { Ficha } from './components/Ficha'
 import { Hemicycle } from './components/Hemicycle'
@@ -24,13 +25,14 @@ import { maxProjectCount } from './lib/strength'
 import { PARTIES } from './types'
 import type { SeatKind } from './types'
 
-type ChamberView = 'caras' | 'hemiciclo' | 'ranking' | 'ficha'
+type ChamberView = 'caras' | 'hemiciclo' | 'ranking' | 'ficha' | 'conexiones'
 
 const VIEW_OPTIONS: { value: ChamberView; label: string }[] = [
   { value: 'caras', label: 'Caras' },
   { value: 'hemiciclo', label: 'Hemiciclo' },
   { value: 'ranking', label: 'Ranking' },
   { value: 'ficha', label: 'Ficha' },
+  { value: 'conexiones', label: 'Conexiones' },
 ]
 
 const SEAT_OPTIONS: { value: SeatKind; label: string }[] = [
@@ -68,21 +70,16 @@ function App() {
 
   function selectRep(id: string) {
     setSelectedId(id)
-    setView('ficha')
-  }
-
-  useEffect(() => {
-    if (!selectedId || view !== 'ficha') return
-    const node = document.getElementById('ficha')
+    const node = document.getElementById(`rep-${id}`)
     if (!node || typeof node.scrollIntoView !== 'function') return
     const reduceMotion =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
     node.scrollIntoView({
       behavior: reduceMotion ? 'auto' : 'smooth',
-      block: 'start',
+      block: 'center',
     })
-  }, [selectedId, view])
+  }
 
   return (
     <div className="page">
@@ -214,13 +211,21 @@ function App() {
           : `${visible.length} de ${REPRESENTATIVES.length}`}
       </p>
 
-      {view === 'ficha' ? (
+      {view === 'ficha' || view === 'conexiones' ? (
         selected ? (
-          <Ficha rep={selected} onSelect={selectRep} />
+          view === 'ficha' ? (
+            <Ficha rep={selected} />
+          ) : (
+            <Connections rep={selected} onSelect={selectRep} />
+          )
         ) : (
           <div className="empty" role="status">
-            <p>Elige un representante para abrir su ficha.</p>
-            <p>Las caras, el hemiciclo o el ranking llevan a la biografía citada, no inventada.</p>
+            <p>
+              {view === 'ficha'
+                ? 'Elige un representante para ver su ficha.'
+                : 'Elige un representante para ver sus conexiones.'}
+            </p>
+            <p>Selecciona en Caras, Hemiciclo o Ranking. Vacío si no hay fuente citada.</p>
           </div>
         )
       ) : visible.length === 0 ? (

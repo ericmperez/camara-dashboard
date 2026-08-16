@@ -95,7 +95,7 @@ export function ConnectionGraph({ center, onSelect }: Props) {
         ))}
       </svg>
       <p className="conn-legend">
-        Línea continua = hecho citado. Línea punteada = inferencia por pueblos en común.
+        Línea continua = HECHO citado. Línea punteada = INFERENCIA por pueblos en común.
       </p>
     </div>
   )
