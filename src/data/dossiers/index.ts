@@ -1,6 +1,8 @@
 import type { Dossier, DossierSource } from '../../types'
 import { REPRESENTATIVES } from '../representatives'
-import { officialSource } from './sources'
+import { CHAIRS, COMMISSION_SOURCES } from './commissions'
+import { EXTRAS } from './extras'
+import { officialSource, SRC } from './sources'
 import { VERIFIED } from './verified'
 
 function emptyDossier(id: string, official: DossierSource): Dossier {
@@ -15,19 +17,61 @@ function emptyDossier(id: string, official: DossierSource): Dossier {
   }
 }
 
-function mergeOfficial(dossier: Dossier, official: DossierSource): Dossier {
-  const hasOfficial = dossier.sources.some((source) => source.url === official.url)
+function mergeSources(base: DossierSource[], extra: DossierSource[]): DossierSource[] {
+  const seen = new Set(base.map((source) => source.url))
+  const out = [...base]
+  for (const source of extra) {
+    if (seen.has(source.url)) continue
+    seen.add(source.url)
+    out.push(source)
+  }
+  return out
+}
+
+function unique(values: string[]): string[] {
+  return [...new Set(values)]
+}
+
+function applyCommissions(dossier: Dossier): Dossier {
+  const chairs = CHAIRS[dossier.id]
+  if (!chairs?.length) return dossier
+  const extraSources =
+    dossier.id === 'roberto-lopez-roman'
+      ? [...COMMISSION_SOURCES, SRC.camaraTrabajo]
+      : COMMISSION_SOURCES
   return {
     ...dossier,
-    sources: hasOfficial ? dossier.sources : [...dossier.sources, official],
+    committees: unique([...dossier.committees, ...chairs]),
+    sources: mergeSources(dossier.sources, extraSources),
+  }
+}
+
+function applyExtras(dossier: Dossier): Dossier {
+  const extra = EXTRAS[dossier.id]
+  if (!extra) return dossier
+  return {
+    ...dossier,
+    bio: dossier.bio ?? extra.bio ?? null,
+    career: unique([...dossier.career, ...(extra.career ?? [])]),
+    aspirations: unique([...dossier.aspirations, ...(extra.aspirations ?? [])]),
+    committees: unique([...dossier.committees, ...(extra.committees ?? [])]),
+    connections: [...dossier.connections, ...(extra.connections ?? [])],
+    sources: mergeSources(dossier.sources, extra.sources ?? []),
+  }
+}
+
+function mergeOfficial(dossier: Dossier, official: DossierSource): Dossier {
+  return {
+    ...dossier,
+    sources: mergeSources(dossier.sources, [official]),
   }
 }
 
 export const DOSSIERS: Record<string, Dossier> = Object.fromEntries(
   REPRESENTATIVES.map((rep) => {
     const official = officialSource(rep.profileUrl, rep.name)
-    const verified = VERIFIED[rep.id]
-    return [rep.id, verified ? mergeOfficial(verified, official) : emptyDossier(rep.id, official)]
+    const base = VERIFIED[rep.id] ?? emptyDossier(rep.id, official)
+    return [rep.id, applyCommissions(applyExtras(mergeOfficial(base, official)))]
   }),
 )
 

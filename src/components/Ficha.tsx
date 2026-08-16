@@ -56,7 +56,12 @@ export function Ficha({ rep }: Props) {
           {dossier && dossier.career.length > 0 ? (
             <ul>
               {dossier.career.map((item) => (
-                <li key={item}>{item}</li>
+                <li key={item}>
+                  {item.startsWith('INFERENCIA') ? (
+                    <span className="kind-badge kind-inference">INFERENCIA</span>
+                  ) : null}{' '}
+                  {item.replace(/^INFERENCIA\s*(\([^)]+\))?:\s*/i, '')}
+                </li>
               ))}
             </ul>
           ) : (
