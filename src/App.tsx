@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { FaceBoard } from './components/FaceBoard'
+import { Ficha } from './components/Ficha'
 import { Hemicycle } from './components/Hemicycle'
 import { PartyBlock } from './components/PartyBlock'
 import { RankBoard } from './components/RankBoard'
@@ -23,12 +24,13 @@ import { maxProjectCount } from './lib/strength'
 import { PARTIES } from './types'
 import type { SeatKind } from './types'
 
-type ChamberView = 'caras' | 'hemiciclo' | 'ranking'
+type ChamberView = 'caras' | 'hemiciclo' | 'ranking' | 'ficha'
 
 const VIEW_OPTIONS: { value: ChamberView; label: string }[] = [
   { value: 'caras', label: 'Caras' },
   { value: 'hemiciclo', label: 'Hemiciclo' },
   { value: 'ranking', label: 'Ranking' },
+  { value: 'ficha', label: 'Ficha' },
 ]
 
 const SEAT_OPTIONS: { value: SeatKind; label: string }[] = [
@@ -59,15 +61,25 @@ function App() {
     [],
   )
 
+  const selected = useMemo(
+    () => (selectedId ? sorted.find((rep) => rep.id === selectedId) ?? null : null),
+    [selectedId, sorted],
+  )
+
   function selectRep(id: string) {
     setSelectedId(id)
-    document.getElementById(`rep-${id}`)?.scrollIntoView({
+    setView('ficha')
+  }
+
+  useEffect(() => {
+    if (!selectedId || view !== 'ficha') return
+    document.getElementById('ficha')?.scrollIntoView({
       behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
         ? 'auto'
         : 'smooth',
-      block: 'center',
+      block: 'start',
     })
-  }
+  }, [selectedId, view])
 
   return (
     <div className="page">
@@ -199,7 +211,16 @@ function App() {
           : `${visible.length} de ${REPRESENTATIVES.length}`}
       </p>
 
-      {visible.length === 0 ? (
+      {view === 'ficha' ? (
+        selected ? (
+          <Ficha rep={selected} onSelect={selectRep} />
+        ) : (
+          <div className="empty" role="status">
+            <p>Elige un representante para abrir su ficha.</p>
+            <p>Las caras, el hemiciclo o el ranking llevan a la biografía citada, no inventada.</p>
+          </div>
+        )
+      ) : visible.length === 0 ? (
         <div className="empty" role="status">
           <p>Nadie coincide con esa búsqueda.</p>
           <p>Prueba un pueblo, un apellido o un número de distrito del 1 al 40.</p>
@@ -207,35 +228,33 @@ function App() {
             Ver a los 53
           </button>
         </div>
+      ) : view === 'caras' ? (
+        <FaceBoard
+          reps={visible}
+          maxProjects={maxProjects}
+          selectedId={selectedId}
+          onSelect={selectRep}
+        />
+      ) : view === 'ranking' ? (
+        <RankBoard
+          reps={visible}
+          maxProjects={maxProjects}
+          selectedId={selectedId}
+          onSelect={selectRep}
+        />
       ) : (
-        view === 'caras' ? (
-          <FaceBoard
-            reps={visible}
-            maxProjects={maxProjects}
-            selectedId={selectedId}
-            onSelect={selectRep}
-          />
-        ) : view === 'ranking' ? (
-          <RankBoard
-            reps={visible}
-            maxProjects={maxProjects}
-            selectedId={selectedId}
-            onSelect={selectRep}
-          />
-        ) : (
-          <div className="directory-groups" aria-label="Directorio">
-            {groups.map((group) => (
-              <PartyBlock
-                key={group.party}
-                party={group.party}
-                members={group.members}
-                selectedId={selectedId}
-                onSelect={selectRep}
-                showEmpty={filters.seat === 'distrito'}
-              />
-            ))}
-          </div>
-        )
+        <div className="directory-groups" aria-label="Directorio">
+          {groups.map((group) => (
+            <PartyBlock
+              key={group.party}
+              party={group.party}
+              members={group.members}
+              selectedId={selectedId}
+              onSelect={selectRep}
+              showEmpty={filters.seat === 'distrito'}
+            />
+          ))}
+        </div>
       )}
 
       <footer className="colophon">
@@ -249,7 +268,8 @@ function App() {
           CEE no publica el programa de trabajo; los proyectos salen de SUTRA.
           La fuerza es 0–100: hasta 50 del % de votos, hasta 35 de proyectos
           radicados y hasta 15 del cargo en el hemiciclo. Sin voto popular no
-          se inventa la parte electoral.
+          se inventa la parte electoral. Las fichas solo publican hechos
+          citados; el solape de pueblos es inferencia, no alianza.
         </p>
       </footer>
     </div>

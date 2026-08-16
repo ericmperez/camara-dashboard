@@ -46,6 +46,14 @@ describe('normalize / search', () => {
     expect(hits.some((r) => r.id === pichy.id)).toBe(true)
   })
 
+  it('encuentra por un hecho citado en la ficha, no por un invento', () => {
+    const johnny = REPRESENTATIVES.find((r) => r.id.includes('mendez'))!
+    expect(matchesQuery(johnny, 'Roosevelt')).toBe(true)
+    expect(matchesQuery(johnny, 'Vimarie')).toBe(false)
+    const lopez = REPRESENTATIVES.find((r) => r.id === 'roberto-lopez-roman')!
+    expect(matchesQuery(lopez, 'Vimarie')).toBe(true)
+  })
+
   it('encuentra por línea política: populares, estadidad, independencia', () => {
     const popular = REPRESENTATIVES.find((r) => r.party === 'PPD')!
     const estadista = REPRESENTATIVES.find((r) => r.party === 'PNP')!

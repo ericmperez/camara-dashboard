@@ -1,4 +1,5 @@
 import type { Party, Representative, RosterFilters } from '../types'
+import { dossierSearchText } from './dossiers'
 import { matchesMeasureCode, measureSearchText } from './measures'
 import { profileSearchText } from './profile'
 import { normalize } from './text'
@@ -31,7 +32,11 @@ function identityWords(rep: Representative): string[] {
 }
 
 function searchableWords(rep: Representative): string[] {
-  return [...identityWords(rep), ...tokensOf(measureSearchText(rep.id))]
+  return [
+    ...identityWords(rep),
+    ...tokensOf(measureSearchText(rep.id)),
+    ...tokensOf(dossierSearchText(rep.id)),
+  ]
 }
 
 function matchesToken(words: string[], token: string): boolean {

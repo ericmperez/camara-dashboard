@@ -136,6 +136,42 @@ describe('dashboard de la Cámara', () => {
     expect(within(card as HTMLElement).getByText(gabriel.phone!)).toBeInTheDocument()
   })
 
+  it('abre la ficha con fuentes, votos CEE y proyectos SUTRA', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Ficha' }))
+    expect(screen.getByRole('status')).toHaveTextContent(/elige un representante/i)
+    await user.click(screen.getByRole('button', { name: 'Caras' }))
+    await user.click(screen.getByRole('heading', { name: /lópez román/i }))
+    const ficha = screen.getByLabelText(/ficha de/i)
+    expect(ficha).toHaveTextContent(/Vimarie Peña Dávila/)
+    expect(ficha).toHaveTextContent(/677/)
+    expect(within(ficha).getByRole('link', { name: /especial/i })).toHaveAttribute(
+      'href',
+      expect.stringContaining('representantedistrito31'),
+    )
+    expect(within(ficha).getByRole('link', { name: /WIPR/i })).toHaveAttribute(
+      'href',
+      expect.stringContaining('wipr.pr'),
+    )
+    expect(within(ficha).getAllByText(/inferencia/i).length).toBeGreaterThan(0)
+    expect(within(ficha).getAllByText(/pueblos en común/i).length).toBeGreaterThan(0)
+    expect(within(ficha).getByRole('link', { name: /expediente en sutra/i })).toHaveAttribute(
+      'href',
+      expect.stringContaining('sutra.oslpr.org'),
+    )
+  })
+
+  it('deja vacía la ficha si no hay hecho verificado', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('heading', { name: /charbonier/i }))
+    const ficha = screen.getByLabelText(/ficha de/i)
+    expect(within(ficha).getByText(/sin biografía verificada/i)).toBeInTheDocument()
+    expect(within(ficha).getByText(/sin trayectoria citada/i)).toBeInTheDocument()
+    expect(within(ficha).getByText(/vacío a propósito/i)).toBeInTheDocument()
+  })
+
   it('el atajo de distrito 1 no arrastra al 10 ni al 11', async () => {
     const user = userEvent.setup()
     render(<App />)
