@@ -73,10 +73,13 @@ function App() {
 
   useEffect(() => {
     if (!selectedId || view !== 'ficha') return
-    document.getElementById('ficha')?.scrollIntoView({
-      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
-        ? 'auto'
-        : 'smooth',
+    const node = document.getElementById('ficha')
+    if (!node || typeof node.scrollIntoView !== 'function') return
+    const reduceMotion =
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    node.scrollIntoView({
+      behavior: reduceMotion ? 'auto' : 'smooth',
       block: 'start',
     })
   }, [selectedId, view])

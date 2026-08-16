@@ -146,7 +146,7 @@ describe('dashboard de la Cámara', () => {
     const ficha = screen.getByLabelText(/ficha de/i)
     expect(ficha).toHaveTextContent(/Vimarie Peña Dávila/)
     expect(ficha).toHaveTextContent(/677/)
-    expect(within(ficha).getByRole('link', { name: /especial/i })).toHaveAttribute(
+    expect(within(ficha).getByRole('link', { name: /elección especial/i })).toHaveAttribute(
       'href',
       expect.stringContaining('representantedistrito31'),
     )
