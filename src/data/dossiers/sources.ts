@@ -133,7 +133,7 @@ export const SRC = {
   },
   wiki2024House: {
     url: 'https://en.wikipedia.org/wiki/2024_Puerto_Rico_House_of_Representatives_election',
-    label: 'Wikipedia · elección Cámara 2024 (Distrito 34)',
+    label: 'Wikipedia · elección Cámara 2024 (CEE 31 dic 2024)',
   },
   victoria840Muriel: {
     url: 'https://www.victoria840.com/eligen-a-christian-muriel-como-candidato-a-representante-por-el-distrito-34-por-el-pnp/',
@@ -161,6 +161,49 @@ export const SRC = {
     url: 'https://www.elnuevodia.com/noticias/legislatura/notas/familiares-en-camara-y-senado-cuantos-legisladores-tienen-a-sus-allegados-contratados/',
     label: 'El Nuevo Día · familiares en Cámara y Senado',
     published: '2026-01-26',
+  },
+  camaraOcasio: {
+    url: 'https://www.camara.pr.gov/team/ricardo-chino-rey-ocasio-ramos/',
+    label: 'Cámara · ficha oficial de Ricardo ‘Chino’ Rey Ocasio Ramos',
+  },
+  sutraOcasio: {
+    url: 'https://sutra.oslpr.org/legisladores/M-935-AL',
+    label: 'SUTRA · Ricardo R. Ocasio Ramos (M-935-AL, 2025–2028)',
+  },
+  ballotpediaOcasio: {
+    url: 'https://ballotpedia.org/Ricardo_Rey_Ocasio_Ramos',
+    label: 'Ballotpedia · Ricardo Rey Ocasio Ramos (D2; asumió 2 ene 2025)',
+  },
+  oceOcasio2020: {
+    url: 'https://oce.pr.gov/download/oce-b-21-148-ricardo-rey-ocasio-ramos/',
+    label: 'OCE · expediente OCE-B-21-148 (Ocasio, D2 PNP, 2020)',
+  },
+  oceD02_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-02/',
+    label: 'OCE · auditorías 2020, representantes Distrito 02',
+  },
+  oce2024Reps: {
+    url: 'https://oce.pr.gov/auditorias-2024/auditorias-2024-representantes/',
+    label: 'OCE · auditorías 2024 representantes (D02 no publicado)',
+  },
+  wiprPC654: {
+    url: 'http://wipr.pr/impulsan-talleres-obligatorios-de-crianza-a-padres-y-custodios-para-prevenir-el-maltrato-infantil/',
+    label: 'WIPR · Ocasio autor del PC 654 (crianza responsable)',
+    published: '2025-05-31',
+  },
+  eyBoricuaPC654: {
+    url: 'https://eyboricua.com/evaluan-proyecto-de-ley-que-propone-talleres-obligatorios-de-crianza-para-prevenir-el-maltrato-infantil/',
+    label: 'Ey Boricua · su comisión evaluó el PC 654',
+  },
+  elSolPC872: {
+    url: 'https://periodicoelsolpr.com/evaluan-medida-para-adultos-mayores-y-personas-con-diversidad-funcional/',
+    label: 'El Sol · vista PC 872 (comisión de Ocasio; autor Méndez)',
+    published: '2025-10-22',
+  },
+  metroTorresD2: {
+    url: 'https://www.metro.pr/noticias/2023/12/01/luis-raul-torres-oficialmente-deja-el-distrito-2-de-san-juan-para-correr-por-independiente-por-acumulacion/',
+    label: 'Metro · Luis R. Torres deja el D2 y corre por acumulación',
+    published: '2023-12-01',
   },
 } as const satisfies Record<string, DossierSource>
 

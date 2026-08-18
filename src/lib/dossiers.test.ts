@@ -30,18 +30,19 @@ describe('dossiers 2025–2028', () => {
     }
   })
 
-  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román y Muriel', () => {
+  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel y Ocasio', () => {
     const extra = [
       'jose-f-aponte-hernandez',
       'roberto-rivera-ruiz-de-porras',
       'roberto-lopez-roman',
       'christian-muriel-sanchez',
+      'ricardo-chino-rey-ocasio-ramos',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(14)
+    expect(DEEP_IDS.size).toBe(15)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
@@ -207,6 +208,67 @@ describe('dossiers 2025–2028', () => {
         SRC.pluralPC830.url,
         SRC.islaNewsYabucoa.url,
         SRC.endiFamiliares.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D2 de Ocasio con CEE 2024, docket 2020 y sin auditoría 2024', () => {
+    const d2 = DOSSIERS['ricardo-chino-rey-ocasio-ramos']
+    expect(d2.bio).toMatch(/1 de noviembre de 1967/)
+    expect(d2.bio).toMatch(/Ramón Vila Mayo/)
+    expect(d2.bio).toMatch(/rocasio@camara\.pr\.gov/)
+    expect(d2.bio).toMatch(/M-935-AL/)
+    expect(d2.bio).toMatch(/Adultos Mayores y Bienestar Social/)
+    expect(d2.career.join(' ')).toMatch(/8,755/)
+    expect(d2.career.join(' ')).toMatch(/Joel Vázquez Rosario/)
+    expect(d2.career.join(' ')).toMatch(/Bryan Saavedra/)
+    expect(d2.career.join(' ')).toMatch(/Juan Gabriel Zayas Monge/)
+    expect(d2.career.join(' ')).not.toMatch(/Bryan Santana|Joel Rosario|Alfonso Questell/)
+    expect(d2.career.join(' ')).toMatch(/primaria PNP de 2024 cancelada/i)
+    expect(d2.career.join(' ')).toMatch(/Luis R\. Torres Cruz/)
+    expect(d2.career.join(' ')).toMatch(/No es Ramón Torres Cruz/)
+    expect(d2.career.join(' ')).toMatch(/OCE-B-21-148/)
+    expect(d2.career.join(' ')).toMatch(/no hay auditoría 2024/)
+    expect(d2.career.join(' ')).toMatch(/Ana Luisa Torres/)
+    expect(d2.career.join(' ')).not.toMatch(/2,676|1,664|782/)
+    expect(d2.career.join(' ')).toMatch(/No hay récord público citado de un familiar/)
+    expect(d2.career.join(' ')).not.toMatch(/esposa|madre|hijo|yerno|hermano/)
+    expect(d2.aspirations.join(' ')).toMatch(/RC 40/)
+    expect(d2.aspirations.join(' ')).toMatch(/RC 101/)
+    expect(d2.aspirations.join(' ')).toMatch(/PC 654/)
+    expect(d2.aspirations.join(' ')).toMatch(/RC 320/)
+    expect(d2.aspirations.join(' ')).toMatch(/RC 468/)
+    expect(d2.aspirations.join(' ')).toMatch(/RC 477/)
+    expect(d2.aspirations.join(' ')).toMatch(/PC 1353/)
+    expect(d2.aspirations.join(' ')).toMatch(/PC 872/)
+    expect(d2.aspirations.join(' ')).toMatch(/no autoría de Ocasio/)
+    expect(d2.committees).toEqual(['Adultos Mayores y Bienestar Social'])
+    expect(JSON.stringify(d2)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d2)).not.toMatch(/OCE-EB-24/)
+    const facts = d2.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual(['carlos-johnny-mendez-nunez'])
+    expect(facts[0].sources.map((s) => s.url)).toContain(SRC.elSolPC872.url)
+    const overlap = townOverlapConnections('ricardo-chino-rey-ocasio-ramos')
+    expect(
+      overlap.some((c) => c.toId === 'eddie-charbonier-chinea' && c.kind === 'inference'),
+    ).toBe(true)
+    expect(overlap.some((c) => c.toId === 'jose-hernandez-concepcion')).toBe(true)
+    expect(overlap.some((c) => c.toId === 'victor-l-pares-otero')).toBe(true)
+    expect(overlap.some((c) => c.toId === 'jorge-navarro-suarez')).toBe(true)
+    expect(d2.connections.some((c) => c.kind === 'inference')).toBe(false)
+    expect(d2.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraOcasio.url,
+        SRC.sutraOcasio.url,
+        SRC.ballotpediaOcasio.url,
+        SRC.wiki2024House.url,
+        SRC.oceOcasio2020.url,
+        SRC.oceD02_2020.url,
+        SRC.oce2024Reps.url,
+        SRC.wiprPC654.url,
+        SRC.elSolPC872.url,
+        SRC.metroTorresD2.url,
         SRC.microjurisComisiones.url,
       ]),
     )
