@@ -30,19 +30,20 @@ describe('dossiers 2025–2028', () => {
     }
   })
 
-  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel y Ocasio', () => {
+  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio y Hernández D3', () => {
     const extra = [
       'jose-f-aponte-hernandez',
       'roberto-rivera-ruiz-de-porras',
       'roberto-lopez-roman',
       'christian-muriel-sanchez',
       'ricardo-chino-rey-ocasio-ramos',
+      'jose-hernandez-concepcion',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(15)
+    expect(DEEP_IDS.size).toBe(16)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
@@ -269,6 +270,67 @@ describe('dossiers 2025–2028', () => {
         SRC.wiprPC654.url,
         SRC.elSolPC872.url,
         SRC.metroTorresD2.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D3 de Hernández con la especial 2022, CEE 2024 y sin docket OCE 2024', () => {
+    const d3 = DOSSIERS['jose-hernandez-concepcion']
+    expect(d3.bio).toMatch(/Distrito 3/)
+    expect(d3.bio).toMatch(/Cheito|Cheíto/)
+    expect(d3.bio).toMatch(/jhernandez@camara\.pr\.gov/)
+    expect(d3.bio).toMatch(/M-936-AL/)
+    expect(d3.bio).toMatch(/12 de diciembre de 2022/)
+    expect(d3.bio).toMatch(/Transportación e Infraestructura/)
+    expect(d3.bio).not.toMatch(/nació el|Ramón Vila|1 de noviembre/i)
+    expect(d3.career.join(' ')).toMatch(/871/)
+    expect(d3.career.join(' ')).toMatch(/Christopher Ríos Aponte/)
+    expect(d3.career.join(' ')).toMatch(/1,701/)
+    expect(d3.career.join(' ')).toMatch(/Juan Oscar Morales|Juan O\. Morales/)
+    expect(d3.career.join(' ')).toMatch(/Henry Neumann/)
+    expect(d3.career.join(' ')).toMatch(/9,797/)
+    expect(d3.career.join(' ')).toMatch(/Eva Prados Rodríguez/)
+    expect(d3.career.join(' ')).toMatch(/Cristofer Malespín/)
+    expect(d3.career.join(' ')).not.toMatch(/Cristofer Diaz|Daniel Marquez/)
+    expect(d3.career.join(' ')).toMatch(/primaria PNP de 2024 cancelada/i)
+    expect(d3.career.join(' ')).toMatch(/no hay auditoría 2024/)
+    expect(d3.career.join(' ')).toMatch(/Hernández Lázaro|Kako/)
+    expect(d3.career.join(' ')).toMatch(/No hay récord público citado de un familiar/)
+    expect(d3.career.join(' ')).not.toMatch(/esposa|madre|hijo|yerno|hermano/)
+    expect(d3.career.join(' ')).not.toMatch(/Democratic|demócrata/i)
+    expect(d3.aspirations.join(' ')).toMatch(/PC 1352/)
+    expect(d3.aspirations.join(' ')).toMatch(/15 a 5/)
+    expect(d3.aspirations.join(' ')).toMatch(/PC 1334/)
+    expect(d3.aspirations.join(' ')).toMatch(/RC 741/)
+    expect(d3.aspirations.join(' ')).toMatch(/RC 627/)
+    expect(d3.aspirations.join(' ')).toMatch(/Miguel Romero/)
+    expect(d3.aspirations.join(' ')).toMatch(/no implica alianza/)
+    expect(d3.committees).toEqual(['Transportación e Infraestructura'])
+    expect(d3.connections).toEqual([])
+    expect(JSON.stringify(d3)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d3)).not.toMatch(/OCE-EB-24-0(?!80)/)
+    const overlap = townOverlapConnections('jose-hernandez-concepcion')
+    expect(overlap.some((c) => c.toId === 'eddie-charbonier-chinea' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.some((c) => c.toId === 'ricardo-chino-rey-ocasio-ramos')).toBe(true)
+    expect(overlap.some((c) => c.toId === 'victor-l-pares-otero')).toBe(true)
+    expect(overlap.some((c) => c.toId === 'jorge-navarro-suarez')).toBe(true)
+    expect(d3.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraHernandezD3.url,
+        SRC.sutraHernandezD3.url,
+        SRC.ballotpediaHernandezD3.url,
+        SRC.wikiHernandezD3.url,
+        SRC.wiki2024House.url,
+        SRC.endiEspecialD3.url,
+        SRC.ceeEspecialD3.url,
+        SRC.primeraHoraEspecialD3.url,
+        SRC.oce2024Reps.url,
+        SRC.voceroPC1352.url,
+        SRC.radioIslaVistas2026.url,
+        SRC.voceroAAA.url,
         SRC.microjurisComisiones.url,
       ]),
     )

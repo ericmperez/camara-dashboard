@@ -184,7 +184,7 @@ export const SRC = {
   },
   oce2024Reps: {
     url: 'https://oce.pr.gov/auditorias-2024/auditorias-2024-representantes/',
-    label: 'OCE · auditorías 2024 representantes (D02 no publicado)',
+    label: 'OCE · auditorías 2024 representantes (D02 y D03 no publicados)',
   },
   wiprPC654: {
     url: 'http://wipr.pr/impulsan-talleres-obligatorios-de-crianza-a-padres-y-custodios-para-prevenir-el-maltrato-infantil/',
@@ -204,6 +204,49 @@ export const SRC = {
     url: 'https://www.metro.pr/noticias/2023/12/01/luis-raul-torres-oficialmente-deja-el-distrito-2-de-san-juan-para-correr-por-independiente-por-acumulacion/',
     label: 'Metro · Luis R. Torres deja el D2 y corre por acumulación',
     published: '2023-12-01',
+  },
+  camaraHernandezD3: {
+    url: 'https://www.camara.pr.gov/team/jose-hernandez-concepcion/',
+    label: 'Cámara · ficha oficial de José Hernández Concepción',
+  },
+  sutraHernandezD3: {
+    url: 'https://sutra.oslpr.org/legisladores/M-936-AL',
+    label: 'SUTRA · José Hernández Concepción (M-936-AL, 2025–2028)',
+  },
+  ballotpediaHernandezD3: {
+    url: 'https://ballotpedia.org/Jos%C3%A9_Hern%C3%A1ndez_Concepci%C3%B3n',
+    label: 'Ballotpedia · José Hernández Concepción (D3; asumió 12 dic 2022)',
+  },
+  wikiHernandezD3: {
+    url: 'https://en.wikipedia.org/wiki/Jos%C3%A9_Hern%C3%A1ndez_Concepci%C3%B3n',
+    label: 'Wikipedia · José Hernández Concepción (stub; secundaria)',
+  },
+  endiEspecialD3: {
+    url: 'https://www.elnuevodia.com/noticias/politica/notas/prevalece-jose-cheito-hernandez-en-el-recuento-por-vacante-en-el-precinto-3-de-san-juan/',
+    label: 'El Nuevo Día · recuento especial D3 (6 dic 2022)',
+    published: '2022-12-06',
+  },
+  ceeEspecialD3: {
+    url: 'https://www.ceepur.org/RepresentanteDistrito3/docs/certificacion-resultados-finales.pdf',
+    label: 'CEE · certificación especial D3 (871–830; 6 dic 2022)',
+  },
+  primeraHoraEspecialD3: {
+    url: 'https://www.primerahora.com/noticias/gobierno-politica/notas/pnp-realizara-eleccion-especial-este-domingo-para-escoger-representante-de-san-juan/',
+    label: 'Primera Hora · especial PNP D3 (solo afiliados)',
+    published: '2022-12-02',
+  },
+  voceroPC1352: {
+    url: 'https://www.elvocero.com/gobierno/impulsan-proyecto-para-reducir-de-15-a-5-las-multas-de-autoexpreso/article_df7e01e1-2da1-44df-ad71-973325bb1e06.html',
+    label: 'El Vocero · PC 1352 multas AutoExpreso (15 a 5 dólares)',
+  },
+  radioIslaVistas2026: {
+    url: 'https://radioisla.tv/vistas-publicas-examinaran-multas-de-autoexpreso-y-nuevo-portal-de-informacion-de-la-aaa/',
+    label: 'Radio Isla · vistas AutoExpreso y portal AAA (17 ago 2026)',
+    published: '2026-08-17',
+  },
+  voceroAAA: {
+    url: 'https://www.elvocero.com/gobierno/por-el-momento-han-cumplido-jos-che-to-hern-ndez-contin-a-evaluando-el-desempe/article_4445aa1d-6854-4d4d-b90b-a825d78e752d.html',
+    label: 'El Vocero · evalúa AAA; respaldo condicionado a demanda de Romero',
   },
 } as const satisfies Record<string, DossierSource>
 
