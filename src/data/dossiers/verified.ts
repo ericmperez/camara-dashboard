@@ -303,4 +303,44 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.wikiLopez,
     ],
   },
+
+  'christian-muriel-sanchez': {
+    id: 'christian-muriel-sanchez',
+    bio: 'Titular del Distrito 34 (Yabucoa, Maunabo, Patillas y San Lorenzo) por el PNP. Asumió el 2 de enero de 2025; el término vence el 2 de enero de 2029 (Ballotpedia). SUTRA lo lista como M-967-AL, cuatrienio 2025–2028. Correo oficial: cmuriel@camara.pr.gov. Preside la Comisión de Cooperativismo (ficha oficial).',
+    career: [
+      'Primaria PNP del 2 de junio de 2024: Victoria 840 (82% escrutado) lo da con 2,876 votos (54.20%) frente a Javier Velázquez, 2,430 (45.80%). Ballotpedia confirma que derrotó a Velázquez.',
+      'Generales del 5 de noviembre de 2024: Muriel (PNP) 16,831 (47.6%), el incumbente Ramón Luis Cruz / Ramón Cruz Burgos (PPD) 15,130 (42.8%), Catalino Santiago (PIP) 3,383 (9.6%); total 35,344. Ganancia PNP (Wikipedia / Ballotpedia).',
+      'Expediente OCE-EB-24-093: candidato a representante por el Distrito 34, PNP. El índice distrital de auditorías 2024 lo lista. No se citan montos ni hallazgos.',
+      'El Nuevo Día: los datos oficiales primero lo incluían entre legisladores con un familiar en la Cámara; dijo que pidió dispensa a Ética y al presidente Méndez, se autorizó, pero «no procedimos a completar el trámite. No tengo a nadie, ni familiar ni nadie cercano, trabajando en mi oficina.» ENDI no nombra al familiar.',
+    ],
+    aspirations: [
+      'RCC 292: planes de turismo municipal para el Distrito 34 (SUTRA).',
+      'RC 310: investigación de los salones de Educación Especial del Distrito 34 (SUTRA).',
+      'RC 263: estudio de la criminalidad en el Distrito 34 (SUTRA).',
+      'RC 200: investigación de carreteras e infraestructura del Distrito 34 (SUTRA).',
+      'PC 830 (seguridad pública / portación de armas): presentado el 28 de agosto de 2025; aprobado por la Cámara el 20 de abril de 2026 (SUTRA / Plural).',
+      'Reunión del 20 de enero de 2026 con el director regional del DTOP y el alcalde de Yabucoa, Rafael Surillo, sobre mejoras viales (Isla News). Hecho de la reunión; no implica alianza partidista.',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'carlos-johnny-mendez-nunez',
+        kind: 'fact',
+        label: 'ENDI: Ética y Méndez autorizaron una dispensa que él no completó; dijo que no tiene familiar en su oficina',
+        sources: [SRC.endiFamiliares],
+      },
+    ],
+    sources: [
+      SRC.camaraMuriel,
+      SRC.sutraMuriel,
+      SRC.ballotpediaMuriel,
+      SRC.wiki2024House,
+      SRC.victoria840Muriel,
+      SRC.oceMuriel,
+      SRC.oceD34,
+      SRC.pluralPC830,
+      SRC.islaNewsYabucoa,
+      SRC.endiFamiliares,
+    ],
+  },
 }

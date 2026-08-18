@@ -119,6 +119,49 @@ export const SRC = {
     label: 'Metro · miembros del Senado y la Cámara (14 ene 2025)',
     published: '2025-01-14',
   },
+  camaraMuriel: {
+    url: 'https://www.camara.pr.gov/team/christian-muriel-sanchez/',
+    label: 'Cámara · ficha oficial de Christian Muriel Sánchez',
+  },
+  sutraMuriel: {
+    url: 'https://sutra.oslpr.org/legisladores/M-967-AL',
+    label: 'SUTRA · Christian Muriel Sánchez (M-967-AL, 2025–2028)',
+  },
+  ballotpediaMuriel: {
+    url: 'https://ballotpedia.org/Christian_Muriel',
+    label: 'Ballotpedia · Christian Muriel (D34; asumió 2 ene 2025)',
+  },
+  wiki2024House: {
+    url: 'https://en.wikipedia.org/wiki/2024_Puerto_Rico_House_of_Representatives_election',
+    label: 'Wikipedia · elección Cámara 2024 (Distrito 34)',
+  },
+  victoria840Muriel: {
+    url: 'https://www.victoria840.com/eligen-a-christian-muriel-como-candidato-a-representante-por-el-distrito-34-por-el-pnp/',
+    label: 'Victoria 840 · primaria PNP D34 (2 jun 2024)',
+    published: '2024-06-03',
+  },
+  oceMuriel: {
+    url: 'https://oce.pr.gov/download/oce-eb-24-093-christian-muriel-sanchez/',
+    label: 'OCE · expediente OCE-EB-24-093 (Muriel, D34 PNP)',
+  },
+  oceD34: {
+    url: 'https://oce.pr.gov/auditorias-2024/auditorias-2024-representantes/distrito-34/',
+    label: 'OCE · auditorías 2024, representantes Distrito 34',
+  },
+  pluralPC830: {
+    url: 'https://pluralpolicy.com/app/legislative-tracking/bill/details/state-pr-2025_2028-pc830/2796539',
+    label: 'Plural · PC 830 (presentado 28 ago 2025; Cámara 20 abr 2026)',
+  },
+  islaNewsYabucoa: {
+    url: 'https://islanewspr.com/2026/01/20/yabucoa-representante-del-distrito-34-discute-mejoras-viales/',
+    label: 'Isla News · reunión DTOP y alcalde Surillo (Yabucoa)',
+    published: '2026-01-20',
+  },
+  endiFamiliares: {
+    url: 'https://www.elnuevodia.com/noticias/legislatura/notas/familiares-en-camara-y-senado-cuantos-legisladores-tienen-a-sus-allegados-contratados/',
+    label: 'El Nuevo Día · familiares en Cámara y Senado',
+    published: '2026-01-26',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

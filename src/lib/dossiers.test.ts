@@ -30,17 +30,18 @@ describe('dossiers 2025–2028', () => {
     }
   })
 
-  it('profundiza la mesa (10), Aponte, Rivera Ruiz y López Román', () => {
+  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román y Muriel', () => {
     const extra = [
       'jose-f-aponte-hernandez',
       'roberto-rivera-ruiz-de-porras',
       'roberto-lopez-roman',
+      'christian-muriel-sanchez',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(13)
+    expect(DEEP_IDS.size).toBe(14)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
@@ -163,6 +164,52 @@ describe('dossiers 2025–2028', () => {
     expect(REPRESENTATIVES.find((r) => r.district === 22)?.name).toMatch(/Colón/)
     expect(REPRESENTATIVES.find((r) => r.id === 'nelie-lebron-robles')?.name).not.toMatch(/Flores/)
     expect(REPRESENTATIVES.find((r) => r.id === 'sergio-estevez-velez')?.name).toMatch(/Vélez/)
+  })
+
+  it('codifica el D34 de Muriel con docket OCE, PC 830 y la nota familiar de ENDI', () => {
+    const d34 = DOSSIERS['christian-muriel-sanchez']
+    expect(d34.bio).toMatch(/Distrito 34/)
+    expect(d34.bio).toMatch(/cmuriel@camara\.pr\.gov/)
+    expect(d34.bio).toMatch(/M-967-AL/)
+    expect(d34.bio).toMatch(/2 de enero de 2025/)
+    expect(d34.career.join(' ')).toMatch(/2,876/)
+    expect(d34.career.join(' ')).toMatch(/16,831/)
+    expect(d34.career.join(' ')).toMatch(/Ramón Luis Cruz/)
+    expect(d34.career.join(' ')).toMatch(/OCE-EB-24-093/)
+    expect(d34.career.join(' ')).toMatch(/no procedimos a completar el trámite/)
+    expect(d34.career.join(' ')).not.toMatch(/esposa|madre|hijo|yerno|hermano/)
+    expect(d34.aspirations.join(' ')).toMatch(/RCC 292/)
+    expect(d34.aspirations.join(' ')).toMatch(/RC 310/)
+    expect(d34.aspirations.join(' ')).toMatch(/RC 263/)
+    expect(d34.aspirations.join(' ')).toMatch(/RC 200/)
+    expect(d34.aspirations.join(' ')).toMatch(/PC 830/)
+    expect(d34.aspirations.join(' ')).toMatch(/20 de abril de 2026/)
+    expect(d34.aspirations.join(' ')).toMatch(/Rafael Surillo/)
+    expect(d34.aspirations.join(' ')).toMatch(/no implica alianza/)
+    expect(d34.committees).toEqual(['Cooperativismo'])
+    expect(JSON.stringify(d34)).not.toMatch(/\$\d/)
+    const facts = d34.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual(['carlos-johnny-mendez-nunez'])
+    expect(facts[0].sources.map((s) => s.url)).toContain(SRC.endiFamiliares.url)
+    const overlap = townOverlapConnections('christian-muriel-sanchez')
+    expect(overlap.some((c) => c.toId === 'angel-r-pena-ramirez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d34.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraMuriel.url,
+        SRC.sutraMuriel.url,
+        SRC.ballotpediaMuriel.url,
+        SRC.wiki2024House.url,
+        SRC.victoria840Muriel.url,
+        SRC.oceMuriel.url,
+        SRC.oceD34.url,
+        SRC.pluralPC830.url,
+        SRC.islaNewsYabucoa.url,
+        SRC.endiFamiliares.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
   })
 
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
