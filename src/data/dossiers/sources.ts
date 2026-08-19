@@ -427,6 +427,38 @@ export const SRC = {
     label: 'Colegio CPA · ponencia a Pérez Ortiz, Asuntos Municipales (21 mar 2025)',
     published: '2025-03-21',
   },
+  camaraPacheco: {
+    url: 'https://www.camara.pr.gov/team/felix-pacheco-burgos/',
+    label: 'Cámara · ficha oficial de Félix Pacheco Burgos',
+  },
+  sutraPacheco: {
+    url: 'https://sutra.oslpr.org/legisladores/M-942-AL',
+    label: 'SUTRA · Félix E. Pacheco Burgos (M-942-AL, 2025–2028)',
+  },
+  ballotpediaPacheco: {
+    url: 'https://ballotpedia.org/F%C3%A9lix_Pacheco',
+    label: 'Ballotpedia · Félix Pacheco (D9; asumió 2 ene 2025)',
+  },
+  ocePacheco2024: {
+    url: 'https://oce.pr.gov/download/oce-eb-24-089-felix-e-pacheco-burgos/',
+    label: 'OCE · expediente OCE-EB-24-089 (Pacheco, D9 PNP; PDF ~8 may 2026)',
+  },
+  oceD09_2024dl: {
+    url: 'https://oce.pr.gov/downloads/d092024/',
+    label: 'OCE · descargas D09 2024 (OCE-EB-24-089 Pacheco)',
+  },
+  oceD09_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-09/',
+    label: 'OCE · auditorías 2020, representantes Distrito 09 (Morales, no Pacheco)',
+  },
+  voceroPC406: {
+    url: 'https://www.elvocero.com/gobierno/legislatura-busca-atajar-criminalidad-desde-un-enfoque-preventivo-y-educativo/article_f147bce6-7795-49fd-b74a-90e4d93ff943.html',
+    label: 'El Vocero · Pacheco: PC 406 Policía y PC 631 Experience',
+  },
+  voceroCuarteles: {
+    url: 'https://www.elvocero.com/ley-y-orden/policiacas/inspeccionan-cuarteles-en-san-juan-y-fajardo/article_f0a66405-5bff-43f0-81fa-48b04fd41d13.html',
+    label: 'El Vocero · inspección de cuarteles (San Juan y Fajardo)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

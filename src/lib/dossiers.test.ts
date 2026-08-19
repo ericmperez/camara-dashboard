@@ -30,7 +30,7 @@ describe('dossiers 2025–2028', () => {
     }
   })
 
-  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6 y Pérez Ortiz D7', () => {
+  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6, Pérez Ortiz D7 y Pacheco D9', () => {
     const extra = [
       'jose-f-aponte-hernandez',
       'roberto-rivera-ruiz-de-porras',
@@ -42,12 +42,13 @@ describe('dossiers 2025–2028', () => {
       'jorge-navarro-suarez',
       'angel-morey-noble',
       'luis-perez-ortiz',
+      'felix-pacheco-burgos',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(20)
+    expect(DEEP_IDS.size).toBe(21)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
@@ -682,6 +683,69 @@ describe('dossiers 2025–2028', () => {
         SRC.oceD08_2024dl.url,
         SRC.esNoticia100.url,
         SRC.metroInaugural.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D9 de Pacheco con primaria 2024, CEE y OCE-EB-24-089', () => {
+    const d9 = DOSSIERS['felix-pacheco-burgos']
+    expect(d9.bio).toMatch(/3 de diciembre de 1988/)
+    expect(d9.bio).toMatch(/fpacheco@camara\.pr\.gov/)
+    expect(d9.bio).toMatch(/M-942-AL/)
+    expect(d9.bio).toMatch(/Seguridad Pública/)
+    expect(d9.career.join(' ')).toMatch(/Nancy Burgos/)
+    expect(d9.career.join(' ')).toMatch(/Félix Pacheco/)
+    expect(d9.career.join(' ')).toMatch(/cinco hermanos/)
+    expect(d9.career.join(' ')).toMatch(/Violanta Jiménez/)
+    expect(d9.career.join(' ')).toMatch(/Ana G\. Méndez/)
+    expect(d9.career.join(' ')).toMatch(/4,055/)
+    expect(d9.career.join(' ')).toMatch(/3,308/)
+    expect(d9.career.join(' ')).toMatch(/Morales Díaz/)
+    expect(d9.career.join(' ')).toMatch(/12,117/)
+    expect(d9.career.join(' ')).toMatch(/Noelia Ramos Vázquez/)
+    expect(d9.career.join(' ')).toMatch(/Gabriel Vicéns Rivera/)
+    expect(d9.career.join(' ')).toMatch(/Anabel Sánchez/)
+    expect(d9.career.join(' ')).toMatch(/26,292/)
+    expect(d9.career.join(' ')).toMatch(/variantes Gabriel Rivera y Anabel Ayala/)
+    expect(d9.career.join(' ')).toMatch(/OCE-B-21-250/)
+    expect(d9.career.join(' ')).toMatch(/No se le atribuye OCE-B-21-250/)
+    expect(d9.career.join(' ')).toMatch(/OCE-EB-24-089/)
+    expect(d9.career.join(' ')).toMatch(/monto no extraído/)
+    expect(JSON.stringify(d9)).not.toMatch(/esposa|cónyuge|yerno/)
+    expect(d9.aspirations.join(' ')).toMatch(/PC 406/)
+    expect(d9.aspirations.join(' ')).toMatch(/no se afirma autoría/)
+    expect(d9.aspirations.join(' ')).toMatch(/PC 631/)
+    expect(d9.aspirations.join(' ')).toMatch(/Experience/)
+    expect(d9.aspirations.join(' ')).toMatch(/RC 37/)
+    expect(d9.aspirations.join(' ')).toMatch(/Joseph González/)
+    expect(d9.aspirations.join(' ')).toMatch(/no implica alianza/)
+    expect(d9.aspirations.join(' ')).toMatch(/PC 1139/)
+    expect(d9.aspirations.join(' ')).toMatch(/PC 1144/)
+    expect(d9.aspirations.join(' ')).toMatch(/PC 633/)
+    expect(d9.committees).toEqual(['Seguridad Pública'])
+    expect(d9.connections).toEqual([])
+    expect(JSON.stringify(d9)).not.toMatch(/\$\d/)
+    expect(d9.connections.some((c) => c.toId === 'yashira-lebron-rodriguez')).toBe(false)
+    expect(d9.connections.some((c) => c.toId === 'luis-perez-ortiz')).toBe(false)
+    expect(d9.connections.some((c) => c.toId === 'carlos-johnny-mendez-nunez')).toBe(false)
+    const overlap = townOverlapConnections('felix-pacheco-burgos')
+    expect(overlap.some((c) => c.toId === 'yashira-lebron-rodriguez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.some((c) => c.toId === 'luis-perez-ortiz')).toBe(true)
+    expect(d9.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraPacheco.url,
+        SRC.sutraPacheco.url,
+        SRC.ballotpediaPacheco.url,
+        SRC.wiki2024House.url,
+        SRC.ocePacheco2024.url,
+        SRC.oceD09_2024dl.url,
+        SRC.oceD09_2020.url,
+        SRC.oce2024Reps.url,
+        SRC.voceroPC406.url,
+        SRC.voceroCuarteles.url,
         SRC.microjurisComisiones.url,
       ]),
     )
