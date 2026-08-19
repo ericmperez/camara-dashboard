@@ -892,7 +892,11 @@ export const SRC = {
   },
   sutraFranqui: {
     url: 'https://sutra.oslpr.org/legisladores/M-948-AL',
-    label: 'SUTRA · Joel Franqui Atiles (M-948-AL, 2025–2028; Detalle Distrito 15)',
+    label: 'SUTRA · Joel Franqui Atiles (M-948-AL, legislador 948, 2025–2028; Detalle Distrito 15)',
+  },
+  sutraDirectorioFranqui: {
+    url: 'https://sutra.oslpr.org/directorio?nombre=Franqui&cuatrienio=2025-2028',
+    label: 'SUTRA · directorio 2025–2028 (filtro nombre Franqui)',
   },
   ballotpediaFranqui: {
     url: 'https://ballotpedia.org/Joel_Franqui_Atiles',
@@ -943,13 +947,56 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas/156415',
     label: 'SUTRA · RCC 145 (autor único; Finca Nolla, Camuy; veto de bolsillo 11 ago 2025)',
   },
+  sutraRCC0146: {
+    url: 'https://sutra.oslpr.org/medidas/156416',
+    label: 'SUTRA · RCC 146 (autor único; Área Escénica Barrio Puente, Camuy; veto de bolsillo 11 ago 2025)',
+  },
   sutraRCC0147: {
     url: 'https://sutra.oslpr.org/medidas/156417',
     label: 'SUTRA · RCC 147 (autor único; Cavernas del Río Camuy al Municipio de Camuy)',
   },
+  sutraPC0682: {
+    url: 'https://sutra.oslpr.org/medidas/155982',
+    label: 'SUTRA · PC 682 (autor único; publicidad de edictos civiles en el portal oficial)',
+  },
+  sutraPC0683: {
+    url: 'https://sutra.oslpr.org/medidas/155983',
+    label: 'SUTRA · PC 683 (autor único; juntas de subastas / change-orders >15%; retirada 17 jun 2025)',
+  },
+  sutraPC0685: {
+    url: 'https://sutra.oslpr.org/medidas/155985',
+    label: 'SUTRA · PC 685 (autor único; acceso a estados bancarios bajo custodia)',
+  },
+  sutraRC0341: {
+    url: 'https://sutra.oslpr.org/medidas/156167',
+    label: 'SUTRA · RC 341 (autor único; tráfico de especies exóticas)',
+  },
+  sutraPC0699: {
+    url: 'https://sutra.oslpr.org/medidas/156172',
+    label: 'SUTRA · PC 699 (autor único; 1% del canon hotelero a la Policía)',
+  },
+  visionFranquiCamuy: {
+    url: 'https://periodicovision.com/camara-de-representantes-abre-oficina-de-ayuda-al-ciudadano-en-camuy/',
+    label: 'Semanario Visión · oficina de ayuda al ciudadano en Camuy (Méndez, Robles, Nieves)',
+    published: '2025-07-08',
+  },
+  visionCamuyAlcalde: {
+    url: 'https://periodicovision.com/alcalde-de-camuy-juramento-a-un-tercer-termino-con-grandes-expectativas/',
+    label: 'Semanario Visión · Gabriel Hernández Rodríguez juramenta tercer término (24 ene 2025)',
+    published: '2025-01-24',
+  },
+  primeraHoraFranquiEsposa: {
+    url: 'https://www.primerahora.com/noticias/gobierno-politica/notas/representante-rechaza-que-legisle-a-favor-de-su-esposa/',
+    label: 'Primera Hora · Franqui rechaza que legisle a favor de su esposa Irelis Pérez Cintrón',
+    published: '2019-03-26',
+  },
+  ballotpediaHatilloMayor: {
+    url: 'https://ballotpedia.org/Carlos_Rom%C3%A1n_Rom%C3%A1n',
+    label: 'Ballotpedia · Carlos Román Román, alcalde sentado de Hatillo (PPD)',
+  },
   sutraRCC0226: {
     url: 'https://sutra.oslpr.org/medidas/159220',
-    label: 'SUTRA · RCC 226 (Autores 3: Robles Rivera, Franqui Atiles y Méndez Núñez; PR-2 Hatillo)',
+    label: 'SUTRA · RCC 226 (Autores 3; primer autor Méndez Núñez; PR-22 km 84.5 Hatillo)',
   },
   sutraRCC0092: {
     url: 'https://sutra.oslpr.org/medidas/154613',

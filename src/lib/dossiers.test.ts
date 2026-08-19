@@ -1196,7 +1196,7 @@ describe('dossiers 2025–2028', () => {
     )
   })
 
-  it('codifica el D15 de Franqui con CEE 17,679, OCE-18-014 y sin monto', () => {
+  it('codifica el D15 de Franqui con CEE 17,679, OCE-B-21-198 y 31,571.58 dólares', () => {
     const d15 = DOSSIERS['joel-i-franqui-atiles']
     expect(d15.id).toBe('joel-i-franqui-atiles')
     expect(d15.bio).toMatch(/Joel I\. Franqui Atiles/)
@@ -1205,8 +1205,10 @@ describe('dossiers 2025–2028', () => {
     expect(d15.bio).toMatch(/Quebradillas/)
     expect(d15.bio).toMatch(/Desarrollo Económico/)
     expect(d15.bio).toMatch(/ficha oficial es delgada/)
+    expect(d15.bio).toMatch(/NO tiene línea Presidente/)
     expect(d15.bio).toMatch(/jfranqui@camara\.pr\.gov/)
     expect(d15.bio).toMatch(/M-948-AL/)
+    expect(d15.bio).toMatch(/legislador numérico 948/)
     expect(d15.bio).toMatch(/721-4949/)
     expect(d15.bio).toMatch(/Phone: Economic Development Commission/)
     expect(d15.bio).toMatch(/no es un número de teléfono/)
@@ -1218,52 +1220,59 @@ describe('dossiers 2025–2028', () => {
     expect(d15.career.join(' ')).toMatch(/34,258/)
     expect(d15.career.join(' ')).toMatch(/7,625/)
     expect(d15.career.join(' ')).toMatch(/Iván Serrano/)
+    expect(d15.career.join(' ')).toMatch(/Iván Serrano Cordero/)
     expect(d15.career.join(' ')).toMatch(/10,054/)
-    expect(d15.career.join(' ')).toMatch(/29\.3%/)
     expect(d15.career.join(' ')).toMatch(/Abiatar Ramos Jiménez/)
-    expect(d15.career.join(' ')).toMatch(/3,744/)
     expect(d15.career.join(' ')).toMatch(/Fernando Babilonia Aguilar/)
-    expect(d15.career.join(' ')).toMatch(/2,781/)
-    expect(d15.career.join(' ')).toMatch(/Hold PNP/)
-    expect(d15.career.join(' ')).toMatch(/Incumbente/)
     expect(d15.career.join(' ')).toMatch(/Primaria PNP 2024 cancelada/)
-    expect(d15.career.join(' ')).toMatch(/No se usa un preliminar/)
     expect(d15.career.join(' ')).not.toMatch(/14,497/)
     expect(d15.career.join(' ')).toMatch(/15,312/)
     expect(d15.career.join(' ')).toMatch(/14,769/)
-    expect(d15.career.join(' ')).toMatch(/Armando Legarreta Raíces/)
-    expect(d15.career.join(' ')).toMatch(/No se certifica un par como CEE/)
+    expect(d15.career.join(' ')).toMatch(/No se certifica un par como CEE HTML/)
     expect(d15.career.join(' ')).toMatch(/César A\. Hernández Alfonzo/)
     expect(d15.career.join(' ')).toMatch(/Gladys M\. Canals Portalatín/)
     expect(d15.career.join(' ')).toMatch(/Totales de votos 2016 no extraídos/)
     expect(d15.career.join(' ')).toMatch(/OCE-18-014/)
     expect(d15.career.join(' ')).toMatch(/monto no extraído/)
-    expect(d15.career.join(' ')).toMatch(/No se le atribuyen OCE-18-015/)
     expect(d15.career.join(' ')).toMatch(/OCE-B-21-198/)
+    expect(d15.career.join(' ')).toMatch(/31,571\.58 dólares/)
+    expect(d15.career.join(' ')).toMatch(/Amigos Joel Franqui Atiles/)
+    expect(d15.career.join(' ')).toMatch(/Joel Isaac Franqui Atiles/)
+    expect(d15.career.join(' ')).toMatch(/Juan José Peraza Batista/)
+    expect(d15.career.join(' ')).toMatch(/OCE-NMA-2022-148/)
     expect(d15.career.join(' ')).toMatch(/no hay auditoría 2024 publicada a su nombre/)
-    expect(d15.career.join(' ')).toMatch(/No hay récord público citado de un familiar/)
-    expect(d15.career.join(' ')).toMatch(/no se le atribuyen en solitario RC 106/)
-    expect(d15.career.join(' ')).toMatch(/RCC 226/)
-    expect(d15.career.join(' ')).toMatch(/RCC 92/)
-    expect(d15.aspirations.join(' ')).toMatch(/RC 214/)
-    expect(d15.aspirations.join(' ')).toMatch(/arancelarias/)
-    expect(d15.aspirations.join(' ')).toMatch(/RC 635/)
-    expect(d15.aspirations.join(' ')).toMatch(/Phoenix Fund/)
-    expect(d15.aspirations.join(' ')).toMatch(/RCC 145/)
-    expect(d15.aspirations.join(' ')).toMatch(/Finca Nolla/)
-    expect(d15.aspirations.join(' ')).toMatch(/RCC 147/)
-    expect(d15.aspirations.join(' ')).toMatch(/Cavernas del Río Camuy/)
+    expect(d15.career.join(' ')).toMatch(/Irelis Pérez Cintrón/)
+    expect(d15.career.join(' ')).toMatch(/Learn & Grow/)
+    expect(d15.career.join(' ')).toMatch(/no hay récord público citado de un familiar sentado/)
+    expect(d15.career.join(' ')).toMatch(/Alejito Cubero Padín/)
+    expect(d15.career.join(' ')).toMatch(/Gabriel ‘Gaby’ Hernández/)
+    expect(d15.career.join(' ')).toMatch(/Heriberto Vélez/)
+    expect(d15.career.join(' ')).toMatch(/Maam Vale/)
+    expect(d15.career.join(' ')).toMatch(/Carlos E\. Román Román/)
+    expect(d15.career.join(' ')).toMatch(/no se afirma que asistiera/)
+    expect(d15.career.join(' ')).toMatch(/Brenda Pérez/)
+    expect(d15.career.join(' ')).toMatch(/Héctor ‘Gaby’ González/)
+    expect(d15.career.join(' ')).toMatch(/no se le atribuyen en solitario RCC 226/)
+    expect(d15.career.join(' ')).toMatch(/primer autor Carlos/)
     expect(d15.aspirations.join(' ')).toMatch(/PC 684/)
     expect(d15.aspirations.join(' ')).toMatch(/Túnel Oscuro/)
-    expect(d15.aspirations.join(' ')).toMatch(/PC 451/)
-    expect(d15.aspirations.join(' ')).toMatch(/Rescate al Empresario/)
-    expect(d15.aspirations.join(' ')).toMatch(/PC 593/)
+    expect(d15.aspirations.join(' ')).toMatch(/RCC 145/)
+    expect(d15.aspirations.join(' ')).toMatch(/Finca Nolla/)
+    expect(d15.aspirations.join(' ')).toMatch(/RCC 146/)
+    expect(d15.aspirations.join(' ')).toMatch(/Área Escénica/)
+    expect(d15.aspirations.join(' ')).toMatch(/RCC 147/)
+    expect(d15.aspirations.join(' ')).toMatch(/Cavernas del Río Camuy/)
+    expect(d15.aspirations.join(' ')).toMatch(/PC 682/)
+    expect(d15.aspirations.join(' ')).toMatch(/PC 683/)
+    expect(d15.aspirations.join(' ')).toMatch(/PC 685/)
+    expect(d15.aspirations.join(' ')).toMatch(/RC 341/)
+    expect(d15.aspirations.join(' ')).toMatch(/PC 699/)
     expect(d15.aspirations.join(' ')).toMatch(/Autores = 1/)
-    expect(d15.aspirations.join(' ')).not.toMatch(/RC 106/)
     expect(d15.aspirations.join(' ')).not.toMatch(/RCC 226/)
-    expect(d15.aspirations.join(' ')).not.toMatch(/RCC 369/)
+    expect(d15.aspirations.join(' ')).not.toMatch(/RCC 92/)
     expect(d15.committees).toEqual(['Desarrollo Económico'])
     expect(JSON.stringify(d15)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d15)).not.toMatch(/OCE-EB-24/)
     expect(JSON.stringify(d15)).not.toMatch(/M-947-AL/)
     expect(JSON.stringify(d15)).not.toMatch(/sengov/)
     const facts = d15.connections.filter((c) => c.kind === 'fact')
@@ -1271,37 +1280,35 @@ describe('dossiers 2025–2028', () => {
       'carlos-johnny-mendez-nunez',
       'edgar-robles-rivera',
       'jerry-nieves-rosario',
-      'swanny-e-vargas-laureano',
     ])
-    expect(facts[0].label).toMatch(/RC 106/)
-    expect(facts[1].label).toMatch(/RCC 226/)
-    expect(facts[2].label).toMatch(/RCC 92/)
-    expect(facts[3].label).toMatch(/RCC 92/)
+    expect(facts[0].label).toMatch(/oficina de Camuy/)
+    expect(facts[1].label).toMatch(/oficina de Camuy/)
+    expect(facts[2].label).toMatch(/oficina de Camuy/)
+    expect(facts.every((c) => c.sources.some((s) => s.url === SRC.visionFranquiCamuy.url))).toBe(
+      true,
+    )
     expect(facts.every((c) => /no implica alianza/.test(c.label))).toBe(true)
     expect(d15.connections.some((c) => c.kind === 'inference')).toBe(false)
     const overlap = townOverlapConnections('joel-i-franqui-atiles')
     expect(overlap.some((c) => c.toId === 'edgar-robles-rivera' && c.kind === 'inference')).toBe(
       true,
     )
-    expect(d15.connections.some((c) => c.kind === 'inference')).toBe(false)
     expect(d15.sources.map((s) => s.url)).toEqual(
       expect.arrayContaining([
         SRC.camaraFranqui.url,
-        SRC.camaraFranquiEN.url,
         SRC.sutraFranqui.url,
-        SRC.sutraDirectorio.url,
+        SRC.sutraDirectorioFranqui.url,
         SRC.ballotpediaFranqui.url,
         SRC.wiki2024House.url,
         SRC.wiki2020House.url,
-        SRC.wikiHernandezAlfonzo.url,
-        SRC.oceFranqui2016.url,
-        SRC.oceD15_2016.url,
         SRC.oceFranqui2020.url,
         SRC.oce2024Reps.url,
-        SRC.sutraRC0214.url,
-        SRC.sutraRC0635.url,
-        SRC.sutraRCC0145.url,
+        SRC.visionFranquiCamuy.url,
+        SRC.primeraHoraFranquiEsposa.url,
         SRC.sutraPC0684.url,
+        SRC.sutraRCC0145.url,
+        SRC.sutraRCC0146.url,
+        SRC.sutraRCC0147.url,
         SRC.microjurisComisiones.url,
       ]),
     )
