@@ -358,6 +358,39 @@ export const SRC = {
     url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-06/',
     label: 'OCE · auditorías 2020, representantes Distrito 06 (Soto, no Morey)',
   },
+  camaraPerezOrtiz: {
+    url: 'https://www.camara.pr.gov/team/luis-perez-ortiz/',
+    label: 'Cámara · ficha oficial de Luis Pérez Ortiz',
+  },
+  sutraPerezOrtiz: {
+    url: 'https://sutra.oslpr.org/legisladores/M-940-AL',
+    label: 'SUTRA · Luis Pérez Ortiz (M-940-AL, 2025–2028)',
+  },
+  ballotpediaPerezOrtiz: {
+    url: 'https://ballotpedia.org/Luis_P%C3%A9rez_Ortiz',
+    label: 'Ballotpedia · Luis Pérez Ortiz (D7; asumió 1998; término a 2 ene 2029)',
+  },
+  wikiPerezOrtiz: {
+    url: 'https://en.wikipedia.org/wiki/Luis_P%C3%A9rez_Ortiz',
+    label: 'Wikipedia · Luis “Junior” Pérez Ortiz (D7 Bayamón)',
+  },
+  ocePerez2020: {
+    url: 'https://oce.pr.gov/download/oce-b-21-317-luis-perez-ortiz/',
+    label: 'OCE · expediente OCE-B-21-317 (Pérez Ortiz, D7 PNP, 2020; PDF ~13 mar 2023)',
+  },
+  oceD07_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-07/',
+    label: 'OCE · auditorías 2020, representantes Distrito 07',
+  },
+  oceD07_2024dl: {
+    url: 'https://oce.pr.gov/downloads/d072024/',
+    label: 'OCE · descargas D07 2024 (OCE-EB-24-129 Pérez Ortiz)',
+  },
+  cpaAsuntosMunicipales: {
+    url: 'https://www.colegiocpa.com/wp-content/uploads/2025/04/P.-del-S.-13-Hon.-Luis-Perez-Ortiz-21-de-marzo-de-2025.pdf',
+    label: 'Colegio CPA · ponencia a Pérez Ortiz, Asuntos Municipales (21 mar 2025)',
+    published: '2025-03-21',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

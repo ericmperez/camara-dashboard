@@ -30,7 +30,7 @@ describe('dossiers 2025–2028', () => {
     }
   })
 
-  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5 y Morey D6', () => {
+  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6 y Pérez Ortiz D7', () => {
     const extra = [
       'jose-f-aponte-hernandez',
       'roberto-rivera-ruiz-de-porras',
@@ -41,12 +41,13 @@ describe('dossiers 2025–2028', () => {
       'victor-l-pares-otero',
       'jorge-navarro-suarez',
       'angel-morey-noble',
+      'luis-perez-ortiz',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(19)
+    expect(DEEP_IDS.size).toBe(20)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
@@ -546,6 +547,72 @@ describe('dossiers 2025–2028', () => {
         SRC.primeraHoraPC139.url,
         SRC.oceD06_2020.url,
         SRC.oce2024Reps.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D7 de Pérez Ortiz con CEE 2024, OCE-B-21-317 y OCE-EB-24-129', () => {
+    const d7 = DOSSIERS['luis-perez-ortiz']
+    expect(d7.bio).toMatch(/5 de septiembre de 1955/)
+    expect(d7.bio).toMatch(/Junior/)
+    expect(d7.bio).toMatch(/lperez@camara\.pr\.gov/)
+    expect(d7.bio).toMatch(/M-940-AL/)
+    expect(d7.bio).toMatch(/721-6040/)
+    expect(d7.bio).toMatch(/Asuntos Municipales/)
+    expect(d7.career.join(' ')).toMatch(/Parcelas Van Scoy/)
+    expect(d7.career.join(' ')).toMatch(/María Vázquez de Umpierre/)
+    expect(d7.career.join(' ')).toMatch(/Agustín Stahl/)
+    expect(d7.career.join(' ')).toMatch(/Holsum Bakers/)
+    expect(d7.career.join(' ')).toMatch(/Ramón Luis Rivera/)
+    expect(d7.career.join(' ')).toMatch(/no implica alianza/)
+    expect(d7.career.join(' ')).toMatch(/1998/)
+    expect(d7.career.join(' ')).toMatch(/primaria PNP de 2024 cancelada/i)
+    expect(d7.career.join(' ')).toMatch(/11,889/)
+    expect(d7.career.join(' ')).toMatch(/Zabdiel Rodríguez Nieves/)
+    expect(d7.career.join(' ')).toMatch(/Marisel Álvarez Feliciano/)
+    expect(d7.career.join(' ')).toMatch(/Johnny Rivera/)
+    expect(d7.career.join(' ')).toMatch(/25,720/)
+    expect(d7.career.join(' ')).toMatch(/variantes Janice Nieves, Marisel Feliciano y Juan Luis Rivera/)
+    expect(d7.career.join(' ')).toMatch(/Casado desde 1978/)
+    expect(d7.career.join(' ')).toMatch(/tres hijos/)
+    expect(d7.career.join(' ')).toMatch(/cuatro hermanos/)
+    expect(d7.career.join(' ')).toMatch(/OCE-B-21-317/)
+    expect(d7.career.join(' ')).toMatch(/monto no extraído/)
+    expect(d7.career.join(' ')).toMatch(/OCE-EB-24-129/)
+    expect(JSON.stringify(d7)).not.toMatch(/Ramón Luis Rivera hijo|Rivera Cruz/)
+    expect(d7.aspirations.join(' ')).toMatch(/RC 108/)
+    expect(d7.aspirations.join(' ')).toMatch(/PC 6/)
+    expect(d7.aspirations.join(' ')).toMatch(/PC 1209/)
+    expect(d7.aspirations.join(' ')).toMatch(/RC 596/)
+    expect(d7.aspirations.join(' ')).toMatch(/PC 997/)
+    expect(d7.aspirations.join(' ')).toMatch(/RCC 254/)
+    expect(d7.aspirations.join(' ')).toMatch(/RCC 202/)
+    expect(d7.aspirations.join(' ')).toMatch(/74,000/)
+    expect(d7.aspirations.join(' ')).toMatch(/107,000 dólares/)
+    expect(d7.aspirations.join(' ')).toMatch(/PC 781/)
+    expect(d7.aspirations.join(' ')).toMatch(/Space Force/)
+    expect(d7.committees).toEqual(['Asuntos Municipales'])
+    expect(d7.connections).toEqual([])
+    expect(JSON.stringify(d7)).not.toMatch(/\$\d/)
+    const overlap = townOverlapConnections('luis-perez-ortiz')
+    expect(overlap.some((c) => c.toId === 'angel-morey-noble' && c.kind === 'inference')).toBe(true)
+    expect(overlap.some((c) => c.toId === 'yashira-lebron-rodriguez')).toBe(true)
+    expect(overlap.some((c) => c.toId === 'felix-pacheco-burgos')).toBe(true)
+    expect(d7.connections.some((c) => c.toId === 'carlos-johnny-mendez-nunez')).toBe(false)
+    expect(d7.connections.some((c) => c.toId === 'angel-morey-noble')).toBe(false)
+    expect(d7.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraPerezOrtiz.url,
+        SRC.sutraPerezOrtiz.url,
+        SRC.ballotpediaPerezOrtiz.url,
+        SRC.wikiPerezOrtiz.url,
+        SRC.wiki2024House.url,
+        SRC.ocePerez2020.url,
+        SRC.oceD07_2020.url,
+        SRC.oceD07_2024dl.url,
+        SRC.oce2024Reps.url,
+        SRC.cpaAsuntosMunicipales.url,
         SRC.microjurisComisiones.url,
       ]),
     )
