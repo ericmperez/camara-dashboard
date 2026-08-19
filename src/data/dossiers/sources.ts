@@ -788,6 +788,75 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas/153050',
     label: 'SUTRA · PC 243 (Autores 3: Rodríguez Aguiló, Robles Rivera y Nieves Rosario)',
   },
+  camaraRobles: {
+    url: 'https://www.camara.pr.gov/team/edgar-robles-rivera/',
+    label: 'Cámara · ficha oficial de Edgar Robles Rivera (D14; preside Asuntos del Consumidor)',
+  },
+  camaraRoblesEN: {
+    url: 'https://www.camara.pr.gov/en/team/edgar-robles-rivera/',
+    label: 'Cámara · official profile of Edgar Robles Rivera (EN)',
+  },
+  sutraRobles: {
+    url: 'https://sutra.oslpr.org/legisladores/M-947-AL',
+    label: 'SUTRA · Edgar Robles Rivera (M-947-AL, 2025–2028; directorio p. 4)',
+  },
+  ballotpediaRobles: {
+    url: 'https://ballotpedia.org/Edgar_Robles',
+    label: 'Ballotpedia · Edgar Robles (D14; asumió 2 ene 2025; primaria 6,146)',
+  },
+  campaignRobles: {
+    url: 'https://web.archive.org/web/20251106164557/https://edgarroblesrivera.com/',
+    label: 'Sitio de campaña edgarroblesrivera.com (Wayback 6 nov 2025; no es ficha oficial)',
+  },
+  visionPC180: {
+    url: 'https://periodicovision.com/representante-edgar-robles-rivera-radica-proyecto-de-la-camara-180/',
+    label: 'Semanario Visión · Robles Rivera radica el PC 180 (explotación financiera)',
+    published: '2025-01-20',
+  },
+  oceRobles2024: {
+    url: 'https://oce.pr.gov/download/oce-eb-24-103-edgar-robles-rivera/',
+    label: 'OCE · expediente OCE-EB-24-103 (Robles Rivera, D14 PNP; PDF ~jul 2026)',
+  },
+  oceD14_2024: {
+    url: 'https://oce.pr.gov/auditorias-2024/auditorias-2024-representantes/distrito-14/',
+    label: 'OCE · auditorías 2024, representantes Distrito 14',
+  },
+  oceD14_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-14/',
+    label: 'OCE · auditorías 2020, representantes Distrito 14 (González Mercado, no Robles)',
+  },
+  sutraPC0180: {
+    url: 'https://sutra.oslpr.org/medidas/152872',
+    label: 'SUTRA · PC 180 (Autores 3: Robles Rivera, Vargas Laureano y Colón Rodríguez)',
+  },
+  sutraPC0385: {
+    url: 'https://sutra.oslpr.org/medidas/154044',
+    label: 'SUTRA · PC 385 (Autores 2: Robles Rivera y Lebrón Rodríguez)',
+  },
+  sutraPC0632: {
+    url: 'https://sutra.oslpr.org/medidas/155721',
+    label: 'SUTRA · PC 632 (autor único; SMS no autenticados / Consumidor)',
+  },
+  sutraPC0786: {
+    url: 'https://sutra.oslpr.org/medidas/158033',
+    label: 'SUTRA · PC 786 (autor único; membresías automáticas no autorizadas)',
+  },
+  sutraPC0833: {
+    url: 'https://sutra.oslpr.org/medidas/158194',
+    label: 'SUTRA · PC 833 (autor único; rotulación de fecha de expiración)',
+  },
+  sutraPC0840: {
+    url: 'https://sutra.oslpr.org/medidas/158308',
+    label: 'SUTRA · PC 840 (autor único; acceso y trato digno en establecimientos)',
+  },
+  sutraPC0843: {
+    url: 'https://sutra.oslpr.org/medidas/158370',
+    label: 'SUTRA · PC 843 (autor único; tamaños en comida rápida)',
+  },
+  sutraRC0719: {
+    url: 'https://sutra.oslpr.org/medidas/161475',
+    label: 'SUTRA · RC 719 (autor único; venta de autos por entidades no licenciadas)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

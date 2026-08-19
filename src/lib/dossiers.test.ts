@@ -30,7 +30,7 @@ describe('dossiers 2025–2028', () => {
     }
   })
 
-  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6, Pérez Ortiz D7, Pacheco D9, Pellé D10, Elinette D11, Feliciano D12 y Nieves D13', () => {
+  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6, Pérez Ortiz D7, Pacheco D9, Pellé D10, Elinette D11, Feliciano D12, Nieves D13 y Robles D14', () => {
     const extra = [
       'jose-f-aponte-hernandez',
       'roberto-rivera-ruiz-de-porras',
@@ -47,12 +47,13 @@ describe('dossiers 2025–2028', () => {
       'elinette-gonzalez-aguayo',
       'edgardo-feliciano-sanchez',
       'jerry-nieves-rosario',
+      'edgar-robles-rivera',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(25)
+    expect(DEEP_IDS.size).toBe(26)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
@@ -1065,6 +1066,113 @@ describe('dossiers 2025–2028', () => {
         SRC.sutraRCC0300.url,
         SRC.sutraRCC0024.url,
         SRC.sutraPC0243.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D14 de Robles con CEE 13,087, OCE-EB-24-103 y sin monto', () => {
+    const d14 = DOSSIERS['edgar-robles-rivera']
+    expect(d14.id).toBe('edgar-robles-rivera')
+    expect(d14.id).not.toBe('edgard-robles-rivera')
+    expect(d14.bio).toMatch(/Edgar Robles Rivera/)
+    expect(d14.bio).toMatch(/Arecibo/)
+    expect(d14.bio).toMatch(/Hatillo/)
+    expect(d14.bio).toMatch(/Asuntos del Consumidor/)
+    expect(d14.bio).toMatch(/ficha oficial es delgada/)
+    expect(d14.bio).toMatch(/erobles@camara\.pr\.gov/)
+    expect(d14.bio).toMatch(/M-947-AL/)
+    expect(d14.bio).toMatch(/725-9189/)
+    expect(d14.career.join(' ')).toMatch(/13,087/)
+    expect(d14.career.join(' ')).toMatch(/43\.0%/)
+    expect(d14.career.join(' ')).toMatch(/30,431/)
+    expect(d14.career.join(' ')).toMatch(/1,403/)
+    expect(d14.career.join(' ')).toMatch(/Juan Carlos Colón González/)
+    expect(d14.career.join(' ')).toMatch(/Daniel Batista Crespo/)
+    expect(d14.career.join(' ')).toMatch(/Karina García/)
+    expect(d14.career.join(' ')).toMatch(/Deniel Batista/)
+    expect(d14.career.join(' ')).toMatch(/Karina Garcia/)
+    expect(d14.career.join(' ')).toMatch(/Karina M\. García Medina/)
+    expect(d14.career.join(' ')).toMatch(/Abraham Cortés Vélez/)
+    expect(d14.career.join(' ')).toMatch(/6,146/)
+    expect(d14.career.join(' ')).toMatch(/2,525/)
+    expect(d14.career.join(' ')).toMatch(/8,671/)
+    expect(d14.career.join(' ')).toMatch(/CEE HTML\/XML no extraído/)
+    expect(d14.career.join(' ')).toMatch(/José González Mercado/)
+    expect(d14.career.join(' ')).toMatch(/alcalde de Arecibo/)
+    expect(d14.career.join(' ')).toMatch(/Open seat|open seat|Primera vez/i)
+    expect(d14.career.join(' ')).toMatch(/sitio de campaña, no ficha oficial/)
+    expect(d14.career.join(' ')).toMatch(/21 de septiembre de 1975/)
+    expect(d14.career.join(' ')).toMatch(/Juan Robles Pantoja/)
+    expect(d14.career.join(' ')).toMatch(/padre de dos/)
+    expect(d14.career.join(' ')).toMatch(/no es dinastía/)
+    expect(d14.career.join(' ')).toMatch(/OCE-EB-24-103/)
+    expect(d14.career.join(' ')).toMatch(/PDF locked/)
+    expect(d14.career.join(' ')).toMatch(/monto no extraído/)
+    expect(d14.career.join(' ')).toMatch(/No se le atribuyen OCE-EB-24-104/)
+    expect(d14.career.join(' ')).toMatch(/OCE-B-21-120/)
+    expect(d14.career.join(' ')).toMatch(/Sin docket 2020 a su nombre/)
+    expect(d14.career.join(' ')).toMatch(/no se le atribuye en solitario el PC 243/)
+    expect(d14.career.join(' ')).toMatch(/PC 180/)
+    expect(d14.career.join(' ')).toMatch(/PC 385/)
+    expect(d14.career.join(' ')).not.toMatch(/11,423/)
+    expect(d14.career.join(' ')).not.toMatch(/OCE-EB-24-103.*\d[\d,]+\.\d{2} dólares/)
+    expect(d14.aspirations.join(' ')).toMatch(/PC 180/)
+    expect(d14.aspirations.join(' ')).toMatch(/explotación financiera/)
+    expect(d14.aspirations.join(' ')).toMatch(/no es autoría exclusiva/)
+    expect(d14.aspirations.join(' ')).toMatch(/PC 632/)
+    expect(d14.aspirations.join(' ')).toMatch(/PC 786/)
+    expect(d14.aspirations.join(' ')).toMatch(/PC 833/)
+    expect(d14.aspirations.join(' ')).toMatch(/PC 840/)
+    expect(d14.aspirations.join(' ')).toMatch(/PC 843/)
+    expect(d14.aspirations.join(' ')).toMatch(/RC 719/)
+    expect(d14.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d14.committees).toEqual(['Asuntos del Consumidor'])
+    expect(d14.committees).not.toContain('Región Norte')
+    expect(d14.committees).not.toContain('Salud')
+    expect(JSON.stringify(d14)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d14)).not.toMatch(/M-946-AL/)
+    expect(JSON.stringify(d14)).not.toMatch(/sengov/)
+    const facts = d14.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual([
+      'jerry-nieves-rosario',
+      'gabriel-rodriguez-aguilo',
+      'swanny-e-vargas-laureano',
+      'joe-joito-colon-rodriguez',
+    ])
+    expect(facts[0].label).toMatch(/PC 243/)
+    expect(facts[1].label).toMatch(/PC 243/)
+    expect(facts[2].label).toMatch(/PC 180/)
+    expect(facts[3].label).toMatch(/PC 180/)
+    expect(facts.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d14.connections.some((c) => c.kind === 'inference')).toBe(false)
+    const overlap = townOverlapConnections('edgar-robles-rivera')
+    expect(overlap.some((c) => c.toId === 'jerry-nieves-rosario' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.some((c) => c.toId === 'joel-i-franqui-atiles')).toBe(true)
+    expect(d14.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraRobles.url,
+        SRC.camaraRoblesEN.url,
+        SRC.sutraRobles.url,
+        SRC.sutraDirectorio.url,
+        SRC.ballotpediaRobles.url,
+        SRC.wiki2024House.url,
+        SRC.wiki2024HouseES.url,
+        SRC.oceRobles2024.url,
+        SRC.oceD14_2024.url,
+        SRC.oceD14_2020.url,
+        SRC.campaignRobles.url,
+        SRC.visionPC180.url,
+        SRC.sutraPC0180.url,
+        SRC.sutraPC0243.url,
+        SRC.sutraPC0632.url,
+        SRC.sutraPC0786.url,
+        SRC.sutraPC0833.url,
+        SRC.sutraPC0840.url,
+        SRC.sutraPC0843.url,
+        SRC.sutraRC0719.url,
         SRC.microjurisComisiones.url,
       ]),
     )
