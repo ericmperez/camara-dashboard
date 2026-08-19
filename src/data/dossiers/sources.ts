@@ -184,7 +184,7 @@ export const SRC = {
   },
   oce2024Reps: {
     url: 'https://oce.pr.gov/auditorias-2024/auditorias-2024-representantes/',
-    label: 'OCE · auditorías 2024 representantes (D02–D05 no publicados)',
+    label: 'OCE · auditorías 2024 representantes (D02–D06 no publicados)',
   },
   wiprPC654: {
     url: 'http://wipr.pr/impulsan-talleres-obligatorios-de-crianza-a-padres-y-custodios-para-prevenir-el-maltrato-infantil/',
@@ -314,6 +314,49 @@ export const SRC = {
   puebloNavarroAlicea: {
     url: 'https://docs.pr.gov/files/Panel%20del%20FEI/Jurisprudencia/PUEBLO%20V.%20NAVARRO%20ALICEA,138%20D.P.R.%20511%20(1995).pdf',
     label: 'Pueblo v. Navarro Alicea, 138 D.P.R. 511 (1995)',
+  },
+  camaraMorey: {
+    url: 'https://www.camara.pr.gov/team/angel-morey-noble/',
+    label: 'Cámara · ficha oficial de Ángel Morey Noble',
+  },
+  sutraMorey: {
+    url: 'https://sutra.oslpr.org/legisladores/M-939-AL',
+    label: 'SUTRA · Ángel Morey Noble (M-939-AL, 2025–2028)',
+  },
+  ballotpediaMorey: {
+    url: 'https://ballotpedia.org/%C3%81ngel_Morey_Noble',
+    label: 'Ballotpedia · Ángel Morey Noble (D6; asumió 1 jun 2021)',
+  },
+  wikiMorey: {
+    url: 'https://en.wikipedia.org/wiki/%C3%81ngel_Morey_Noble',
+    label: 'Wikipedia · Ángel Morey Noble (asambleísta Guaynabo; D6)',
+  },
+  wikiAngelMoreyPadre: {
+    url: 'https://en.wikipedia.org/wiki/Angel_Morey',
+    label: 'Wikipedia · Angel Morey Santiago (Secretario de Estado 1999–2001)',
+  },
+  endiMoreyJura: {
+    url: 'https://www.elnuevodia.com/noticias/legislatura/notas/angel-morey-noble-juramenta-como-nuevo-representante-a-la-camara/',
+    label: 'El Nuevo Día · Morey Noble juramenta (1 jun 2021)',
+    published: '2021-06-01',
+  },
+  metroPC644: {
+    url: 'https://www.metro.pr/noticias/2025/05/23/representante-retira-medida-sobre-aranceles-para-radicar-querellas/',
+    label: 'Metro · retira PC 644 (aranceles; preside Reorganización)',
+    published: '2025-05-23',
+  },
+  bayamonRCC369: {
+    url: 'https://noticiasdebayamon.com/2026/06/13/representante-angel-morey-radica-medida-para-prohibir-cobros-por-interrupciones-de-servicios-de-la-a-a-a/',
+    label: 'Noticias de Bayamón · RCC 369 cargos AAA (13 jun 2026)',
+    published: '2026-06-13',
+  },
+  primeraHoraPC139: {
+    url: 'https://www.primerahora.com/noticias/policia-tribunales/notas/legislador-niega-pretenda-ampliar-facultades-de-policias-municipales-para-funciones-migratorias/',
+    label: 'Primera Hora · PC 139 Policía Municipal (coautoría Vargas)',
+  },
+  oceD06_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-06/',
+    label: 'OCE · auditorías 2020, representantes Distrito 06 (Soto, no Morey)',
   },
 } as const satisfies Record<string, DossierSource>
 

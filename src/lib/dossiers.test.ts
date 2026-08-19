@@ -30,7 +30,7 @@ describe('dossiers 2025–2028', () => {
     }
   })
 
-  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés y Navarro D5', () => {
+  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5 y Morey D6', () => {
     const extra = [
       'jose-f-aponte-hernandez',
       'roberto-rivera-ruiz-de-porras',
@@ -40,12 +40,13 @@ describe('dossiers 2025–2028', () => {
       'jose-hernandez-concepcion',
       'victor-l-pares-otero',
       'jorge-navarro-suarez',
+      'angel-morey-noble',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(18)
+    expect(DEEP_IDS.size).toBe(19)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
@@ -471,6 +472,80 @@ describe('dossiers 2025–2028', () => {
         SRC.endiCelularesNavarro.url,
         SRC.teleonceNavarroAlicea.url,
         SRC.puebloNavarroAlicea.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D6 de Morey con especial 2021, CEE 2024 y sin docket OCE a su nombre', () => {
+    const d6 = DOSSIERS['angel-morey-noble']
+    expect(d6.bio).toMatch(/Distrito 6/)
+    expect(d6.bio).toMatch(/amorey@camara\.pr\.gov/)
+    expect(d6.bio).toMatch(/M-939-AL/)
+    expect(d6.bio).toMatch(/721-6040/)
+    expect(d6.bio).toMatch(/Phi Sigma Alpha/)
+    expect(d6.bio).toMatch(/1 de junio de 2021/)
+    expect(d6.bio).toMatch(/Reorganización, Eficiencia y Diligencia/)
+    expect(d6.bio).toMatch(/48 años/)
+    expect(d6.bio).toMatch(/INFERENCIA/)
+    expect(d6.bio).not.toMatch(/nació el \d/)
+    expect(d6.career.join(' ')).toMatch(/Angel Morey Santiago|Ángel Morey/)
+    expect(d6.career.join(' ')).toMatch(/Secretario de Estado/)
+    expect(d6.career.join(' ')).toMatch(/PADRE/)
+    expect(d6.career.join(' ')).toMatch(/Tony Soto|Antonio «Tony» Soto/)
+    expect(d6.career.join(' ')).toMatch(/28 de febrero de 2021/)
+    expect(d6.career.join(' ')).toMatch(/27 de mayo de 2021/)
+    expect(d6.career.join(' ')).toMatch(/Francisco Rosado Colomer/)
+    expect(d6.career.join(' ')).toMatch(/Ángel Pérez Otero/)
+    expect(d6.career.join(' ')).toMatch(/no implica alianza/)
+    expect(d6.career.join(' ')).toMatch(/Samuel Almodóvar/)
+    expect(d6.career.join(' ')).toMatch(/14,006/)
+    expect(d6.career.join(' ')).toMatch(/Effie Alexandra Acevedo Guasp/)
+    expect(d6.career.join(' ')).toMatch(/Magdiel Colón/)
+    expect(d6.career.join(' ')).toMatch(/Ricky Aponte/)
+    expect(d6.career.join(' ')).toMatch(/28,173/)
+    expect(d6.career.join(' ')).toMatch(/variantes Effie Guasp, Magdiel Ortiz y Ricardo Ricky Aponte/)
+    expect(d6.career.join(' ')).toMatch(/OCE-B-21-239/)
+    expect(d6.career.join(' ')).toMatch(/No se le atribuye OCE-B-21-239/)
+    expect(d6.career.join(' ')).toMatch(/sin auditoría OCE publicada a su nombre/)
+    expect(JSON.stringify(d6)).not.toMatch(/esposa|cónyuge|yerno/)
+    expect(d6.aspirations.join(' ')).toMatch(/PC 644/)
+    expect(d6.aspirations.join(' ')).toMatch(/RETIRADO/)
+    expect(d6.aspirations.join(' ')).toMatch(/RCC 369/)
+    expect(d6.aspirations.join(' ')).toMatch(/no se afirma autoría exclusiva/)
+    expect(d6.aspirations.join(' ')).toMatch(/PC 139/)
+    expect(d6.aspirations.join(' ')).toMatch(/Swanny E\. Vargas/)
+    expect(d6.aspirations.join(' ')).toMatch(/148,872 dólares/)
+    expect(d6.aspirations.join(' ')).toMatch(/RC 487/)
+    expect(d6.aspirations.join(' ')).toMatch(/RC 456/)
+    expect(d6.committees).toEqual(['Reorganización, Eficiencia y Diligencia'])
+    expect(JSON.stringify(d6)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d6)).not.toMatch(/OCE-EB-24/)
+    const facts = d6.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual(['swanny-e-vargas-laureano'])
+    expect(facts).toHaveLength(1)
+    expect(d6.connections.some((c) => c.toId === 'carlos-johnny-mendez-nunez')).toBe(false)
+    expect(d6.connections.some((c) => c.toId === 'jorge-navarro-suarez')).toBe(false)
+    const overlap = townOverlapConnections('angel-morey-noble')
+    expect(overlap.some((c) => c.toId === 'jorge-navarro-suarez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.some((c) => c.toId === 'luis-perez-ortiz')).toBe(true)
+    expect(d6.connections.some((c) => c.kind === 'inference')).toBe(false)
+    expect(d6.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraMorey.url,
+        SRC.sutraMorey.url,
+        SRC.ballotpediaMorey.url,
+        SRC.wikiMorey.url,
+        SRC.wikiAngelMoreyPadre.url,
+        SRC.wiki2024House.url,
+        SRC.endiMoreyJura.url,
+        SRC.metroPC644.url,
+        SRC.bayamonRCC369.url,
+        SRC.primeraHoraPC139.url,
+        SRC.oceD06_2020.url,
+        SRC.oce2024Reps.url,
         SRC.microjurisComisiones.url,
       ]),
     )

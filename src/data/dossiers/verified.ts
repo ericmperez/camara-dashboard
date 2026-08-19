@@ -516,4 +516,48 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.puebloNavarroAlicea,
     ],
   },
+
+  'angel-morey-noble': {
+    id: 'angel-morey-noble',
+    bio: 'Titular del Distrito 6 (Guaynabo, Cataño y Bayamón) por el PNP. La ficha oficial es delgada: nombre, distrito y (787) 721-6040. Correo en el roster: amorey@camara.pr.gov. Asambleísta municipal de Guaynabo; miembro de Phi Sigma Alpha (Wikipedia). SUTRA lo lista como M-939-AL, cuatrienio 2025–2028. Asumió el 1 de junio de 2021; el término vence el 2 de enero de 2029 (Ballotpedia). Preside la Comisión de Reorganización, Eficiencia y Diligencia (Metro / RC0002). ENDI (Nydia Bauzá, 1 jun 2021) lo da con 48 años al juramentar. INFERENCIA de edad: nació hacia 1972–73; no hay fecha de nacimiento citada.',
+    career: [
+      'Hijo de Ángel Morey / Angel Morey Santiago, ex Secretario de Estado (Wikipedia). Solo eso de familia citada.',
+      'HECHO (récord público del PADRE, no del titular): Angel Morey Santiago fue jefe de campaña / staff de Pedro Rosselló de 1995 a 2001 y Secretario de Estado de 1999 a 2001, tras Norma Burgos (Wikipedia). ENDI: «fue secretario de la Gobernación bajo Pedro Rosselló González» y asistió a la juramentación. INFERENCIA: no se imputa ese récord al representante actual.',
+      'Elección especial del 27 de mayo de 2021 para llenar la vacante de Antonio «Tony» Soto Torres, que renunció el 28 de febrero de 2021. Juramentó el 1 de junio de 2021 (Ballotpedia / ENDI). ENDI: el presidente de la CEE, Francisco Rosado Colomer, lo certificó; otros dos aspirantes no completaron endosos.',
+      'A la juramentación de 2021 asistió el entonces alcalde de Guaynabo, Ángel Pérez Otero (ENDI). Hecho de presencia en un acto público; no implica alianza.',
+      'Primaria PNP del 2 de junio de 2024: derrotó a Samuel Almodóvar (Ballotpedia). Sin totales citados.',
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic): incumbente PNP 14,006 (49.7%); MVC Effie Alexandra Acevedo Guasp 6,094 (22.4%); PPD Magdiel Colón 5,655 (20.1%); PD Ricky Aponte 2,418 (8.6%); total 28,173. Hold PNP. Ballotpedia confirma el 14,006; nombra variantes Effie Guasp, Magdiel Ortiz y Ricardo Ricky Aponte — no se copian esas formas.',
+      'El índice 2020 del Distrito 06 lista a Antonio «Tony» Soto Torres (OCE-B-21-239), Andújar y otros; Morey no era candidato en 2020 (entró en 2021). No se le atribuye OCE-B-21-239. El índice 2024 de representantes no incluye el Distrito 06; sin auditoría OCE publicada a su nombre al corte. Sin montos ni hallazgos.',
+    ],
+    aspirations: [
+      'PC 644 (12 may 2025): sistema de aranceles en procedimientos adjudicativos (NTSP, DACO, Salud). RETIRADO el 23 de mayo de 2025 (SUTRA / Metro). Metro lo identifica como presidente de Reorganización, Eficiencia y Diligencia Legislativa.',
+      'RCC 369 (11 jun 2026): ajuste proporcional de cargos de la AAA si hay interrupción de 24 horas o más atribuible a la AAA; efecto retroactivo al 1 de mayo de 2026 (Noticias de Bayamón / SUTRA M-939-AL). La misma pieza aparece en el listado SUTRA de Navarro; no se afirma autoría exclusiva.',
+      'PC 139 (8 ene 2025): equiparar beneficios y facultades de la Policía Municipal con los estatales. Coautoría publicada con Swanny E. Vargas (PPD, acumulación). Primera Hora: negó que sea para funciones migratorias ICE / DHS. OGP estimó un impacto fiscal anual de 148,872 dólares (Primera Hora; no se cita otro monto).',
+      'RC 487 (16 oct 2025): investigación de infraestructura vial del Distrito 6 — Guaynabo, Bayamón y Cataño (SUTRA).',
+      'RC 456 (24 sep 2025): investigación de su comisión, con Pequeños y Medianos Negocios, sobre clima de negocios y eficiencia gubernamental (SUTRA).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'swanny-e-vargas-laureano',
+        kind: 'fact',
+        label: 'Coautor del PC 139 con Swanny E. Vargas (Primera Hora); no implica alianza partidista',
+        sources: [SRC.primeraHoraPC139, SRC.sutraMorey],
+      },
+    ],
+    sources: [
+      SRC.camaraMorey,
+      SRC.sutraMorey,
+      SRC.ballotpediaMorey,
+      SRC.wikiMorey,
+      SRC.wikiAngelMoreyPadre,
+      SRC.wiki2024House,
+      SRC.endiMoreyJura,
+      SRC.metroPC644,
+      SRC.bayamonRCC369,
+      SRC.primeraHoraPC139,
+      SRC.oceD06_2020,
+      SRC.oce2024Reps,
+    ],
+  },
 }
