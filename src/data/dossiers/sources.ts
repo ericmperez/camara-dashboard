@@ -495,6 +495,42 @@ export const SRC = {
     url: 'https://oce.pr.gov/download/auditora-oce-18-020-pedro-j-santiago-guzmn/',
     label: 'OCE · expediente OCE-18-020 (Santiago Guzmán, D10 PNP, ~2016; PDF 8 may 2019)',
   },
+  telemundoPellePrimaria: {
+    url: 'https://www.telemundopr.com/noticias/puerto-rico/representante-busca-impedir-regreso-de-pelle-santiago-a-la-legislatura/2658489/',
+    label: 'Telemundo · Soto; primaria PNP D10 cita CEE 2,893–2,824',
+  },
+  metroPellePrimaria: {
+    url: 'https://www.metro.pr/noticias/2024/06/03/estos-son-los-resultados-preliminares-de-las-papeletas-legislativas-pnp-y-ppd/',
+    label: 'Metro · preliminares legislativas PNP/PPD (3 jun 2024)',
+    published: '2024-06-03',
+  },
+  victoria840Pelle2016: {
+    url: 'https://www.victoria840.com/pelle-santiago-arremete-contra-alcalde-entrante-de-toa-baja/',
+    label: 'Victoria 840 / CyberNews · «representante reelecto»; autoatribución vicealcalde (28 dic 2016)',
+    published: '2016-12-28',
+  },
+  metroDietasPelle: {
+    url: 'https://www.metro.pr/noticias/2026/08/18/el-talento-de-los-representantes-les-deja-dinero-extra',
+    label: 'Metro / CPI · dietas y cero ingresos extralegislativos 2025 (18 ago 2026)',
+    published: '2026-08-18',
+  },
+  metroPC651: {
+    url: 'https://www.metro.pr/noticias/2026/03/25/acusan-a-la-camara-de-representantes-de-discrimen-contra-pacientes-de-cannabis-medicinal/',
+    label: 'Metro · PC 651 armas + cannabis (coautoría Burgos; Cámara 19 mar 2026)',
+    published: '2026-03-25',
+  },
+  sutraPC651: {
+    url: 'https://sutra.oslpr.org/medidas/155849',
+    label: 'SUTRA · PC 651 (autores Santiago Guzmán y Burgos Muñiz; 36–12, 5 ausentes)',
+  },
+  ceeElectos2012: {
+    url: 'https://ww2.ceepur.org/sites/ComisionEE/es-pr/Documents/LISTADO%20DE%20CANDIDATOS%20ELECTOS%20-OFICIAL.pdf',
+    label: 'CEE · listado de candidatos electos 2012 (Pedro Julio Santiago Guzmán)',
+  },
+  endataPelle: {
+    url: 'http://endata.prdecide.elnuevodia.com/representante/46',
+    label: 'ENDATA · ficha 2016 (no respondió; fecha placeholder)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

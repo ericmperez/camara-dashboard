@@ -755,30 +755,51 @@ describe('dossiers 2025–2028', () => {
   it('codifica el D10 de Pellé con CEE 2024, OCE-EB-24-149 y sin montos inventados', () => {
     const d10 = DOSSIERS['pedro-j-pelle-santiago-guzman']
     expect(d10.id).toBe('pedro-j-pelle-santiago-guzman')
+    expect(d10.id).not.toBe('pedro-santiago-guzman')
     expect(d10.bio).toMatch(/Distrito 10/)
     expect(d10.bio).toMatch(/25 de marzo de 1961/)
+    expect(d10.bio).toMatch(/Wikipedia EN/)
+    expect(d10.bio).toMatch(/sin refs|References vacías/)
+    expect(d10.bio).toMatch(/No consta en la ficha oficial/)
     expect(d10.bio).toMatch(/psantiago@camara\.pr\.gov/)
     expect(d10.bio).toMatch(/M-943-AL/)
     expect(d10.bio).toMatch(/Asuntos Interiores/)
     expect(d10.career.join(' ')).toMatch(/10,528/)
     expect(d10.career.join(' ')).toMatch(/42\.2%/)
     expect(d10.career.join(' ')).toMatch(/24,927/)
-    expect(d10.career.join(' ')).toMatch(/Sahir Pujols/)
+    expect(d10.career.join(' ')).toMatch(/Sahir I\. Pujols Vázquez/)
     expect(d10.career.join(' ')).toMatch(/Sahir Vazquez/)
     expect(d10.career.join(' ')).toMatch(/9,846/)
     expect(d10.career.join(' ')).toMatch(/10,106/)
     expect(d10.career.join(' ')).toMatch(/2 de enero de 2021/)
     expect(d10.career.join(' ')).toMatch(/no se usa/)
     expect(d10.career.join(' ')).not.toMatch(/9,709|9,359/)
+    expect(d10.career.join(' ')).toMatch(/totales publicados no coinciden/)
+    expect(d10.career.join(' ')).toMatch(/3,746–3,688/)
+    expect(d10.career.join(' ')).toMatch(/2,893–2,824/)
+    expect(d10.career.join(' ')).toMatch(/CEE HTML no extraído/)
+    expect(d10.career.join(' ')).toMatch(/No se certifica un par como CEE/)
+    expect(d10.career.join(' ')).toMatch(/vicealcalde/)
+    expect(d10.career.join(' ')).toMatch(/Autoatribución/)
+    expect(d10.career.join(' ')).toMatch(/14,100 dólares/)
+    expect(d10.career.join(' ')).toMatch(/Montos de pensión no publicados/)
+    expect(d10.career.join(' ')).toMatch(/Sistema de Retiro/)
+    expect(d10.career.join(' ')).toMatch(/No se afirma vicepresidencia de Salud/)
     expect(d10.career.join(' ')).toMatch(/OCE-EB-24-149/)
+    expect(d10.career.join(' ')).toMatch(/OCE-18-020/)
     expect(d10.career.join(' ')).toMatch(/monto no extraído/)
     expect(d10.career.join(' ')).toMatch(/No se le atribuyen OCE-EB-24-150/)
     expect(d10.career.join(' ')).toMatch(/Asuntos Internos/)
     expect(d10.career.join(' ')).toMatch(/Interiores vs Internos/)
     expect(d10.aspirations.join(' ')).toMatch(/RC 756/)
-    expect(d10.aspirations.join(' ')).toMatch(/no se afirma autoría exclusiva/)
+    expect(d10.aspirations.join(' ')).toMatch(/PC 651/)
+    expect(d10.aspirations.join(' ')).toMatch(/no implica alianza/)
     expect(d10.committees).toEqual(['Asuntos Internos'])
-    expect(d10.connections).toEqual([])
+    expect(d10.committees).not.toContain('Sistema de Retiro')
+    const facts = d10.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual(['lisie-j-burgos-muniz'])
+    expect(facts[0].label).toMatch(/no implica alianza/)
+    expect(d10.connections.some((c) => c.toId === 'maria-de-lourdes-ramos-rivera')).toBe(false)
     expect(JSON.stringify(d10)).not.toMatch(/\$\d/)
     expect(d10.sources.map((s) => s.url)).toEqual(
       expect.arrayContaining([
@@ -792,6 +813,13 @@ describe('dossiers 2025–2028', () => {
         SRC.ocePelle2020.url,
         SRC.oceD10_2020.url,
         SRC.ocePelle2016.url,
+        SRC.telemundoPellePrimaria.url,
+        SRC.metroPellePrimaria.url,
+        SRC.victoria840Pelle2016.url,
+        SRC.metroDietasPelle.url,
+        SRC.metroPC651.url,
+        SRC.sutraPC651.url,
+        SRC.ceeElectos2012.url,
         SRC.microjurisComisiones.url,
       ]),
     )

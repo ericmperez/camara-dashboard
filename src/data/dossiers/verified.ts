@@ -665,15 +665,17 @@ export const VERIFIED: Record<string, Dossier> = {
 
   'pedro-j-pelle-santiago-guzman': {
     id: 'pedro-j-pelle-santiago-guzman',
-    bio: 'Pedro Julio Santiago Guzmán, también «Pellé» / «Pelle». Nació el 25 de marzo de 1961 en San Juan (Wikipedia). Titular del Distrito 10 (Cataño y Toa Baja) por el PNP. SUTRA lo lista como Pedro J. Santiago Guzmán, M-943-AL, cuatrienio 2025–2028. Correo oficial: psantiago@camara.pr.gov. Teléfono en el roster: 787-723-1816; el genérico de Cámara / SUTRA es 787-721-6040. Asumió el 2 de enero de 2025; el término vence el 2 de enero de 2029 (Ballotpedia). La ficha oficial es delgada: distrito, PNP y «Presidente: Comisión de Asuntos Interiores». Poca o ninguna biografía larga.',
+    bio: 'Pedro Julio Santiago Guzmán, también «Pellé» / «Pelle». Titular del Distrito 10 (Cataño y Toa Baja) por el PNP. SUTRA lo lista como Pedro J. Santiago Guzmán, M-943-AL, cuatrienio 2025–2028. Correo oficial: psantiago@camara.pr.gov. Teléfono en el roster: 787-723-1816; el genérico de Cámara / SUTRA es 787-721-6040. Asumió el 2 de enero de 2025; el término vence el 2 de enero de 2029 (Ballotpedia). La ficha oficial es delgada: distrito, PNP y «Presidente: Comisión de Asuntos Interiores». Poca o ninguna biografía larga. HECHO (Wikipedia EN, References vacías): nace el 25 de marzo de 1961 en San Juan. No consta en la ficha oficial. ENDATA 2016 no respondió (fecha placeholder).',
     career: [
-      'Electo en 2012; asumió el 2 de enero de 2013 (Wikipedia). Predecesor: Bernardo Márquez (Wikipedia). Márquez no está sentado. Reelecto al menos en 2016 (consta OCE-18-020). Sin totales 2012/2016 citados.',
+      'Electo en 2012 (CEE, listado de electos: Pedro Julio Santiago Guzmán); asumió el 2 de enero de 2013 (Wikipedia). Predecesor: Bernardo Márquez (Wikipedia). Márquez no está sentado. Victoria 840 / CyberNews (28 dic 2016) lo llama «representante reelecto» del Distrito 10. Totales 2012/2016 no extraídos.',
       'HECHO (Wikipedia): da el primer tramo como «2 de enero de 2013 – 2 de enero de 2020». Esa fecha de salida no se usa: es inconsistente con Ballotpedia (Year left office: 2021) y con Deborah Soto Arroyo sentada 2021–2025. El corte real es el 2 de enero de 2021.',
       'Generales del 3 de noviembre de 2020 (Ballotpedia, cifras finales certificadas): incumbente PNP 9,846; PPD Deborah Soto Arroyo 10,106; PIP Roberto Jusino Serrano 2,963; write-in 39; total 22,954. Pierde. Soto sienta 2021–2025. Los preliminares de Radio Isla no sustituyen el final; no se usan como cifra oficial.',
-      'Primaria PNP del 2 de junio de 2024 (Ballotpedia): 3,746 frente a Marcos Vargas Padilla 3,688; total 7,434.',
-      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic): PNP 10,528 (42.2%); PPD Deborah Soto Arroyo (incumbente) 8,822 (35.4%); MVC Sahir Pujols 3,511 (14.1%); PD María Angélica Díaz López 2,066 (8.3%); total 24,927. Margen 1,706. Ganancia PNP. Ballotpedia confirma el 10,528; nombra al rival MVC Sahir Vazquez — variante, no se copia como nombre canónico.',
-      'HECHO (ficha oficial 2025): publica «Presidente: Comisión de Asuntos Interiores». HECHO (RC0002 / commissions.ts): applyCommissions lo marca presidente de «Asuntos Internos». El desfase Interiores vs Internos es hecho de fuentes; no se «arregla» en commissions.ts. No se inventa otra presidencia.',
-      'Expediente OCE-18-020 (ciclo ~2016; PDF 8 may 2019), OCE-B-21-207 (2020; PDF 16 feb 2023) y OCE-EB-24-149 (2024; PDF 25 jun 2026): candidato / representante D10, PNP. Índices D10 2020 y 2024. No se le atribuyen OCE-EB-24-150 (Soto), 24-151 (Pujols), 24-152 (Díaz) ni OCE-B-21-206/208. Docket citado, monto no extraído. Sin montos ni hallazgos.',
+      'Ganó la primaria PNP del 2 de junio de 2024 frente a Marcos Vargas Padilla; totales publicados no coinciden (Ballotpedia 3,746–3,688 vs Telemundo/CEE 2,893–2,824). Metro (3 jun, preliminar): 2,291–2,296. Wikipedia 2024 solo dice que ganó, sin números. CEE HTML no extraído. No se certifica un par como CEE.',
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic): PNP 10,528 (42.2%); PPD Deborah Soto Arroyo (incumbente) 8,822 (35.4%); MVC Sahir I. Pujols Vázquez 3,511 (14.1%); PD María Angélica Díaz López 2,066 (8.3%); total 24,927. Margen 1,706. Ganancia PNP. Nombre legal OCE (OCE-EB-24-151): Sahir I. Pujols Vázquez. Ballotpedia escribe «Sahir Vazquez» — variante, no se copia como nombre canónico.',
+      'HECHO (ficha oficial 2025): publica «Presidente: Comisión de Asuntos Interiores». HECHO (RC0002 / commissions.ts): applyCommissions lo marca presidente de «Asuntos Internos». El desfase Interiores vs Internos es hecho de fuentes; no se «arregla» en commissions.ts. No se inventa otra presidencia. Miembro de Sistema de Retiro; la presidenta es María de Lourdes Ramos Rivera. No se afirma vicepresidencia de Salud (snippet ambiguo).',
+      'Entrevista 2016 (Victoria 840 / CyberNews): «ocho años que yo estuve allí como vicealcalde». Autoatribución; no es ficha municipal verificada.',
+      'Metro / CPI (18 ago 2026): declaró cero ingresos extralegislativos en 2025; no cobra salario de Cámara porque está pensionado; dietas de 150 o 162 dólares al día; 14,100 dólares ene–oct 2025. Montos de pensión no publicados.',
+      'Expediente OCE-18-020 (ciclo ~2016; PDF 8 may 2019), OCE-B-21-207 (2020; PDF 16 feb 2023) y OCE-EB-24-149 (2024; PDF 25 jun 2026): candidato / representante D10, PNP. Índices D10 2020 y 2024. No se le atribuyen OCE-EB-24-150 (Soto), OCE-EB-24-151 (Pujols Vázquez), 24-152 (Díaz) ni OCE-B-21-206/208. Docket citado, monto no extraído. Sin montos ni hallazgos.',
       'No hay récord público citado de un familiar sentado en la Cámara.',
     ],
     aspirations: [
@@ -684,9 +686,17 @@ export const VERIFIED: Record<string, Dossier> = {
       'PC 340 (18 feb 2025): ampliar la zona gastronómica de Levittown (Ley 62-2022) (SUTRA).',
       'RC 086 (28 ene 2025): luminarias de Toa Baja y Cataño / LUMA (SUTRA).',
       'RCC 0186 y RCC 0183 (ago 2025): Villas del Sol y Villa Calma, Toa Baja — conexión legal LUMA / AAA / DTOP (SUTRA). RCC 369 aparece también en el listado SUTRA de Morey; no se afirma autoría exclusiva.',
+      'PC 651 (12 may 2025): armas + cannabis medicinal. Coautoría publicada con Lisie J. Burgos Muñiz (SUTRA / Metro). Cámara 19 mar 2026: 36 a favor, 12 en contra, 5 ausentes; al Senado. Hecho de coautoría; no implica alianza partidista.',
     ],
     committees: [],
-    connections: [],
+    connections: [
+      {
+        toId: 'lisie-j-burgos-muniz',
+        kind: 'fact',
+        label: 'Coautor del PC 651 con Lisie J. Burgos Muñiz (SUTRA / Metro); no implica alianza partidista',
+        sources: [SRC.sutraPC651, SRC.metroPC651],
+      },
+    ],
     sources: [
       SRC.camaraPelle,
       SRC.sutraPelle,
@@ -698,6 +708,14 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.ocePelle2020,
       SRC.oceD10_2020,
       SRC.ocePelle2016,
+      SRC.telemundoPellePrimaria,
+      SRC.metroPellePrimaria,
+      SRC.victoria840Pelle2016,
+      SRC.metroDietasPelle,
+      SRC.metroPC651,
+      SRC.sutraPC651,
+      SRC.ceeElectos2012,
+      SRC.endataPelle,
     ],
   },
 }
