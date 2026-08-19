@@ -60,3 +60,29 @@ export type ElectionResult = {
   note: string | null
   harvestedFrom?: string
 }
+
+export type ConnectionKind = 'fact' | 'inference'
+
+export type DossierSource = {
+  url: string
+  label: string
+  published?: string
+}
+
+export type DossierConnection = {
+  toId: string
+  kind: ConnectionKind
+  label: string
+  note?: string
+  sources: DossierSource[]
+}
+
+export type Dossier = {
+  id: string
+  bio: string | null
+  career: string[]
+  aspirations: string[]
+  committees: string[]
+  connections: DossierConnection[]
+  sources: DossierSource[]
+}

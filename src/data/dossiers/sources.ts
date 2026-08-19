@@ -1,0 +1,401 @@
+import type { DossierSource } from '../../types'
+
+export const SRC = {
+  wiprD31: {
+    url: 'https://wipr.pr/roberto-lopez-roman-gana-la-eleccion-especial-por-el-distrito-31-de-gurabo-y-caguas/',
+    label: 'WIPR · López Román gana la especial del Distrito 31',
+    published: '2025-09-28',
+  },
+  metroD31: {
+    url: 'https://www.metro.pr/noticias/2025/09/29/cee-certifica-a-roberto-lopez-roman-como-nuevo-representante-por-el-distrito-31/',
+    label: 'Metro · CEE certifica a López Román (D31)',
+    published: '2025-09-29',
+  },
+  ballotpediaLopez: {
+    url: 'https://ballotpedia.org/Roberto_L%C3%B3pez_Rom%C3%A1n_(Puerto_Rico)',
+    label: 'Ballotpedia · Roberto López Román',
+  },
+  camaraFerrer: {
+    url: 'https://www.camara.pr.gov/team/hector-e-ferrer-santiago/',
+    label: 'Cámara · ficha oficial de Héctor E. Ferrer Santiago',
+  },
+  metroInaugural: {
+    url: 'https://www.metro.pr/noticias/2025/01/13/johnny-mendez-asume-la-presidencia-de-la-camara-de-representantes/',
+    label: 'Metro · Méndez asume la presidencia (foto de expresidentes)',
+    published: '2025-01-13',
+  },
+  wiprMendez: {
+    url: 'https://wipr.pr/carlos-johnny-mendez-juramenta-como-presidente-de-la-camara-de-representantes/',
+    label: 'WIPR · Méndez juramenta como presidente (50 votos)',
+    published: '2025-01-13',
+  },
+  voceroPrioridades: {
+    url: 'https://www.elvocero.com/gobierno/legislatura/presidente-cameral-establece-prioridades-para-segunda-sesi-n-legislativa/article_ad472bbd-0668-4137-b490-cef5632df20f.html',
+    label: 'El Vocero · prioridades de la segunda sesión',
+    published: '2026-08-16',
+  },
+  camaraMendez: {
+    url: 'https://www.camara.pr.gov/team/carlos-johnny-mendez-nunez/',
+    label: 'Cámara · ficha oficial de Carlos ‘Johnny’ Méndez Núñez',
+  },
+  wikiAponte: {
+    url: 'https://en.wikipedia.org/wiki/Jos%C3%A9_Aponte_Hern%C3%A1ndez',
+    label: 'Wikipedia · José Aponte Hernández (Speaker 2005–2008)',
+  },
+  univisionRivera: {
+    url: 'https://www.univision.com/local/puerto-rico-wlii/jaime-perello-renuncia-a-la-presidencia-de-la-camara-de-representantes',
+    label: 'Univision · Perelló renuncia; Rivera Ruiz asume la presidencia',
+    published: '2016-08-29',
+  },
+  wikiRivera: {
+    url: 'https://en.wikipedia.org/wiki/Roberto_Rivera_Ruiz_de_Porras',
+    label: 'Wikipedia · Rivera Ruiz de Porras (presidente interino 2016–2017)',
+  },
+  microjurisComisiones: {
+    url: 'https://aldia.microjuris.com/2025/01/15/determinadas-las-presidencias-de-comision-en-la-camara-de-representantes/',
+    label: 'Microjuris · presidencias de comisión (RC0002, ene 2025)',
+    published: '2025-01-15',
+  },
+  radioIslaComisiones: {
+    url: 'https://radioisla.tv/conforman-comisiones-y-sus-presidentes-en-camara-y-senado/',
+    label: 'Radio Isla · comisiones y presidentes, Cámara y Senado',
+  },
+  camaraTrabajo: {
+    url: 'https://www.camara.pr.gov/ova_dep/comision-de-trabajos-y-asuntos-laborales/',
+    label: 'Cámara · Comisión de Trabajo y Asuntos Laborales (López Román)',
+  },
+  ceeD31: {
+    url: 'https://ceepur.org/representantedistrito31/',
+    label: 'CEE · elección especial Distrito 31',
+  },
+  endiPena: {
+    url: 'https://www.elnuevodia.com/noticias/legislatura/notas/vimarie-pena-oficializa-su-renuncia-a-la-camara-de-representantes/',
+    label: 'El Nuevo Día · Peña oficializa su renuncia (18 ago 2025)',
+    published: '2025-08-18',
+  },
+  telemundoPC1115: {
+    url: 'https://www.telemundopr.com/noticias/puerto-rico-voto/camara-aprueba-derrogar-comision-de-salario-minimo/2822204/',
+    label: 'Telemundo · Cámara aprueba derogar comisión de salario mínimo (PC 1115)',
+  },
+  telemundoCaguas: {
+    url: 'https://www.telemundopr.com/video/noticias/hoy-dia-pr/roberto-lopez-oficializa-aspiracion-para-la-alcaldia-de-caguas-por-el-pnp/2559492/',
+    label: 'Telemundo · López oficializa aspiración a la alcaldía de Caguas',
+  },
+  wikiLopez: {
+    url: 'https://en.wikipedia.org/wiki/Roberto_L%C3%B3pez_Rom%C3%A1n',
+    label: 'Wikipedia · Roberto López Román (secundaria; sin acta CEE)',
+  },
+  metroRC352: {
+    url: 'https://www.metro.pr/noticias/2026/04/21/carlos-johnny-mendez-paraliza-pesquisa-sobre-centros-de-inspeccion-por-investigacion-del-pfei/',
+    label: 'Metro · Méndez paraliza pesquisa de centros de inspección (RC 352)',
+    published: '2026-04-21',
+  },
+  ballotpediaDenis: {
+    url: 'https://ballotpedia.org/Denis_M%C3%A1rquez_Lebr%C3%B3n',
+    label: 'Ballotpedia · votos por acumulación 2024 (Denis Márquez)',
+  },
+  perlaMinorias: {
+    url: 'https://www.periodicolaperla.com/elecciones-2024/entran-a-la-legislatura-tres-candidatos-del-pip-por-ley-de-minorias/',
+    label: 'La Perla · tres candidatos del PIP por ley de minorías',
+  },
+  camaraAponte: {
+    url: 'https://www.camara.pr.gov/team/jose-f-aponte-hernandez/',
+    label: 'Cámara · ficha oficial de José F. Aponte Hernández',
+  },
+  camaraYashira: {
+    url: 'https://www.camara.pr.gov/team/yashira-lebron-rodriguez/',
+    label: 'Cámara · ficha oficial de Yashira Lebrón Rodríguez',
+  },
+  camaraHau: {
+    url: 'https://www.camara.pr.gov/team/gretchen-hau/',
+    label: 'Cámara · ficha oficial de Gretchen Hau',
+  },
+  camaraEddie: {
+    url: 'https://www.camara.pr.gov/team/eddie-charbonier-chinea/',
+    label: 'Cámara · ficha oficial de Eddie Charbonier Chinea',
+  },
+  metroRoster: {
+    url: 'https://www.metro.pr/noticias/2025/01/14/quienes-son-los-miembros-del-senado-y-la-camara-de-representantes-para-el-cuatrienio-del-2025-al-2029/',
+    label: 'Metro · miembros del Senado y la Cámara (14 ene 2025)',
+    published: '2025-01-14',
+  },
+  camaraMuriel: {
+    url: 'https://www.camara.pr.gov/team/christian-muriel-sanchez/',
+    label: 'Cámara · ficha oficial de Christian Muriel Sánchez',
+  },
+  sutraMuriel: {
+    url: 'https://sutra.oslpr.org/legisladores/M-967-AL',
+    label: 'SUTRA · Christian Muriel Sánchez (M-967-AL, 2025–2028)',
+  },
+  ballotpediaMuriel: {
+    url: 'https://ballotpedia.org/Christian_Muriel',
+    label: 'Ballotpedia · Christian Muriel (D34; asumió 2 ene 2025)',
+  },
+  wiki2024House: {
+    url: 'https://en.wikipedia.org/wiki/2024_Puerto_Rico_House_of_Representatives_election',
+    label: 'Wikipedia · elección Cámara 2024 (CEE 31 dic 2024)',
+  },
+  victoria840Muriel: {
+    url: 'https://www.victoria840.com/eligen-a-christian-muriel-como-candidato-a-representante-por-el-distrito-34-por-el-pnp/',
+    label: 'Victoria 840 · primaria PNP D34 (2 jun 2024)',
+    published: '2024-06-03',
+  },
+  oceMuriel: {
+    url: 'https://oce.pr.gov/download/oce-eb-24-093-christian-muriel-sanchez/',
+    label: 'OCE · expediente OCE-EB-24-093 (Muriel, D34 PNP)',
+  },
+  oceD34: {
+    url: 'https://oce.pr.gov/auditorias-2024/auditorias-2024-representantes/distrito-34/',
+    label: 'OCE · auditorías 2024, representantes Distrito 34',
+  },
+  pluralPC830: {
+    url: 'https://pluralpolicy.com/app/legislative-tracking/bill/details/state-pr-2025_2028-pc830/2796539',
+    label: 'Plural · PC 830 (presentado 28 ago 2025; Cámara 20 abr 2026)',
+  },
+  islaNewsYabucoa: {
+    url: 'https://islanewspr.com/2026/01/20/yabucoa-representante-del-distrito-34-discute-mejoras-viales/',
+    label: 'Isla News · reunión DTOP y alcalde Surillo (Yabucoa)',
+    published: '2026-01-20',
+  },
+  endiFamiliares: {
+    url: 'https://www.elnuevodia.com/noticias/legislatura/notas/familiares-en-camara-y-senado-cuantos-legisladores-tienen-a-sus-allegados-contratados/',
+    label: 'El Nuevo Día · familiares en Cámara y Senado',
+    published: '2026-01-26',
+  },
+  camaraOcasio: {
+    url: 'https://www.camara.pr.gov/team/ricardo-chino-rey-ocasio-ramos/',
+    label: 'Cámara · ficha oficial de Ricardo ‘Chino’ Rey Ocasio Ramos',
+  },
+  sutraOcasio: {
+    url: 'https://sutra.oslpr.org/legisladores/M-935-AL',
+    label: 'SUTRA · Ricardo R. Ocasio Ramos (M-935-AL, 2025–2028)',
+  },
+  ballotpediaOcasio: {
+    url: 'https://ballotpedia.org/Ricardo_Rey_Ocasio_Ramos',
+    label: 'Ballotpedia · Ricardo Rey Ocasio Ramos (D2; asumió 2 ene 2025)',
+  },
+  oceOcasio2020: {
+    url: 'https://oce.pr.gov/download/oce-b-21-148-ricardo-rey-ocasio-ramos/',
+    label: 'OCE · expediente OCE-B-21-148 (Ocasio, D2 PNP, 2020)',
+  },
+  oceD02_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-02/',
+    label: 'OCE · auditorías 2020, representantes Distrito 02',
+  },
+  oce2024Reps: {
+    url: 'https://oce.pr.gov/auditorias-2024/auditorias-2024-representantes/',
+    label: 'OCE · auditorías 2024 representantes (D02–D06 no publicados)',
+  },
+  wiprPC654: {
+    url: 'http://wipr.pr/impulsan-talleres-obligatorios-de-crianza-a-padres-y-custodios-para-prevenir-el-maltrato-infantil/',
+    label: 'WIPR · Ocasio autor del PC 654 (crianza responsable)',
+    published: '2025-05-31',
+  },
+  eyBoricuaPC654: {
+    url: 'https://eyboricua.com/evaluan-proyecto-de-ley-que-propone-talleres-obligatorios-de-crianza-para-prevenir-el-maltrato-infantil/',
+    label: 'Ey Boricua · su comisión evaluó el PC 654',
+  },
+  elSolPC872: {
+    url: 'https://periodicoelsolpr.com/evaluan-medida-para-adultos-mayores-y-personas-con-diversidad-funcional/',
+    label: 'El Sol · vista PC 872 (comisión de Ocasio; autor Méndez)',
+    published: '2025-10-22',
+  },
+  metroTorresD2: {
+    url: 'https://www.metro.pr/noticias/2023/12/01/luis-raul-torres-oficialmente-deja-el-distrito-2-de-san-juan-para-correr-por-independiente-por-acumulacion/',
+    label: 'Metro · Luis R. Torres deja el D2 y corre por acumulación',
+    published: '2023-12-01',
+  },
+  camaraHernandezD3: {
+    url: 'https://www.camara.pr.gov/team/jose-hernandez-concepcion/',
+    label: 'Cámara · ficha oficial de José Hernández Concepción',
+  },
+  sutraHernandezD3: {
+    url: 'https://sutra.oslpr.org/legisladores/M-936-AL',
+    label: 'SUTRA · José Hernández Concepción (M-936-AL, 2025–2028)',
+  },
+  ballotpediaHernandezD3: {
+    url: 'https://ballotpedia.org/Jos%C3%A9_Hern%C3%A1ndez_Concepci%C3%B3n',
+    label: 'Ballotpedia · José Hernández Concepción (D3; asumió 12 dic 2022)',
+  },
+  wikiHernandezD3: {
+    url: 'https://en.wikipedia.org/wiki/Jos%C3%A9_Hern%C3%A1ndez_Concepci%C3%B3n',
+    label: 'Wikipedia · José Hernández Concepción (stub; secundaria)',
+  },
+  endiEspecialD3: {
+    url: 'https://www.elnuevodia.com/noticias/politica/notas/prevalece-jose-cheito-hernandez-en-el-recuento-por-vacante-en-el-precinto-3-de-san-juan/',
+    label: 'El Nuevo Día · recuento especial D3 (6 dic 2022)',
+    published: '2022-12-06',
+  },
+  ceeEspecialD3: {
+    url: 'https://www.ceepur.org/RepresentanteDistrito3/docs/certificacion-resultados-finales.pdf',
+    label: 'CEE · certificación especial D3 (871–830; 6 dic 2022)',
+  },
+  primeraHoraEspecialD3: {
+    url: 'https://www.primerahora.com/noticias/gobierno-politica/notas/pnp-realizara-eleccion-especial-este-domingo-para-escoger-representante-de-san-juan/',
+    label: 'Primera Hora · especial PNP D3 (solo afiliados)',
+    published: '2022-12-02',
+  },
+  voceroPC1352: {
+    url: 'https://www.elvocero.com/gobierno/impulsan-proyecto-para-reducir-de-15-a-5-las-multas-de-autoexpreso/article_df7e01e1-2da1-44df-ad71-973325bb1e06.html',
+    label: 'El Vocero · PC 1352 multas AutoExpreso (15 a 5 dólares)',
+  },
+  radioIslaVistas2026: {
+    url: 'https://radioisla.tv/vistas-publicas-examinaran-multas-de-autoexpreso-y-nuevo-portal-de-informacion-de-la-aaa/',
+    label: 'Radio Isla · vistas AutoExpreso y portal AAA (17 ago 2026)',
+    published: '2026-08-17',
+  },
+  voceroAAA: {
+    url: 'https://www.elvocero.com/gobierno/por-el-momento-han-cumplido-jos-che-to-hern-ndez-contin-a-evaluando-el-desempe/article_4445aa1d-6854-4d4d-b90b-a825d78e752d.html',
+    label: 'El Vocero · evalúa AAA; respaldo condicionado a demanda de Romero',
+  },
+  camaraPares: {
+    url: 'https://www.camara.pr.gov/team/victor-l-pares-otero/',
+    label: 'Cámara · ficha oficial de Víctor L. Parés Otero',
+  },
+  sutraPares: {
+    url: 'https://sutra.oslpr.org/legisladores/M-937-AL',
+    label: 'SUTRA · Víctor L. Parés Otero (M-937-AL, 2025–2028)',
+  },
+  ballotpediaPares: {
+    url: 'https://ballotpedia.org/V%C3%ADctor_Par%C3%A9s_Otero',
+    label: 'Ballotpedia · Víctor Parés Otero (D4; asumió 2 ene 2017)',
+  },
+  wikiPares: {
+    url: 'https://en.wikipedia.org/wiki/V%C3%ADctor_Par%C3%A9s',
+    label: 'Wikipedia · Víctor Parés (D4; interinato 2012)',
+  },
+  ocePares2016: {
+    url: 'https://oce.pr.gov/download/auditora-oce-17-216-vctor-pars-otero/',
+    label: 'OCE · expediente OCE-17-216 (Parés, D4 PNP, 2016)',
+  },
+  oceD04_2016: {
+    url: 'https://oce.pr.gov/auditorias-2016/auditorias-2016-representantes/distrito-04/',
+    label: 'OCE · auditorías 2016, representantes Distrito 04',
+  },
+  tribunaPares2012: {
+    url: 'https://tribunapr.com/2012/05/21/el-jueves-juramentaran-a-victor-pares-y-eduardo-ferrer-rios.html',
+    label: 'Tribuna · juramentación de Parés y Eduardo Ferrer (24 may 2012)',
+    published: '2012-05-21',
+  },
+  camaraNavarro: {
+    url: 'https://www.camara.pr.gov/team/jorge-navarro-suarez/',
+    label: 'Cámara · ficha oficial de Jorge Navarro Suárez',
+  },
+  sutraNavarro: {
+    url: 'https://sutra.oslpr.org/legisladores/M-938-AL',
+    label: 'SUTRA · Jorge Navarro Suárez (M-938-AL, 2025–2028)',
+  },
+  ballotpediaNavarro: {
+    url: 'https://ballotpedia.org/Jorge_Navarro_Su%C3%A1rez',
+    label: 'Ballotpedia · Jorge Navarro Suárez (D5; término a 2 ene 2029)',
+  },
+  wikiNavarro: {
+    url: 'https://en.wikipedia.org/wiki/Jorge_Navarro_Su%C3%A1rez',
+    label: 'Wikipedia · Jorge Navarro Suárez (bio; asunción 2 ene 2005)',
+  },
+  oceNavarro2020: {
+    url: 'https://oce.pr.gov/download/oce-b-21-001-jorge-navarro-suarez/',
+    label: 'OCE · expediente OCE-B-21-001 (Navarro, D5 PNP, 2020; PDF 10 ago 2022)',
+  },
+  oceD05_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-05/',
+    label: 'OCE · auditorías 2020, representantes Distrito 05',
+  },
+  endiCelularesNavarro: {
+    url: 'https://www.elnuevodia.com/noticias/legislatura/notas/jorge-navarro-vuelve-a-la-carga-con-medida-para-prohibir-el-uso-de-celulares-en-escuelas-publicas/',
+    label: 'El Nuevo Día · Navarro vuelve a la carga (celulares en escuelas)',
+    published: '2025-08-26',
+  },
+  teleonceNavarroAlicea: {
+    url: 'https://teleonce.com/noticias/locales/padre-de-georgie-navarro-enfrento-caso-de-corrupcion-en-la-decada-de-los-90/',
+    label: 'TeleOnce · padre de Georgie Navarro, caso FEI años 90',
+    published: '2025-04-03',
+  },
+  puebloNavarroAlicea: {
+    url: 'https://docs.pr.gov/files/Panel%20del%20FEI/Jurisprudencia/PUEBLO%20V.%20NAVARRO%20ALICEA,138%20D.P.R.%20511%20(1995).pdf',
+    label: 'Pueblo v. Navarro Alicea, 138 D.P.R. 511 (1995)',
+  },
+  camaraMorey: {
+    url: 'https://www.camara.pr.gov/team/angel-morey-noble/',
+    label: 'Cámara · ficha oficial de Ángel Morey Noble',
+  },
+  sutraMorey: {
+    url: 'https://sutra.oslpr.org/legisladores/M-939-AL',
+    label: 'SUTRA · Ángel Morey Noble (M-939-AL, 2025–2028)',
+  },
+  ballotpediaMorey: {
+    url: 'https://ballotpedia.org/%C3%81ngel_Morey_Noble',
+    label: 'Ballotpedia · Ángel Morey Noble (D6; asumió 1 jun 2021)',
+  },
+  wikiMorey: {
+    url: 'https://en.wikipedia.org/wiki/%C3%81ngel_Morey_Noble',
+    label: 'Wikipedia · Ángel Morey Noble (asambleísta Guaynabo; D6)',
+  },
+  wikiAngelMoreyPadre: {
+    url: 'https://en.wikipedia.org/wiki/Angel_Morey',
+    label: 'Wikipedia · Angel Morey Santiago (Secretario de Estado 1999–2001)',
+  },
+  endiMoreyJura: {
+    url: 'https://www.elnuevodia.com/noticias/legislatura/notas/angel-morey-noble-juramenta-como-nuevo-representante-a-la-camara/',
+    label: 'El Nuevo Día · Morey Noble juramenta (1 jun 2021)',
+    published: '2021-06-01',
+  },
+  metroPC644: {
+    url: 'https://www.metro.pr/noticias/2025/05/23/representante-retira-medida-sobre-aranceles-para-radicar-querellas/',
+    label: 'Metro · retira PC 644 (aranceles; preside Reorganización)',
+    published: '2025-05-23',
+  },
+  bayamonRCC369: {
+    url: 'https://noticiasdebayamon.com/2026/06/13/representante-angel-morey-radica-medida-para-prohibir-cobros-por-interrupciones-de-servicios-de-la-a-a-a/',
+    label: 'Noticias de Bayamón · RCC 369 cargos AAA (13 jun 2026)',
+    published: '2026-06-13',
+  },
+  primeraHoraPC139: {
+    url: 'https://www.primerahora.com/noticias/policia-tribunales/notas/legislador-niega-pretenda-ampliar-facultades-de-policias-municipales-para-funciones-migratorias/',
+    label: 'Primera Hora · PC 139 Policía Municipal (coautoría Vargas)',
+  },
+  oceD06_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-06/',
+    label: 'OCE · auditorías 2020, representantes Distrito 06 (Soto, no Morey)',
+  },
+  camaraPerezOrtiz: {
+    url: 'https://www.camara.pr.gov/team/luis-perez-ortiz/',
+    label: 'Cámara · ficha oficial de Luis Pérez Ortiz',
+  },
+  sutraPerezOrtiz: {
+    url: 'https://sutra.oslpr.org/legisladores/M-940-AL',
+    label: 'SUTRA · Luis Pérez Ortiz (M-940-AL, 2025–2028)',
+  },
+  ballotpediaPerezOrtiz: {
+    url: 'https://ballotpedia.org/Luis_P%C3%A9rez_Ortiz',
+    label: 'Ballotpedia · Luis Pérez Ortiz (D7; asumió 1998; término a 2 ene 2029)',
+  },
+  wikiPerezOrtiz: {
+    url: 'https://en.wikipedia.org/wiki/Luis_P%C3%A9rez_Ortiz',
+    label: 'Wikipedia · Luis “Junior” Pérez Ortiz (D7 Bayamón)',
+  },
+  ocePerez2020: {
+    url: 'https://oce.pr.gov/download/oce-b-21-317-luis-perez-ortiz/',
+    label: 'OCE · expediente OCE-B-21-317 (Pérez Ortiz, D7 PNP, 2020; PDF ~13 mar 2023)',
+  },
+  oceD07_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-07/',
+    label: 'OCE · auditorías 2020, representantes Distrito 07',
+  },
+  oceD07_2024dl: {
+    url: 'https://oce.pr.gov/downloads/d072024/',
+    label: 'OCE · descargas D07 2024 (OCE-EB-24-129 Pérez Ortiz)',
+  },
+  cpaAsuntosMunicipales: {
+    url: 'https://www.colegiocpa.com/wp-content/uploads/2025/04/P.-del-S.-13-Hon.-Luis-Perez-Ortiz-21-de-marzo-de-2025.pdf',
+    label: 'Colegio CPA · ponencia a Pérez Ortiz, Asuntos Municipales (21 mar 2025)',
+    published: '2025-03-21',
+  },
+} as const satisfies Record<string, DossierSource>
+
+export function officialSource(profileUrl: string, name: string): DossierSource {
+  return {
+    url: profileUrl,
+    label: `Cámara · ficha oficial de ${name}`,
+  }
+}
