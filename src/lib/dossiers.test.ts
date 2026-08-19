@@ -879,7 +879,7 @@ describe('dossiers 2025–2028', () => {
     )
   })
 
-  it('codifica el D12 de Feliciano con CEE 11,869, OCE-B-21-340 y sin monto', () => {
+  it('codifica el D12 de Feliciano con CEE 11,869, OCE-B-21-340 y montos extraídos', () => {
     const d12 = DOSSIERS['edgardo-feliciano-sanchez']
     expect(d12.id).toBe('edgardo-feliciano-sanchez')
     expect(d12.bio).toMatch(/30 de enero de 1976/)
@@ -891,30 +891,47 @@ describe('dossiers 2025–2028', () => {
     expect(d12.bio).toMatch(/portavoz/)
     expect(d12.career.join(' ')).toMatch(/11,869/)
     expect(d12.career.join(' ')).toMatch(/39\.8%/)
+    expect(d12.career.join(' ')).toMatch(/12,116/)
     expect(d12.career.join(' ')).toMatch(/OCE-B-21-340/)
-    expect(d12.career.join(' ')).toMatch(/monto no extraído/)
+    expect(d12.career.join(' ')).toMatch(/15,594\.97/)
+    expect(d12.career.join(' ')).toMatch(/1\.29/)
+    expect(d12.career.join(' ')).toMatch(/5,509\.83/)
+    expect(d12.career.join(' ')).toMatch(/OCE-NMA-2023-037/)
+    expect(d12.career.join(' ')).toMatch(/250 dólares/)
+    expect(d12.career.join(' ')).not.toMatch(/monto no extraído/)
+    expect(d12.career.join(' ')).not.toMatch(/11,574/)
+    expect(d12.career.join(' ')).not.toMatch(/11,807/)
     expect(d12.career.join(' ')).toMatch(/Jesús \(Nolo\) Figueroa/)
     expect(d12.career.join(' ')).toMatch(/Anamari Ojeda Vilá/)
     expect(d12.career.join(' ')).toMatch(/No se le atribuyen OCE-B-21-339/)
-    expect(d12.career.join(' ')).toMatch(/sin auditoría 2024 publicada para D12/)
-    expect(d12.career.join(' ')).toMatch(/PRELIMINAR/)
-    expect(d12.career.join(' ')).toMatch(/no se le atribuye en solitario la RCC 191/)
+    expect(d12.career.join(' ')).toMatch(/sin docket 2024 publicado para D12/)
+    expect(d12.career.join(' ')).toMatch(/No se afirma que Omar sea Luis O/)
+    expect(d12.career.join(' ')).toMatch(/HECHO histórico/)
+    expect(d12.career.join(' ')).toMatch(/ENDI 1 mar 2024/)
     expect(d12.career.join(' ')).toMatch(/applyCommissions no lo marca presidente/)
-    expect(d12.career.join(' ')).toMatch(/Luis O\. Guardiola Concepción/)
-    expect(d12.career.join(' ')).toMatch(/no se les atribuyen a él/)
-    expect(d12.aspirations.join(' ')).toMatch(/RCC 377/)
-    expect(d12.aspirations.join(' ')).toMatch(/RCC 362/)
-    expect(d12.aspirations.join(' ')).toMatch(/PC 828/)
+    expect(d12.career.join(' ')).toMatch(/no se le atribuyen en solitario RCC 191/)
+    expect(d12.career.join(' ')).toMatch(/No se tratan RCC 39 ni RCC 338/)
+    expect(d12.aspirations.join(' ')).toMatch(/RCC 40/)
+    expect(d12.aspirations.join(' ')).toMatch(/RCC 41/)
+    expect(d12.aspirations.join(' ')).toMatch(/RCC 43/)
+    expect(d12.aspirations.join(' ')).toMatch(/RCC 61/)
+    expect(d12.aspirations.join(' ')).toMatch(/RCC 159/)
+    expect(d12.aspirations.join(' ')).toMatch(/RCC 211/)
+    expect(d12.aspirations.join(' ')).toMatch(/RCC 281/)
     expect(d12.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d12.aspirations.join(' ')).not.toMatch(/RCC 39|RCC 338/)
     expect(d12.committees).toEqual([])
     expect(d12.committees).not.toContain('Recursos Naturales')
     expect(d12.committees).not.toContain('Región Norte')
     expect(JSON.stringify(d12)).not.toMatch(/\$\d/)
     expect(JSON.stringify(d12)).not.toMatch(/M-944-AL/)
     const facts = d12.connections.filter((c) => c.kind === 'fact')
-    expect(facts.map((c) => c.toId)).toEqual(['elinette-gonzalez-aguayo'])
-    expect(facts[0].label).toMatch(/no implica alianza/)
-    expect(d12.connections.some((c) => c.toId === 'jerry-nieves-rosario')).toBe(false)
+    expect(facts.map((c) => c.toId)).toEqual([
+      'elinette-gonzalez-aguayo',
+      'jerry-nieves-rosario',
+      'gabriel-rodriguez-aguilo',
+    ])
+    expect(facts.every((c) => /no implica alianza/.test(c.label))).toBe(true)
     expect(d12.sources.map((s) => s.url)).toEqual(
       expect.arrayContaining([
         SRC.camaraFeliciano.url,
@@ -924,8 +941,12 @@ describe('dossiers 2025–2028', () => {
         SRC.oceFeliciano2020.url,
         SRC.oceD12_2020.url,
         SRC.oce2024Reps.url,
-        SRC.sutraRCC0377.url,
+        SRC.endiPlasticosFeliciano.url,
+        SRC.sutraRCC0040.url,
         SRC.sutraRCC0191.url,
+        SRC.sutraPC0275.url,
+        SRC.sutraPC1184.url,
+        SRC.sutraRCC0055.url,
         SRC.microjurisComisiones.url,
       ]),
     )

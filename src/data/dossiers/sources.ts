@@ -644,51 +644,60 @@ export const SRC = {
   },
   oceFeliciano2020: {
     url: 'https://oce.pr.gov/download/oce-b-21-340-edgardo-feliciano-sanchez/',
-    label: 'OCE · expediente OCE-B-21-340 (Feliciano Sánchez, D12 PPD, 2020)',
+    label: 'OCE · expediente OCE-B-21-340 (Feliciano Sánchez, D12 PPD; PDF 17 feb 2023)',
   },
   oceD12_2020: {
     url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-12/',
     label: 'OCE · auditorías 2020, representantes Distrito 12',
   },
-  wiki2020House: {
-    url: 'https://en.wikipedia.org/wiki/2020_Puerto_Rico_House_of_Representatives_election',
-    label: 'Wikipedia EN · elección Cámara 2020 (D12: 11,807; no sustituye Ballotpedia)',
-  },
   voceroFeliciano2021: {
     url: 'https://www.elvocero.com/politica/caras-nuevas-en-la-legislatura-edgardo-feliciano-s-nchez/article_2e6a36d2-6b10-11eb-888c-230c18141d2a.html',
-    label: 'El Vocero · caras nuevas; jefe interino de presupuesto DRNA (2021)',
+    label: 'El Vocero · DRNA presupuesto; presidente Recursos Naturales (2021)',
   },
-  radioIslaPreliminarD12: {
-    url: 'https://radioisla.tv/resultados-preliminares-de-representantes-por-distrito1-2/',
-    label: 'Radio Isla · preliminar D12 2020 (11,574–10,843; no es cifra final)',
+  endiPlasticosFeliciano: {
+    url: 'https://www.elnuevodia.com/noticias/legislatura/notas/camara-de-representantes-rechazaria-aplazar-prohibicion-de-plasticos-de-un-solo-uso/',
+    label: 'ENDI · Feliciano presidente de Recursos Naturales (1 mar 2024)',
+    published: '2024-03-01',
   },
-  sutraRCC0377: {
-    url: 'https://sutra.oslpr.org/medidas/161625',
-    label: 'SUTRA · RCC 377 (autor único; título Vega Baja / Almirante Norte)',
+  sutraRCC0040: {
+    url: 'https://sutra.oslpr.org/medidas/153356',
+    label: 'SUTRA · RCC 40 (autor único; PR-155 Morovis / El Singer)',
   },
-  sutraRCC0362: {
-    url: 'https://sutra.oslpr.org/medidas/161442',
-    label: 'SUTRA · RCC 362 (autor único; finca Pasto, Morovis)',
+  sutraRCC0041: {
+    url: 'https://sutra.oslpr.org/medidas/153357',
+    label: 'SUTRA · RCC 41 (autor único; Escuela Hostos al Municipio de Vega Baja)',
   },
-  sutraRCC0304: {
-    url: 'https://sutra.oslpr.org/medidas/160662',
-    label: 'SUTRA · RCC 304 (autor único; PR-160 Vega Baja / Martínez Ocasio)',
+  sutraRCC0043: {
+    url: 'https://sutra.oslpr.org/medidas/153378',
+    label: 'SUTRA · RCC 43 (autor único; Calle Esperanza / Acerolas, Vega Baja)',
   },
-  sutraRCC0281: {
-    url: 'https://sutra.oslpr.org/medidas/160387',
-    label: 'SUTRA · RCC 281 (autor único; PR-670 Vega Baja / Rodríguez Torres)',
+  sutraRCC0061: {
+    url: 'https://sutra.oslpr.org/medidas/153876',
+    label: 'SUTRA · RCC 61 (autor único; finca 12,040 Morovis)',
+  },
+  sutraRCC0159: {
+    url: 'https://sutra.oslpr.org/medidas/156567',
+    label: 'SUTRA · RCC 159 (autor único; PR-670 Manatí / Cruz Manzano)',
   },
   sutraRCC0211: {
     url: 'https://sutra.oslpr.org/medidas/158773',
     label: 'SUTRA · RCC 211 (autor único; Coto Sur / Palo Alto, Manatí)',
   },
-  sutraRC0252: {
-    url: 'https://sutra.oslpr.org/medidas/154949',
-    label: 'SUTRA · RC 252 (autor único; facilidades recreativas D12)',
+  sutraRCC0281: {
+    url: 'https://sutra.oslpr.org/medidas/160387',
+    label: 'SUTRA · RCC 281 (autor único; PR-670 Vega Baja / Rodríguez Torres)',
   },
-  sutraPC0828: {
-    url: 'https://sutra.oslpr.org/medidas/158187',
-    label: 'SUTRA · PC 828 (autor único; protección acuática de bañistas)',
+  sutraPC0275: {
+    url: 'https://sutra.oslpr.org/medidas/153333',
+    label: 'SUTRA · PC 275 (Autores 2: Feliciano Sánchez y González Aguayo)',
+  },
+  sutraPC1184: {
+    url: 'https://sutra.oslpr.org/medidas/160707',
+    label: 'SUTRA · PC 1184 (Autores 2: Feliciano Sánchez y Nieves Rosario)',
+  },
+  sutraRCC0055: {
+    url: 'https://sutra.oslpr.org/medidas/153659',
+    label: 'SUTRA · RCC 55 (Autores 2: Feliciano Sánchez y Rodríguez Aguiló)',
   },
 } as const satisfies Record<string, DossierSource>
 
