@@ -882,6 +882,91 @@ export const SRC = {
     label: 'Isla News · opinión firmada de Robles Rivera (La Meseta; Caleb y Débora)',
     published: '2025-06-09',
   },
+  camaraFranqui: {
+    url: 'https://www.camara.pr.gov/team/joel-i-franqui-atiles/',
+    label: 'Cámara · ficha oficial de Joel I. Franqui Atiles (D15; delgada)',
+  },
+  camaraFranquiEN: {
+    url: 'https://www.camara.pr.gov/en/team/joel-i-franqui-atiles/',
+    label: 'Cámara · official profile of Joel I. Franqui Atiles (EN; Phone: Economic Development Commission)',
+  },
+  sutraFranqui: {
+    url: 'https://sutra.oslpr.org/legisladores/M-948-AL',
+    label: 'SUTRA · Joel Franqui Atiles (M-948-AL, 2025–2028; Detalle Distrito 15)',
+  },
+  ballotpediaFranqui: {
+    url: 'https://ballotpedia.org/Joel_Franqui_Atiles',
+    label: 'Ballotpedia · Joel Franqui Atiles (D15; asumió 2 ene 2017; término 2 ene 2029; primaria 2024 cancelada)',
+  },
+  wiki2020House: {
+    url: 'https://en.wikipedia.org/wiki/2020_Puerto_Rico_House_of_Representatives_election',
+    label: 'Wikipedia · elección Cámara 2020 (D15: 14,769 / 31,445; no se certifica como CEE)',
+  },
+  wikiHernandezAlfonzo: {
+    url: 'https://en.wikipedia.org/wiki/C%C3%A9sar_Hern%C3%A1ndez_Alfonzo',
+    label: 'Wikipedia · César Hernández Alfonzo (D15 PPD; 2 ene 2013 – 2 ene 2017; le sucede Franqui)',
+  },
+  oceFranqui2016: {
+    url: 'https://oce.pr.gov/download/auditora-oce-18-014-joel-franqui-atiles/',
+    label: 'OCE · expediente OCE-18-014 (Franqui Atiles, D15 PNP; publicado 24 abr 2019)',
+    published: '2019-04-24',
+  },
+  oceD15_2016: {
+    url: 'https://oce.pr.gov/auditorias-2016/auditorias-2016-representantes/distrito-15/',
+    label: 'OCE · auditorías 2016, representantes Distrito 15',
+  },
+  oceFranqui2020: {
+    url: 'https://oce.pr.gov/download/oce-b-21-198-joel-franqui-atiles/',
+    label: 'OCE · expediente OCE-B-21-198 (Franqui Atiles, D15 PNP, 2020; PDF ~sep 2022)',
+  },
+  oceD15_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-15/',
+    label: 'OCE · auditorías 2020, representantes Distrito 15',
+  },
+  eleccionesPR2016: {
+    url: 'https://electionspuertorico.org/referencia/candidatos/2016/',
+    label: 'EleccionesPuertoRico · candidatos 2016 (D15: Hernández Alfonzo, Franqui, Canals Portalatín)',
+  },
+  sutraRC0106: {
+    url: 'https://sutra.oslpr.org/medidas/153472',
+    label: 'SUTRA · RC 106 (Autores 2: Franqui Atiles y Méndez Núñez; Desarrollo Económico)',
+  },
+  sutraRC0214: {
+    url: 'https://sutra.oslpr.org/medidas/154365',
+    label: 'SUTRA · RC 214 (autor único; impacto arancelario / Desarrollo Económico)',
+  },
+  sutraRC0635: {
+    url: 'https://sutra.oslpr.org/medidas/160601',
+    label: 'SUTRA · RC 635 (autor único; préstamos CFSE a Phoenix Fund / PUC Holdings)',
+  },
+  sutraRCC0145: {
+    url: 'https://sutra.oslpr.org/medidas/156415',
+    label: 'SUTRA · RCC 145 (autor único; Finca Nolla, Camuy; veto de bolsillo 11 ago 2025)',
+  },
+  sutraRCC0147: {
+    url: 'https://sutra.oslpr.org/medidas/156417',
+    label: 'SUTRA · RCC 147 (autor único; Cavernas del Río Camuy al Municipio de Camuy)',
+  },
+  sutraRCC0226: {
+    url: 'https://sutra.oslpr.org/medidas/159220',
+    label: 'SUTRA · RCC 226 (Autores 3: Robles Rivera, Franqui Atiles y Méndez Núñez; PR-2 Hatillo)',
+  },
+  sutraRCC0092: {
+    url: 'https://sutra.oslpr.org/medidas/154613',
+    label: 'SUTRA · RCC 92 (Autores 4: Vargas, Nieves, Robles y Franqui; Punta Maracayo Hatillo)',
+  },
+  sutraPC0451: {
+    url: 'https://sutra.oslpr.org/medidas/154463',
+    label: 'SUTRA · PC 451 (autor único; Ley de Rescate al Empresario Puertorriqueño)',
+  },
+  sutraPC0593: {
+    url: 'https://sutra.oslpr.org/medidas/155556',
+    label: 'SUTRA · PC 593 (autor único; Transparencia en Compras Gubernamentales; veto expreso)',
+  },
+  sutraPC0684: {
+    url: 'https://sutra.oslpr.org/medidas/155984',
+    label: 'SUTRA · PC 684 (autor único; Túnel Oscuro / Túnel Negro, Quebradillas)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
