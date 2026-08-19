@@ -459,6 +459,42 @@ export const SRC = {
     url: 'https://www.elvocero.com/ley-y-orden/policiacas/inspeccionan-cuarteles-en-san-juan-y-fajardo/article_f0a66405-5bff-43f0-81fa-48b04fd41d13.html',
     label: 'El Vocero · inspección de cuarteles (San Juan y Fajardo)',
   },
+  camaraPelle: {
+    url: 'https://www.camara.pr.gov/team/pedro-j-pelle-santiago-guzman/',
+    label: 'Cámara · ficha oficial de Pedro J. ‘Pelle’ Santiago Guzmán',
+  },
+  sutraPelle: {
+    url: 'https://sutra.oslpr.org/legisladores/M-943-AL',
+    label: 'SUTRA · Pedro J. Santiago Guzmán (M-943-AL, 2025–2028)',
+  },
+  ballotpediaPelle: {
+    url: 'https://ballotpedia.org/Pedro_Santiago_Guzman',
+    label: 'Ballotpedia · Pedro Santiago Guzman (D10; asumió 2 ene 2025; salida 2021)',
+  },
+  wikiPelle: {
+    url: 'https://en.wikipedia.org/wiki/Pell%C3%A9_Santiago',
+    label: 'Wikipedia · Pellé Santiago (n. 25 mar 1961; «in office» 2013–2020 no usado)',
+  },
+  ocePelle2024: {
+    url: 'https://oce.pr.gov/download/oce-eb-24-149-pedro-j-santiago-guzman/',
+    label: 'OCE · expediente OCE-EB-24-149 (Santiago Guzmán, D10 PNP; PDF 25 jun 2026)',
+  },
+  oceD10_2024: {
+    url: 'https://oce.pr.gov/auditorias-2024/auditorias-2024-representantes/distrito-10-2024/',
+    label: 'OCE · auditorías 2024, representantes Distrito 10',
+  },
+  ocePelle2020: {
+    url: 'https://oce.pr.gov/download/oce-b-21-207-pedro-j-santiago-guzman/',
+    label: 'OCE · expediente OCE-B-21-207 (Santiago Guzmán, D10 PNP, 2020; PDF 16 feb 2023)',
+  },
+  oceD10_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-10/',
+    label: 'OCE · auditorías 2020, representantes Distrito 10',
+  },
+  ocePelle2016: {
+    url: 'https://oce.pr.gov/download/auditora-oce-18-020-pedro-j-santiago-guzmn/',
+    label: 'OCE · expediente OCE-18-020 (Santiago Guzmán, D10 PNP, ~2016; PDF 8 may 2019)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

@@ -30,7 +30,7 @@ describe('dossiers 2025–2028', () => {
     }
   })
 
-  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6, Pérez Ortiz D7 y Pacheco D9', () => {
+  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6, Pérez Ortiz D7, Pacheco D9 y Pellé D10', () => {
     const extra = [
       'jose-f-aponte-hernandez',
       'roberto-rivera-ruiz-de-porras',
@@ -43,12 +43,13 @@ describe('dossiers 2025–2028', () => {
       'angel-morey-noble',
       'luis-perez-ortiz',
       'felix-pacheco-burgos',
+      'pedro-j-pelle-santiago-guzman',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(21)
+    expect(DEEP_IDS.size).toBe(22)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
@@ -746,6 +747,51 @@ describe('dossiers 2025–2028', () => {
         SRC.oce2024Reps.url,
         SRC.voceroPC406.url,
         SRC.voceroCuarteles.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D10 de Pellé con CEE 2024, OCE-EB-24-149 y sin montos inventados', () => {
+    const d10 = DOSSIERS['pedro-j-pelle-santiago-guzman']
+    expect(d10.id).toBe('pedro-j-pelle-santiago-guzman')
+    expect(d10.bio).toMatch(/Distrito 10/)
+    expect(d10.bio).toMatch(/25 de marzo de 1961/)
+    expect(d10.bio).toMatch(/psantiago@camara\.pr\.gov/)
+    expect(d10.bio).toMatch(/M-943-AL/)
+    expect(d10.bio).toMatch(/Asuntos Interiores/)
+    expect(d10.career.join(' ')).toMatch(/10,528/)
+    expect(d10.career.join(' ')).toMatch(/42\.2%/)
+    expect(d10.career.join(' ')).toMatch(/24,927/)
+    expect(d10.career.join(' ')).toMatch(/Sahir Pujols/)
+    expect(d10.career.join(' ')).toMatch(/Sahir Vazquez/)
+    expect(d10.career.join(' ')).toMatch(/9,846/)
+    expect(d10.career.join(' ')).toMatch(/10,106/)
+    expect(d10.career.join(' ')).toMatch(/2 de enero de 2021/)
+    expect(d10.career.join(' ')).toMatch(/no se usa/)
+    expect(d10.career.join(' ')).not.toMatch(/9,709|9,359/)
+    expect(d10.career.join(' ')).toMatch(/OCE-EB-24-149/)
+    expect(d10.career.join(' ')).toMatch(/monto no extraído/)
+    expect(d10.career.join(' ')).toMatch(/No se le atribuyen OCE-EB-24-150/)
+    expect(d10.career.join(' ')).toMatch(/Asuntos Internos/)
+    expect(d10.career.join(' ')).toMatch(/Interiores vs Internos/)
+    expect(d10.aspirations.join(' ')).toMatch(/RC 756/)
+    expect(d10.aspirations.join(' ')).toMatch(/no se afirma autoría exclusiva/)
+    expect(d10.committees).toEqual(['Asuntos Internos'])
+    expect(d10.connections).toEqual([])
+    expect(JSON.stringify(d10)).not.toMatch(/\$\d/)
+    expect(d10.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraPelle.url,
+        SRC.sutraPelle.url,
+        SRC.ballotpediaPelle.url,
+        SRC.wikiPelle.url,
+        SRC.wiki2024House.url,
+        SRC.ocePelle2024.url,
+        SRC.oceD10_2024.url,
+        SRC.ocePelle2020.url,
+        SRC.oceD10_2020.url,
+        SRC.ocePelle2016.url,
         SRC.microjurisComisiones.url,
       ]),
     )
