@@ -626,6 +626,70 @@ export const SRC = {
     label: 'Metro · informe positivo de su comisión sobre PC 269 (La Parguera)',
     published: '2025-06-23',
   },
+  camaraFeliciano: {
+    url: 'https://www.camara.pr.gov/team/edgardo-feliciano-sanchez/',
+    label: 'Cámara · ficha oficial de Edgardo Feliciano Sánchez',
+  },
+  camaraFelicianoEN: {
+    url: 'https://www.camara.pr.gov/en/team/edgardo-feliciano-sanchez/',
+    label: 'Cámara EN · official profile of Edgardo Feliciano Sánchez',
+  },
+  sutraFeliciano: {
+    url: 'https://sutra.oslpr.org/legisladores/M-945-AL',
+    label: 'SUTRA · Edgardo Feliciano Sánchez (M-945-AL, 2025–2028)',
+  },
+  ballotpediaFeliciano: {
+    url: 'https://ballotpedia.org/Edgardo_Feliciano',
+    label: 'Ballotpedia · Edgardo Feliciano (D12; asumió 2 ene 2021)',
+  },
+  oceFeliciano2020: {
+    url: 'https://oce.pr.gov/download/oce-b-21-340-edgardo-feliciano-sanchez/',
+    label: 'OCE · expediente OCE-B-21-340 (Feliciano Sánchez, D12 PPD, 2020)',
+  },
+  oceD12_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-12/',
+    label: 'OCE · auditorías 2020, representantes Distrito 12',
+  },
+  wiki2020House: {
+    url: 'https://en.wikipedia.org/wiki/2020_Puerto_Rico_House_of_Representatives_election',
+    label: 'Wikipedia EN · elección Cámara 2020 (D12: 11,807; no sustituye Ballotpedia)',
+  },
+  voceroFeliciano2021: {
+    url: 'https://www.elvocero.com/politica/caras-nuevas-en-la-legislatura-edgardo-feliciano-s-nchez/article_2e6a36d2-6b10-11eb-888c-230c18141d2a.html',
+    label: 'El Vocero · caras nuevas; jefe interino de presupuesto DRNA (2021)',
+  },
+  radioIslaPreliminarD12: {
+    url: 'https://radioisla.tv/resultados-preliminares-de-representantes-por-distrito1-2/',
+    label: 'Radio Isla · preliminar D12 2020 (11,574–10,843; no es cifra final)',
+  },
+  sutraRCC0377: {
+    url: 'https://sutra.oslpr.org/medidas/161625',
+    label: 'SUTRA · RCC 377 (autor único; título Vega Baja / Almirante Norte)',
+  },
+  sutraRCC0362: {
+    url: 'https://sutra.oslpr.org/medidas/161442',
+    label: 'SUTRA · RCC 362 (autor único; finca Pasto, Morovis)',
+  },
+  sutraRCC0304: {
+    url: 'https://sutra.oslpr.org/medidas/160662',
+    label: 'SUTRA · RCC 304 (autor único; PR-160 Vega Baja / Martínez Ocasio)',
+  },
+  sutraRCC0281: {
+    url: 'https://sutra.oslpr.org/medidas/160387',
+    label: 'SUTRA · RCC 281 (autor único; PR-670 Vega Baja / Rodríguez Torres)',
+  },
+  sutraRCC0211: {
+    url: 'https://sutra.oslpr.org/medidas/158773',
+    label: 'SUTRA · RCC 211 (autor único; Coto Sur / Palo Alto, Manatí)',
+  },
+  sutraRC0252: {
+    url: 'https://sutra.oslpr.org/medidas/154949',
+    label: 'SUTRA · RC 252 (autor único; facilidades recreativas D12)',
+  },
+  sutraPC0828: {
+    url: 'https://sutra.oslpr.org/medidas/158187',
+    label: 'SUTRA · PC 828 (autor único; protección acuática de bañistas)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
