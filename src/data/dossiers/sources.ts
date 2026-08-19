@@ -699,6 +699,75 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas/153659',
     label: 'SUTRA · RCC 55 (Autores 2: Feliciano Sánchez y Rodríguez Aguiló)',
   },
+  camaraJerry: {
+    url: 'https://www.camara.pr.gov/team/jerry-nieves-rosario/',
+    label: 'Cámara · ficha oficial de Jerry Nieves Rosario (Jerry Zahamir Nieves Rosario)',
+  },
+  sutraDirectorio: {
+    url: 'https://sutra.oslpr.org/directorio',
+    label: 'SUTRA · directorio legislativo 2025–2028 (filtro Distrito 13)',
+  },
+  sutraJerry: {
+    url: 'https://sutra.oslpr.org/legisladores/M-946-AL',
+    label: 'SUTRA · Jerry Nieves Rosario (M-946-AL, 2025–2028)',
+  },
+  ballotpediaJerry: {
+    url: 'https://ballotpedia.org/Jerry_Zahamir_Nieves_Rosario',
+    label: 'Ballotpedia · Jerry Zahamir Nieves Rosario (D13; asumió 2 ene 2025)',
+  },
+  oceJerry2024: {
+    url: 'https://oce.pr.gov/download/oce-eb-24-096-jerry-nieves-rosario/',
+    label: 'OCE · expediente OCE-EB-24-096 (Nieves Rosario, D13 PNP; PDF ~feb 2026)',
+  },
+  oceD13_2024: {
+    url: 'https://oce.pr.gov/auditorias-2024/auditorias-2024-representantes/distrito-13/',
+    label: 'OCE · auditorías 2024, representantes Distrito 13',
+  },
+  oceD13_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-13-2020/',
+    label: 'OCE · auditorías 2020, representantes Distrito 13 (Rodríguez Aguiló, no Nieves)',
+  },
+  voceroPapeletaPNP2024: {
+    url: 'https://www.elvocero.com/decision_2024/sorteadas-las-posiciones-en-papeletas-para-las-primarias-en-el-pnp/article_f5a1b5a8-df12-11ee-a03e-9b78d72ceab1.html',
+    label: 'El Vocero · papeleta primaria PNP 2024 (D13: Valle Martínez y Nieves Rosario)',
+  },
+  insPC512: {
+    url: 'https://internewsservice.com/2025/04/13/p-rico-representante-pnp-quiere-bautizar-como-ruta-gastronomica-y-panoramica-sabor-de-las-atenas-restaurantes-chinchorros-y-lugares-de-atractivo-turistico-en-manati/',
+    label: 'INS · PC 512 Ruta Gastronómica y Panorámica Sabor de las Atenas (PR-685 Manatí)',
+    published: '2025-04-13',
+  },
+  sutraPC0512: {
+    url: 'https://sutra.oslpr.org/medidas/154956',
+    label: 'SUTRA · PC 512 (autor único; PR-685 Manatí / Sabor de las Atenas; veto de bolsillo)',
+  },
+  sutraPC1173: {
+    url: 'https://sutra.oslpr.org/medidas/160685',
+    label: 'SUTRA · PC 1173 (autor único; reedita Sabor de las Atenas / PR-685 Manatí)',
+  },
+  sutraRCC0057: {
+    url: 'https://sutra.oslpr.org/medidas/153776',
+    label: 'SUTRA · RCC 57 (autor único; PR-140 Florida / Guzmán Cardona → Res. Conj. 27-2025)',
+  },
+  sutraRCC0050: {
+    url: 'https://sutra.oslpr.org/medidas/153583',
+    label: 'SUTRA · RCC 50 (autor único; Escuela René Marqués, Arecibo → Res. Conj. 12-2025)',
+  },
+  sutraRC0282: {
+    url: 'https://sutra.oslpr.org/medidas/155439',
+    label: 'SUTRA · RC 282 (autor único; PR-667 Barrio Cortés, Manatí)',
+  },
+  sutraRCC0084: {
+    url: 'https://sutra.oslpr.org/medidas/154357',
+    label: 'SUTRA · RCC 84 (autor único; Aeropuerto Nery Juarbe Pol, Arecibo)',
+  },
+  sutraRC0416: {
+    url: 'https://sutra.oslpr.org/medidas/158173',
+    label: 'SUTRA · RC 416 (autor único; aguas residuales Islote km 3.2, Arecibo)',
+  },
+  sutraRCC0385: {
+    url: 'https://sutra.oslpr.org/medidas/161867',
+    label: 'SUTRA · RCC 385 (autor único; vivienda TEA / discapacidad, Manatí)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

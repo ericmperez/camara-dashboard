@@ -30,7 +30,7 @@ describe('dossiers 2025–2028', () => {
     }
   })
 
-  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6, Pérez Ortiz D7, Pacheco D9, Pellé D10, Elinette D11 y Feliciano D12', () => {
+  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6, Pérez Ortiz D7, Pacheco D9, Pellé D10, Elinette D11, Feliciano D12 y Nieves D13', () => {
     const extra = [
       'jose-f-aponte-hernandez',
       'roberto-rivera-ruiz-de-porras',
@@ -46,12 +46,13 @@ describe('dossiers 2025–2028', () => {
       'pedro-j-pelle-santiago-guzman',
       'elinette-gonzalez-aguayo',
       'edgardo-feliciano-sanchez',
+      'jerry-nieves-rosario',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(24)
+    expect(DEEP_IDS.size).toBe(25)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
@@ -947,6 +948,98 @@ describe('dossiers 2025–2028', () => {
         SRC.sutraPC0275.url,
         SRC.sutraPC1184.url,
         SRC.sutraRCC0055.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D13 de Nieves con CEE 12,518, OCE-EB-24-096 y sin monto', () => {
+    const d13 = DOSSIERS['jerry-nieves-rosario']
+    expect(d13.id).toBe('jerry-nieves-rosario')
+    expect(d13.id).not.toBe('jerry-zahamir-nieves-rosario')
+    expect(d13.bio).toMatch(/Jerry Zahamir Nieves Rosario/)
+    expect(d13.bio).toMatch(/26 de octubre de 1988/)
+    expect(d13.bio).toMatch(/Arecibo/)
+    expect(d13.bio).toMatch(/Ballotpedia vs ficha/)
+    expect(d13.bio).toMatch(/Manatí/)
+    expect(d13.bio).toMatch(/jnieves@camara\.pr\.gov/)
+    expect(d13.bio).toMatch(/M-946-AL/)
+    expect(d13.bio).toMatch(/723-6136/)
+    expect(d13.bio).toMatch(/Región Norte/)
+    expect(d13.career.join(' ')).toMatch(/12,518/)
+    expect(d13.career.join(' ')).toMatch(/45\.8%/)
+    expect(d13.career.join(' ')).toMatch(/27,337/)
+    expect(d13.career.join(' ')).toMatch(/3,506/)
+    expect(d13.career.join(' ')).toMatch(/Yulixa Paredes Albarrán/)
+    expect(d13.career.join(' ')).toMatch(/Kevin C\. Cruz Chacón/)
+    expect(d13.career.join(' ')).toMatch(/Teresa Vélez Rolón/)
+    expect(d13.career.join(' ')).toMatch(/Yulixa Albarán/)
+    expect(d13.career.join(' ')).toMatch(/Alexis Valle Martínez/)
+    expect(d13.career.join(' ')).toMatch(/CEE HTML no extraído/)
+    expect(d13.career.join(' ')).toMatch(/Gabriel Rodríguez Aguiló/)
+    expect(d13.career.join(' ')).toMatch(/25 de marzo de 2022/)
+    expect(d13.career.join(' ')).toMatch(/Open seat|open seat|Primera vez/i)
+    expect(d13.career.join(' ')).toMatch(/OCE-EB-24-096/)
+    expect(d13.career.join(' ')).toMatch(/monto no extraído/)
+    expect(d13.career.join(' ')).toMatch(/No se le atribuyen OCE-EB-24-097/)
+    expect(d13.career.join(' ')).toMatch(/OCE-A-21-052/)
+    expect(d13.career.join(' ')).toMatch(/Sin docket 2020 a su nombre/)
+    expect(d13.career.join(' ')).toMatch(/Alondra Paola Nieves Dalmau/)
+    expect(d13.career.join(' ')).toMatch(/no es dinastía/)
+    expect(d13.career.join(' ')).toMatch(/heredó de su madre/)
+    expect(d13.career.join(' ')).toMatch(/no se infiere cargo/)
+    expect(d13.career.join(' ')).toMatch(/no se le atribuye en solitario el PC 1184/)
+    expect(d13.career.join(' ')).not.toMatch(/OCE-EB-24-096.*\d[\d,]+\.\d{2} dólares/)
+    expect(d13.aspirations.join(' ')).toMatch(/PC 512/)
+    expect(d13.aspirations.join(' ')).toMatch(/Sabor de las Atenas/)
+    expect(d13.aspirations.join(' ')).toMatch(/PR-685/)
+    expect(d13.aspirations.join(' ')).toMatch(/PC 1173/)
+    expect(d13.aspirations.join(' ')).toMatch(/RCC 57/)
+    expect(d13.aspirations.join(' ')).toMatch(/RCC 50/)
+    expect(d13.aspirations.join(' ')).toMatch(/RC 282/)
+    expect(d13.aspirations.join(' ')).toMatch(/RCC 84/)
+    expect(d13.aspirations.join(' ')).toMatch(/RC 416/)
+    expect(d13.aspirations.join(' ')).toMatch(/RCC 385/)
+    expect(d13.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d13.committees).toEqual(['Región Norte'])
+    expect(d13.committees).not.toContain('Recreación y Deportes')
+    expect(d13.committees).not.toContain('Salud')
+    expect(JSON.stringify(d13)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d13)).not.toMatch(/M-945-AL/)
+    const facts = d13.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual([
+      'gabriel-rodriguez-aguilo',
+      'edgardo-feliciano-sanchez',
+    ])
+    expect(facts.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d13.connections.some((c) => c.toId === 'carlos-johnny-mendez-nunez')).toBe(false)
+    expect(d13.connections.some((c) => c.kind === 'inference')).toBe(false)
+    const overlap = townOverlapConnections('jerry-nieves-rosario')
+    expect(overlap.some((c) => c.toId === 'edgardo-feliciano-sanchez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.some((c) => c.toId === 'edgar-robles-rivera')).toBe(true)
+    expect(d13.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraJerry.url,
+        SRC.sutraJerry.url,
+        SRC.sutraDirectorio.url,
+        SRC.ballotpediaJerry.url,
+        SRC.wiki2024House.url,
+        SRC.oceJerry2024.url,
+        SRC.oceD13_2024.url,
+        SRC.oceD13_2020.url,
+        SRC.voceroPapeletaPNP2024.url,
+        SRC.insPC512.url,
+        SRC.sutraPC0512.url,
+        SRC.sutraPC1173.url,
+        SRC.sutraPC1184.url,
+        SRC.sutraRCC0057.url,
+        SRC.sutraRCC0050.url,
+        SRC.sutraRC0282.url,
+        SRC.sutraRCC0084.url,
+        SRC.sutraRC0416.url,
+        SRC.sutraRCC0385.url,
         SRC.microjurisComisiones.url,
       ]),
     )
