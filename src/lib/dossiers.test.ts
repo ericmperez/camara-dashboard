@@ -30,7 +30,7 @@ describe('dossiers 2025–2028', () => {
     }
   })
 
-  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6, Pérez Ortiz D7, Pacheco D9 y Pellé D10', () => {
+  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6, Pérez Ortiz D7, Pacheco D9, Pellé D10 y Elinette D11', () => {
     const extra = [
       'jose-f-aponte-hernandez',
       'roberto-rivera-ruiz-de-porras',
@@ -44,12 +44,13 @@ describe('dossiers 2025–2028', () => {
       'luis-perez-ortiz',
       'felix-pacheco-burgos',
       'pedro-j-pelle-santiago-guzman',
+      'elinette-gonzalez-aguayo',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(22)
+    expect(DEEP_IDS.size).toBe(23)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
@@ -820,6 +821,44 @@ describe('dossiers 2025–2028', () => {
         SRC.metroPC651.url,
         SRC.sutraPC651.url,
         SRC.ceeElectos2012.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D11 de Elinette con CEE 2024, OCE-EB-24-029 y sin monto', () => {
+    const d11 = DOSSIERS['elinette-gonzalez-aguayo']
+    expect(d11.id).toBe('elinette-gonzalez-aguayo')
+    expect(d11.bio).toMatch(/27 de agosto de 1973/)
+    expect(d11.bio).toMatch(/elgonzalez@camara\.pr\.gov/)
+    expect(d11.bio).toMatch(/M-944-AL/)
+    expect(d11.bio).toMatch(/622-4486/)
+    expect(d11.career.join(' ')).toMatch(/11,262/)
+    expect(d11.career.join(' ')).toMatch(/43\.2%/)
+    expect(d11.career.join(' ')).toMatch(/OCE-EB-24-029/)
+    expect(d11.career.join(' ')).toMatch(/monto no extraído/)
+    expect(d11.career.join(' ')).toMatch(/Rossner Marrero/)
+    expect(d11.career.join(' ')).toMatch(/Angel de Leon/)
+    expect(d11.career.join(' ')).toMatch(/no se presenta como XML CEE/)
+    expect(d11.career.join(' ')).toMatch(/No se le atribuyen OCE-EB-24-030/)
+    expect(d11.career.join(' ')).not.toMatch(/LinkedIn/)
+    expect(d11.committees).toEqual(['Recursos Naturales'])
+    expect(JSON.stringify(d11)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d11)).not.toMatch(/M-943-AL/)
+    const facts = d11.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual(['carlos-johnny-mendez-nunez'])
+    expect(facts[0].label).toMatch(/no implica alianza/)
+    expect(d11.connections.some((c) => /alcalde|Dorado|Vega Alta|Vega Baja/i.test(c.label) && c.toId !== 'carlos-johnny-mendez-nunez')).toBe(false)
+    expect(d11.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraElinette.url,
+        SRC.sutraElinette.url,
+        SRC.ballotpediaElinette.url,
+        SRC.wiki2024House.url,
+        SRC.oceElinette2024.url,
+        SRC.oceD11_2024.url,
+        SRC.oceD11_2020.url,
+        SRC.camaraRecursosNaturales.url,
         SRC.microjurisComisiones.url,
       ]),
     )

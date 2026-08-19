@@ -531,6 +531,42 @@ export const SRC = {
     url: 'http://endata.prdecide.elnuevodia.com/representante/46',
     label: 'ENDATA · ficha 2016 (no respondió; fecha placeholder)',
   },
+  camaraElinette: {
+    url: 'https://www.camara.pr.gov/team/elinette-gonzalez-aguayo/',
+    label: 'Cámara · ficha oficial de Elinette González Aguayo',
+  },
+  sutraElinette: {
+    url: 'https://sutra.oslpr.org/legisladores/M-944-AL',
+    label: 'SUTRA · Elinette González Aguayo (M-944-AL, 2025–2028)',
+  },
+  ballotpediaElinette: {
+    url: 'https://ballotpedia.org/Elinette_Gonz%C3%A1lez_Aguayo',
+    label: 'Ballotpedia · Elinette González Aguayo (D11; asumió 2 ene 2025)',
+  },
+  oceElinette2024: {
+    url: 'https://oce.pr.gov/download/oce-eb-24-029-elinette-gonzalez-aguayo/',
+    label: 'OCE · expediente OCE-EB-24-029 (González Aguayo, D11 PNP; PDF ~feb 2026)',
+  },
+  oceD11_2024: {
+    url: 'https://oce.pr.gov/auditorias-2024/auditorias-2024-representantes/distrito-11/',
+    label: 'OCE · auditorías 2024, representantes Distrito 11',
+  },
+  oceD11_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-11/',
+    label: 'OCE · auditorías 2020, representantes Distrito 11 (Hernández, no Elinette)',
+  },
+  camaraRecursosNaturales: {
+    url: 'https://www.camara.pr.gov/ova_dep/comision-de-recursos-naturales/',
+    label: 'Cámara · Comisión de Recursos Naturales (lista a González Aguayo)',
+  },
+  camaraClimaConjunta: {
+    url: 'https://www.camara.pr.gov/ova_dep/comision-conjunta-sobre-mitigacion-adaptacion-y-resilienciaal-cambio-climatico/',
+    label: 'Cámara · Comisión Conjunta Cambio Climático (aparece su nombre; no preside)',
+  },
+  sutraElinetteRC100: {
+    url: 'https://sutra.oslpr.org/medidas/153466',
+    label: 'SUTRA · RC 100 (autores Méndez y González Aguayo; investigación RN)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
