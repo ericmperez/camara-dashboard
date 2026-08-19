@@ -768,6 +768,26 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas/161867',
     label: 'SUTRA · RCC 385 (autor único; vivienda TEA / discapacidad, Manatí)',
   },
+  sutraPC1237: {
+    url: 'https://sutra.oslpr.org/medidas/161041',
+    label: 'SUTRA · PC 1237 (autor único; cuencas Ríos Grande de Arecibo, Manatí y Cibuco)',
+  },
+  sutraRC0029: {
+    url: 'https://sutra.oslpr.org/medidas/152583',
+    label: 'SUTRA · RC 29 (autor único; planta AAA / composta Islote, Arecibo)',
+  },
+  sutraRCC0300: {
+    url: 'https://sutra.oslpr.org/medidas/160658',
+    label: 'SUTRA · RCC 300 (autor único; Finca Banco A, Barrio Tosas, Florida)',
+  },
+  sutraRCC0024: {
+    url: 'https://sutra.oslpr.org/medidas/153041',
+    label: 'SUTRA · RCC 24 (Autores 2: Rodríguez Aguiló y Nieves Rosario; PR-682 Garrochales)',
+  },
+  sutraPC0243: {
+    url: 'https://sutra.oslpr.org/medidas/153050',
+    label: 'SUTRA · PC 243 (Autores 3: Rodríguez Aguiló, Robles Rivera y Nieves Rosario)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

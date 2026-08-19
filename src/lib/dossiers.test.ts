@@ -975,7 +975,12 @@ describe('dossiers 2025–2028', () => {
     expect(d13.career.join(' ')).toMatch(/Teresa Vélez Rolón/)
     expect(d13.career.join(' ')).toMatch(/Yulixa Albarán/)
     expect(d13.career.join(' ')).toMatch(/Alexis Valle Martínez/)
+    expect(d13.career.join(' ')).toMatch(/3,931/)
+    expect(d13.career.join(' ')).toMatch(/3,520/)
+    expect(d13.career.join(' ')).toMatch(/7,451/)
+    expect(d13.career.join(' ')).toMatch(/Hector Diaz Vanga/)
     expect(d13.career.join(' ')).toMatch(/CEE HTML no extraído/)
+    expect(d13.career.join(' ')).toMatch(/PDF locked/)
     expect(d13.career.join(' ')).toMatch(/Gabriel Rodríguez Aguiló/)
     expect(d13.career.join(' ')).toMatch(/25 de marzo de 2022/)
     expect(d13.career.join(' ')).toMatch(/Open seat|open seat|Primera vez/i)
@@ -1000,7 +1005,16 @@ describe('dossiers 2025–2028', () => {
     expect(d13.aspirations.join(' ')).toMatch(/RCC 84/)
     expect(d13.aspirations.join(' ')).toMatch(/RC 416/)
     expect(d13.aspirations.join(' ')).toMatch(/RCC 385/)
+    expect(d13.aspirations.join(' ')).toMatch(/PC 1237/)
+    expect(d13.aspirations.join(' ')).toMatch(/Ríos Grande de Arecibo/)
+    expect(d13.aspirations.join(' ')).toMatch(/RC 29/)
+    expect(d13.aspirations.join(' ')).toMatch(/Islote/)
+    expect(d13.aspirations.join(' ')).toMatch(/RCC 300/)
+    expect(d13.aspirations.join(' ')).toMatch(/Finca Banco A/)
     expect(d13.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d13.career.join(' ')).toMatch(/RCC 24/)
+    expect(d13.career.join(' ')).toMatch(/PC 243/)
+    expect(d13.career.join(' ')).toMatch(/Edgar Robles Rivera/)
     expect(d13.committees).toEqual(['Región Norte'])
     expect(d13.committees).not.toContain('Recreación y Deportes')
     expect(d13.committees).not.toContain('Salud')
@@ -1009,8 +1023,14 @@ describe('dossiers 2025–2028', () => {
     const facts = d13.connections.filter((c) => c.kind === 'fact')
     expect(facts.map((c) => c.toId)).toEqual([
       'gabriel-rodriguez-aguilo',
+      'gabriel-rodriguez-aguilo',
+      'edgar-robles-rivera',
       'edgardo-feliciano-sanchez',
     ])
+    expect(facts[0].label).toMatch(/Sucesión/)
+    expect(facts[1].label).toMatch(/RCC 24/)
+    expect(facts[1].label).toMatch(/PC 243/)
+    expect(facts[2].label).toMatch(/PC 243/)
     expect(facts.every((c) => /no implica alianza/.test(c.label))).toBe(true)
     expect(d13.connections.some((c) => c.toId === 'carlos-johnny-mendez-nunez')).toBe(false)
     expect(d13.connections.some((c) => c.kind === 'inference')).toBe(false)
@@ -1040,6 +1060,11 @@ describe('dossiers 2025–2028', () => {
         SRC.sutraRCC0084.url,
         SRC.sutraRC0416.url,
         SRC.sutraRCC0385.url,
+        SRC.sutraPC1237.url,
+        SRC.sutraRC0029.url,
+        SRC.sutraRCC0300.url,
+        SRC.sutraRCC0024.url,
+        SRC.sutraPC0243.url,
         SRC.microjurisComisiones.url,
       ]),
     )
