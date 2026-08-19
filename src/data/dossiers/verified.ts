@@ -734,7 +734,7 @@ export const VERIFIED: Record<string, Dossier> = {
       'Ballotpedia lista a Angel de Leon (PIP) con 0 votos. Wikipedia D11 no lo incluye. No se trata como cifra CEE; discrepancia anotada.',
       'HECHO (ficha oficial 2025 / RC0002 / commissions.ts / Microjuris): preside Recursos Naturales. applyCommissions se lo marca. No se inventa otra presidencia. La página de la comisión la lista. La Comisión Conjunta sobre Mitigación, Adaptación y Resiliencia al Cambio Climático publica su nombre; no se afirma que la preside.',
       'Expediente OCE-EB-24-029 (2024; PDF ~feb 2026): aspirante a representante D11, PNP. El índice 2024 de representantes incluye el Distrito 11. Docket citado, monto no extraído. No hay docket 2020 a su nombre. El índice 2020 del Distrito 11 lista a Hernández Montañez, Galán, García Cabán y otros; no se le atribuyen. No se le atribuyen OCE-EB-24-030 (Soto) ni OCE-EB-24-031 (Rossner Marrero). Sin montos ni hallazgos.',
-      'La ficha oficial no nombra familiares. No se usa LinkedIn.',
+      'La ficha oficial no nombra familiares.',
     ],
     aspirations: [
       'RC 100 (31 ene 2025): investigación continua de su comisión sobre preservación, calidad ambiental, desperdicios sólidos (incluye reciclaje y vertederos como materia de jurisdicción) y cambio climático (SUTRA). Coautoría publicada con Carlos «Johnny» Méndez Núñez. No es un PC sobre el vertedero de Vega Baja.',
