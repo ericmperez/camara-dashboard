@@ -30,7 +30,7 @@ describe('dossiers 2025–2028', () => {
     }
   })
 
-  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3 y Parés', () => {
+  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés y Navarro D5', () => {
     const extra = [
       'jose-f-aponte-hernandez',
       'roberto-rivera-ruiz-de-porras',
@@ -39,12 +39,13 @@ describe('dossiers 2025–2028', () => {
       'ricardo-chino-rey-ocasio-ramos',
       'jose-hernandez-concepcion',
       'victor-l-pares-otero',
+      'jorge-navarro-suarez',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(17)
+    expect(DEEP_IDS.size).toBe(18)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
@@ -394,6 +395,82 @@ describe('dossiers 2025–2028', () => {
         SRC.oceD04_2016.url,
         SRC.oce2024Reps.url,
         SRC.tribunaPares2012.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D5 de Navarro con CEE 2024, OCE-B-21-001 y récord público del padre', () => {
+    const d5 = DOSSIERS['jorge-navarro-suarez']
+    expect(d5.bio).toMatch(/8 de julio de 1964/)
+    expect(d5.bio).toMatch(/Georgie Navarro Suárez/)
+    expect(d5.bio).toMatch(/University Gardens/)
+    expect(d5.bio).toMatch(/UPR Bayamón/)
+    expect(d5.bio).toMatch(/jnavarro@camara\.pr\.gov/)
+    expect(d5.bio).toMatch(/M-938-AL/)
+    expect(d5.bio).toMatch(/721-6040/)
+    expect(d5.bio).toMatch(/Banca, Seguros y Comercio/)
+    expect(d5.bio).toMatch(/Región Metro/)
+    expect(d5.career.join(' ')).toMatch(/Georgie Navarro Alicea/)
+    expect(d5.career.join(' ')).toMatch(/Nitza Suárez/)
+    expect(d5.career.join(' ')).toMatch(/segundo de cinco/)
+    expect(d5.career.join(' ')).toMatch(/Pueblo Supermarket/)
+    expect(d5.career.join(' ')).toMatch(/Juan F\. Woldroff/)
+    expect(d5.career.join(' ')).toMatch(/Minority Business Opportunity/)
+    expect(d5.career.join(' ')).toMatch(/2 de enero de 2005/)
+    expect(d5.career.join(' ')).toMatch(/Roberto «Junior» Maldonado|Roberto "Junior" Maldonado/)
+    expect(d5.career.join(' ')).toMatch(/primaria PNP de 2024 cancelada/i)
+    expect(d5.career.join(' ')).toMatch(/14,748/)
+    expect(d5.career.join(' ')).toMatch(/Gabriel Casal Nazario/)
+    expect(d5.career.join(' ')).toMatch(/Elba Beatriz Rivera/)
+    expect(d5.career.join(' ')).toMatch(/Ricardo Rodríguez Quiles/)
+    expect(d5.career.join(' ')).toMatch(/30,676/)
+    expect(d5.career.join(' ')).toMatch(/variantes Gabriel Nazario y Elba Estrada/)
+    expect(d5.career.join(' ')).toMatch(/Pueblo v\. Navarro Alicea/)
+    expect(d5.career.join(' ')).toMatch(/PADRE/)
+    expect(d5.career.join(' ')).toMatch(/92 cargos/)
+    expect(d5.career.join(' ')).toMatch(/OCE-B-21-001/)
+    expect(d5.career.join(' ')).toMatch(/Monto no extraído/)
+    expect(d5.career.join(' ')).toMatch(/no hay auditoría 2024/)
+    expect(JSON.stringify(d5)).not.toMatch(/esposa|cónyuge|yerno/)
+    expect(d5.aspirations.join(' ')).toMatch(/PC 808/)
+    expect(d5.aspirations.join(' ')).toMatch(/PC 785/)
+    expect(d5.aspirations.join(' ')).toMatch(/PC 179/)
+    expect(d5.aspirations.join(' ')).toMatch(/vuelve a la carga/)
+    expect(d5.aspirations.join(' ')).toMatch(/PC 43/)
+    expect(d5.aspirations.join(' ')).toMatch(/RC 98/)
+    expect(d5.aspirations.join(' ')).toMatch(/RC 125/)
+    expect(d5.aspirations.join(' ')).toMatch(/RC 435/)
+    expect(d5.aspirations.join(' ')).toMatch(/RC 609/)
+    expect(d5.aspirations.join(' ')).toMatch(/Futucare/)
+    expect(d5.aspirations.join(' ')).toMatch(/RC 123/)
+    expect(d5.aspirations.join(' ')).toMatch(/Cantera Estrella/)
+    expect(d5.aspirations.join(' ')).toMatch(/PC 1341/)
+    expect(d5.committees).toEqual(['Banca, Seguros y Comercio', 'Región Metro'])
+    expect(d5.connections).toEqual([])
+    expect(JSON.stringify(d5)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d5)).not.toMatch(/OCE-EB-24/)
+    const overlap = townOverlapConnections('jorge-navarro-suarez')
+    expect(overlap.some((c) => c.toId === 'eddie-charbonier-chinea' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.some((c) => c.toId === 'ricardo-chino-rey-ocasio-ramos')).toBe(true)
+    expect(overlap.some((c) => c.toId === 'jose-hernandez-concepcion')).toBe(true)
+    expect(overlap.some((c) => c.toId === 'victor-l-pares-otero')).toBe(true)
+    expect(overlap.some((c) => c.toId === 'angel-morey-noble')).toBe(true)
+    expect(d5.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraNavarro.url,
+        SRC.sutraNavarro.url,
+        SRC.ballotpediaNavarro.url,
+        SRC.wikiNavarro.url,
+        SRC.wiki2024House.url,
+        SRC.oceNavarro2020.url,
+        SRC.oceD05_2020.url,
+        SRC.oce2024Reps.url,
+        SRC.endiCelularesNavarro.url,
+        SRC.teleonceNavarroAlicea.url,
+        SRC.puebloNavarroAlicea.url,
         SRC.microjurisComisiones.url,
       ]),
     )

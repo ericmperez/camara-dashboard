@@ -184,7 +184,7 @@ export const SRC = {
   },
   oce2024Reps: {
     url: 'https://oce.pr.gov/auditorias-2024/auditorias-2024-representantes/',
-    label: 'OCE · auditorías 2024 representantes (D02, D03 y D04 no publicados)',
+    label: 'OCE · auditorías 2024 representantes (D02–D05 no publicados)',
   },
   wiprPC654: {
     url: 'http://wipr.pr/impulsan-talleres-obligatorios-de-crianza-a-padres-y-custodios-para-prevenir-el-maltrato-infantil/',
@@ -276,6 +276,44 @@ export const SRC = {
     url: 'https://tribunapr.com/2012/05/21/el-jueves-juramentaran-a-victor-pares-y-eduardo-ferrer-rios.html',
     label: 'Tribuna · juramentación de Parés y Eduardo Ferrer (24 may 2012)',
     published: '2012-05-21',
+  },
+  camaraNavarro: {
+    url: 'https://www.camara.pr.gov/team/jorge-navarro-suarez/',
+    label: 'Cámara · ficha oficial de Jorge Navarro Suárez',
+  },
+  sutraNavarro: {
+    url: 'https://sutra.oslpr.org/legisladores/M-938-AL',
+    label: 'SUTRA · Jorge Navarro Suárez (M-938-AL, 2025–2028)',
+  },
+  ballotpediaNavarro: {
+    url: 'https://ballotpedia.org/Jorge_Navarro_Su%C3%A1rez',
+    label: 'Ballotpedia · Jorge Navarro Suárez (D5; término a 2 ene 2029)',
+  },
+  wikiNavarro: {
+    url: 'https://en.wikipedia.org/wiki/Jorge_Navarro_Su%C3%A1rez',
+    label: 'Wikipedia · Jorge Navarro Suárez (bio; asunción 2 ene 2005)',
+  },
+  oceNavarro2020: {
+    url: 'https://oce.pr.gov/download/oce-b-21-001-jorge-navarro-suarez/',
+    label: 'OCE · expediente OCE-B-21-001 (Navarro, D5 PNP, 2020; PDF 10 ago 2022)',
+  },
+  oceD05_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-05/',
+    label: 'OCE · auditorías 2020, representantes Distrito 05',
+  },
+  endiCelularesNavarro: {
+    url: 'https://www.elnuevodia.com/noticias/legislatura/notas/jorge-navarro-vuelve-a-la-carga-con-medida-para-prohibir-el-uso-de-celulares-en-escuelas-publicas/',
+    label: 'El Nuevo Día · Navarro vuelve a la carga (celulares en escuelas)',
+    published: '2025-08-26',
+  },
+  teleonceNavarroAlicea: {
+    url: 'https://teleonce.com/noticias/locales/padre-de-georgie-navarro-enfrento-caso-de-corrupcion-en-la-decada-de-los-90/',
+    label: 'TeleOnce · padre de Georgie Navarro, caso FEI años 90',
+    published: '2025-04-03',
+  },
+  puebloNavarroAlicea: {
+    url: 'https://docs.pr.gov/files/Panel%20del%20FEI/Jurisprudencia/PUEBLO%20V.%20NAVARRO%20ALICEA,138%20D.P.R.%20511%20(1995).pdf',
+    label: 'Pueblo v. Navarro Alicea, 138 D.P.R. 511 (1995)',
   },
 } as const satisfies Record<string, DossierSource>
 
