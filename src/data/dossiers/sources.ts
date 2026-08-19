@@ -563,9 +563,68 @@ export const SRC = {
     url: 'https://www.camara.pr.gov/ova_dep/comision-conjunta-sobre-mitigacion-adaptacion-y-resilienciaal-cambio-climatico/',
     label: 'Cámara · Comisión Conjunta Cambio Climático (aparece su nombre; no preside)',
   },
-  sutraElinetteRC100: {
-    url: 'https://sutra.oslpr.org/medidas/153466',
-    label: 'SUTRA · RC 100 (autores Méndez y González Aguayo; investigación RN)',
+  wiki2024HouseES: {
+    url: 'https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Puerto_Rico_de_2024',
+    label: 'Wikipedia ES · elección legislativa 2024 (CEE; Rossner Marrero; omite de Leon)',
+  },
+  sutraRCC0058: {
+    url: 'https://sutra.oslpr.org/medidas/153784',
+    label: 'SUTRA · RCC 58 (autora única; PR-694 Dorado / Cayito)',
+  },
+  sutraRC0557: {
+    url: 'https://sutra.oslpr.org/medidas/160122',
+    label: 'SUTRA · RC 557 (autora única; AAA / agua Dorado)',
+  },
+  sutraRC0489: {
+    url: 'https://sutra.oslpr.org/medidas/159079',
+    label: 'SUTRA · RC 489 (autora única; infraestructura vial D11)',
+  },
+  sutraRC0179: {
+    url: 'https://sutra.oslpr.org/medidas/154003',
+    label: 'SUTRA · RC 179 (autora única; Balneario de Dorado)',
+  },
+  sutraRC0410: {
+    url: 'https://sutra.oslpr.org/medidas/158126',
+    label: 'SUTRA · RC 410 (autora única; EPA CWA / Quintas de Dorado)',
+  },
+  sutraRKC0022: {
+    url: 'https://sutra.oslpr.org/medidas/157820',
+    label: 'SUTRA · RKC 22 (autora única; emergencia de agua D11)',
+  },
+  sutraRKC0023: {
+    url: 'https://sutra.oslpr.org/medidas/157821',
+    label: 'SUTRA · RKC 23 (autora única; emergencia de energía D11)',
+  },
+  sutraRCC0053: {
+    url: 'https://sutra.oslpr.org/medidas/153609',
+    label: 'SUTRA · RCC 53 (autora única; finca #9 Barrio Sabana, Vega Alta)',
+  },
+  sutraRCC0191: {
+    url: 'https://sutra.oslpr.org/medidas/158280',
+    label: 'SUTRA · RCC 191 (Autores 2: González Aguayo y Feliciano Sánchez)',
+  },
+  sutraRCC0217: {
+    url: 'https://sutra.oslpr.org/medidas/158910',
+    label: 'SUTRA · RCC 217 (Autores 2: González Aguayo y Aponte Hernández)',
+  },
+  sutraRCC0284: {
+    url: 'https://sutra.oslpr.org/medidas/160398',
+    label: 'SUTRA · RCC 284 (Autores 2: González Aguayo y Aponte Hernández)',
+  },
+  wiprRCC58: {
+    url: 'https://wipr.pr/gobernadora-firma-ley-que-implementa-sistema-de-notificacion-electronica-por-marbetes-proximos-a-expirar/',
+    label: 'WIPR · Fortaleza firma Res. Conj. 19-2025 (RCC 58; autoría González Aguayo)',
+    published: '2025-07-13',
+  },
+  victoria840PC1079: {
+    url: 'https://www.victoria840.com/exigen-vistas-publicas-antes-de-que-la-legislatura-apruebe-la-reforma-ambiental/',
+    label: 'Victoria 840 · PC 1079 de Méndez; ella preside la comisión (17 ago 2026)',
+    published: '2026-08-17',
+  },
+  metroPC269: {
+    url: 'https://www.metro.pr/noticias/2025/06/23/camara-aprueba-proyecto-que-regula-casetas-en-la-parguera/',
+    label: 'Metro · informe positivo de su comisión sobre PC 269 (La Parguera)',
+    published: '2025-06-23',
   },
 } as const satisfies Record<string, DossierSource>
 

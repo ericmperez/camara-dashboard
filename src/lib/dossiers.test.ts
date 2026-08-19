@@ -839,26 +839,40 @@ describe('dossiers 2025–2028', () => {
     expect(d11.career.join(' ')).toMatch(/monto no extraído/)
     expect(d11.career.join(' ')).toMatch(/Rossner Marrero/)
     expect(d11.career.join(' ')).toMatch(/Angel de Leon/)
+    expect(d11.career.join(' ')).toMatch(/Wikipedia EN y ES/)
     expect(d11.career.join(' ')).toMatch(/no se presenta como XML CEE/)
     expect(d11.career.join(' ')).toMatch(/No se le atribuyen OCE-EB-24-030/)
+    expect(d11.career.join(' ')).toMatch(/no se le atribuyen en solitario RCC 191/)
+    expect(d11.career.join(' ')).toMatch(/PC 1079/)
+    expect(d11.career.join(' ')).toMatch(/no autoría/)
+    expect(d11.career.join(' ')).toMatch(/no es pariente/)
     expect(d11.career.join(' ')).not.toMatch(/LinkedIn/)
+    expect(d11.aspirations.join(' ')).toMatch(/RCC 58|Res\. Conj\. 19-2025/)
+    expect(d11.aspirations.join(' ')).toMatch(/RC 557/)
+    expect(d11.aspirations.join(' ')).toMatch(/RC 489/)
+    expect(d11.aspirations.join(' ')).toMatch(/Autores = 1/)
     expect(d11.committees).toEqual(['Recursos Naturales'])
     expect(JSON.stringify(d11)).not.toMatch(/\$\d/)
     expect(JSON.stringify(d11)).not.toMatch(/M-943-AL/)
     const facts = d11.connections.filter((c) => c.kind === 'fact')
-    expect(facts.map((c) => c.toId)).toEqual(['carlos-johnny-mendez-nunez'])
-    expect(facts[0].label).toMatch(/no implica alianza/)
-    expect(d11.connections.some((c) => /alcalde|Dorado|Vega Alta|Vega Baja/i.test(c.label) && c.toId !== 'carlos-johnny-mendez-nunez')).toBe(false)
+    expect(facts.map((c) => c.toId)).toEqual(['edgardo-feliciano-sanchez', 'jose-f-aponte-hernandez'])
+    expect(facts.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d11.connections.some((c) => c.toId === 'carlos-johnny-mendez-nunez')).toBe(false)
     expect(d11.sources.map((s) => s.url)).toEqual(
       expect.arrayContaining([
         SRC.camaraElinette.url,
         SRC.sutraElinette.url,
         SRC.ballotpediaElinette.url,
         SRC.wiki2024House.url,
+        SRC.wiki2024HouseES.url,
         SRC.oceElinette2024.url,
         SRC.oceD11_2024.url,
         SRC.oceD11_2020.url,
-        SRC.camaraRecursosNaturales.url,
+        SRC.sutraRCC0058.url,
+        SRC.sutraRCC0191.url,
+        SRC.wiprRCC58.url,
+        SRC.victoria840PC1079.url,
+        SRC.metroPC269.url,
         SRC.microjurisComisiones.url,
       ]),
     )
