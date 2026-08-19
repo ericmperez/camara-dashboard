@@ -64,12 +64,27 @@ export const VERIFIED: Record<string, Dossier> = {
 
   'yashira-lebron-rodriguez': {
     id: 'yashira-lebron-rodriguez',
-    bio: 'Primera mujer representante del Distrito 8. Juramentó el 23 de octubre de 2014. Electa vicepresidenta por unanimidad el 13 de enero de 2025.',
+    bio: 'Yashira M. Lebrón Rodríguez. Nació el 24 de julio de 1981 en Bayamón (ficha oficial). Titular del Distrito 8 (Bayamón) por el PNP. Primera mujer representante del Distrito 8. Juramentó el 23 de octubre de 2014. Electa vicepresidenta por unanimidad el 13 de enero de 2025 (Metro inaugural). SUTRA la lista como M-941-AL, cuatrienio 2025–2028. Correo oficial: ylebron@camara.pr.gov. Teléfono en el roster: (787) 722-0801; el genérico de Cámara es 787-721-6040. Ballotpedia: asumió el 23 de octubre de 2014; el término vence el 2 de enero de 2029.',
     career: [
-      'Juramentó el 23 de octubre de 2014; primera mujer del Distrito 8.',
-      'Vicepresidenta de la Cámara desde el 13 de enero de 2025.',
+      'Escuelas públicas: Diego de Torres Vargas y Jesús Sánchez Erazo; superior Agustín Stahl (la ficha oficial escribe «Sthal»). Bachillerato en ciencias políticas, UPR; maestría en justicia criminal, Interamericana (Wikipedia).',
+      'Directora de la Comisión de Gobierno del Senado; Subsecretaria Auxiliar de Legislatura Municipal de Guaynabo; vicepresidenta de la Legislatura Municipal de Bayamón. Asambleísta municipal de Bayamón, dos términos (ficha oficial / Wikipedia).',
+      'Juramentó el 23 de octubre de 2014; primera mujer del Distrito 8. Llenó la vacante de Antonio «Toñito» Silva (Wikipedia). Silva no está sentado.',
+      'Revalidó en 2016 y 2020 (ficha oficial). Primaria PNP de 2024 cancelada; electa el 5 de noviembre de 2024 (Ballotpedia / CEE). Vicepresidenta de la Cámara desde el 13 de enero de 2025.',
+      'HECHO (ficha oficial 2025): publica «Presidente: Comisión de Calendario y Reglas Especiales de Debate». HECHO (RC0002 / commissions.ts): esa presidencia está asignada a José E. Torres Zamora. applyCommissions no se la marca a ella.',
+      'HECHO histórico (Wikipedia, cuatrienio viejo): la da como presidenta de Consumidor / Banca / Seguros. No es el cargo 2025 (hoy Consumidor es Robles; Banca, Navarro).',
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic): incumbente PNP 13,006 (48.0%); PPD Carlos A. Sánchez Rivera 6,083; PIP Jesús M. Dávila 5,570; PD Abdiel Enrique Contreras Álvarez 2,428; total 27,087. Hold PNP. Ballotpedia confirma el 13,006; nombra variantes Carlos Sanchez Rivera, Jesús Dávila Molina y Abdiel Contreras — no se copian esas formas.',
+      'Expediente OCE-B-21-138 (2020) y OCE-EB-24-160 (2024; PDF ~14 may 2026): candidata / representante D8, PNP. Índices D08 2020 y 2024 y descargas d082024. Docket citado, monto no extraído. Sin montos ni hallazgos.',
+      'La ficha oficial y Wikipedia no nombran familiares.',
     ],
-    aspirations: [],
+    aspirations: [
+      'Es Noticia (100 días): como vicepresidenta destacó el PC 420, que propone congelar el impuesto al inventario / 9%. SUTRA lista el PC 420 (18 mar 2025) bajo Méndez; no se afirma autoría de Lebrón.',
+      'PC 101 (3 ene 2025): ampliar adiestramientos municipales sobre violencia doméstica (SUTRA M-941-AL).',
+      'PC 107 (3 ene 2025): servicio comunitario en la Carta de Derechos de la comunidad escolar (SUTRA).',
+      'PC 385 (6 mar 2025): prohibir venta de cigarrillos electrónicos a menos de 500 metros de escuelas (SUTRA).',
+      'PC 672 (12 may 2025): prohibir montos mínimos para pagar con tarjeta (SUTRA).',
+      'PC 1158 (19 feb 2026): entrada gratuita de un adulto responsable por menor en eventos deportivos (SUTRA).',
+      'PC 1331 (29 jun 2026): «Ley para la Regulación de Bienes Raíces en Puerto Rico» (SUTRA).',
+    ],
     committees: [],
     connections: [
       {
@@ -85,7 +100,21 @@ export const VERIFIED: Record<string, Dossier> = {
         sources: [SRC.metroInaugural],
       },
     ],
-    sources: [SRC.metroInaugural, SRC.camaraYashira],
+    sources: [
+      SRC.metroInaugural,
+      SRC.camaraYashira,
+      SRC.sutraYashira,
+      SRC.ballotpediaYashira,
+      SRC.wikiYashira,
+      SRC.wiki2024House,
+      SRC.oceYashira2020,
+      SRC.oceD08_2020,
+      SRC.oceYashira2024,
+      SRC.oceD08_2024,
+      SRC.oceD08_2024dl,
+      SRC.esNoticia100,
+      SRC.microjurisComisiones,
+    ],
   },
 
   'angel-r-pena-ramirez': {

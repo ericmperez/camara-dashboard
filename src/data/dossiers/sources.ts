@@ -106,6 +106,42 @@ export const SRC = {
     url: 'https://www.camara.pr.gov/team/yashira-lebron-rodriguez/',
     label: 'Cámara · ficha oficial de Yashira Lebrón Rodríguez',
   },
+  sutraYashira: {
+    url: 'https://sutra.oslpr.org/legisladores/M-941-AL',
+    label: 'SUTRA · Yashira Lebrón Rodríguez (M-941-AL, 2025–2028)',
+  },
+  ballotpediaYashira: {
+    url: 'https://ballotpedia.org/Yashira_Lebr%C3%B3n_Rodr%C3%ADguez',
+    label: 'Ballotpedia · Yashira Lebrón Rodríguez (D8; asumió 23 oct 2014)',
+  },
+  wikiYashira: {
+    url: 'https://en.wikipedia.org/wiki/Yashira_Lebr%C3%B3n_Rodr%C3%ADguez',
+    label: 'Wikipedia · Yashira Lebrón Rodríguez (vacante Silva; cargos viejos)',
+  },
+  oceYashira2020: {
+    url: 'https://oce.pr.gov/download/oce-b-21-138-yashira-lebron-rodriguez/',
+    label: 'OCE · expediente OCE-B-21-138 (Lebrón, D8 PNP, 2020)',
+  },
+  oceD08_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-08/',
+    label: 'OCE · auditorías 2020, representantes Distrito 08',
+  },
+  oceYashira2024: {
+    url: 'https://oce.pr.gov/download/oce-eb-24-160-yashira-lebron-rodriguez/',
+    label: 'OCE · expediente OCE-EB-24-160 (Lebrón, D8 PNP; PDF ~14 may 2026)',
+  },
+  oceD08_2024: {
+    url: 'https://oce.pr.gov/auditorias-2024/auditorias-2024-representantes/distrito-08/',
+    label: 'OCE · auditorías 2024, representantes Distrito 08',
+  },
+  oceD08_2024dl: {
+    url: 'https://oce.pr.gov/downloads/d082024/',
+    label: 'OCE · descargas D08 2024 (OCE-EB-24-160 Lebrón)',
+  },
+  esNoticia100: {
+    url: 'https://esnoticiapr.com/camara-de-representantes-destaca-logros-en-sus-primeros-100-dias-de-gestion-legislativa/',
+    label: 'Es Noticia · 100 días; Lebrón destaca PC 420 (inventario)',
+  },
   camaraHau: {
     url: 'https://www.camara.pr.gov/team/gretchen-hau/',
     label: 'Cámara · ficha oficial de Gretchen Hau',
