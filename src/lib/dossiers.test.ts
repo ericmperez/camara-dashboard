@@ -30,7 +30,7 @@ describe('dossiers 2025–2028', () => {
     }
   })
 
-  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio y Hernández D3', () => {
+  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3 y Parés', () => {
     const extra = [
       'jose-f-aponte-hernandez',
       'roberto-rivera-ruiz-de-porras',
@@ -38,12 +38,13 @@ describe('dossiers 2025–2028', () => {
       'christian-muriel-sanchez',
       'ricardo-chino-rey-ocasio-ramos',
       'jose-hernandez-concepcion',
+      'victor-l-pares-otero',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(16)
+    expect(DEEP_IDS.size).toBe(17)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
@@ -331,6 +332,68 @@ describe('dossiers 2025–2028', () => {
         SRC.voceroPC1352.url,
         SRC.radioIslaVistas2026.url,
         SRC.voceroAAA.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D4 de Parés con interinato 2012, CEE 2024 y OCE-17-216', () => {
+    const d4 = DOSSIERS['victor-l-pares-otero']
+    expect(d4.bio).toMatch(/18 de julio de 1966/)
+    expect(d4.bio).toMatch(/vpares@camara\.pr\.gov/)
+    expect(d4.bio).toMatch(/M-937-AL/)
+    expect(d4.bio).toMatch(/Comisión de Gobierno/)
+    expect(d4.bio).toMatch(/omite el interinato/)
+    expect(d4.career.join(' ')).toMatch(/José y Aida/)
+    expect(d4.career.join(' ')).toMatch(/fundación del PNP/)
+    expect(d4.career.join(' ')).toMatch(/Liza Fernández/)
+    expect(d4.career.join(' ')).toMatch(/no familiar/)
+    expect(d4.career.join(' ')).toMatch(/24 de mayo de 2012/)
+    expect(d4.career.join(' ')).toMatch(/No retuvo el escaño/)
+    expect(d4.career.join(' ')).toMatch(/Interamericana/)
+    expect(d4.career.join(' ')).toMatch(/Méndez lo designó/)
+    expect(d4.career.join(' ')).toMatch(/11,210/)
+    expect(d4.career.join(' ')).toMatch(/Adriana Gutiérrez Colón/)
+    expect(d4.career.join(' ')).toMatch(/PIP/)
+    expect(d4.career.join(' ')).not.toMatch(/MVC/)
+    expect(d4.career.join(' ')).toMatch(/OCE-17-216/)
+    expect(d4.career.join(' ')).toMatch(/no hay auditoría 2024/)
+    expect(d4.career.join(' ')).toMatch(/Ángel Pérez Otero/)
+    expect(JSON.stringify(d4)).not.toMatch(/esposa|hijos|nieta/)
+    expect(d4.aspirations.join(' ')).toMatch(/RC 42/)
+    expect(d4.aspirations.join(' ')).toMatch(/PC 42/)
+    expect(d4.aspirations.join(' ')).toMatch(/PC 17/)
+    expect(d4.aspirations.join(' ')).toMatch(/RC 749/)
+    expect(d4.aspirations.join(' ')).toMatch(/PC 1335/)
+    expect(d4.aspirations.join(' ')).toMatch(/RC 653/)
+    expect(d4.aspirations.join(' ')).toMatch(/RC 592/)
+    expect(d4.committees).toEqual(['Gobierno'])
+    expect(JSON.stringify(d4)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d4)).not.toMatch(/OCE-EB-24/)
+    const facts = d4.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual(
+      expect.arrayContaining(['carlos-johnny-mendez-nunez', 'adriana-gutierrez-colon']),
+    )
+    expect(facts).toHaveLength(2)
+    const overlap = townOverlapConnections('victor-l-pares-otero')
+    expect(overlap.some((c) => c.toId === 'eddie-charbonier-chinea' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.some((c) => c.toId === 'ricardo-chino-rey-ocasio-ramos')).toBe(true)
+    expect(overlap.some((c) => c.toId === 'jose-hernandez-concepcion')).toBe(true)
+    expect(overlap.some((c) => c.toId === 'jorge-navarro-suarez')).toBe(true)
+    expect(d4.connections.some((c) => c.kind === 'inference')).toBe(false)
+    expect(d4.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraPares.url,
+        SRC.sutraPares.url,
+        SRC.ballotpediaPares.url,
+        SRC.wikiPares.url,
+        SRC.wiki2024House.url,
+        SRC.ocePares2016.url,
+        SRC.oceD04_2016.url,
+        SRC.oce2024Reps.url,
+        SRC.tribunaPares2012.url,
         SRC.microjurisComisiones.url,
       ]),
     )

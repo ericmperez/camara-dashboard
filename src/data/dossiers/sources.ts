@@ -184,7 +184,7 @@ export const SRC = {
   },
   oce2024Reps: {
     url: 'https://oce.pr.gov/auditorias-2024/auditorias-2024-representantes/',
-    label: 'OCE · auditorías 2024 representantes (D02 y D03 no publicados)',
+    label: 'OCE · auditorías 2024 representantes (D02, D03 y D04 no publicados)',
   },
   wiprPC654: {
     url: 'http://wipr.pr/impulsan-talleres-obligatorios-de-crianza-a-padres-y-custodios-para-prevenir-el-maltrato-infantil/',
@@ -247,6 +247,35 @@ export const SRC = {
   voceroAAA: {
     url: 'https://www.elvocero.com/gobierno/por-el-momento-han-cumplido-jos-che-to-hern-ndez-contin-a-evaluando-el-desempe/article_4445aa1d-6854-4d4d-b90b-a825d78e752d.html',
     label: 'El Vocero · evalúa AAA; respaldo condicionado a demanda de Romero',
+  },
+  camaraPares: {
+    url: 'https://www.camara.pr.gov/team/victor-l-pares-otero/',
+    label: 'Cámara · ficha oficial de Víctor L. Parés Otero',
+  },
+  sutraPares: {
+    url: 'https://sutra.oslpr.org/legisladores/M-937-AL',
+    label: 'SUTRA · Víctor L. Parés Otero (M-937-AL, 2025–2028)',
+  },
+  ballotpediaPares: {
+    url: 'https://ballotpedia.org/V%C3%ADctor_Par%C3%A9s_Otero',
+    label: 'Ballotpedia · Víctor Parés Otero (D4; asumió 2 ene 2017)',
+  },
+  wikiPares: {
+    url: 'https://en.wikipedia.org/wiki/V%C3%ADctor_Par%C3%A9s',
+    label: 'Wikipedia · Víctor Parés (D4; interinato 2012)',
+  },
+  ocePares2016: {
+    url: 'https://oce.pr.gov/download/auditora-oce-17-216-vctor-pars-otero/',
+    label: 'OCE · expediente OCE-17-216 (Parés, D4 PNP, 2016)',
+  },
+  oceD04_2016: {
+    url: 'https://oce.pr.gov/auditorias-2016/auditorias-2016-representantes/distrito-04/',
+    label: 'OCE · auditorías 2016, representantes Distrito 04',
+  },
+  tribunaPares2012: {
+    url: 'https://tribunapr.com/2012/05/21/el-jueves-juramentaran-a-victor-pares-y-eduardo-ferrer-rios.html',
+    label: 'Tribuna · juramentación de Parés y Eduardo Ferrer (24 may 2012)',
+    published: '2012-05-21',
   },
 } as const satisfies Record<string, DossierSource>
 
