@@ -1103,9 +1103,15 @@ describe('dossiers 2025–2028', () => {
     expect(d14.career.join(' ')).toMatch(/Open seat|open seat|Primera vez/i)
     expect(d14.career.join(' ')).toMatch(/sitio de campaña, no ficha oficial/)
     expect(d14.career.join(' ')).toMatch(/21 de septiembre de 1975/)
+    expect(d14.career.join(' ')).toMatch(/La ficha de Cámara no publica fecha de nacimiento/)
     expect(d14.career.join(' ')).toMatch(/Juan Robles Pantoja/)
     expect(d14.career.join(' ')).toMatch(/padre de dos/)
     expect(d14.career.join(' ')).toMatch(/no es dinastía/)
+    expect(d14.career.join(' ')).toMatch(/La Meseta/)
+    expect(d14.career.join(' ')).toMatch(/Caleb/)
+    expect(d14.career.join(' ')).toMatch(/Débora/)
+    expect(d14.career.join(' ')).toMatch(/opinión firmada/)
+    expect(d14.career.join(' ')).toMatch(/no está en la ficha de Cámara/)
     expect(d14.career.join(' ')).toMatch(/OCE-EB-24-103/)
     expect(d14.career.join(' ')).toMatch(/PDF locked/)
     expect(d14.career.join(' ')).toMatch(/monto no extraído/)
@@ -1114,19 +1120,28 @@ describe('dossiers 2025–2028', () => {
     expect(d14.career.join(' ')).toMatch(/Sin docket 2020 a su nombre/)
     expect(d14.career.join(' ')).toMatch(/no se le atribuye en solitario el PC 243/)
     expect(d14.career.join(' ')).toMatch(/PC 180/)
+    expect(d14.career.join(' ')).toMatch(/no es suyo solo/)
+    expect(d14.career.join(' ')).toMatch(/Swanny E\. Vargas Laureano/)
+    expect(d14.career.join(' ')).toMatch(/Joe Colón Rodríguez/)
     expect(d14.career.join(' ')).toMatch(/PC 385/)
     expect(d14.career.join(' ')).not.toMatch(/11,423/)
     expect(d14.career.join(' ')).not.toMatch(/OCE-EB-24-103.*\d[\d,]+\.\d{2} dólares/)
-    expect(d14.aspirations.join(' ')).toMatch(/PC 180/)
-    expect(d14.aspirations.join(' ')).toMatch(/explotación financiera/)
-    expect(d14.aspirations.join(' ')).toMatch(/no es autoría exclusiva/)
-    expect(d14.aspirations.join(' ')).toMatch(/PC 632/)
+    expect(d14.aspirations.join(' ')).not.toMatch(/PC 180/)
+    expect(d14.aspirations.join(' ')).toMatch(/RC 249/)
+    expect(d14.aspirations.join(' ')).toMatch(/iluminación/)
+    expect(d14.aspirations.join(' ')).toMatch(/RC 289/)
+    expect(d14.aspirations.join(' ')).toMatch(/no anuncian el precio/)
+    expect(d14.aspirations.join(' ')).toMatch(/RC 317/)
     expect(d14.aspirations.join(' ')).toMatch(/PC 786/)
     expect(d14.aspirations.join(' ')).toMatch(/PC 833/)
-    expect(d14.aspirations.join(' ')).toMatch(/PC 840/)
-    expect(d14.aspirations.join(' ')).toMatch(/PC 843/)
-    expect(d14.aspirations.join(' ')).toMatch(/RC 719/)
+    expect(d14.aspirations.join(' ')).toMatch(/RC 649/)
+    expect(d14.aspirations.join(' ')).toMatch(/residenciales públicos/)
+    expect(d14.aspirations.join(' ')).toMatch(/RC 668/)
+    expect(d14.aspirations.join(' ')).toMatch(/La Puntilla/)
+    expect(d14.aspirations.join(' ')).toMatch(/El Fuerte/)
     expect(d14.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d14.aspirations.join(' ')).not.toMatch(/PC 632/)
+    expect(d14.aspirations.join(' ')).not.toMatch(/RC 719/)
     expect(d14.committees).toEqual(['Asuntos del Consumidor'])
     expect(d14.committees).not.toContain('Región Norte')
     expect(d14.committees).not.toContain('Salud')
@@ -1164,15 +1179,17 @@ describe('dossiers 2025–2028', () => {
         SRC.oceD14_2024.url,
         SRC.oceD14_2020.url,
         SRC.campaignRobles.url,
+        SRC.islaNewsRoblesPapa.url,
         SRC.visionPC180.url,
         SRC.sutraPC0180.url,
         SRC.sutraPC0243.url,
-        SRC.sutraPC0632.url,
         SRC.sutraPC0786.url,
         SRC.sutraPC0833.url,
-        SRC.sutraPC0840.url,
-        SRC.sutraPC0843.url,
-        SRC.sutraRC0719.url,
+        SRC.sutraRC0249.url,
+        SRC.sutraRC0289.url,
+        SRC.sutraRC0317.url,
+        SRC.sutraRC0649.url,
+        SRC.sutraRC0668.url,
         SRC.microjurisComisiones.url,
       ]),
     )

@@ -857,6 +857,31 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas/161475',
     label: 'SUTRA · RC 719 (autor único; venta de autos por entidades no licenciadas)',
   },
+  sutraRC0249: {
+    url: 'https://sutra.oslpr.org/medidas/154837',
+    label: 'SUTRA · RC 249 (autor único; iluminación pública D14 Arecibo / Hatillo)',
+  },
+  sutraRC0289: {
+    url: 'https://sutra.oslpr.org/medidas/155459',
+    label: 'SUTRA · RC 289 (autor único; comerciantes que no anuncian precio / Consumidor)',
+  },
+  sutraRC0317: {
+    url: 'https://sutra.oslpr.org/medidas/155747',
+    label: 'SUTRA · RC 317 (autor único; interrupciones AAA D14 Arecibo / Hatillo)',
+  },
+  sutraRC0649: {
+    url: 'https://sutra.oslpr.org/medidas/160694',
+    label: 'SUTRA · RC 649 (autor único; residenciales públicos D14)',
+  },
+  sutraRC0668: {
+    url: 'https://sutra.oslpr.org/medidas/160931',
+    label: 'SUTRA · RC 668 (autor único; bombas AAA La Puntilla / El Fuerte, Arecibo)',
+  },
+  islaNewsRoblesPapa: {
+    url: 'https://islanewspr.com/2025/06/09/opinion-siempre-quise-superarme-y-servir-de-ejemplo-como-papa/',
+    label: 'Isla News · opinión firmada de Robles Rivera (La Meseta; Caleb y Débora)',
+    published: '2025-06-09',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
