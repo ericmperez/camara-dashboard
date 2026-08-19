@@ -618,6 +618,75 @@ describe('dossiers 2025–2028', () => {
     )
   })
 
+  it('expande la ficha de mesa de Lebrón D8 con CEE 2024, OCE y SUTRA M-941-AL', () => {
+    const d8 = DOSSIERS['yashira-lebron-rodriguez']
+    expect(d8.bio).toMatch(/24 de julio de 1981/)
+    expect(d8.bio).toMatch(/primera mujer/i)
+    expect(d8.bio).toMatch(/23 de octubre de 2014/)
+    expect(d8.bio).toMatch(/ylebron@camara\.pr\.gov/)
+    expect(d8.bio).toMatch(/M-941-AL/)
+    expect(d8.bio).toMatch(/722-0801/)
+    expect(d8.bio).toMatch(/vicepresidenta/i)
+    expect(d8.career.join(' ')).toMatch(/Diego de Torres Vargas/)
+    expect(d8.career.join(' ')).toMatch(/Jesús Sánchez Erazo/)
+    expect(d8.career.join(' ')).toMatch(/Sthal/)
+    expect(d8.career.join(' ')).toMatch(/Toñito Silva|Antonio «Toñito» Silva/)
+    expect(d8.career.join(' ')).toMatch(/primaria PNP de 2024 cancelada/i)
+    expect(d8.career.join(' ')).toMatch(/13,006/)
+    expect(d8.career.join(' ')).toMatch(/Carlos A\. Sánchez Rivera/)
+    expect(d8.career.join(' ')).toMatch(/Jesús M\. Dávila/)
+    expect(d8.career.join(' ')).toMatch(/Abdiel Enrique Contreras Álvarez/)
+    expect(d8.career.join(' ')).toMatch(/27,087/)
+    expect(d8.career.join(' ')).toMatch(/Torres Zamora/)
+    expect(d8.career.join(' ')).toMatch(/Calendario/)
+    expect(d8.career.join(' ')).toMatch(/cuatrienio viejo|HECHO histórico/)
+    expect(d8.career.join(' ')).toMatch(/OCE-B-21-138/)
+    expect(d8.career.join(' ')).toMatch(/OCE-EB-24-160/)
+    expect(d8.career.join(' ')).toMatch(/monto no extraído/)
+    expect(d8.committees).toEqual([])
+    expect(d8.committees).not.toContain('Calendario y Reglas Especiales de Debate')
+    expect(DOSSIERS['jose-e-torres-zamora'].committees).toContain(
+      'Calendario y Reglas Especiales de Debate',
+    )
+    expect(JSON.stringify(d8)).not.toMatch(/esposa|cónyuge|yerno/)
+    expect(d8.aspirations.join(' ')).toMatch(/PC 420/)
+    expect(d8.aspirations.join(' ')).toMatch(/no se afirma autoría/)
+    expect(d8.aspirations.join(' ')).toMatch(/PC 101/)
+    expect(d8.aspirations.join(' ')).toMatch(/PC 107/)
+    expect(d8.aspirations.join(' ')).toMatch(/PC 385/)
+    expect(d8.aspirations.join(' ')).toMatch(/PC 672/)
+    expect(d8.aspirations.join(' ')).toMatch(/PC 1158/)
+    expect(d8.aspirations.join(' ')).toMatch(/PC 1331/)
+    expect(JSON.stringify(d8)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d8)).not.toMatch(/M-718/)
+    const facts = d8.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual(['carlos-johnny-mendez-nunez', 'angel-r-pena-ramirez'])
+    expect(facts).toHaveLength(2)
+    expect(d8.connections.some((c) => c.toId === 'luis-perez-ortiz')).toBe(false)
+    expect(d8.connections.some((c) => c.toId === 'felix-pacheco-burgos')).toBe(false)
+    const overlap = townOverlapConnections('yashira-lebron-rodriguez')
+    expect(overlap.some((c) => c.toId === 'luis-perez-ortiz' && c.kind === 'inference')).toBe(true)
+    expect(overlap.some((c) => c.toId === 'angel-morey-noble')).toBe(true)
+    expect(d8.connections.some((c) => c.kind === 'inference')).toBe(false)
+    expect(d8.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraYashira.url,
+        SRC.sutraYashira.url,
+        SRC.ballotpediaYashira.url,
+        SRC.wikiYashira.url,
+        SRC.wiki2024House.url,
+        SRC.oceYashira2020.url,
+        SRC.oceD08_2020.url,
+        SRC.oceYashira2024.url,
+        SRC.oceD08_2024.url,
+        SRC.oceD08_2024dl.url,
+        SRC.esNoticia100.url,
+        SRC.metroInaugural.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
     for (const dossier of Object.values(DOSSIERS)) {
       for (const connection of dossier.connections) {
