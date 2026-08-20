@@ -1636,4 +1636,53 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraPC0455Fourquet,
     ],
   },
+
+  'luis-josean-jimenez-torres': {
+    id: 'luis-josean-jimenez-torres',
+    bio: 'Titular PNP del Distrito 26 (Orocovis, Barranquitas, Coamo, Corozal y Villalba). Primer término; asumió el 2 de enero de 2025. SUTRA lo lista como M-959-AL.',
+    career: [
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 17,906 (50.7%); PPD Chui Hernández Arroyo (incumbente) 15,512 (43.9%); MVC Sigfredo Torres Cintrón 1,916 (5.4%); total 35,334. Margen 2,394. Ganancia PNP. votes.json coincide.',
+    ],
+    aspirations: [
+      'RCC 212 (25 sep 2025): designa la pista atlética del Complejo Deportivo Ramón Cano Torres, Barranquitas (SUTRA Autores = 1).',
+      'RCC 256 (18 dic 2025): liberación de finca DRD en Barrio Padilla, Corozal (SUTRA Autores = 1).',
+      'RCC 334 (13 abr 2026): liberación de restricciones, finca Proyecto Alvarado, Orocovis (SUTRA Autores = 1).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'jerry-nieves-rosario',
+        kind: 'fact',
+        label:
+          'Coautor del PC 1120 con Jerry Nieves Rosario (SUTRA Autores 5); no implica alianza partidista',
+        sources: [SRC.sutraPC1120Josean],
+      },
+      {
+        toId: 'jorge-navarro-suarez',
+        kind: 'fact',
+        label:
+          'Coautor del PC 310 con Jorge Navarro Suárez (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraPC0310Josean],
+      },
+      {
+        toId: 'angel-morey-noble',
+        kind: 'fact',
+        label:
+          'Coautor del PC 1136 con Ángel Morey Noble y Jorge Navarro Suárez (SUTRA Autores 3); no implica alianza partidista',
+        sources: [SRC.sutraPC1136Josean],
+      },
+    ],
+    sources: [
+      SRC.camaraJosean,
+      SRC.sutraJosean,
+      SRC.wiki2024House,
+      SRC.microjurisComisiones,
+      SRC.sutraRCC0212Josean,
+      SRC.sutraRCC0256Josean,
+      SRC.sutraRCC0334Josean,
+      SRC.sutraPC1120Josean,
+      SRC.sutraPC0310Josean,
+      SRC.sutraPC1136Josean,
+    ],
+  },
 }

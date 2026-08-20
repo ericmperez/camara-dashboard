@@ -2028,6 +2028,75 @@ describe('dossiers 2025–2028', () => {
     )
   })
 
+  it('expande la ficha delgada de Josean D26 con CEE 17,906 y SUTRA M-959-AL', () => {
+    const d26 = DOSSIERS['luis-josean-jimenez-torres']
+    expect(DEEP_IDS.has('luis-josean-jimenez-torres')).toBe(false)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['luis-josean-jimenez-torres']).toBeDefined()
+    expect(d26.bio).toMatch(/Distrito 26/)
+    expect(d26.bio).toMatch(/M-959-AL/)
+    expect(d26.bio).toMatch(/2 de enero de 2025/)
+    expect(d26.career.join(' ')).toMatch(/17,906/)
+    expect(d26.career.join(' ')).toMatch(/50\.7%/)
+    expect(d26.career.join(' ')).toMatch(/35,334/)
+    expect(d26.career.join(' ')).toMatch(/Chui Hernández Arroyo/)
+    expect(d26.career.join(' ')).toMatch(/15,512/)
+    expect(d26.career.join(' ')).toMatch(/votes\.json/)
+    expect(d26.career.join(' ')).toMatch(/Ganancia PNP/)
+    expect(JSON.stringify(d26)).not.toMatch(/Primera Hora|Yadira Díaz|Díaz Santos/)
+    expect(d26.aspirations).toHaveLength(3)
+    expect(d26.aspirations.join(' ')).toMatch(/RCC 212/)
+    expect(d26.aspirations.join(' ')).toMatch(/RCC 256/)
+    expect(d26.aspirations.join(' ')).toMatch(/RCC 334/)
+    expect(d26.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d26.aspirations.join(' ')).not.toMatch(
+      /PC 408|PC0408|PC 839|PC0839|RC 738|RC0738|PC 1120|PC1120|PC 310|PC0310|PC 1136|PC1136/,
+    )
+    expect(d26.committees).toEqual(['Recreación y Deportes'])
+    expect(JSON.stringify(d26)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d26)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d26.connections.map((c) => c.toId)).toEqual([
+      'jerry-nieves-rosario',
+      'jorge-navarro-suarez',
+      'angel-morey-noble',
+    ])
+    expect(d26.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d26.connections[0]?.label).toMatch(/PC 1120/)
+    expect(d26.connections[1]?.label).toMatch(/PC 310/)
+    expect(d26.connections[2]?.label).toMatch(/PC 1136/)
+    expect(d26.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d26.connections.some((c) => c.toId === 'estrella-martinez-soto')).toBe(false)
+    const overlap = townOverlapConnections('luis-josean-jimenez-torres')
+    expect(overlap.some((c) => c.toId === 'estrella-martinez-soto' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d26.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraJosean.url,
+        SRC.sutraJosean.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraRCC0212Josean.url,
+        SRC.sutraRCC0256Josean.url,
+        SRC.sutraRCC0334Josean.url,
+        SRC.sutraPC1120Josean.url,
+        SRC.sutraPC0310Josean.url,
+        SRC.sutraPC1136Josean.url,
+      ]),
+    )
+    expect(d26.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraJosean.url).toBe('https://sutra.oslpr.org/legisladores/M-959-AL')
+    expect(SRC.camaraJosean.url).toBe(
+      'https://www.camara.pr.gov/team/luis-josean-jimenez-torres/',
+    )
+    expect(SRC.sutraRCC0212Josean.url).toBe('https://sutra.oslpr.org/medidas/158774')
+    expect(SRC.sutraRCC0256Josean.url).toBe('https://sutra.oslpr.org/medidas/159570')
+    expect(SRC.sutraRCC0334Josean.url).toBe('https://sutra.oslpr.org/medidas/160933')
+    expect(SRC.sutraPC1120Josean.url).toBe('https://sutra.oslpr.org/medidas/160432')
+    expect(SRC.sutraPC0310Josean.url).toBe('https://sutra.oslpr.org/medidas/153579')
+    expect(SRC.sutraPC1136Josean.url).toBe('https://sutra.oslpr.org/medidas/160485')
+  })
+
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
     for (const dossier of Object.values(DOSSIERS)) {
       for (const connection of dossier.connections) {

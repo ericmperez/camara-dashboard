@@ -1402,6 +1402,41 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0171',
     label: 'SUTRA · RCC 171 (Autores 2; Torres García y Torres Zamora; Escuela Luz Correa, Juana Díaz)',
   },
+  camaraJosean: {
+    url: 'https://www.camara.pr.gov/team/luis-josean-jimenez-torres/',
+    label:
+      'Cámara · ficha oficial de Luis ‘Josean’ Jiménez Torres (D26; Presidente: Comisión de Recreación y Deportes)',
+  },
+  sutraJosean: {
+    url: 'https://sutra.oslpr.org/legisladores/M-959-AL',
+    label: 'SUTRA · Luis J. Jiménez Torres (M-959-AL, 2025–2028; Distrito 26)',
+  },
+  sutraRCC0212Josean: {
+    url: 'https://sutra.oslpr.org/medidas/158774',
+    label:
+      'SUTRA · RCC 212 (autor único; pista atlética Complejo Deportivo Ramón Cano Torres, Barranquitas)',
+  },
+  sutraRCC0256Josean: {
+    url: 'https://sutra.oslpr.org/medidas/159570',
+    label: 'SUTRA · RCC 256 (autor único; liberación de finca DRD, Barrio Padilla, Corozal)',
+  },
+  sutraRCC0334Josean: {
+    url: 'https://sutra.oslpr.org/medidas/160933',
+    label: 'SUTRA · RCC 334 (autor único; liberación de restricciones, finca Proyecto Alvarado, Orocovis)',
+  },
+  sutraPC1120Josean: {
+    url: 'https://sutra.oslpr.org/medidas/160432',
+    label:
+      'SUTRA · PC 1120 (Autores 5; Jiménez Torres y Nieves Rosario; coautores Ramos Rivera, Medina Calderón y Román López)',
+  },
+  sutraPC0310Josean: {
+    url: 'https://sutra.oslpr.org/medidas/153579',
+    label: 'SUTRA · PC 310 (Autores 2; Navarro Suárez y Jiménez Torres)',
+  },
+  sutraPC1136Josean: {
+    url: 'https://sutra.oslpr.org/medidas/160485',
+    label: 'SUTRA · PC 1136 (Autores 3; Navarro Suárez; coautores Jiménez Torres y Morey Noble)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
