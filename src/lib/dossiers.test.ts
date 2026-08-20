@@ -1709,8 +1709,9 @@ describe('dossiers 2025–2028', () => {
     expect(d21.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
     expect(d21.connections.some((c) => c.toId === 'lilibeth-lilly-rosas')).toBe(false)
     expect(d21.connections.some((c) => c.toId === 'joe-joito-colon-rodriguez')).toBe(false)
+    expect(d21.connections.some((c) => c.toId === 'ensol-a-rodriguez-torres')).toBe(false)
     const overlap = townOverlapConnections('omayra-m-martinez-vazquez')
-    expect(overlap.some((c) => c.toId === 'joe-joito-colon-rodriguez' && c.kind === 'inference')).toBe(
+    expect(overlap.some((c) => c.toId === 'ensol-a-rodriguez-torres' && c.kind === 'inference')).toBe(
       true,
     )
     expect(d21.sources.map((s) => s.url)).toEqual(
