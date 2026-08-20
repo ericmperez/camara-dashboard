@@ -1379,16 +1379,32 @@ describe('dossiers 2025–2028', () => {
     expect(d16.career.join(' ')).toMatch(/no lista el Distrito 16/)
     expect(d16.career.join(' ')).toMatch(/OCE-B-21-145/)
     expect(d16.career.join(' ')).toMatch(/miembro/)
+    expect(d16.career.join(' ')).toMatch(/portavoz PPD/)
     expect(d16.career.join(' ')).toMatch(/Tatiana Pérez Ramírez/)
     expect(d16.career.join(' ')).toMatch(/No se afirma que Figueroa la preside/)
+    expect(d16.career.join(' ')).toMatch(/Pilar Barbosa/)
     expect(d16.career.join(' ')).toMatch(/NO ENCONTRADO/)
     expect(d16.career.join(' ')).toMatch(/no hay récord público citado de un familiar sentado/)
     expect(d16.career.join(' ')).not.toMatch(/esposa|cónyuge|yerno/)
+    expect(d16.career.join(' ')).toMatch(/OCE-PB-24-002/)
+    expect(d16.career.join(' ')).toMatch(/No se le atribuyen/)
+    expect(d16.career.join(' ')).toMatch(/Boys & Girls Club/)
+    expect(d16.career.join(' ')).toMatch(/Ricky/)
+    expect(d16.career.join(' ')).toMatch(/RC 74/)
+    expect(d16.career.join(' ')).toMatch(/PC 812/)
+    expect(d16.career.join(' ')).toMatch(/No se afirma autoría SUTRA/)
     expect(d16.career.join(' ')).toMatch(/RC 56/)
-    expect(d16.aspirations.join(' ')).toMatch(/RC 56/)
+    expect(d16.aspirations.join(' ')).toMatch(/RC 56|RC0056/)
     expect(d16.aspirations.join(' ')).toMatch(/PR-112/)
     expect(d16.aspirations.join(' ')).toMatch(/PR-445/)
     expect(d16.aspirations.join(' ')).toMatch(/PR-446/)
+    expect(d16.aspirations.join(' ')).toMatch(/RCC 93/)
+    expect(d16.aspirations.join(' ')).toMatch(/Doris L\. Chaparro Ríos/)
+    expect(d16.aspirations.join(' ')).toMatch(/RCC 94/)
+    expect(d16.aspirations.join(' ')).toMatch(/RCC 95/)
+    expect(d16.aspirations.join(' ')).toMatch(/RC 391/)
+    expect(d16.aspirations.join(' ')).toMatch(/RCC 210/)
+    expect(d16.aspirations.join(' ')).toMatch(/RC 500/)
     expect(d16.aspirations.join(' ')).toMatch(/PC 579/)
     expect(d16.aspirations.join(' ')).toMatch(/PC 760/)
     expect(d16.aspirations.join(' ')).toMatch(/RCC 333/)
@@ -1400,10 +1416,20 @@ describe('dossiers 2025–2028', () => {
     expect(d16.aspirations.join(' ')).toMatch(/Autores = 1/)
     expect(d16.committees).toEqual([])
     expect(d16.committees).not.toContain('Educación')
-    expect(d16.connections).toEqual([])
     expect(JSON.stringify(d16)).not.toMatch(/\$\d/)
     expect(JSON.stringify(d16)).not.toMatch(/M-948-AL/)
     expect(JSON.stringify(d16)).not.toMatch(/OCE-EB-24/)
+    const facts = d16.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual([
+      'hector-e-ferrer-santiago',
+      'tatiana-perez-ramirez',
+      'ricardo-chino-rey-ocasio-ramos',
+    ])
+    expect(facts[0].label).toMatch(/PC 812/)
+    expect(facts[0].label).toMatch(/no se afirma autoría SUTRA/)
+    expect(facts[1].label).toMatch(/Pilar Barbosa|Educación/)
+    expect(facts[2].label).toMatch(/Pilar Barbosa/)
+    expect(facts.every((c) => /no implica alianza/.test(c.label))).toBe(true)
     expect(d16.connections.some((c) => c.toId === 'wilson-j-roman-lopez')).toBe(false)
     expect(d16.connections.some((c) => c.kind === 'inference')).toBe(false)
     const overlap = townOverlapConnections('reinaldo-rey-figueroa')
@@ -1422,9 +1448,16 @@ describe('dossiers 2025–2028', () => {
         SRC.wiki2024HouseES.url,
         SRC.visionRC56.url,
         SRC.oce2024Reps.url,
+        SRC.oce2024PrimariasReps.url,
         SRC.oceD16_2020.url,
         SRC.camaraEducacion.url,
+        SRC.camaraPilarBarbosa.url,
+        SRC.primeraHoraPC812.url,
+        SRC.islaNewsAAA210.url,
         SRC.sutraRC0056.url,
+        SRC.sutraRCC0093.url,
+        SRC.sutraRCC0210.url,
+        SRC.sutraRC0500.url,
         SRC.sutraPC0579.url,
         SRC.sutraPC0760.url,
         SRC.sutraRCC0333.url,
@@ -1434,6 +1467,8 @@ describe('dossiers 2025–2028', () => {
         SRC.microjurisComisiones.url,
       ]),
     )
+    expect(SRC.sutraDirectorioFigueroa.url).toBe('https://sutra.oslpr.org/directorio?page=14')
+    expect(SRC.sutraFigueroa.url).toBe('https://sutra.oslpr.org/legisladores/M-949-AL')
   })
 
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {

@@ -1027,8 +1027,8 @@ export const SRC = {
     label: 'SUTRA · Reinaldo Figueroa Acevedo (M-949-AL, legislador 949, 2025–2028; Detalle Distrito 16)',
   },
   sutraDirectorioFigueroa: {
-    url: 'https://sutra.oslpr.org/directorio?nombre=Figueroa&cuatrienio=2025-2028',
-    label: 'SUTRA · directorio 2025–2028 (filtro nombre Figueroa; Reinaldo Figueroa Acevedo D16 PPD)',
+    url: 'https://sutra.oslpr.org/directorio?page=14',
+    label: 'SUTRA · directorio 2025–2028 página 14 (Reinaldo Figueroa Acevedo, M-949-AL, D16 PPD)',
   },
   ballotpediaFigueroa: {
     url: 'https://ballotpedia.org/Reinaldo_Figueroa',
@@ -1078,6 +1078,60 @@ export const SRC = {
   sutraRCC0388: {
     url: 'https://sutra.oslpr.org/medidas/161938',
     label: 'SUTRA · RCC 388 (autor único; Corredor Ecoturístico de Guajataca, Isabela)',
+  },
+  sutraRCC0093: {
+    url: 'https://sutra.oslpr.org/medidas/154685',
+    label: 'SUTRA · RCC 93 (autor único; coliseo escuela José C. Rosario, Isabela / Doris L. Chaparro Ríos)',
+  },
+  sutraRCC0094: {
+    url: 'https://sutra.oslpr.org/medidas/154686',
+    label: 'SUTRA · RCC 94 (autor único; alumbrado San Sebastián)',
+  },
+  sutraRCC0095: {
+    url: 'https://sutra.oslpr.org/medidas/154688',
+    label: 'SUTRA · RCC 95 (autor único; alumbrado Isabela)',
+  },
+  sutraRC0391: {
+    url: 'https://sutra.oslpr.org/medidas/157740',
+    label: 'SUTRA · RC 391 (autor único; estudio de empleo en San Sebastián)',
+  },
+  sutraRCC0210: {
+    url: 'https://sutra.oslpr.org/medidas/158772',
+    label: 'SUTRA · RCC 210 (autor único; plan AAA de obras en el Distrito 16)',
+  },
+  sutraRC0500: {
+    url: 'https://sutra.oslpr.org/medidas/159339',
+    label: 'SUTRA · RC 500 (autor único; estudio de ríos y quebradas del D16)',
+  },
+  sutraRC0344: {
+    url: 'https://sutra.oslpr.org/medidas/156173',
+    label: 'SUTRA · RC 344 (autor único; Ley 22-2021 Oficina Enlace Comunidad Sorda)',
+  },
+  sutraRC0074: {
+    url: 'https://sutra.oslpr.org/medidas/153191',
+    label: 'SUTRA · RC 74 (Autores 13; no se atribuye en solitario a Figueroa)',
+  },
+  sutraOrdenanza16Isabela: {
+    url: 'https://sutra.oslpr.org/ordenanzas/6361',
+    label: 'SUTRA · Ordenanza 16 Isabela 2024–2025 (Boys & Girls Club; alcalde Ricky Méndez)',
+  },
+  primeraHoraPC812: {
+    url: 'https://www.primerahora.com/noticias/gobierno-politica/notas/representantes-populares-presentan-proyecto-para-mejorar-la-lectura-en-las-escuelas/',
+    label: 'Primera Hora · Ferrer y Figueroa anuncian el PC 812; él es portavoz PPD en Educación',
+    published: '2025-08-27',
+  },
+  islaNewsAAA210: {
+    url: 'https://islanewspr.com/2025/10/01/solicitan-a-aaa-plan-detallado-sobre-trabajos-en-el-distrito-16/',
+    label: 'Isla News · solicitan a AAA plan detallado de obras en el Distrito 16 (RCC 210)',
+    published: '2025-10-01',
+  },
+  camaraPilarBarbosa: {
+    url: 'https://www.camara.pr.gov/ova_dep/comision-conjunta-del-programa-pilar-barbosa-deinternados-en-educacion/',
+    label: 'Cámara · Comisión Conjunta Pilar Barbosa (Pérez Ramírez, Figueroa, Ocasio)',
+  },
+  oce2024PrimariasReps: {
+    url: 'https://oce.pr.gov/auditorias-2024/auditorias-primarias-2024/primarias-representantes-2024/',
+    label: 'OCE · auditorías primarias 2024 representantes (D16: OCE-PB-24-002 a 24-008, no Figueroa)',
   },
 } as const satisfies Record<string, DossierSource>
 
