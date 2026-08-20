@@ -1213,6 +1213,38 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas/158881',
     label: 'SUTRA · PC 885 (Autores 3; Rosas Vargas, Figueroa Acevedo y Ferrer Santiago)',
   },
+  camaraCarlo: {
+    url: 'https://www.camara.pr.gov/team/emilio-carlo-acosta/',
+    label: 'Cámara · ficha oficial de Emilio Carlo Acosta (D20; Cabo Rojo, Hormigueros, San Germán)',
+  },
+  sutraCarlo: {
+    url: 'https://sutra.oslpr.org/legisladores/M-953-AL',
+    label: 'SUTRA · Emilio Carlo Acosta (M-953-AL, 2025–2028; Distrito 20)',
+  },
+  ballotpediaCarlo: {
+    url: 'https://ballotpedia.org/Emilio_Carlo',
+    label: 'Ballotpedia · Emilio Carlo (D20; asumió 2 ene 2025; 11,541 / 30,314 en 2024)',
+  },
+  sutraPC0933: {
+    url: 'https://sutra.oslpr.org/medidas/159061',
+    label: 'SUTRA · PC 933 (autor único; Túnel de Guaniquilla, monumento histórico)',
+  },
+  sutraPC1226: {
+    url: 'https://sutra.oslpr.org/medidas/161007',
+    label: 'SUTRA · PC 1226 (autor único; Zona de Turismo Gastronómico Joyuda / Punta Arenas)',
+  },
+  sutraRC0218: {
+    url: 'https://sutra.oslpr.org/medidas/154455',
+    label: 'SUTRA · RC 218 (autor único; investigación facilidades deportivas D20)',
+  },
+  sutraPC0773Carlo: {
+    url: 'https://sutra.oslpr.org/medidas/157806',
+    label: 'SUTRA · PC 773 (Autores 3; Ley 15-2026; Méndez, Muriel y Carlo Acosta)',
+  },
+  sutraPC1214Carlo: {
+    url: 'https://sutra.oslpr.org/medidas/160913',
+    label: 'SUTRA · PC 1214 (Autores 3; códigos de emergencia en escuelas; González, Carlo y Lebrón)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

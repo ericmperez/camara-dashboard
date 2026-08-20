@@ -1321,4 +1321,59 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraPC0885Lilly,
     ],
   },
+
+  'emilio-carlo-acosta': {
+    id: 'emilio-carlo-acosta',
+    bio: 'Titular PNP del Distrito 20. Primer término; asumió el 2 de enero de 2025. SUTRA lo lista como M-953-AL.',
+    career: [
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 11,541 (38.1%); PPD Joel Sánchez Ayala (incumbente) 11,180 (36.9%); PIP Juliana I. Ortiz Rodríguez 5,333 (17.6%); PD Edgar Agosto Betancourt 1,434 (4.7%); MVC Tony Linares Hernández 826 (2.7%); total 30,314. Ganancia PNP. Ballotpedia confirma el 11,541. votes.json coincide.',
+    ],
+    aspirations: [
+      'PC 933 (15 oct 2025): declara monumento histórico el Túnel de Guaniquilla (SUTRA Autores = 1).',
+      'PC 1226 (21 abr 2026): Comité interagencial para la Zona de Turismo Gastronómico de Joyuda y Punta Arenas, Cabo Rojo (SUTRA Autores = 1).',
+      'RC 218 (25 mar 2025): investigación facilidades deportivas en Cabo Rojo, San Germán y Hormigueros (SUTRA Autores = 1).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'carlos-johnny-mendez-nunez',
+        kind: 'fact',
+        label:
+          'Coautor del PC 773 (Ley 15-2026; crédito comercial cooperativas / PYMES) con Carlos ‘Johnny’ Méndez Núñez y Christian Muriel Sánchez (SUTRA Autores 3); no implica alianza partidista',
+        sources: [SRC.sutraPC0773Carlo],
+      },
+      {
+        toId: 'christian-muriel-sanchez',
+        kind: 'fact',
+        label:
+          'Coautor del PC 773 (Ley 15-2026; crédito comercial cooperativas / PYMES) con Carlos ‘Johnny’ Méndez Núñez y Christian Muriel Sánchez (SUTRA Autores 3); no implica alianza partidista',
+        sources: [SRC.sutraPC0773Carlo],
+      },
+      {
+        toId: 'odalys-gonzalez-gonzalez',
+        kind: 'fact',
+        label:
+          'Coautor del PC 1214 (códigos de emergencia en escuelas) con Odalys González González y Nelie Lebrón Robles (SUTRA Autores 3); no implica alianza partidista',
+        sources: [SRC.sutraPC1214Carlo],
+      },
+      {
+        toId: 'nelie-lebron-robles',
+        kind: 'fact',
+        label:
+          'Coautor del PC 1214 (códigos de emergencia en escuelas) con Odalys González González y Nelie Lebrón Robles (SUTRA Autores 3); no implica alianza partidista',
+        sources: [SRC.sutraPC1214Carlo],
+      },
+    ],
+    sources: [
+      SRC.camaraCarlo,
+      SRC.sutraCarlo,
+      SRC.ballotpediaCarlo,
+      SRC.wiki2024House,
+      SRC.sutraPC0933,
+      SRC.sutraPC1226,
+      SRC.sutraRC0218,
+      SRC.sutraPC0773Carlo,
+      SRC.sutraPC1214Carlo,
+    ],
+  },
 }

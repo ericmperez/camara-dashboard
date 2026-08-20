@@ -59,12 +59,12 @@ describe('dossiers 2025–2028', () => {
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
-    const carlo = DOSSIERS['emilio-carlo-acosta']
-    expect(carlo.bio).toBeNull()
-    expect(carlo.career).toEqual([])
-    expect(carlo.aspirations).toEqual([])
-    expect(carlo.committees).toEqual([])
-    expect(carlo.connections).toEqual([])
+    const estrella = DOSSIERS['estrella-martinez-soto']
+    expect(estrella.bio).toBeNull()
+    expect(estrella.career).toEqual([])
+    expect(estrella.aspirations).toEqual([])
+    expect(estrella.committees).toEqual([])
+    expect(estrella.connections).toEqual([])
   })
 
   it('no marca el solape de pueblos como hecho', () => {
@@ -1613,6 +1613,62 @@ describe('dossiers 2025–2028', () => {
     expect(SRC.sutraPC0731.url).toBe('https://sutra.oslpr.org/medidas/156529')
     expect(SRC.sutraRC0359.url).toBe('https://sutra.oslpr.org/medidas/156435')
     expect(SRC.sutraRC0232.url).toBe('https://sutra.oslpr.org/medidas/154676')
+  })
+
+  it('expande la ficha delgada de Carlo D20 con CEE 11,541 y SUTRA M-953-AL', () => {
+    const d20 = DOSSIERS['emilio-carlo-acosta']
+    expect(DEEP_IDS.has('emilio-carlo-acosta')).toBe(false)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['emilio-carlo-acosta']).toBeDefined()
+    expect(d20.bio).toMatch(/Distrito 20/)
+    expect(d20.bio).toMatch(/M-953-AL/)
+    expect(d20.bio).toMatch(/2 de enero de 2025/)
+    expect(d20.career.join(' ')).toMatch(/11,541/)
+    expect(d20.career.join(' ')).toMatch(/38\.1%/)
+    expect(d20.career.join(' ')).toMatch(/30,314/)
+    expect(d20.career.join(' ')).toMatch(/Joel Sánchez Ayala/)
+    expect(d20.career.join(' ')).toMatch(/11,180/)
+    expect(d20.career.join(' ')).toMatch(/votes\.json/)
+    expect(d20.career.join(' ')).toMatch(/Ganancia PNP/)
+    expect(d20.aspirations).toHaveLength(3)
+    expect(d20.aspirations.join(' ')).toMatch(/PC 933/)
+    expect(d20.aspirations.join(' ')).toMatch(/PC 1226/)
+    expect(d20.aspirations.join(' ')).toMatch(/RC 218/)
+    expect(d20.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d20.aspirations.join(' ')).not.toMatch(/PC 773|PC 1214|PC1214|Ley 15-2026/)
+    expect(d20.committees).toEqual([])
+    expect(JSON.stringify(d20)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d20)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d20.connections.map((c) => c.toId)).toEqual([
+      'carlos-johnny-mendez-nunez',
+      'christian-muriel-sanchez',
+      'odalys-gonzalez-gonzalez',
+      'nelie-lebron-robles',
+    ])
+    expect(d20.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d20.connections[0]?.label).toMatch(/PC 773/)
+    expect(d20.connections[2]?.label).toMatch(/PC 1214/)
+    expect(d20.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d20.connections.some((c) => c.toId === 'lilibeth-lilly-rosas')).toBe(false)
+    expect(d20.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraCarlo.url,
+        SRC.sutraCarlo.url,
+        SRC.ballotpediaCarlo.url,
+        SRC.wiki2024House.url,
+        SRC.sutraPC0933.url,
+        SRC.sutraPC1226.url,
+        SRC.sutraRC0218.url,
+        SRC.sutraPC0773Carlo.url,
+        SRC.sutraPC1214Carlo.url,
+      ]),
+    )
+    expect(SRC.sutraCarlo.url).toBe('https://sutra.oslpr.org/legisladores/M-953-AL')
+    expect(SRC.sutraPC0933.url).toBe('https://sutra.oslpr.org/medidas/159061')
+    expect(SRC.sutraPC1226.url).toBe('https://sutra.oslpr.org/medidas/161007')
+    expect(SRC.sutraRC0218.url).toBe('https://sutra.oslpr.org/medidas/154455')
+    expect(SRC.sutraPC0773Carlo.url).toBe('https://sutra.oslpr.org/medidas/157806')
+    expect(SRC.sutraPC1214Carlo.url).toBe('https://sutra.oslpr.org/medidas/160913')
   })
 
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {

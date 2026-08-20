@@ -178,7 +178,7 @@ describe('dashboard de la Cámara', () => {
   it('deja vacía la ficha si no hay hecho verificado', async () => {
     const user = userEvent.setup()
     render(<App />)
-    await user.click(screen.getByRole('heading', { name: /carlo acosta/i }))
+    await user.click(screen.getByRole('heading', { name: /estrella martínez/i }))
     await user.click(screen.getByRole('button', { name: 'Ficha' }))
     const ficha = screen.getByLabelText(/ficha de/i)
     expect(within(ficha).getByText(/sin biografía verificada/i)).toBeInTheDocument()
