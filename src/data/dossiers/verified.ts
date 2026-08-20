@@ -1644,9 +1644,9 @@ export const VERIFIED: Record<string, Dossier> = {
       'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 17,906 (50.7%); PPD Chui Hernández Arroyo (incumbente) 15,512 (43.9%); MVC Sigfredo Torres Cintrón 1,916 (5.4%); total 35,334. Margen 2,394. Ganancia PNP. votes.json coincide.',
     ],
     aspirations: [
-      'RCC 212 (25 sep 2025): designa la pista atlética del Complejo Deportivo Ramón Cano Torres, Barranquitas (SUTRA Autores = 1).',
-      'RCC 256 (18 dic 2025): liberación de finca DRD en Barrio Padilla, Corozal (SUTRA Autores = 1).',
-      'RCC 334 (13 abr 2026): liberación de restricciones, finca Proyecto Alvarado, Orocovis (SUTRA Autores = 1).',
+      'RCC 212 (25 sep 2025): designar la pista atlética del Complejo Deportivo Ramón Cano Torres, Barranquitas, con el nombre de Ramón Ivan Nieves Montesino (SUTRA Autores = 1).',
+      'RCC 256 (18 dic 2025): ordenar al DRD liberar restricciones y autorizar enajenación de la Finca 11,305, Barrio Padilla, Corozal (SUTRA Autores = 1).',
+      'PC 711 (10 jun 2025): enmendar Ley 184-2012 (mediación compulsoria / vivienda principal) para incluir préstamos comerciales garantizados con la residencia principal (SUTRA Autores = 1).',
     ],
     committees: [],
     connections: [
@@ -1654,22 +1654,22 @@ export const VERIFIED: Record<string, Dossier> = {
         toId: 'jerry-nieves-rosario',
         kind: 'fact',
         label:
-          'Coautor del PC 1120 con Jerry Nieves Rosario (SUTRA Autores 5); no implica alianza partidista',
-        sources: [SRC.sutraPC1120Josean],
+          'Coautor del PC 1053 (becas deportivas a menores) con Jerry Nieves Rosario (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraPC1053Josean],
       },
       {
-        toId: 'jorge-navarro-suarez',
+        toId: 'joel-i-franqui-atiles',
         kind: 'fact',
         label:
-          'Coautor del PC 310 con Jorge Navarro Suárez (SUTRA Autores 2); no implica alianza partidista',
-        sources: [SRC.sutraPC0310Josean],
+          'Coautor del PC 923 (represalias de aseguradoras a proveedores de salud) con Joel I. Franqui Atiles (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraPC0923Josean],
       },
       {
-        toId: 'angel-morey-noble',
+        toId: 'carmen-medina-calderon',
         kind: 'fact',
         label:
-          'Coautor del PC 1136 con Ángel Morey Noble y Jorge Navarro Suárez (SUTRA Autores 3); no implica alianza partidista',
-        sources: [SRC.sutraPC1136Josean],
+          'Coautor de la RC 688 (investigación COPUR / federaciones, Ley 5-2022) con Carmen Medina Calderón (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraRC0688Josean],
       },
     ],
     sources: [
@@ -1679,10 +1679,10 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.microjurisComisiones,
       SRC.sutraRCC0212Josean,
       SRC.sutraRCC0256Josean,
-      SRC.sutraRCC0334Josean,
-      SRC.sutraPC1120Josean,
-      SRC.sutraPC0310Josean,
-      SRC.sutraPC1136Josean,
+      SRC.sutraPC0711Josean,
+      SRC.sutraPC1053Josean,
+      SRC.sutraPC0923Josean,
+      SRC.sutraRC0688Josean,
     ],
   },
 }

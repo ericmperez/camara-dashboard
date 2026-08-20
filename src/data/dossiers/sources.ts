@@ -1418,24 +1418,25 @@ export const SRC = {
   },
   sutraRCC0256Josean: {
     url: 'https://sutra.oslpr.org/medidas/159570',
-    label: 'SUTRA · RCC 256 (autor único; liberación de finca DRD, Barrio Padilla, Corozal)',
+    label: 'SUTRA · RCC 256 (autor único; liberación de finca DRD 11,305, Barrio Padilla, Corozal)',
   },
-  sutraRCC0334Josean: {
-    url: 'https://sutra.oslpr.org/medidas/160933',
-    label: 'SUTRA · RCC 334 (autor único; liberación de restricciones, finca Proyecto Alvarado, Orocovis)',
-  },
-  sutraPC1120Josean: {
-    url: 'https://sutra.oslpr.org/medidas/160432',
+  sutraPC0711Josean: {
+    url: 'https://sutra.oslpr.org/medidas/156424',
     label:
-      'SUTRA · PC 1120 (Autores 5; Jiménez Torres y Nieves Rosario; coautores Ramos Rivera, Medina Calderón y Román López)',
+      'SUTRA · PC 711 (autor único; mediación compulsoria Ley 184-2012 / préstamos comerciales sobre vivienda principal)',
   },
-  sutraPC0310Josean: {
-    url: 'https://sutra.oslpr.org/medidas/153579',
-    label: 'SUTRA · PC 310 (Autores 2; Navarro Suárez y Jiménez Torres)',
+  sutraPC1053Josean: {
+    url: 'https://sutra.oslpr.org/medidas/159772',
+    label: 'SUTRA · PC 1053 (Autores 2; Jiménez Torres y Nieves Rosario; becas deportivas a menores)',
   },
-  sutraPC1136Josean: {
-    url: 'https://sutra.oslpr.org/medidas/160485',
-    label: 'SUTRA · PC 1136 (Autores 3; Navarro Suárez; coautores Jiménez Torres y Morey Noble)',
+  sutraPC0923Josean: {
+    url: 'https://sutra.oslpr.org/medidas/159041',
+    label:
+      'SUTRA · PC 923 (Autores 2; Jiménez Torres y Franqui Atiles; represalias de aseguradoras a proveedores de salud)',
+  },
+  sutraRC0688Josean: {
+    url: 'https://sutra.oslpr.org/medidas/161096',
+    label: 'SUTRA · RC 688 (Autores 2; Jiménez Torres y Medina Calderón; investigación COPUR / Ley 5-2022)',
   },
 } as const satisfies Record<string, DossierSource>
 
