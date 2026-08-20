@@ -1888,8 +1888,10 @@ describe('dossiers 2025–2028', () => {
     expect(DEEP_IDS.size).toBe(28)
     expect(VERIFIED['angel-a-fourquet-cordero']).toBeDefined()
     expect(d24.bio).toMatch(/Distrito 24/)
+    expect(d24.bio).toMatch(/Ponce, parte/)
     expect(d24.bio).toMatch(/M-957-AL/)
     expect(d24.bio).toMatch(/2 de enero de 2025/)
+    expect(JSON.stringify(d24)).not.toMatch(/Jayuya|Juana Díaz/)
     expect(d24.career.join(' ')).toMatch(/11,188/)
     expect(d24.career.join(' ')).toMatch(/44\.4%/)
     expect(d24.career.join(' ')).toMatch(/25,184/)
@@ -1902,7 +1904,9 @@ describe('dossiers 2025–2028', () => {
     expect(d24.aspirations.join(' ')).toMatch(/RC 439/)
     expect(d24.aspirations.join(' ')).toMatch(/RC 434/)
     expect(d24.aspirations.join(' ')).toMatch(/Autores = 1/)
-    expect(d24.aspirations.join(' ')).not.toMatch(/PC 278|PC0278|PC 653|PC0653|RC 177|RC0177/)
+    expect(d24.aspirations.join(' ')).not.toMatch(
+      /PC 278|PC0278|PC 653|PC0653|RC 177|RC0177|RCC 177|RCC0177|RKC 15|RKC0015/,
+    )
     expect(d24.committees).toEqual([])
     expect(JSON.stringify(d24)).not.toMatch(/\$\d/)
     expect(JSON.stringify(d24)).not.toMatch(/esposa|cónyuge|familia/)
@@ -1910,11 +1914,15 @@ describe('dossiers 2025–2028', () => {
       'domingo-j-torres-garcia',
       'hector-e-ferrer-santiago',
       'ramon-torres-cruz',
+      'ensol-a-rodriguez-torres',
     ])
     expect(d24.connections.every((c) => c.kind === 'fact')).toBe(true)
-    expect(d24.connections.every((c) => /PC 278/.test(c.label))).toBe(true)
+    expect(d24.connections[0]?.label).toMatch(/PC 278/)
+    expect(d24.connections[1]?.label).toMatch(/PC 278/)
+    expect(d24.connections[2]?.label).toMatch(/PC 278/)
+    expect(d24.connections[3]?.label).toMatch(/PC 455/)
+    expect(d24.connections[3]?.label).toMatch(/Ensol/)
     expect(d24.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
-    expect(d24.connections.some((c) => c.toId === 'ensol-a-rodriguez-torres')).toBe(false)
     expect(d24.connections.some((c) => c.toId === 'joe-joito-colon-rodriguez')).toBe(false)
     const overlap = townOverlapConnections('angel-a-fourquet-cordero')
     expect(overlap.some((c) => c.toId === 'ensol-a-rodriguez-torres' && c.kind === 'inference')).toBe(
@@ -1929,6 +1937,7 @@ describe('dossiers 2025–2028', () => {
         SRC.sutraRC0439Fourquet.url,
         SRC.sutraRC0434Fourquet.url,
         SRC.sutraPC0278Fourquet.url,
+        SRC.sutraPC0455Fourquet.url,
       ]),
     )
     expect(d24.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora/i)
@@ -1936,18 +1945,15 @@ describe('dossiers 2025–2028', () => {
     expect(SRC.camaraFourquet.url).toBe(
       'https://www.camara.pr.gov/team/angel-a-fourquet-cordero/',
     )
-    expect(SRC.sutraPC0652Fourquet.url).toBe(
-      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0652',
-    )
+    expect(SRC.sutraPC0652Fourquet.url).toBe('https://sutra.oslpr.org/medidas/155850')
     expect(SRC.sutraRC0439Fourquet.url).toBe(
       'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0439',
     )
     expect(SRC.sutraRC0434Fourquet.url).toBe(
       'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0434',
     )
-    expect(SRC.sutraPC0278Fourquet.url).toBe(
-      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0278',
-    )
+    expect(SRC.sutraPC0278Fourquet.url).toBe('https://sutra.oslpr.org/medidas/153486')
+    expect(SRC.sutraPC0455Fourquet.url).toBe('https://sutra.oslpr.org/medidas/154467')
   })
 
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
