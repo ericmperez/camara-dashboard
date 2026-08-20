@@ -159,12 +159,19 @@ export const VERIFIED: Record<string, Dossier> = {
 
   'wilson-j-roman-lopez': {
     id: 'wilson-j-roman-lopez',
-    bio: 'Portavoz alterno PNP del Distrito 17. No es Roberto López Román (D31).',
-    career: ['Portavoz alterno de la mayoría PNP (directorio oficial).'],
-    aspirations: [],
+    bio: 'Portavoz alterno PNP del Distrito 17. No es Roberto López Román (D31). SUTRA lo lista como M-950-AL.',
+    career: [
+      'Portavoz alterno de la mayoría PNP (directorio oficial).',
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic): incumbente PNP 14,615 (46.8%); PPD Kenneth Sanabria Domenech 11,141; total 31,260. Hold PNP. Ballotpedia confirma el 14,615.',
+    ],
+    aspirations: [
+      'PC 1129 (12 feb 2026): Día Nacional del Mundillo Puertorriqueño; reconoce a Moca como Capital (SUTRA Autores = 1).',
+      'PC 1128 (12 feb 2026): exención del IVU en pañales, ropa y zapatos para bebés y niños pequeños (SUTRA Autores = 1).',
+      'RCC 120 (2 may 2025): rotulación de la PR-420 en Moca con el nombre de Víctor Raúl Hernández Nieves (SUTRA Autores = 1).',
+    ],
     committees: [],
     connections: [],
-    sources: [],
+    sources: [SRC.camaraWilson, SRC.sutraWilson, SRC.ballotpediaWilson, SRC.wiki2024House],
   },
 
   'hector-e-ferrer-santiago': {

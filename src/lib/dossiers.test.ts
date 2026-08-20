@@ -1471,6 +1471,41 @@ describe('dossiers 2025–2028', () => {
     expect(SRC.sutraFigueroa.url).toBe('https://sutra.oslpr.org/legisladores/M-949-AL')
   })
 
+  it('expande la ficha de mesa de Wilson D17 con CEE 14,615 y SUTRA M-950-AL', () => {
+    const d17 = DOSSIERS['wilson-j-roman-lopez']
+    expect(d17.bio).toMatch(/Portavoz alterno/)
+    expect(d17.bio).toMatch(/No es Roberto López Román/)
+    expect(d17.bio).toMatch(/M-950-AL/)
+    expect(d17.career.join(' ')).toMatch(/14,615/)
+    expect(d17.career.join(' ')).toMatch(/46\.8%/)
+    expect(d17.career.join(' ')).toMatch(/31,260/)
+    expect(d17.career.join(' ')).toMatch(/Kenneth Sanabria Domenech/)
+    expect(d17.career.join(' ')).toMatch(/11,141/)
+    expect(d17.aspirations).toHaveLength(3)
+    expect(d17.aspirations.join(' ')).toMatch(/PC 1129/)
+    expect(d17.aspirations.join(' ')).toMatch(/PC 1128/)
+    expect(d17.aspirations.join(' ')).toMatch(/RCC 120/)
+    expect(d17.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d17.committees).toEqual([])
+    expect(d17.connections).toEqual([])
+    expect(JSON.stringify(d17)).not.toMatch(/\$\d/)
+    expect(d17.connections.some((c) => c.toId === 'reinaldo-rey-figueroa')).toBe(false)
+    expect(d17.connections.some((c) => c.toId === 'carlos-johnny-mendez-nunez')).toBe(false)
+    const overlap = townOverlapConnections('wilson-j-roman-lopez')
+    expect(overlap.some((c) => c.toId === 'reinaldo-rey-figueroa' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d17.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraWilson.url,
+        SRC.sutraWilson.url,
+        SRC.ballotpediaWilson.url,
+        SRC.wiki2024House.url,
+      ]),
+    )
+    expect(SRC.sutraWilson.url).toBe('https://sutra.oslpr.org/legisladores/M-950-AL')
+  })
+
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
     for (const dossier of Object.values(DOSSIERS)) {
       for (const connection of dossier.connections) {

@@ -1133,6 +1133,18 @@ export const SRC = {
     url: 'https://oce.pr.gov/auditorias-2024/auditorias-primarias-2024/primarias-representantes-2024/',
     label: 'OCE · auditorías primarias 2024 representantes (D16: OCE-PB-24-002 a 24-008, no Figueroa)',
   },
+  camaraWilson: {
+    url: 'https://www.camara.pr.gov/team/wilson-j-roman-lopez/',
+    label: 'Cámara · ficha oficial de Wilson J. Román López (D17; Portavoz alterno PNP)',
+  },
+  sutraWilson: {
+    url: 'https://sutra.oslpr.org/legisladores/M-950-AL',
+    label: 'SUTRA · Wilson J. Román López (M-950-AL, 2025–2028; Detalle Distrito 17)',
+  },
+  ballotpediaWilson: {
+    url: 'https://ballotpedia.org/Wilson_Rom%C3%A1n_L%C3%B3pez',
+    label: 'Ballotpedia · Wilson Román López (D17; 14,615 / 31,260 en 2024)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
