@@ -1376,4 +1376,55 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraPC1214Carlo,
     ],
   },
+
+  'omayra-m-martinez-vazquez': {
+    id: 'omayra-m-martinez-vazquez',
+    bio: 'Titular PNP del Distrito 21. Primer término; asumió el 2 de enero de 2025. SUTRA la lista como M-954-AL.',
+    career: [
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 15,279 (44.8%); PPD Joey Cuevas 13,778 (40.4%); PIP Luiche Santiago 3,322 (9.7%); PD Leo Vázquez Santiago 1,762 (5.2%); total 34,141. Ganancia PNP: primera vez que el PNP ocupa el D21 (El Sol 8 nov 2024). Lydia Méndez Silva (PPD) se retiró. Ballotpedia confirma el 15,279. votes.json coincide.',
+    ],
+    aspirations: [
+      'PC 694 (22 may 2025): Día Nacional del Maratón de la Virgen del Pozo de Sabana Grande (SUTRA Autores = 1).',
+      'PC 601 (6 may 2025): Plan de Alerta Silver (SUTRA Autores = 1).',
+      'PC 351 (25 feb 2025): licencia a empleados públicos para asistir a la graduación de sus hijos (SUTRA Autores = 1).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'emilio-carlo-acosta',
+        kind: 'fact',
+        label:
+          'Coautora de la RC 286 (Laguna de Guánica) con Emilio Carlo Acosta (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraRC0286Omayra],
+      },
+      {
+        toId: 'carlos-johnny-mendez-nunez',
+        kind: 'fact',
+        label:
+          'Coautora del PC 359 (incentivos de vivienda en centros urbanos) con Carlos ‘Johnny’ Méndez Núñez (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraPC0359Omayra],
+      },
+      {
+        toId: 'fernando-sanabria-colon',
+        kind: 'fact',
+        label:
+          'Coautora de la RC 440 (extiende el plazo de la RC 77 a las comisiones Región Sur y Región Oeste) con Fernando Sanabria Colón (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraRC0440Omayra],
+      },
+    ],
+    sources: [
+      SRC.camaraOmayra,
+      SRC.sutraOmayra,
+      SRC.ballotpediaOmayra,
+      SRC.wiki2024House,
+      SRC.elSolOmayraD21,
+      SRC.microjurisComisiones,
+      SRC.sutraPC0694,
+      SRC.sutraPC0601,
+      SRC.sutraPC0351Omayra,
+      SRC.sutraRC0286Omayra,
+      SRC.sutraPC0359Omayra,
+      SRC.sutraRC0440Omayra,
+    ],
+  },
 }

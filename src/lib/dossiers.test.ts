@@ -1671,6 +1671,75 @@ describe('dossiers 2025–2028', () => {
     expect(SRC.sutraPC1214Carlo.url).toBe('https://sutra.oslpr.org/medidas/160913')
   })
 
+  it('expande la ficha delgada de Omayra D21 con CEE 15,279 y SUTRA M-954-AL', () => {
+    const d21 = DOSSIERS['omayra-m-martinez-vazquez']
+    expect(DEEP_IDS.has('omayra-m-martinez-vazquez')).toBe(false)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['omayra-m-martinez-vazquez']).toBeDefined()
+    expect(d21.bio).toMatch(/Distrito 21/)
+    expect(d21.bio).toMatch(/M-954-AL/)
+    expect(d21.bio).toMatch(/2 de enero de 2025/)
+    expect(d21.career.join(' ')).toMatch(/15,279/)
+    expect(d21.career.join(' ')).toMatch(/44\.8%/)
+    expect(d21.career.join(' ')).toMatch(/34,141/)
+    expect(d21.career.join(' ')).toMatch(/Joey Cuevas/)
+    expect(d21.career.join(' ')).toMatch(/13,778/)
+    expect(d21.career.join(' ')).toMatch(/votes\.json/)
+    expect(d21.career.join(' ')).toMatch(/Ganancia PNP/)
+    expect(d21.career.join(' ')).toMatch(/primera vez/)
+    expect(d21.career.join(' ')).not.toMatch(/12,488|42\.57/)
+    expect(d21.aspirations).toHaveLength(3)
+    expect(d21.aspirations.join(' ')).toMatch(/PC 694/)
+    expect(d21.aspirations.join(' ')).toMatch(/PC 601/)
+    expect(d21.aspirations.join(' ')).toMatch(/PC 351/)
+    expect(d21.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d21.aspirations.join(' ')).not.toMatch(/PC 359|RC 286|RC 440|PC 32|RC 198|RCC 369/)
+    expect(d21.committees).toEqual(['Vivienda y Desarrollo Urbano'])
+    expect(JSON.stringify(d21)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d21)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d21.connections.map((c) => c.toId)).toEqual([
+      'emilio-carlo-acosta',
+      'carlos-johnny-mendez-nunez',
+      'fernando-sanabria-colon',
+    ])
+    expect(d21.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d21.connections[0]?.label).toMatch(/RC 286/)
+    expect(d21.connections[1]?.label).toMatch(/PC 359/)
+    expect(d21.connections[2]?.label).toMatch(/RC 440/)
+    expect(d21.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d21.connections.some((c) => c.toId === 'lilibeth-lilly-rosas')).toBe(false)
+    expect(d21.connections.some((c) => c.toId === 'joe-joito-colon-rodriguez')).toBe(false)
+    const overlap = townOverlapConnections('omayra-m-martinez-vazquez')
+    expect(overlap.some((c) => c.toId === 'joe-joito-colon-rodriguez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d21.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraOmayra.url,
+        SRC.sutraOmayra.url,
+        SRC.ballotpediaOmayra.url,
+        SRC.wiki2024House.url,
+        SRC.elSolOmayraD21.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraPC0694.url,
+        SRC.sutraPC0601.url,
+        SRC.sutraPC0351Omayra.url,
+        SRC.sutraRC0286Omayra.url,
+        SRC.sutraPC0359Omayra.url,
+        SRC.sutraRC0440Omayra.url,
+      ]),
+    )
+    expect(SRC.sutraOmayra.url).toBe('https://sutra.oslpr.org/legisladores/M-954-AL')
+    expect(SRC.sutraPC0694.url).toBe('https://sutra.oslpr.org/medidas/156127')
+    expect(SRC.sutraPC0601.url).toBe('https://sutra.oslpr.org/medidas/155569')
+    expect(SRC.sutraPC0351Omayra.url).toBe('https://sutra.oslpr.org/medidas/153929')
+    expect(SRC.sutraRC0286Omayra.url).toBe('https://sutra.oslpr.org/medidas/155443')
+    expect(SRC.sutraPC0359Omayra.url).toBe('https://sutra.oslpr.org/medidas/153943')
+    expect(SRC.sutraRC0440Omayra.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0440',
+    )
+  })
+
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
     for (const dossier of Object.values(DOSSIERS)) {
       for (const connection of dossier.connections) {
