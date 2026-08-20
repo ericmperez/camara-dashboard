@@ -1685,4 +1685,52 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraRC0688Josean,
     ],
   },
+
+  'estrella-martinez-soto': {
+    id: 'estrella-martinez-soto',
+    bio: 'Titular PPD del Distrito 27 (Aibonito, Coamo, Juana Díaz, Santa Isabel y Salinas). Reelecta; asumió el 2 de enero de 2025. SUTRA la lista como M-960-AL.',
+    career: [
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PPD 13,470 (42.3%); PNP Adriach Bermúdez Ortiz 12,069 (37.9%); PIP Andrés A. Román Arguinzoni 4,725 (14.8%); PD Evette Mejías Rivera 1,562 (4.9%); total 31,826. Margen 1,401. Hold PPD. votes.json coincide.',
+    ],
+    aspirations: [
+      'RCC 381 (14 jul 2026): designar PR-5559 Coamo con el nombre de Carlos Luis Torres Santiago (SUTRA Autores = 1).',
+      'RCC 313 (12 mar 2026): designar PR-5538 Santa Isabel con el nombre de Don Víctor Zayas Pedrogo (SUTRA Autores = 1).',
+      'RCC 181 (21 ago 2025): Paseo Bicentenario de Aibonito, PR-7721 (SUTRA Autores = 1).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'angel-a-fourquet-cordero',
+        kind: 'fact',
+        label:
+          'Coautora del PC 278 con Ángel A. Fourquet Cordero, Domingo J. Torres García, Héctor E. Ferrer Santiago, Ramón A. Torres Cruz y Swanny E. Vargas Laureano (SUTRA Autores 6); no implica alianza partidista',
+        sources: [SRC.sutraPC0278Estrella],
+      },
+      {
+        toId: 'domingo-j-torres-garcia',
+        kind: 'fact',
+        label:
+          'Coautora del PC 278 con Ángel A. Fourquet Cordero, Domingo J. Torres García, Héctor E. Ferrer Santiago, Ramón A. Torres Cruz y Swanny E. Vargas Laureano (SUTRA Autores 6); no implica alianza partidista',
+        sources: [SRC.sutraPC0278Estrella],
+      },
+      {
+        toId: 'ensol-a-rodriguez-torres',
+        kind: 'fact',
+        label:
+          'Coautora del PC 455 con Ensol A. Rodríguez Torres, Wilson J. Román López, Tatiana Pérez Ramírez y Ángel A. Fourquet Cordero (SUTRA Autores 5); no implica alianza partidista',
+        sources: [SRC.sutraPC0455Estrella],
+      },
+    ],
+    sources: [
+      SRC.camaraEstrella,
+      SRC.sutraEstrella,
+      SRC.wiki2024House,
+      SRC.microjurisComisiones,
+      SRC.sutraRCC0381Estrella,
+      SRC.sutraRCC0313Estrella,
+      SRC.sutraRCC0181Estrella,
+      SRC.sutraPC0278Estrella,
+      SRC.sutraPC0455Estrella,
+    ],
+  },
 }

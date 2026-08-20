@@ -1438,6 +1438,39 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas/161096',
     label: 'SUTRA · RC 688 (Autores 2; Jiménez Torres y Medina Calderón; investigación COPUR / Ley 5-2022)',
   },
+  camaraEstrella: {
+    url: 'https://www.camara.pr.gov/team/estrella-martinez-soto/',
+    label:
+      'Cámara · ficha oficial de Estrella Martínez Soto (D27; Aibonito, Coamo, Juana Díaz, Santa Isabel y Salinas)',
+  },
+  sutraEstrella: {
+    url: 'https://sutra.oslpr.org/legisladores/M-960-AL',
+    label: 'SUTRA · Estrella Martínez Soto (M-960-AL, 2025–2028; Distrito 27)',
+  },
+  sutraRCC0381Estrella: {
+    url: 'https://sutra.oslpr.org/medidas/161733',
+    label:
+      'SUTRA · RCC 381 (autor único; designar PR-5559 Coamo con el nombre de Carlos Luis Torres Santiago)',
+  },
+  sutraRCC0313Estrella: {
+    url: 'https://sutra.oslpr.org/medidas/160720',
+    label:
+      'SUTRA · RCC 313 (autor único; designar PR-5538 Santa Isabel, Don Víctor Zayas Pedrogo)',
+  },
+  sutraRCC0181Estrella: {
+    url: 'https://sutra.oslpr.org/medidas/158091',
+    label: 'SUTRA · RCC 181 (autor único; Paseo Bicentenario de Aibonito, PR-7721)',
+  },
+  sutraPC0278Estrella: {
+    url: 'https://sutra.oslpr.org/medidas/153486',
+    label:
+      'SUTRA · PC 278 (Autores 6; Fourquet, Torres García, Ferrer, Torres Cruz, Vargas Laureano y Martínez Soto)',
+  },
+  sutraPC0455Estrella: {
+    url: 'https://sutra.oslpr.org/medidas/154467',
+    label:
+      'SUTRA · PC 455 (Autores 5; Rodríguez Torres, Martínez Soto, Román López, Pérez Ramírez y Fourquet Cordero)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

@@ -59,12 +59,12 @@ describe('dossiers 2025–2028', () => {
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
-    const estrella = DOSSIERS['estrella-martinez-soto']
-    expect(estrella.bio).toBeNull()
-    expect(estrella.career).toEqual([])
-    expect(estrella.aspirations).toEqual([])
-    expect(estrella.committees).toEqual([])
-    expect(estrella.connections).toEqual([])
+    const higgins = DOSSIERS['sol-y-higgins-cuadrado']
+    expect(higgins.bio).toBeNull()
+    expect(higgins.career).toEqual([])
+    expect(higgins.aspirations).toEqual([])
+    expect(higgins.committees).toEqual([])
+    expect(higgins.connections).toEqual([])
   })
 
   it('no marca el solape de pueblos como hecho', () => {
@@ -2096,6 +2096,75 @@ describe('dossiers 2025–2028', () => {
     expect(SRC.sutraPC1053Josean.url).toBe('https://sutra.oslpr.org/medidas/159772')
     expect(SRC.sutraPC0923Josean.url).toBe('https://sutra.oslpr.org/medidas/159041')
     expect(SRC.sutraRC0688Josean.url).toBe('https://sutra.oslpr.org/medidas/161096')
+  })
+
+  it('expande la ficha delgada de Estrella D27 con CEE 13,470 y SUTRA M-960-AL', () => {
+    const d27 = DOSSIERS['estrella-martinez-soto']
+    expect(DEEP_IDS.has('estrella-martinez-soto')).toBe(false)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['estrella-martinez-soto']).toBeDefined()
+    expect(d27.bio).toMatch(/Distrito 27/)
+    expect(d27.bio).toMatch(/M-960-AL/)
+    expect(d27.bio).toMatch(/2 de enero de 2025/)
+    expect(d27.career.join(' ')).toMatch(/13,470/)
+    expect(d27.career.join(' ')).toMatch(/42\.3%/)
+    expect(d27.career.join(' ')).toMatch(/31,826/)
+    expect(d27.career.join(' ')).toMatch(/Adriach Bermúdez Ortiz/)
+    expect(d27.career.join(' ')).toMatch(/12,069/)
+    expect(d27.career.join(' ')).toMatch(/votes\.json/)
+    expect(d27.career.join(' ')).toMatch(/Hold PPD/)
+    expect(JSON.stringify(d27)).not.toMatch(/Primera Hora/)
+    expect(d27.aspirations).toHaveLength(3)
+    expect(d27.aspirations.join(' ')).toMatch(/RCC 381/)
+    expect(d27.aspirations.join(' ')).toMatch(/RCC 313/)
+    expect(d27.aspirations.join(' ')).toMatch(/RCC 181/)
+    expect(d27.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d27.aspirations.join(' ')).not.toMatch(
+      /RCC 151|RCC0151|PC 278|PC0278|PC 455|PC0455|RC 198|RC0198|RKC 14|RKC0014|PC 390|PC 345/,
+    )
+    expect(d27.committees).toEqual([])
+    expect(VERIFIED['estrella-martinez-soto']?.committees).toEqual([])
+    expect(JSON.stringify(d27)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d27)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d27.connections.map((c) => c.toId)).toEqual([
+      'angel-a-fourquet-cordero',
+      'domingo-j-torres-garcia',
+      'ensol-a-rodriguez-torres',
+    ])
+    expect(d27.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d27.connections[0]?.label).toMatch(/PC 278/)
+    expect(d27.connections[1]?.label).toMatch(/PC 278/)
+    expect(d27.connections[2]?.label).toMatch(/PC 455/)
+    expect(d27.connections[2]?.label).toMatch(/Ensol/)
+    expect(d27.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d27.connections.some((c) => c.toId === 'luis-josean-jimenez-torres')).toBe(false)
+    const overlap = townOverlapConnections('estrella-martinez-soto')
+    expect(overlap.some((c) => c.toId === 'luis-josean-jimenez-torres' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d27.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraEstrella.url,
+        SRC.sutraEstrella.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraRCC0381Estrella.url,
+        SRC.sutraRCC0313Estrella.url,
+        SRC.sutraRCC0181Estrella.url,
+        SRC.sutraPC0278Estrella.url,
+        SRC.sutraPC0455Estrella.url,
+      ]),
+    )
+    expect(d27.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraEstrella.url).toBe('https://sutra.oslpr.org/legisladores/M-960-AL')
+    expect(SRC.camaraEstrella.url).toBe(
+      'https://www.camara.pr.gov/team/estrella-martinez-soto/',
+    )
+    expect(SRC.sutraRCC0381Estrella.url).toBe('https://sutra.oslpr.org/medidas/161733')
+    expect(SRC.sutraRCC0313Estrella.url).toBe('https://sutra.oslpr.org/medidas/160720')
+    expect(SRC.sutraRCC0181Estrella.url).toBe('https://sutra.oslpr.org/medidas/158091')
+    expect(SRC.sutraPC0278Estrella.url).toBe('https://sutra.oslpr.org/medidas/153486')
+    expect(SRC.sutraPC0455Estrella.url).toBe('https://sutra.oslpr.org/medidas/154467')
   })
 
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
