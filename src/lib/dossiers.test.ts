@@ -1557,6 +1557,64 @@ describe('dossiers 2025–2028', () => {
     expect(SRC.sutraPC0344Odalys.url).toBe('https://sutra.oslpr.org/medidas/153883')
   })
 
+  it('expande la ficha delgada de Lilly D19 con CEE 10,994 y SUTRA M-952-AL', () => {
+    const d19 = DOSSIERS['lilibeth-lilly-rosas']
+    expect(DEEP_IDS.has('lilibeth-lilly-rosas')).toBe(false)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['lilibeth-lilly-rosas']).toBeDefined()
+    expect(d19.bio).toMatch(/Distrito 19/)
+    expect(d19.bio).toMatch(/M-952-AL/)
+    expect(d19.bio).toMatch(/2 de enero de 2025/)
+    expect(d19.career.join(' ')).toMatch(/10,994/)
+    expect(d19.career.join(' ')).toMatch(/40\.7%/)
+    expect(d19.career.join(' ')).toMatch(/27,020/)
+    expect(d19.career.join(' ')).toMatch(/Edson Rodríguez/)
+    expect(d19.career.join(' ')).toMatch(/9,311/)
+    expect(d19.career.join(' ')).toMatch(/votes\.json/)
+    expect(d19.career.join(' ')).toMatch(/9,027/)
+    expect(d19.career.join(' ')).toMatch(/22,581/)
+    expect(d19.career.join(' ')).toMatch(/no se promedian/)
+    expect(d19.aspirations).toHaveLength(3)
+    expect(d19.aspirations.join(' ')).toMatch(/PC 472/)
+    expect(d19.aspirations.join(' ')).toMatch(/RC 61/)
+    expect(d19.aspirations.join(' ')).toMatch(/RCC 78/)
+    expect(d19.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d19.committees).toEqual([])
+    expect(JSON.stringify(d19)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d19)).not.toMatch(/Efraín|De Jesús|esposa|cónyuge/)
+    expect(d19.connections.map((c) => c.toId)).toEqual([
+      'reinaldo-rey-figueroa',
+      'ramon-torres-cruz',
+      'roberto-rivera-ruiz-de-porras',
+    ])
+    expect(d19.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d19.connections[0]?.label).toMatch(/PC 761/)
+    expect(d19.connections[1]?.label).toMatch(/RC 444/)
+    expect(d19.connections[2]?.label).toMatch(/RC 235/)
+    expect(d19.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d19.connections.some((c) => c.toId === 'odalys-gonzalez-gonzalez')).toBe(false)
+    expect(d19.connections.some((c) => c.toId === 'emilio-carlo-acosta')).toBe(false)
+    const overlap = townOverlapConnections('lilibeth-lilly-rosas')
+    expect(overlap.some((c) => c.toId === 'emilio-carlo-acosta' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d19.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraLilly.url,
+        SRC.sutraLilly.url,
+        SRC.ballotpediaLilly.url,
+        SRC.wiki2024House.url,
+        SRC.sutraPC0472.url,
+        SRC.sutraRC0061.url,
+        SRC.sutraRCC0078.url,
+      ]),
+    )
+    expect(SRC.sutraLilly.url).toBe('https://sutra.oslpr.org/legisladores/M-952-AL')
+    expect(SRC.sutraPC0472.url).toBe('https://sutra.oslpr.org/medidas/154700')
+    expect(SRC.sutraRC0061.url).toBe('https://sutra.oslpr.org/medidas/153140')
+    expect(SRC.sutraRCC0078.url).toBe('https://sutra.oslpr.org/medidas/154186')
+  })
+
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
     for (const dossier of Object.values(DOSSIERS)) {
       for (const connection of dossier.connections) {

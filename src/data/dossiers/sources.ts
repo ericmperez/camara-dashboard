@@ -1177,6 +1177,46 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas/153883',
     label: 'SUTRA · PC 344 (Autores 2; González González y José J. Pérez Cordero)',
   },
+  camaraLilly: {
+    url: 'https://www.camara.pr.gov/team/lilibeth-lilly-rosas/',
+    label: 'Cámara · ficha oficial de Lilibeth ‘Lilly’ Rosas (D19; Mayagüez y San Germán)',
+  },
+  sutraLilly: {
+    url: 'https://sutra.oslpr.org/legisladores/M-952-AL',
+    label: 'SUTRA · Lilibeth Rosas Vargas (M-952-AL, 2025–2028; Distrito 19)',
+  },
+  ballotpediaLilly: {
+    url: 'https://ballotpedia.org/Lilibeth_Rosas',
+    label: 'Ballotpedia · Lilibeth Rosas (D19; asumió 2 ene 2025; lista 9,027 / 22,581)',
+  },
+  sutraPC0472: {
+    url: 'https://sutra.oslpr.org/medidas/154700',
+    label: 'SUTRA · PC 472 (autor única; Ley del Banco de Empleo para Jefas de Familia)',
+  },
+  sutraRC0061: {
+    url: 'https://sutra.oslpr.org/medidas/153140',
+    label: 'SUTRA · RC 61 (autor única; investigación vial D19 / PR-105, PR-108 y PR-349)',
+  },
+  sutraRCC0078: {
+    url: 'https://sutra.oslpr.org/medidas/154186',
+    label: 'SUTRA · RCC 78 (autor única; PR-114 Mayagüez–San Germán / Piculín Ortiz Rijos)',
+  },
+  sutraPC0761Lilly: {
+    url: 'https://sutra.oslpr.org/medidas/157301',
+    label: 'SUTRA · PC 761 (Autores 2; Rosas Vargas y Figueroa Acevedo; Porta del Sol)',
+  },
+  sutraPC0558Lilly: {
+    url: 'https://sutra.oslpr.org/medidas/155350',
+    label: 'SUTRA · PC 558 (Autores 2; Rosas Vargas y Figueroa Acevedo; canon hotelero Porta del Sol)',
+  },
+  sutraRC0444Lilly: {
+    url: 'https://sutra.oslpr.org/medidas/158555',
+    label: 'SUTRA · RC 444 (Autores 2; Rosas Vargas y Ramón Torres Cruz; zoológico Mayagüez)',
+  },
+  sutraRC0235Lilly: {
+    url: 'https://sutra.oslpr.org/medidas/154681',
+    label: 'SUTRA · RC 235 (Autores 2; Rivera Ruiz de Porras y Rosas Vargas; préstamos a empresas de mujeres)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

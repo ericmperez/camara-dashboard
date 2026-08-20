@@ -1258,4 +1258,54 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraPC0344Odalys,
     ],
   },
+
+  'lilibeth-lilly-rosas': {
+    id: 'lilibeth-lilly-rosas',
+    bio: 'Titular PPD del Distrito 19. Primer término; asumió el 2 de enero de 2025. SUTRA la lista como M-952-AL.',
+    career: [
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PPD 10,994 (40.7%); PNP Edson Rodríguez 9,311 (34.5%); PIP Leonor M. Velázquez Franceschi 3,723 (13.8%); PD Felipe Morales Nieves 1,572 (5.8%); MVC Julia Mignucci 1,420 (5.3%); total 27,020. Hold PPD. votes.json coincide. Ballotpedia lista 9,027 / 40.0% de 22,581; no se promedian.',
+    ],
+    aspirations: [
+      'PC 472 (1 abr 2025): Ley del Banco de Empleo para Jefas de Familia (SUTRA Autores = 1).',
+      'RC 61 (16 ene 2025): investigación vial D19 — PR-105, PR-108 y PR-349 (SUTRA Autores = 1).',
+      'RCC 78 (13 mar 2025): designa la PR-114 Mayagüez–San Germán con el nombre de José Rafael “Piculín” Ortiz Rijos (SUTRA Autores = 1).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'reinaldo-rey-figueroa',
+        kind: 'fact',
+        label:
+          'Coautora de los PC 761 y PC 558 con Reinaldo ‘Rey’ Figueroa (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraPC0761Lilly, SRC.sutraPC0558Lilly],
+      },
+      {
+        toId: 'ramon-torres-cruz',
+        kind: 'fact',
+        label:
+          'Coautora de la RC 444 con Ramón Torres Cruz (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraRC0444Lilly],
+      },
+      {
+        toId: 'roberto-rivera-ruiz-de-porras',
+        kind: 'fact',
+        label:
+          'Coautora de la RC 235 con Roberto Rivera Ruiz de Porras (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraRC0235Lilly],
+      },
+    ],
+    sources: [
+      SRC.camaraLilly,
+      SRC.sutraLilly,
+      SRC.ballotpediaLilly,
+      SRC.wiki2024House,
+      SRC.sutraPC0472,
+      SRC.sutraRC0061,
+      SRC.sutraRCC0078,
+      SRC.sutraPC0761Lilly,
+      SRC.sutraPC0558Lilly,
+      SRC.sutraRC0444Lilly,
+      SRC.sutraRC0235Lilly,
+    ],
+  },
 }
