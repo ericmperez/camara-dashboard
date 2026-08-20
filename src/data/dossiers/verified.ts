@@ -1216,4 +1216,38 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraRCC0388,
     ],
   },
+
+  'odalys-gonzalez-gonzalez': {
+    id: 'odalys-gonzalez-gonzalez',
+    bio: 'Titular PNP del Distrito 18. Primer término; asumió el 2 de enero de 2025. SUTRA la lista como M-951-AL.',
+    career: [
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic): PNP 16,515 (47.7%); PPD Jessie Cortés Ramos (incumbente) 14,206 (41.0%); Proyecto Dignidad Héctor López Cardona 2,004 (5.8%); MVC Christian Santiago 1,911 (5.5%); total 34,636. Ganancia PNP. Ballotpedia confirma el 16,515. votes.json coincide.',
+    ],
+    aspirations: [
+      'PC 677 (12 may 2025): Ley de la Red de Puntos Violetas (SUTRA Autores = 1).',
+      'PC 1148 (18 feb 2026): resiliencia de la infraestructura eléctrica y manejo integrado de vegetación (SUTRA Autores = 1).',
+      'PC 1277 (14 may 2026): identificación, protección y atención diferenciada de personas con trastornos neurocognitivos mayores (SUTRA Autores = 1).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'wilson-j-roman-lopez',
+        kind: 'fact',
+        label:
+          'Coautora del PC 638 con Wilson J. Román López (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraPC0638],
+      },
+    ],
+    sources: [
+      SRC.camaraOdalys,
+      SRC.sutraOdalys,
+      SRC.ballotpediaOdalys,
+      SRC.wiki2024House,
+      SRC.microjurisComisiones,
+      SRC.sutraPC0677,
+      SRC.sutraPC1148,
+      SRC.sutraPC1277,
+      SRC.sutraPC0638,
+    ],
+  },
 }

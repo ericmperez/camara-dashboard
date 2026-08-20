@@ -1506,6 +1506,53 @@ describe('dossiers 2025–2028', () => {
     expect(SRC.sutraWilson.url).toBe('https://sutra.oslpr.org/legisladores/M-950-AL')
   })
 
+  it('expande la ficha delgada de Odalys D18 con CEE 16,515 y SUTRA M-951-AL', () => {
+    const d18 = DOSSIERS['odalys-gonzalez-gonzalez']
+    expect(DEEP_IDS.has('odalys-gonzalez-gonzalez')).toBe(false)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['odalys-gonzalez-gonzalez']).toBeDefined()
+    expect(d18.bio).toMatch(/Distrito 18/)
+    expect(d18.bio).toMatch(/M-951-AL/)
+    expect(d18.bio).toMatch(/2 de enero de 2025/)
+    expect(d18.career.join(' ')).toMatch(/16,515/)
+    expect(d18.career.join(' ')).toMatch(/47\.7%/)
+    expect(d18.career.join(' ')).toMatch(/34,636/)
+    expect(d18.career.join(' ')).toMatch(/Jessie Cortés Ramos/)
+    expect(d18.career.join(' ')).toMatch(/14,206/)
+    expect(d18.aspirations).toHaveLength(3)
+    expect(d18.aspirations.join(' ')).toMatch(/PC 677/)
+    expect(d18.aspirations.join(' ')).toMatch(/PC 1148/)
+    expect(d18.aspirations.join(' ')).toMatch(/PC 1277/)
+    expect(d18.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d18.aspirations.join(' ')).not.toMatch(/PC 1214|PC 638|PC0638/)
+    expect(d18.committees).toEqual(['Región Oeste'])
+    expect(JSON.stringify(d18)).not.toMatch(/\$\d/)
+    expect(d18.connections).toHaveLength(1)
+    expect(d18.connections[0]?.toId).toBe('wilson-j-roman-lopez')
+    expect(d18.connections[0]?.kind).toBe('fact')
+    expect(d18.connections[0]?.label).toMatch(/PC 638/)
+    expect(d18.connections[0]?.label).toMatch(/no implica alianza/)
+    expect(d18.connections.some((c) => c.kind === 'inference')).toBe(false)
+    const overlap = townOverlapConnections('odalys-gonzalez-gonzalez')
+    expect(overlap.some((c) => c.toId === 'wilson-j-roman-lopez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d18.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraOdalys.url,
+        SRC.sutraOdalys.url,
+        SRC.ballotpediaOdalys.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraPC0677.url,
+        SRC.sutraPC1148.url,
+        SRC.sutraPC1277.url,
+        SRC.sutraPC0638.url,
+      ]),
+    )
+    expect(SRC.sutraOdalys.url).toBe('https://sutra.oslpr.org/legisladores/M-951-AL')
+  })
+
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
     for (const dossier of Object.values(DOSSIERS)) {
       for (const connection of dossier.connections) {

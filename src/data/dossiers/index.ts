@@ -75,4 +75,7 @@ export const DOSSIERS: Record<string, Dossier> = Object.fromEntries(
   }),
 )
 
-export const DEEP_IDS = new Set(Object.keys(VERIFIED))
+/** Forma delgada (CEE + 3 Autores=1 + conexiones). No cuenta como ficha profunda. */
+const THIN_IDS = new Set(['odalys-gonzalez-gonzalez'])
+
+export const DEEP_IDS = new Set(Object.keys(VERIFIED).filter((id) => !THIN_IDS.has(id)))

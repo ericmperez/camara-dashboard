@@ -1145,6 +1145,34 @@ export const SRC = {
     url: 'https://ballotpedia.org/Wilson_Rom%C3%A1n_L%C3%B3pez',
     label: 'Ballotpedia · Wilson Román López (D17; 14,615 / 31,260 en 2024)',
   },
+  camaraOdalys: {
+    url: 'https://www.camara.pr.gov/team/odalys-gonzalez-gonzalez/',
+    label: 'Cámara · ficha oficial de Odalys González González (D18; Presidente: Comisión Región Oeste)',
+  },
+  sutraOdalys: {
+    url: 'https://sutra.oslpr.org/legisladores/M-951-AL',
+    label: 'SUTRA · Odalys González González (M-951-AL, 2025–2028; Distrito 18)',
+  },
+  ballotpediaOdalys: {
+    url: 'https://ballotpedia.org/Odalys_Gonz%C3%A1lez_Gonz%C3%A1lez',
+    label: 'Ballotpedia · Odalys González González (D18; asumió 2 ene 2025; 16,515 / 34,636 en 2024)',
+  },
+  sutraPC0677: {
+    url: 'https://sutra.oslpr.org/medidas/155873',
+    label: 'SUTRA · PC 677 (autor única; Ley de la Red de Puntos Violetas)',
+  },
+  sutraPC1148: {
+    url: 'https://sutra.oslpr.org/medidas/160507',
+    label: 'SUTRA · PC 1148 (autor única; resiliencia eléctrica / vegetación)',
+  },
+  sutraPC1277: {
+    url: 'https://sutra.oslpr.org/medidas/161241',
+    label: 'SUTRA · PC 1277 (autor única; trastornos neurocognitivos mayores)',
+  },
+  sutraPC0638: {
+    url: 'https://sutra.oslpr.org/medidas/155727',
+    label: 'SUTRA · PC 638 (Autores 2; González González y Wilson J. Román López)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
