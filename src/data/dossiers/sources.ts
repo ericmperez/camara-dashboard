@@ -1187,35 +1187,31 @@ export const SRC = {
   },
   ballotpediaLilly: {
     url: 'https://ballotpedia.org/Lilibeth_Rosas',
-    label: 'Ballotpedia · Lilibeth Rosas (D19; asumió 2 ene 2025; lista 9,027 / 22,581)',
+    label: 'Ballotpedia · Lilibeth Rosas (D19; asumió 2 ene 2025)',
   },
-  sutraPC0472: {
-    url: 'https://sutra.oslpr.org/medidas/154700',
-    label: 'SUTRA · PC 472 (autor única; Ley del Banco de Empleo para Jefas de Familia)',
+  sutraPC0731: {
+    url: 'https://sutra.oslpr.org/medidas/156529',
+    label: 'SUTRA · PC 731 (autor única; Mes de la Concienciación y Preparación sobre Tsunamis)',
   },
-  sutraRC0061: {
+  sutraRC0359: {
+    url: 'https://sutra.oslpr.org/medidas/156435',
+    label: 'SUTRA · RC 359 (autor única; implantación leyes de obesidad / discrimen por impedimento)',
+  },
+  sutraRC0232: {
+    url: 'https://sutra.oslpr.org/medidas/154676',
+    label: 'SUTRA · RC 232 (autor única; madres solteras jefas de familia, D19)',
+  },
+  sutraRC0061Lilly: {
     url: 'https://sutra.oslpr.org/medidas/153140',
-    label: 'SUTRA · RC 61 (autor única; investigación vial D19 / PR-105, PR-108 y PR-349)',
+    label: 'SUTRA · RC 61 (Autores 2; Rosas Vargas y Ramón Torres Cruz)',
   },
-  sutraRCC0078: {
-    url: 'https://sutra.oslpr.org/medidas/154186',
-    label: 'SUTRA · RCC 78 (autor única; PR-114 Mayagüez–San Germán / Piculín Ortiz Rijos)',
+  sutraRCC0239Lilly: {
+    url: 'https://sutra.oslpr.org/medidas/159370',
+    label: 'SUTRA · RCC 239 (Autores 3; Rosas Vargas, Gretchen Hau y Feliciano Sánchez)',
   },
-  sutraPC0761Lilly: {
-    url: 'https://sutra.oslpr.org/medidas/157301',
-    label: 'SUTRA · PC 761 (Autores 2; Rosas Vargas y Figueroa Acevedo; Porta del Sol)',
-  },
-  sutraPC0558Lilly: {
-    url: 'https://sutra.oslpr.org/medidas/155350',
-    label: 'SUTRA · PC 558 (Autores 2; Rosas Vargas y Figueroa Acevedo; canon hotelero Porta del Sol)',
-  },
-  sutraRC0444Lilly: {
-    url: 'https://sutra.oslpr.org/medidas/158555',
-    label: 'SUTRA · RC 444 (Autores 2; Rosas Vargas y Ramón Torres Cruz; zoológico Mayagüez)',
-  },
-  sutraRC0235Lilly: {
-    url: 'https://sutra.oslpr.org/medidas/154681',
-    label: 'SUTRA · RC 235 (Autores 2; Rivera Ruiz de Porras y Rosas Vargas; préstamos a empresas de mujeres)',
+  sutraPC0885Lilly: {
+    url: 'https://sutra.oslpr.org/medidas/158881',
+    label: 'SUTRA · PC 885 (Autores 3; Rosas Vargas, Figueroa Acevedo y Ferrer Santiago)',
   },
 } as const satisfies Record<string, DossierSource>
 
