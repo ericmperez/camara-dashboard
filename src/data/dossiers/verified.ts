@@ -1437,12 +1437,12 @@ export const VERIFIED: Record<string, Dossier> = {
     id: 'joe-joito-colon-rodriguez',
     bio: 'Titular PNP del Distrito 22. Primer término; asumió el 2 de enero de 2025. SUTRA lo lista como M-955-AL.',
     career: [
-      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 17,765 (47.0%); PPD Jorge Alfredo Rivera (incumbente) 16,362 (43.3%); PIP Astrid Raquel Cruz Negrón 3,653 (9.7%); total 37,780. Ganancia PNP. votes.json coincide.',
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 17,765 (47.0%); PPD Jorge Alfredo Rivera 16,362; total 37,780. votes.json coincide.',
     ],
     aspirations: [
-      'RC 145 (6 feb 2025): investigación carreteras estatales D22 — Utuado, Lares, Adjuntas, Jayuya y Ciales (SUTRA Autores = 1).',
-      'PC 1181 (12 mar 2026): Ley del Programa de Repoblación Rural de Puerto Rico (Lares, Utuado, Ciales, Adjuntas y Jayuya) (SUTRA Autores = 1).',
-      'RC 264 (22 abr 2025): investigación Formulario OAT 171 / emplazamiento (SUTRA Autores = 1).',
+      'RC 145 (6 feb 2025): investigación carreteras estatales D22 (SUTRA Autores = 1).',
+      'PC 388 (10 mar 2025): telemedicina / telesalud en la cubierta básica (SUTRA Autores = 1).',
+      'PC 686 (19 may 2025): compensación por pérdidas no cubiertas por el seguro agrícola (SUTRA Autores = 1).',
     ],
     committees: [],
     connections: [
@@ -1450,21 +1450,28 @@ export const VERIFIED: Record<string, Dossier> = {
         toId: 'edgar-robles-rivera',
         kind: 'fact',
         label:
-          'Coautor del PC 180 (explotación financiera de personas de edad avanzada) con Edgar Robles Rivera y Swanny E. Vargas Laureano (SUTRA Autores 3); no implica alianza partidista',
+          'Coautor del PC 180 con Edgar Robles Rivera y Swanny E. Vargas Laureano (SUTRA Autores 3); no implica alianza partidista',
         sources: [SRC.sutraPC0180],
       },
       {
         toId: 'swanny-e-vargas-laureano',
         kind: 'fact',
         label:
-          'Coautor del PC 180 (explotación financiera de personas de edad avanzada) con Edgar Robles Rivera y Swanny E. Vargas Laureano (SUTRA Autores 3); no implica alianza partidista',
+          'Coautor del PC 180 con Edgar Robles Rivera y Swanny E. Vargas Laureano (SUTRA Autores 3); no implica alianza partidista',
         sources: [SRC.sutraPC0180],
+      },
+      {
+        toId: 'carlos-johnny-mendez-nunez',
+        kind: 'fact',
+        label:
+          'Coautor de la RC 43 (investigación industria agrícola) con Carlos ‘Johnny’ Méndez Núñez (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraRC0043Joito],
       },
       {
         toId: 'carmen-medina-calderon',
         kind: 'fact',
         label:
-          'Coautor del PC 286 (Registro Digital de Agricultores y Productos Locales; Ley 12-2026) con Carmen Medina Calderón (SUTRA Autores 2); no implica alianza partidista',
+          'Coautor del PC 286 (Registro Digital de Agricultores y Productos Locales) con Carmen Medina Calderón (SUTRA Autores 2); no implica alianza partidista',
         sources: [SRC.sutraPC0286Joito],
       },
     ],
@@ -1474,9 +1481,10 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.wiki2024House,
       SRC.microjurisComisiones,
       SRC.sutraRC0145Joito,
-      SRC.sutraPC1181Joito,
-      SRC.sutraRC0264Joito,
+      SRC.sutraPC0388Joito,
+      SRC.sutraPC0686Joito,
       SRC.sutraPC0180,
+      SRC.sutraRC0043Joito,
       SRC.sutraPC0286Joito,
     ],
   },

@@ -1291,13 +1291,17 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas/153757',
     label: 'SUTRA · RC 145 (autor único; carreteras estatales D22)',
   },
-  sutraPC1181Joito: {
-    url: 'https://sutra.oslpr.org/medidas/160704',
-    label: 'SUTRA · PC 1181 (autor único; Programa de Repoblación Rural, D22)',
+  sutraPC0388Joito: {
+    url: 'https://sutra.oslpr.org/medidas/154156',
+    label: 'SUTRA · PC 388 (autor único; telemedicina / telesalud en cubierta básica)',
   },
-  sutraRC0264Joito: {
-    url: 'https://sutra.oslpr.org/medidas/155226',
-    label: 'SUTRA · RC 264 (autor único; investigación Formulario OAT 171)',
+  sutraPC0686Joito: {
+    url: 'https://sutra.oslpr.org/medidas/155986',
+    label: 'SUTRA · PC 686 (autor único; compensación pérdidas no cubiertas por seguro agrícola)',
+  },
+  sutraRC0043Joito: {
+    url: 'https://sutra.oslpr.org/medidas/152949',
+    label: 'SUTRA · RC 43 (Autores 2; investigación industria agrícola; Méndez y Colón)',
   },
   sutraPC0286Joito: {
     url: 'https://sutra.oslpr.org/medidas/153433',
