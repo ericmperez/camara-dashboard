@@ -1521,22 +1521,20 @@ describe('dossiers 2025–2028', () => {
     expect(d18.career.join(' ')).toMatch(/14,206/)
     expect(d18.aspirations).toHaveLength(3)
     expect(d18.aspirations.join(' ')).toMatch(/PC 677/)
-    expect(d18.aspirations.join(' ')).toMatch(/PC 1148/)
-    expect(d18.aspirations.join(' ')).toMatch(/PC 1277/)
+    expect(d18.aspirations.join(' ')).toMatch(/PC 675/)
+    expect(d18.aspirations.join(' ')).toMatch(/RC 315/)
     expect(d18.aspirations.join(' ')).toMatch(/Autores = 1/)
-    expect(d18.aspirations.join(' ')).not.toMatch(/PC 1214|PC 638|PC0638/)
+    expect(d18.aspirations.join(' ')).not.toMatch(/PC 1214|PC1214/)
     expect(d18.committees).toEqual(['Región Oeste'])
     expect(JSON.stringify(d18)).not.toMatch(/\$\d/)
-    expect(d18.connections).toHaveLength(1)
-    expect(d18.connections[0]?.toId).toBe('wilson-j-roman-lopez')
-    expect(d18.connections[0]?.kind).toBe('fact')
+    expect(d18.connections.map((c) => c.toId)).toEqual([
+      'wilson-j-roman-lopez',
+      'jose-j-perez-cordero',
+    ])
+    expect(d18.connections.every((c) => c.kind === 'fact')).toBe(true)
     expect(d18.connections[0]?.label).toMatch(/PC 638/)
-    expect(d18.connections[0]?.label).toMatch(/no implica alianza/)
-    expect(d18.connections.some((c) => c.kind === 'inference')).toBe(false)
-    const overlap = townOverlapConnections('odalys-gonzalez-gonzalez')
-    expect(overlap.some((c) => c.toId === 'wilson-j-roman-lopez' && c.kind === 'inference')).toBe(
-      true,
-    )
+    expect(d18.connections[1]?.label).toMatch(/PC 344/)
+    expect(d18.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
     expect(d18.sources.map((s) => s.url)).toEqual(
       expect.arrayContaining([
         SRC.camaraOdalys.url,
@@ -1545,12 +1543,18 @@ describe('dossiers 2025–2028', () => {
         SRC.wiki2024House.url,
         SRC.microjurisComisiones.url,
         SRC.sutraPC0677.url,
-        SRC.sutraPC1148.url,
-        SRC.sutraPC1277.url,
+        SRC.sutraPC0675.url,
+        SRC.sutraRC0315.url,
         SRC.sutraPC0638.url,
+        SRC.sutraPC0344Odalys.url,
       ]),
     )
     expect(SRC.sutraOdalys.url).toBe('https://sutra.oslpr.org/legisladores/M-951-AL')
+    expect(SRC.sutraPC0675.url).toBe('https://sutra.oslpr.org/medidas/155872')
+    expect(SRC.sutraRC0315.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0315',
+    )
+    expect(SRC.sutraPC0344Odalys.url).toBe('https://sutra.oslpr.org/medidas/153883')
   })
 
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {

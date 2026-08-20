@@ -1161,17 +1161,21 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas/155873',
     label: 'SUTRA · PC 677 (autor única; Ley de la Red de Puntos Violetas)',
   },
-  sutraPC1148: {
-    url: 'https://sutra.oslpr.org/medidas/160507',
-    label: 'SUTRA · PC 1148 (autor única; resiliencia eléctrica / vegetación)',
+  sutraPC0675: {
+    url: 'https://sutra.oslpr.org/medidas/155872',
+    label: 'SUTRA · PC 675 (autor única; Certificación y Apoyo Integral al Personal T1)',
   },
-  sutraPC1277: {
-    url: 'https://sutra.oslpr.org/medidas/161241',
-    label: 'SUTRA · PC 1277 (autor única; trastornos neurocognitivos mayores)',
+  sutraRC0315: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0315',
+    label: 'SUTRA · RC 315 (autor única; investigación AAA / agua D18)',
   },
   sutraPC0638: {
     url: 'https://sutra.oslpr.org/medidas/155727',
     label: 'SUTRA · PC 638 (Autores 2; González González y Wilson J. Román López)',
+  },
+  sutraPC0344Odalys: {
+    url: 'https://sutra.oslpr.org/medidas/153883',
+    label: 'SUTRA · PC 344 (Autores 2; González González y José J. Pérez Cordero)',
   },
 } as const satisfies Record<string, DossierSource>
 

@@ -1225,8 +1225,8 @@ export const VERIFIED: Record<string, Dossier> = {
     ],
     aspirations: [
       'PC 677 (12 may 2025): Ley de la Red de Puntos Violetas (SUTRA Autores = 1).',
-      'PC 1148 (18 feb 2026): resiliencia de la infraestructura eléctrica y manejo integrado de vegetación (SUTRA Autores = 1).',
-      'PC 1277 (14 may 2026): identificación, protección y atención diferenciada de personas con trastornos neurocognitivos mayores (SUTRA Autores = 1).',
+      'PC 675 (12 may 2025): Ley para la Certificación y Apoyo Integral al Personal T1 (SUTRA Autores = 1).',
+      'RC 315 (12 may 2025): investigación AAA / agua en Aguada, Añasco, Rincón y Moca (SUTRA Autores = 1).',
     ],
     committees: [],
     connections: [
@@ -1237,6 +1237,13 @@ export const VERIFIED: Record<string, Dossier> = {
           'Coautora del PC 638 con Wilson J. Román López (SUTRA Autores 2); no implica alianza partidista',
         sources: [SRC.sutraPC0638],
       },
+      {
+        toId: 'jose-j-perez-cordero',
+        kind: 'fact',
+        label:
+          'Coautora del PC 344 con José J. Pérez Cordero (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraPC0344Odalys],
+      },
     ],
     sources: [
       SRC.camaraOdalys,
@@ -1245,9 +1252,10 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.wiki2024House,
       SRC.microjurisComisiones,
       SRC.sutraPC0677,
-      SRC.sutraPC1148,
-      SRC.sutraPC1277,
+      SRC.sutraPC0675,
+      SRC.sutraRC0315,
       SRC.sutraPC0638,
+      SRC.sutraPC0344Odalys,
     ],
   },
 }
