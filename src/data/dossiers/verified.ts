@@ -1163,7 +1163,7 @@ export const VERIFIED: Record<string, Dossier> = {
       {
         toId: 'tatiana-perez-ramirez',
         kind: 'fact',
-        label: 'Preside Educación; él es portavoz PPD / miembro listado. Ambos en la Comisión Conjunta Pilar Barbosa. No implica alianza',
+        label: 'Preside Educación; él es portavoz PPD / miembro listado. Ambos en la Comisión Conjunta Pilar Barbosa; no implica alianza',
         sources: [SRC.primeraHoraPC812, SRC.camaraEducacion, SRC.camaraPilarBarbosa],
       },
       {
