@@ -1493,7 +1493,7 @@ export const VERIFIED: Record<string, Dossier> = {
     id: 'ensol-a-rodriguez-torres',
     bio: 'Titular PNP del Distrito 23. Primer término; asumió el 2 de enero de 2025. SUTRA lo lista como M-956-AL.',
     career: [
-      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 15,173 (43.1%); PPD Cheito Rivera Madera (incumbente) 13,361 (37.9%); PIP Lugo Boneta 3,052 (8.7%); MVC Daniel Ortiz Vargas 2,160 (6.1%); PD Josué Eliú Pagán Carbone 1,492 (4.2%); total 35,238. Ganancia PNP. Predecesor: José / Cheito Rivera Madera (PPD). votes.json coincide. No se usan 11,952 / 11,624.',
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 15,173 (43.1%); PPD Cheito Rivera Madera (incumbente) 13,361 (37.9%); PIP Lugo Boneta 3,052 (8.7%); MVC Daniel Ortiz Vargas 2,160 (6.1%); PD Josué Eliú Pagán Carbone 1,492 (4.2%); total 35,238. Ganancia PNP. Predecesor: José / Cheito Rivera Madera (PPD). votes.json coincide.',
     ],
     aspirations: [
       'PC 849 (11 sep 2025): Reserva Natural «la Soplaera» en el Barrio Jaguas de Peñuelas (SUTRA Autores = 1).',
