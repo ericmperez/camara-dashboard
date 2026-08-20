@@ -81,6 +81,7 @@ const THIN_IDS = new Set([
   'lilibeth-lilly-rosas',
   'emilio-carlo-acosta',
   'omayra-m-martinez-vazquez',
+  'joe-joito-colon-rodriguez',
 ])
 
 export const DEEP_IDS = new Set(Object.keys(VERIFIED).filter((id) => !THIN_IDS.has(id)))

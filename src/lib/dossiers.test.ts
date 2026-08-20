@@ -1741,6 +1741,73 @@ describe('dossiers 2025–2028', () => {
     expect(SRC.sutraRC0286Omayra.url).toBe('https://sutra.oslpr.org/medidas/155443')
   })
 
+  it('expande la ficha delgada de Joito D22 con CEE 17,765 y SUTRA M-955-AL', () => {
+    const d22 = DOSSIERS['joe-joito-colon-rodriguez']
+    expect(DEEP_IDS.has('joe-joito-colon-rodriguez')).toBe(false)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['joe-joito-colon-rodriguez']).toBeDefined()
+    expect(d22.bio).toMatch(/Distrito 22/)
+    expect(d22.bio).toMatch(/M-955-AL/)
+    expect(d22.bio).toMatch(/2 de enero de 2025/)
+    expect(d22.career.join(' ')).toMatch(/17,765/)
+    expect(d22.career.join(' ')).toMatch(/47\.0%/)
+    expect(d22.career.join(' ')).toMatch(/37,780/)
+    expect(d22.career.join(' ')).toMatch(/Jorge Alfredo Rivera/)
+    expect(d22.career.join(' ')).toMatch(/16,362/)
+    expect(d22.career.join(' ')).toMatch(/Astrid Raquel Cruz Negrón/)
+    expect(d22.career.join(' ')).toMatch(/3,653/)
+    expect(d22.career.join(' ')).toMatch(/votes\.json/)
+    expect(d22.career.join(' ')).toMatch(/Ganancia PNP/)
+    expect(d22.career.join(' ')).not.toMatch(/primaria|Joe A\./)
+    expect(d22.aspirations).toHaveLength(3)
+    expect(d22.aspirations.join(' ')).toMatch(/RC 145/)
+    expect(d22.aspirations.join(' ')).toMatch(/PC 1181/)
+    expect(d22.aspirations.join(' ')).toMatch(/RC 264/)
+    expect(d22.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d22.aspirations.join(' ')).not.toMatch(
+      /PC 886|PC 180|PC 286|RC 43|RC 137|RC 201|RC 742/,
+    )
+    expect(d22.committees).toEqual(['Agricultura'])
+    expect(JSON.stringify(d22)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d22)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d22.connections.map((c) => c.toId)).toEqual([
+      'edgar-robles-rivera',
+      'swanny-e-vargas-laureano',
+      'carmen-medina-calderon',
+    ])
+    expect(d22.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d22.connections[0]?.label).toMatch(/PC 180/)
+    expect(d22.connections[1]?.label).toMatch(/PC 180/)
+    expect(d22.connections[2]?.label).toMatch(/PC 286/)
+    expect(d22.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d22.connections.some((c) => c.toId === 'ensol-a-rodriguez-torres')).toBe(false)
+    expect(d22.connections.some((c) => c.toId === 'axel-chino-roque-gracia')).toBe(false)
+    expect(d22.connections.some((c) => c.toId === 'omayra-m-martinez-vazquez')).toBe(false)
+    const overlap = townOverlapConnections('joe-joito-colon-rodriguez')
+    expect(overlap.some((c) => c.toId === 'ensol-a-rodriguez-torres' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d22.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraJoito.url,
+        SRC.sutraJoito.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraRC0145Joito.url,
+        SRC.sutraPC1181Joito.url,
+        SRC.sutraRC0264Joito.url,
+        SRC.sutraPC0180.url,
+        SRC.sutraPC0286Joito.url,
+      ]),
+    )
+    expect(d22.sources.map((s) => s.url).join(' ')).not.toMatch(/periodicoelsolpr|primerahora|nelpr/)
+    expect(SRC.sutraJoito.url).toBe('https://sutra.oslpr.org/legisladores/M-955-AL')
+    expect(SRC.sutraRC0145Joito.url).toBe('https://sutra.oslpr.org/medidas/153757')
+    expect(SRC.sutraPC1181Joito.url).toBe('https://sutra.oslpr.org/medidas/160704')
+    expect(SRC.sutraRC0264Joito.url).toBe('https://sutra.oslpr.org/medidas/155226')
+    expect(SRC.sutraPC0286Joito.url).toBe('https://sutra.oslpr.org/medidas/153433')
+  })
+
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
     for (const dossier of Object.values(DOSSIERS)) {
       for (const connection of dossier.connections) {

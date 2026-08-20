@@ -1278,6 +1278,31 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas/155443',
     label: 'SUTRA · RC 286 (Autores 2; Laguna de Guánica; Martínez Vázquez y Carlo Acosta)',
   },
+  camaraJoito: {
+    url: 'https://www.camara.pr.gov/team/joe-joito-colon-rodriguez/',
+    label:
+      'Cámara · ficha oficial de Joe ‘Joito’ Colón Rodríguez (D22; Presidente: Comisión de Agricultura)',
+  },
+  sutraJoito: {
+    url: 'https://sutra.oslpr.org/legisladores/M-955-AL',
+    label: 'SUTRA · Joe Colón Rodríguez (M-955-AL, 2025–2028; Distrito 22)',
+  },
+  sutraRC0145Joito: {
+    url: 'https://sutra.oslpr.org/medidas/153757',
+    label: 'SUTRA · RC 145 (autor único; carreteras estatales D22)',
+  },
+  sutraPC1181Joito: {
+    url: 'https://sutra.oslpr.org/medidas/160704',
+    label: 'SUTRA · PC 1181 (autor único; Programa de Repoblación Rural, D22)',
+  },
+  sutraRC0264Joito: {
+    url: 'https://sutra.oslpr.org/medidas/155226',
+    label: 'SUTRA · RC 264 (autor único; investigación Formulario OAT 171)',
+  },
+  sutraPC0286Joito: {
+    url: 'https://sutra.oslpr.org/medidas/153433',
+    label: 'SUTRA · PC 286 (Autores 2; Registro Digital de Agricultores; Colón y Medina Calderón)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
