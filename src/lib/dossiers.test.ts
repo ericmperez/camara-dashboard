@@ -1685,31 +1685,34 @@ describe('dossiers 2025–2028', () => {
     expect(d21.career.join(' ')).toMatch(/Joey Cuevas/)
     expect(d21.career.join(' ')).toMatch(/13,778/)
     expect(d21.career.join(' ')).toMatch(/votes\.json/)
-    expect(d21.career.join(' ')).toMatch(/Ganancia PNP/)
-    expect(d21.career.join(' ')).toMatch(/primera vez/)
-    expect(d21.career.join(' ')).not.toMatch(/12,488|42\.57/)
+    expect(JSON.stringify(d21)).not.toMatch(/José Cuevas|Luis Santiago|Leonardo Vázquez/)
+    expect(d21.career.join(' ')).not.toMatch(/12,488|42\.57|El Sol|Primera Hora/)
     expect(d21.aspirations).toHaveLength(3)
     expect(d21.aspirations.join(' ')).toMatch(/PC 694/)
-    expect(d21.aspirations.join(' ')).toMatch(/PC 601/)
-    expect(d21.aspirations.join(' ')).toMatch(/PC 351/)
+    expect(d21.aspirations.join(' ')).toMatch(/RC 77/)
+    expect(d21.aspirations.join(' ')).toMatch(/RC 261/)
     expect(d21.aspirations.join(' ')).toMatch(/Autores = 1/)
-    expect(d21.aspirations.join(' ')).not.toMatch(/PC 359|RC 286|RC 440|PC 32|RC 198|RCC 369/)
+    expect(d21.aspirations.join(' ')).not.toMatch(
+      /RCC 369|RKC 21|RC 198|PC 165|PC 32|PC 27|RC 286|PC 601|PC 351/,
+    )
     expect(d21.committees).toEqual(['Vivienda y Desarrollo Urbano'])
     expect(JSON.stringify(d21)).not.toMatch(/\$\d/)
     expect(JSON.stringify(d21)).not.toMatch(/esposa|cónyuge|familia/)
     expect(d21.connections.map((c) => c.toId)).toEqual([
-      'emilio-carlo-acosta',
       'carlos-johnny-mendez-nunez',
-      'fernando-sanabria-colon',
+      'tatiana-perez-ramirez',
+      'carlos-johnny-mendez-nunez',
+      'emilio-carlo-acosta',
     ])
     expect(d21.connections.every((c) => c.kind === 'fact')).toBe(true)
-    expect(d21.connections[0]?.label).toMatch(/RC 286/)
-    expect(d21.connections[1]?.label).toMatch(/PC 359/)
-    expect(d21.connections[2]?.label).toMatch(/RC 440/)
+    expect(d21.connections[0]?.label).toMatch(/PC 32/)
+    expect(d21.connections[1]?.label).toMatch(/PC 32/)
+    expect(d21.connections[2]?.label).toMatch(/PC 27/)
+    expect(d21.connections[3]?.label).toMatch(/RC 286/)
     expect(d21.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
     expect(d21.connections.some((c) => c.toId === 'lilibeth-lilly-rosas')).toBe(false)
-    expect(d21.connections.some((c) => c.toId === 'joe-joito-colon-rodriguez')).toBe(false)
     expect(d21.connections.some((c) => c.toId === 'ensol-a-rodriguez-torres')).toBe(false)
+    expect(d21.connections.some((c) => c.toId === 'fernando-sanabria-colon')).toBe(false)
     const overlap = townOverlapConnections('omayra-m-martinez-vazquez')
     expect(overlap.some((c) => c.toId === 'ensol-a-rodriguez-torres' && c.kind === 'inference')).toBe(
       true,
@@ -1718,27 +1721,24 @@ describe('dossiers 2025–2028', () => {
       expect.arrayContaining([
         SRC.camaraOmayra.url,
         SRC.sutraOmayra.url,
-        SRC.ballotpediaOmayra.url,
         SRC.wiki2024House.url,
-        SRC.elSolOmayraD21.url,
         SRC.microjurisComisiones.url,
         SRC.sutraPC0694.url,
-        SRC.sutraPC0601.url,
-        SRC.sutraPC0351Omayra.url,
+        SRC.sutraRC0077Omayra.url,
+        SRC.sutraRC0261Omayra.url,
+        SRC.sutraPC0032Omayra.url,
+        SRC.sutraPC0027Omayra.url,
         SRC.sutraRC0286Omayra.url,
-        SRC.sutraPC0359Omayra.url,
-        SRC.sutraRC0440Omayra.url,
       ]),
     )
+    expect(d21.sources.map((s) => s.url).join(' ')).not.toMatch(/periodicoelsolpr|primerahora/)
     expect(SRC.sutraOmayra.url).toBe('https://sutra.oslpr.org/legisladores/M-954-AL')
     expect(SRC.sutraPC0694.url).toBe('https://sutra.oslpr.org/medidas/156127')
-    expect(SRC.sutraPC0601.url).toBe('https://sutra.oslpr.org/medidas/155569')
-    expect(SRC.sutraPC0351Omayra.url).toBe('https://sutra.oslpr.org/medidas/153929')
+    expect(SRC.sutraRC0077Omayra.url).toBe('https://sutra.oslpr.org/medidas/153208')
+    expect(SRC.sutraRC0261Omayra.url).toBe('https://sutra.oslpr.org/medidas/155176')
+    expect(SRC.sutraPC0032Omayra.url).toBe('https://sutra.oslpr.org/medidas/152537')
+    expect(SRC.sutraPC0027Omayra.url).toBe('https://sutra.oslpr.org/medidas/152521')
     expect(SRC.sutraRC0286Omayra.url).toBe('https://sutra.oslpr.org/medidas/155443')
-    expect(SRC.sutraPC0359Omayra.url).toBe('https://sutra.oslpr.org/medidas/153943')
-    expect(SRC.sutraRC0440Omayra.url).toBe(
-      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0440',
-    )
   })
 
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {

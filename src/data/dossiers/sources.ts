@@ -1254,38 +1254,29 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/legisladores/M-954-AL',
     label: 'SUTRA · Omayra M. Martínez Vázquez (M-954-AL, 2025–2028; Distrito 21)',
   },
-  ballotpediaOmayra: {
-    url: 'https://ballotpedia.org/Omayra_Mart%C3%ADnez',
-    label: 'Ballotpedia · Omayra Martínez (D21; asumió 2 ene 2025; 15,279 / 34,141 en 2024)',
-  },
-  elSolOmayraD21: {
-    url: 'https://periodicoelsolpr.com/pnp-hace-historia-ganando-por-primera-vez-distrito-representativo-21/',
-    label: 'El Sol · primera vez que el PNP gana el D21 (8 nov 2024; no se usa el 12,488)',
-    published: '2024-11-08',
-  },
   sutraPC0694: {
     url: 'https://sutra.oslpr.org/medidas/156127',
     label: 'SUTRA · PC 694 (autor única; Día Nacional del Maratón de la Virgen del Pozo, Sabana Grande)',
   },
-  sutraPC0601: {
-    url: 'https://sutra.oslpr.org/medidas/155569',
-    label: 'SUTRA · PC 601 (autor única; Plan de Alerta Silver)',
+  sutraRC0077Omayra: {
+    url: 'https://sutra.oslpr.org/medidas/153208',
+    label: 'SUTRA · RC 77 (autor única; investigación interrupciones eléctricas D21)',
   },
-  sutraPC0351Omayra: {
-    url: 'https://sutra.oslpr.org/medidas/153929',
-    label: 'SUTRA · PC 351 (autor única; licencia a empleados públicos para graduación de hijos)',
+  sutraRC0261Omayra: {
+    url: 'https://sutra.oslpr.org/medidas/155176',
+    label: 'SUTRA · RC 261 (autor única; investigación Puerto de Guánica)',
+  },
+  sutraPC0032Omayra: {
+    url: 'https://sutra.oslpr.org/medidas/152537',
+    label: 'SUTRA · PC 32 (Autores 3; escuelas en desuso / refugios; Méndez, Martínez y Pérez Ramírez)',
+  },
+  sutraPC0027Omayra: {
+    url: 'https://sutra.oslpr.org/medidas/152521',
+    label: 'SUTRA · PC 27 (Autores 2; Fideicomiso Comunidades Especiales; Méndez y Martínez Vázquez)',
   },
   sutraRC0286Omayra: {
     url: 'https://sutra.oslpr.org/medidas/155443',
     label: 'SUTRA · RC 286 (Autores 2; Laguna de Guánica; Martínez Vázquez y Carlo Acosta)',
-  },
-  sutraPC0359Omayra: {
-    url: 'https://sutra.oslpr.org/medidas/153943',
-    label: 'SUTRA · PC 359 (Autores 2; incentivos vivienda centros urbanos; Méndez y Martínez Vázquez)',
-  },
-  sutraRC0440Omayra: {
-    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0440',
-    label: 'SUTRA · RC 440 (Autores 2; extiende plazo RC 77; Sanabria Colón y Martínez Vázquez)',
   },
 } as const satisfies Record<string, DossierSource>
 
