@@ -1493,12 +1493,12 @@ export const VERIFIED: Record<string, Dossier> = {
     id: 'ensol-a-rodriguez-torres',
     bio: 'Titular PNP del Distrito 23. Primer término; asumió el 2 de enero de 2025. SUTRA lo lista como M-956-AL.',
     career: [
-      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 15,173 (43.1%); PPD Cheito Rivera Madera (incumbente) 13,361 (37.9%); PIP Lugo Boneta 3,052 (8.7%); MVC Daniel Ortiz Vargas 2,160 (6.1%); PD Josué Eliú Pagán Carbone 1,492 (4.2%); total 35,238. Ganancia PNP. Predecesor: José / Cheito Rivera Madera (PPD). votes.json coincide.',
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 15,173 (43.1%); PPD Cheito Rivera Madera 13,361; total 35,238. votes.json coincide.',
     ],
     aspirations: [
-      'PC 849 (11 sep 2025): Reserva Natural «la Soplaera» en el Barrio Jaguas de Peñuelas (SUTRA Autores = 1).',
       'PC 660 (12 may 2025): declara patrimonio las Piedras del Padre Nazario, Guayanilla (SUTRA Autores = 1).',
-      'RC 326 (12 may 2025): investigación de la Comisión de Asuntos de la Juventud sobre gas pimienta en instituciones de menores (SUTRA Autores = 1).',
+      'PC 807 (21 ago 2025): deroga el Art. 4-A de la Ley de Menores (faltas en planteles) (SUTRA Autores = 1).',
+      'PC 849 (11 sep 2025): Reserva Natural «la Soplaera» en Peñuelas (SUTRA Autores = 1).',
     ],
     committees: [],
     connections: [
@@ -1510,25 +1510,25 @@ export const VERIFIED: Record<string, Dossier> = {
         sources: [SRC.sutraPC0414Ensol],
       },
       {
-        toId: 'felix-pacheco-burgos',
+        toId: 'carlos-johnny-mendez-nunez',
         kind: 'fact',
         label:
-          'Coautor del PC 1139 (Cuerpo de Seguridad Escolar) con Félix Pacheco Burgos y Ramón Torres Cruz (SUTRA Autores 3); no implica alianza partidista',
-        sources: [SRC.sutraPC1139Ensol],
+          'Coautor de la RC 44 con Carlos ‘Johnny’ Méndez Núñez, Lilibeth ‘Lilly’ Rosas y Swanny E. Vargas Laureano (SUTRA Autores 4); no implica alianza partidista',
+        sources: [SRC.sutraRC0044Ensol],
       },
       {
-        toId: 'ramon-torres-cruz',
+        toId: 'lilibeth-lilly-rosas',
         kind: 'fact',
         label:
-          'Coautor del PC 1139 (Cuerpo de Seguridad Escolar) con Félix Pacheco Burgos y Ramón Torres Cruz (SUTRA Autores 3); no implica alianza partidista',
-        sources: [SRC.sutraPC1139Ensol],
+          'Coautor de la RC 44 con Carlos ‘Johnny’ Méndez Núñez, Lilibeth ‘Lilly’ Rosas y Swanny E. Vargas Laureano (SUTRA Autores 4); no implica alianza partidista',
+        sources: [SRC.sutraRC0044Ensol],
       },
       {
-        toId: 'jose-f-aponte-hernandez',
+        toId: 'swanny-e-vargas-laureano',
         kind: 'fact',
         label:
-          'Coautor del PC 661 (retiro de alto riesgo para agentes del NIE) con José F. Aponte Hernández (SUTRA Autores 2); no implica alianza partidista',
-        sources: [SRC.sutraPC0661Ensol],
+          'Coautor de la RC 44 con Carlos ‘Johnny’ Méndez Núñez, Lilibeth ‘Lilly’ Rosas y Swanny E. Vargas Laureano (SUTRA Autores 4); no implica alianza partidista',
+        sources: [SRC.sutraRC0044Ensol],
       },
     ],
     sources: [
@@ -1536,12 +1536,11 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraEnsol,
       SRC.wiki2024House,
       SRC.microjurisComisiones,
-      SRC.sutraPC0849Ensol,
       SRC.sutraPC0660Ensol,
-      SRC.sutraRC0326Ensol,
+      SRC.sutraPC0807Ensol,
+      SRC.sutraPC0849Ensol,
       SRC.sutraPC0414Ensol,
-      SRC.sutraPC1139Ensol,
-      SRC.sutraPC0661Ensol,
+      SRC.sutraRC0044Ensol,
     ],
   },
 }

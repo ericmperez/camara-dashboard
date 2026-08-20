@@ -1824,35 +1824,33 @@ describe('dossiers 2025–2028', () => {
     expect(d23.career.join(' ')).toMatch(/Cheito Rivera Madera/)
     expect(d23.career.join(' ')).toMatch(/13,361/)
     expect(d23.career.join(' ')).toMatch(/votes\.json/)
-    expect(d23.career.join(' ')).toMatch(/Ganancia PNP/)
-    expect(JSON.stringify(d23)).not.toMatch(/11,?952|11,?624|La Perla|Yorres/)
+    expect(JSON.stringify(d23)).not.toMatch(/11,?952|11,?624|La Perla|Yorres|José Rivera Madera/)
     expect(d23.career.join(' ')).not.toMatch(/primaria/)
     expect(d23.aspirations).toHaveLength(3)
-    expect(d23.aspirations.join(' ')).toMatch(/PC 849/)
     expect(d23.aspirations.join(' ')).toMatch(/PC 660/)
-    expect(d23.aspirations.join(' ')).toMatch(/RC 326/)
+    expect(d23.aspirations.join(' ')).toMatch(/PC 807/)
+    expect(d23.aspirations.join(' ')).toMatch(/PC 849/)
     expect(d23.aspirations.join(' ')).toMatch(/Autores = 1/)
     expect(d23.aspirations.join(' ')).not.toMatch(
-      /PC 414|PC0414|PC 1139|PC1139|PC 661|PC0661|PC 165|PC0165|RC 44|RC0044/,
+      /PC 414|PC0414|PC 559|PC0559|PC 165|PC0165|RC 44|RC0044|RC 326|RC0326/,
     )
     expect(d23.committees).toEqual(['Juventud'])
     expect(JSON.stringify(d23)).not.toMatch(/\$\d/)
     expect(JSON.stringify(d23)).not.toMatch(/esposa|cónyuge|familia|LGBTQ|nació/)
     expect(d23.connections.map((c) => c.toId)).toEqual([
       'elinette-gonzalez-aguayo',
-      'felix-pacheco-burgos',
-      'ramon-torres-cruz',
-      'jose-f-aponte-hernandez',
+      'carlos-johnny-mendez-nunez',
+      'lilibeth-lilly-rosas',
+      'swanny-e-vargas-laureano',
     ])
     expect(d23.connections.every((c) => c.kind === 'fact')).toBe(true)
     expect(d23.connections[0]?.label).toMatch(/PC 414/)
-    expect(d23.connections[1]?.label).toMatch(/PC 1139/)
-    expect(d23.connections[2]?.label).toMatch(/PC 1139/)
-    expect(d23.connections[3]?.label).toMatch(/PC 661/)
+    expect(d23.connections[1]?.label).toMatch(/RC 44/)
+    expect(d23.connections[2]?.label).toMatch(/RC 44/)
+    expect(d23.connections[3]?.label).toMatch(/RC 44/)
     expect(d23.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
     expect(d23.connections.some((c) => c.toId === 'joe-joito-colon-rodriguez')).toBe(false)
     expect(d23.connections.some((c) => c.toId === 'omayra-m-martinez-vazquez')).toBe(false)
-    expect(d23.connections.some((c) => c.toId === 'angel-a-fourquet-cordero')).toBe(false)
     const overlap = townOverlapConnections('ensol-a-rodriguez-torres')
     expect(overlap.some((c) => c.toId === 'joe-joito-colon-rodriguez' && c.kind === 'inference')).toBe(
       true,
@@ -1866,24 +1864,22 @@ describe('dossiers 2025–2028', () => {
         SRC.sutraEnsol.url,
         SRC.wiki2024House.url,
         SRC.microjurisComisiones.url,
-        SRC.sutraPC0849Ensol.url,
         SRC.sutraPC0660Ensol.url,
-        SRC.sutraRC0326Ensol.url,
+        SRC.sutraPC0807Ensol.url,
+        SRC.sutraPC0849Ensol.url,
         SRC.sutraPC0414Ensol.url,
-        SRC.sutraPC1139Ensol.url,
-        SRC.sutraPC0661Ensol.url,
+        SRC.sutraRC0044Ensol.url,
       ]),
     )
     expect(d23.sources.map((s) => s.url).join(' ')).not.toMatch(
       /periodicoelsolpr|primerahora|ballotpedia|yorres/i,
     )
     expect(SRC.sutraEnsol.url).toBe('https://sutra.oslpr.org/legisladores/M-956-AL')
-    expect(SRC.sutraPC0849Ensol.url).toBe('https://sutra.oslpr.org/medidas/158413')
     expect(SRC.sutraPC0660Ensol.url).toBe('https://sutra.oslpr.org/medidas/155858')
-    expect(SRC.sutraRC0326Ensol.url).toBe('https://sutra.oslpr.org/medidas/155756')
+    expect(SRC.sutraPC0807Ensol.url).toBe('https://sutra.oslpr.org/medidas/158082')
+    expect(SRC.sutraPC0849Ensol.url).toBe('https://sutra.oslpr.org/medidas/158413')
     expect(SRC.sutraPC0414Ensol.url).toBe('https://sutra.oslpr.org/medidas/154286')
-    expect(SRC.sutraPC1139Ensol.url).toBe('https://sutra.oslpr.org/medidas/160488')
-    expect(SRC.sutraPC0661Ensol.url).toBe('https://sutra.oslpr.org/medidas/155859')
+    expect(SRC.sutraRC0044Ensol.url).toBe('https://sutra.oslpr.org/medidas/152950')
   })
 
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
