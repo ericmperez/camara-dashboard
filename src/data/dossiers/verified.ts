@@ -1543,4 +1543,50 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraRC0044Ensol,
     ],
   },
+
+  'angel-a-fourquet-cordero': {
+    id: 'angel-a-fourquet-cordero',
+    bio: 'Titular PPD del Distrito 24. Reelecto; asumió el 2 de enero de 2025. SUTRA lo lista como M-957-AL. HECHO (ficha oficial): portavoz PPD en la Comisión de Gobierno. No preside comisión (minoría PPD; applyCommissions / RC0002 no le dan presidencia).',
+    career: [
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PPD 11,188 (44.4%); PNP Doris Alvarado Golderos 8,508; PD Elaine M. Arrufat Berastaín 2,768; MVC José A. Hernández Lázaro 2,720; total 25,184. Hold PPD. votes.json coincide.',
+    ],
+    aspirations: [
+      'PC 652 (12 may 2025): Día de la Historia Deportiva Ponceña (SUTRA Autores = 1).',
+      'RC 439 (18 sep 2025): investigación AAA / facturación D24 (SUTRA Autores = 1).',
+      'RC 434 (15 sep 2025): Anillo de Circunvalación Norte (PR-9) Ponce (SUTRA Autores = 1).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'domingo-j-torres-garcia',
+        kind: 'fact',
+        label:
+          'Coautor del PC 278 con Domingo J. Torres García, Héctor E. Ferrer Santiago, Ramón A. Torres Cruz, Swanny E. Vargas Laureano y Estrella Martínez Soto (SUTRA Autores 6); no implica alianza partidista',
+        sources: [SRC.sutraPC0278Fourquet],
+      },
+      {
+        toId: 'hector-e-ferrer-santiago',
+        kind: 'fact',
+        label:
+          'Coautor del PC 278 con Domingo J. Torres García, Héctor E. Ferrer Santiago, Ramón A. Torres Cruz, Swanny E. Vargas Laureano y Estrella Martínez Soto (SUTRA Autores 6); no implica alianza partidista',
+        sources: [SRC.sutraPC0278Fourquet],
+      },
+      {
+        toId: 'ramon-torres-cruz',
+        kind: 'fact',
+        label:
+          'Coautor del PC 278 con Domingo J. Torres García, Héctor E. Ferrer Santiago, Ramón A. Torres Cruz, Swanny E. Vargas Laureano y Estrella Martínez Soto (SUTRA Autores 6); no implica alianza partidista',
+        sources: [SRC.sutraPC0278Fourquet],
+      },
+    ],
+    sources: [
+      SRC.camaraFourquet,
+      SRC.sutraFourquet,
+      SRC.wiki2024House,
+      SRC.sutraPC0652Fourquet,
+      SRC.sutraRC0439Fourquet,
+      SRC.sutraRC0434Fourquet,
+      SRC.sutraPC0278Fourquet,
+    ],
+  },
 }

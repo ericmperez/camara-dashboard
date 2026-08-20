@@ -1337,6 +1337,32 @@ export const SRC = {
     label:
       'SUTRA · RC 44 (Autores 4; Méndez, Rodríguez Torres, Rosas y Vargas Laureano)',
   },
+  camaraFourquet: {
+    url: 'https://www.camara.pr.gov/team/angel-a-fourquet-cordero/',
+    label:
+      'Cámara · ficha oficial de Ángel A. Fourquet Cordero (D24; Ponce; portavoz PPD en Gobierno)',
+  },
+  sutraFourquet: {
+    url: 'https://sutra.oslpr.org/legisladores/M-957-AL',
+    label: 'SUTRA · Ángel A. Fourquet Cordero (M-957-AL, 2025–2028; Distrito 24)',
+  },
+  sutraPC0652Fourquet: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0652',
+    label: 'SUTRA · PC 652 (autor único; Día de la Historia Deportiva Ponceña)',
+  },
+  sutraRC0439Fourquet: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0439',
+    label: 'SUTRA · RC 439 (autor único; investigación AAA / facturación D24)',
+  },
+  sutraRC0434Fourquet: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0434',
+    label: 'SUTRA · RC 434 (autor único; Anillo de Circunvalación Norte PR-9, Ponce)',
+  },
+  sutraPC0278Fourquet: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0278',
+    label:
+      'SUTRA · PC 278 (Autores 6; Torres García, Ferrer Santiago, Torres Cruz, Vargas Laureano, Martínez Soto y Fourquet Cordero)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
