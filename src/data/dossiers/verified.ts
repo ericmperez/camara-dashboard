@@ -1488,4 +1488,60 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraPC0286Joito,
     ],
   },
+
+  'ensol-a-rodriguez-torres': {
+    id: 'ensol-a-rodriguez-torres',
+    bio: 'Titular PNP del Distrito 23. Primer término; asumió el 2 de enero de 2025. SUTRA lo lista como M-956-AL.',
+    career: [
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 15,173 (43.1%); PPD Cheito Rivera Madera (incumbente) 13,361 (37.9%); PIP Lugo Boneta 3,052 (8.7%); MVC Daniel Ortiz Vargas 2,160 (6.1%); PD Josué Eliú Pagán Carbone 1,492 (4.2%); total 35,238. Ganancia PNP. Predecesor: José / Cheito Rivera Madera (PPD). votes.json coincide. No se usan 11,952 / 11,624.',
+    ],
+    aspirations: [
+      'PC 849 (11 sep 2025): Reserva Natural «la Soplaera» en el Barrio Jaguas de Peñuelas (SUTRA Autores = 1).',
+      'PC 660 (12 may 2025): declara patrimonio las Piedras del Padre Nazario, Guayanilla (SUTRA Autores = 1).',
+      'RC 326 (12 may 2025): investigación de la Comisión de Asuntos de la Juventud sobre gas pimienta en instituciones de menores (SUTRA Autores = 1).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'elinette-gonzalez-aguayo',
+        kind: 'fact',
+        label:
+          'Coautor del PC 414 (Cuerpo de Jóvenes Vigilantes Voluntarios del DRNA) con Elinette González Aguayo (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraPC0414Ensol],
+      },
+      {
+        toId: 'felix-pacheco-burgos',
+        kind: 'fact',
+        label:
+          'Coautor del PC 1139 (Cuerpo de Seguridad Escolar) con Félix Pacheco Burgos y Ramón Torres Cruz (SUTRA Autores 3); no implica alianza partidista',
+        sources: [SRC.sutraPC1139Ensol],
+      },
+      {
+        toId: 'ramon-torres-cruz',
+        kind: 'fact',
+        label:
+          'Coautor del PC 1139 (Cuerpo de Seguridad Escolar) con Félix Pacheco Burgos y Ramón Torres Cruz (SUTRA Autores 3); no implica alianza partidista',
+        sources: [SRC.sutraPC1139Ensol],
+      },
+      {
+        toId: 'jose-f-aponte-hernandez',
+        kind: 'fact',
+        label:
+          'Coautor del PC 661 (retiro de alto riesgo para agentes del NIE) con José F. Aponte Hernández (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraPC0661Ensol],
+      },
+    ],
+    sources: [
+      SRC.camaraEnsol,
+      SRC.sutraEnsol,
+      SRC.wiki2024House,
+      SRC.microjurisComisiones,
+      SRC.sutraPC0849Ensol,
+      SRC.sutraPC0660Ensol,
+      SRC.sutraRC0326Ensol,
+      SRC.sutraPC0414Ensol,
+      SRC.sutraPC1139Ensol,
+      SRC.sutraPC0661Ensol,
+    ],
+  },
 }

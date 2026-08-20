@@ -1810,6 +1810,82 @@ describe('dossiers 2025–2028', () => {
     expect(SRC.sutraPC0286Joito.url).toBe('https://sutra.oslpr.org/medidas/153433')
   })
 
+  it('expande la ficha delgada de Ensol D23 con CEE 15,173 y SUTRA M-956-AL', () => {
+    const d23 = DOSSIERS['ensol-a-rodriguez-torres']
+    expect(DEEP_IDS.has('ensol-a-rodriguez-torres')).toBe(false)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['ensol-a-rodriguez-torres']).toBeDefined()
+    expect(d23.bio).toMatch(/Distrito 23/)
+    expect(d23.bio).toMatch(/M-956-AL/)
+    expect(d23.bio).toMatch(/2 de enero de 2025/)
+    expect(d23.career.join(' ')).toMatch(/15,173/)
+    expect(d23.career.join(' ')).toMatch(/43\.1%/)
+    expect(d23.career.join(' ')).toMatch(/35,238/)
+    expect(d23.career.join(' ')).toMatch(/Cheito Rivera Madera/)
+    expect(d23.career.join(' ')).toMatch(/13,361/)
+    expect(d23.career.join(' ')).toMatch(/votes\.json/)
+    expect(d23.career.join(' ')).toMatch(/Ganancia PNP/)
+    expect(JSON.stringify(d23)).not.toMatch(/11,?952|11,?624|La Perla|Yorres/)
+    expect(d23.career.join(' ')).not.toMatch(/primaria/)
+    expect(d23.aspirations).toHaveLength(3)
+    expect(d23.aspirations.join(' ')).toMatch(/PC 849/)
+    expect(d23.aspirations.join(' ')).toMatch(/PC 660/)
+    expect(d23.aspirations.join(' ')).toMatch(/RC 326/)
+    expect(d23.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d23.aspirations.join(' ')).not.toMatch(
+      /PC 414|PC0414|PC 1139|PC1139|PC 661|PC0661|PC 165|PC0165|RC 44|RC0044/,
+    )
+    expect(d23.committees).toEqual(['Juventud'])
+    expect(JSON.stringify(d23)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d23)).not.toMatch(/esposa|cónyuge|familia|LGBTQ|nació/)
+    expect(d23.connections.map((c) => c.toId)).toEqual([
+      'elinette-gonzalez-aguayo',
+      'felix-pacheco-burgos',
+      'ramon-torres-cruz',
+      'jose-f-aponte-hernandez',
+    ])
+    expect(d23.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d23.connections[0]?.label).toMatch(/PC 414/)
+    expect(d23.connections[1]?.label).toMatch(/PC 1139/)
+    expect(d23.connections[2]?.label).toMatch(/PC 1139/)
+    expect(d23.connections[3]?.label).toMatch(/PC 661/)
+    expect(d23.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d23.connections.some((c) => c.toId === 'joe-joito-colon-rodriguez')).toBe(false)
+    expect(d23.connections.some((c) => c.toId === 'omayra-m-martinez-vazquez')).toBe(false)
+    expect(d23.connections.some((c) => c.toId === 'angel-a-fourquet-cordero')).toBe(false)
+    const overlap = townOverlapConnections('ensol-a-rodriguez-torres')
+    expect(overlap.some((c) => c.toId === 'joe-joito-colon-rodriguez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.some((c) => c.toId === 'omayra-m-martinez-vazquez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d23.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraEnsol.url,
+        SRC.sutraEnsol.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraPC0849Ensol.url,
+        SRC.sutraPC0660Ensol.url,
+        SRC.sutraRC0326Ensol.url,
+        SRC.sutraPC0414Ensol.url,
+        SRC.sutraPC1139Ensol.url,
+        SRC.sutraPC0661Ensol.url,
+      ]),
+    )
+    expect(d23.sources.map((s) => s.url).join(' ')).not.toMatch(
+      /periodicoelsolpr|primerahora|ballotpedia|yorres/i,
+    )
+    expect(SRC.sutraEnsol.url).toBe('https://sutra.oslpr.org/legisladores/M-956-AL')
+    expect(SRC.sutraPC0849Ensol.url).toBe('https://sutra.oslpr.org/medidas/158413')
+    expect(SRC.sutraPC0660Ensol.url).toBe('https://sutra.oslpr.org/medidas/155858')
+    expect(SRC.sutraRC0326Ensol.url).toBe('https://sutra.oslpr.org/medidas/155756')
+    expect(SRC.sutraPC0414Ensol.url).toBe('https://sutra.oslpr.org/medidas/154286')
+    expect(SRC.sutraPC1139Ensol.url).toBe('https://sutra.oslpr.org/medidas/160488')
+    expect(SRC.sutraPC0661Ensol.url).toBe('https://sutra.oslpr.org/medidas/155859')
+  })
+
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
     for (const dossier of Object.values(DOSSIERS)) {
       for (const connection of dossier.connections) {

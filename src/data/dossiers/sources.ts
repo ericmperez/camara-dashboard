@@ -1307,6 +1307,39 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas/153433',
     label: 'SUTRA · PC 286 (Autores 2; Registro Digital de Agricultores; Colón y Medina Calderón)',
   },
+  camaraEnsol: {
+    url: 'https://www.camara.pr.gov/team/ensol-a-rodriguez-torres/',
+    label:
+      'Cámara · ficha oficial de Ensol A. Rodríguez Torres (D23; Presidente: Comisión de Asuntos de la Juventud)',
+  },
+  sutraEnsol: {
+    url: 'https://sutra.oslpr.org/legisladores/M-956-AL',
+    label: 'SUTRA · Ensol Rodríguez Torres (M-956-AL, 2025–2028; Distrito 23)',
+  },
+  sutraPC0849Ensol: {
+    url: 'https://sutra.oslpr.org/medidas/158413',
+    label: 'SUTRA · PC 849 (autor único; Reserva Natural «la Soplaera», Peñuelas)',
+  },
+  sutraPC0660Ensol: {
+    url: 'https://sutra.oslpr.org/medidas/155858',
+    label: 'SUTRA · PC 660 (autor único; Piedras del Padre Nazario, Guayanilla)',
+  },
+  sutraRC0326Ensol: {
+    url: 'https://sutra.oslpr.org/medidas/155756',
+    label: 'SUTRA · RC 326 (autor único; gas pimienta en instituciones de menores)',
+  },
+  sutraPC0414Ensol: {
+    url: 'https://sutra.oslpr.org/medidas/154286',
+    label: 'SUTRA · PC 414 (Autores 2; Jóvenes Vigilantes Voluntarios DRNA; Rodríguez y González Aguayo)',
+  },
+  sutraPC1139Ensol: {
+    url: 'https://sutra.oslpr.org/medidas/160488',
+    label: 'SUTRA · PC 1139 (Autores 3; Cuerpo de Seguridad Escolar; Rodríguez, Pacheco y Torres Cruz)',
+  },
+  sutraPC0661Ensol: {
+    url: 'https://sutra.oslpr.org/medidas/155859',
+    label: 'SUTRA · PC 661 (Autores 2; retiro de alto riesgo NIE; Rodríguez y Aponte Hernández)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
