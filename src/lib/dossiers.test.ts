@@ -30,7 +30,7 @@ describe('dossiers 2025–2028', () => {
     }
   })
 
-  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6, Pérez Ortiz D7, Pacheco D9, Pellé D10, Elinette D11, Feliciano D12, Nieves D13, Robles D14 y Franqui D15', () => {
+  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6, Pérez Ortiz D7, Pacheco D9, Pellé D10, Elinette D11, Feliciano D12, Nieves D13, Robles D14, Franqui D15 y Figueroa D16', () => {
     const extra = [
       'jose-f-aponte-hernandez',
       'roberto-rivera-ruiz-de-porras',
@@ -49,12 +49,13 @@ describe('dossiers 2025–2028', () => {
       'jerry-nieves-rosario',
       'edgar-robles-rivera',
       'joel-i-franqui-atiles',
+      'reinaldo-rey-figueroa',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(27)
+    expect(DEEP_IDS.size).toBe(28)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
@@ -1309,6 +1310,127 @@ describe('dossiers 2025–2028', () => {
         SRC.sutraRCC0145.url,
         SRC.sutraRCC0146.url,
         SRC.sutraRCC0147.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D16 de Figueroa con CEE 13,298, sin OCE y RC 56 Autores=1', () => {
+    const d16 = DOSSIERS['reinaldo-rey-figueroa']
+    expect(d16.id).toBe('reinaldo-rey-figueroa')
+    expect(d16.bio).toMatch(/Reinaldo ‘Rey’ Figueroa|Reinaldo Figueroa Acevedo/)
+    expect(d16.bio).toMatch(/Figueroa Acevedo/)
+    expect(d16.bio).toMatch(/Distrito 16/)
+    expect(d16.bio).toMatch(/Isabela/)
+    expect(d16.bio).toMatch(/San Sebastián/)
+    expect(d16.bio).toMatch(/Aguadilla/)
+    expect(d16.bio).toMatch(/Barrio Guerrero/)
+    expect(d16.bio).toMatch(/PPD/)
+    expect(d16.bio).toMatch(/24 de febrero de 1971/)
+    expect(d16.bio).toMatch(/Educación Física/)
+    expect(d16.bio).toMatch(/Mayagüez|RUM/)
+    expect(d16.bio).toMatch(/reifigueroa@camara\.pr\.gov/)
+    expect(d16.bio).toMatch(/M-949-AL/)
+    expect(d16.bio).toMatch(/legislador numérico 949/)
+    expect(d16.bio).toMatch(/977-2456/)
+    expect(d16.bio).toMatch(/2 de enero de 2025/)
+    expect(d16.bio).toMatch(/2 de enero de 2029/)
+    expect(d16.bio).toMatch(/no preside comisión|Minoría PPD/)
+    expect(d16.career.join(' ')).toMatch(/Centro de Ayuda a Niños con impedimentos/)
+    expect(d16.career.join(' ')).toMatch(/Liga de baloncesto de Isabela/)
+    expect(d16.career.join(' ')).toMatch(/Pequeñas Ligas/)
+    expect(d16.career.join(' ')).toMatch(/Club de Leones/)
+    expect(d16.career.join(' ')).toMatch(/últimos 4 años/)
+    expect(d16.career.join(' ')).toMatch(/Legislatura Municipal/)
+    expect(d16.career.join(' ')).toMatch(/13,298/)
+    expect(d16.career.join(' ')).toMatch(/40\.0%/)
+    expect(d16.career.join(' ')).toMatch(/33,597/)
+    expect(d16.career.join(' ')).toMatch(/1,693/)
+    expect(d16.career.join(' ')).toMatch(/Liza I\. Alfaro Mercado/)
+    expect(d16.career.join(' ')).toMatch(/11,605/)
+    expect(d16.career.join(' ')).toMatch(/Ángel Lebrón/)
+    expect(d16.career.join(' ')).toMatch(/5,555/)
+    expect(d16.career.join(' ')).toMatch(/Reynaldo Acevedo Vélez/)
+    expect(d16.career.join(' ')).toMatch(/3,139/)
+    expect(d16.career.join(' ')).toMatch(/Hold PPD/)
+    expect(d16.career.join(' ')).toMatch(/13,289/)
+    expect(d16.career.join(' ')).toMatch(/11,579/)
+    expect(d16.career.join(' ')).toMatch(/Pedro Lebrón Santiago/)
+    expect(d16.career.join(' ')).toMatch(/5,550/)
+    expect(d16.career.join(' ')).toMatch(/3,130/)
+    expect(d16.career.join(' ')).toMatch(/33,548/)
+    expect(d16.career.join(' ')).toMatch(/12,478/)
+    expect(d16.career.join(' ')).toMatch(/9,871/)
+    expect(d16.career.join(' ')).toMatch(/5,240/)
+    expect(d16.career.join(' ')).toMatch(/2,998/)
+    expect(d16.career.join(' ')).toMatch(/30,587/)
+    expect(d16.career.join(' ')).toMatch(/No se certifica un par como CEE HTML/)
+    expect(d16.career.join(' ')).toMatch(/2,628/)
+    expect(d16.career.join(' ')).toMatch(/David Cruz Hernández/)
+    expect(d16.career.join(' ')).toMatch(/1,761/)
+    expect(d16.career.join(' ')).toMatch(/Orlando Cortes Mejías/)
+    expect(d16.career.join(' ')).toMatch(/588/)
+    expect(d16.career.join(' ')).toMatch(/Esther Soto/)
+    expect(d16.career.join(' ')).toMatch(/133/)
+    expect(d16.career.join(' ')).toMatch(/5,110/)
+    expect(d16.career.join(' ')).toMatch(/Eladio J\. Cardona Quiles/)
+    expect(d16.career.join(' ')).toMatch(/28 de diciembre de 2023/)
+    expect(d16.career.join(' ')).toMatch(/no hay auditoría OCE publicada a su nombre/)
+    expect(d16.career.join(' ')).toMatch(/no lista el Distrito 16/)
+    expect(d16.career.join(' ')).toMatch(/OCE-B-21-145/)
+    expect(d16.career.join(' ')).toMatch(/miembro/)
+    expect(d16.career.join(' ')).toMatch(/Tatiana Pérez Ramírez/)
+    expect(d16.career.join(' ')).toMatch(/No se afirma que Figueroa la preside/)
+    expect(d16.career.join(' ')).toMatch(/NO ENCONTRADO/)
+    expect(d16.career.join(' ')).toMatch(/no hay récord público citado de un familiar sentado/)
+    expect(d16.career.join(' ')).not.toMatch(/esposa|cónyuge|yerno/)
+    expect(d16.career.join(' ')).toMatch(/RC 56/)
+    expect(d16.aspirations.join(' ')).toMatch(/RC 56/)
+    expect(d16.aspirations.join(' ')).toMatch(/PR-112/)
+    expect(d16.aspirations.join(' ')).toMatch(/PR-445/)
+    expect(d16.aspirations.join(' ')).toMatch(/PR-446/)
+    expect(d16.aspirations.join(' ')).toMatch(/PC 579/)
+    expect(d16.aspirations.join(' ')).toMatch(/PC 760/)
+    expect(d16.aspirations.join(' ')).toMatch(/RCC 333/)
+    expect(d16.aspirations.join(' ')).toMatch(/Juana B\. Guzmán/)
+    expect(d16.aspirations.join(' ')).toMatch(/RC 699/)
+    expect(d16.aspirations.join(' ')).toMatch(/Guajataca/)
+    expect(d16.aspirations.join(' ')).toMatch(/RC 729/)
+    expect(d16.aspirations.join(' ')).toMatch(/RCC 388/)
+    expect(d16.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d16.committees).toEqual([])
+    expect(d16.committees).not.toContain('Educación')
+    expect(d16.connections).toEqual([])
+    expect(JSON.stringify(d16)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d16)).not.toMatch(/M-948-AL/)
+    expect(JSON.stringify(d16)).not.toMatch(/OCE-EB-24/)
+    expect(d16.connections.some((c) => c.toId === 'wilson-j-roman-lopez')).toBe(false)
+    expect(d16.connections.some((c) => c.kind === 'inference')).toBe(false)
+    const overlap = townOverlapConnections('reinaldo-rey-figueroa')
+    expect(overlap.some((c) => c.toId === 'wilson-j-roman-lopez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.every((c) => c.kind === 'inference')).toBe(true)
+    expect(d16.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraFigueroa.url,
+        SRC.camaraFigueroaEN.url,
+        SRC.sutraFigueroa.url,
+        SRC.sutraDirectorioFigueroa.url,
+        SRC.ballotpediaFigueroa.url,
+        SRC.wiki2024House.url,
+        SRC.wiki2024HouseES.url,
+        SRC.visionRC56.url,
+        SRC.oce2024Reps.url,
+        SRC.oceD16_2020.url,
+        SRC.camaraEducacion.url,
+        SRC.sutraRC0056.url,
+        SRC.sutraPC0579.url,
+        SRC.sutraPC0760.url,
+        SRC.sutraRCC0333.url,
+        SRC.sutraRC0699.url,
+        SRC.sutraRC0729.url,
+        SRC.sutraRCC0388.url,
         SRC.microjurisComisiones.url,
       ]),
     )

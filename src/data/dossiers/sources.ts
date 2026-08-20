@@ -1014,6 +1014,71 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas/155984',
     label: 'SUTRA · PC 684 (autor único; Túnel Oscuro / Túnel Negro, Quebradillas)',
   },
+  camaraFigueroa: {
+    url: 'https://www.camara.pr.gov/team/reinaldo-reyfigueroa/',
+    label: 'Cámara · ficha oficial de Reinaldo ‘Rey’ Figueroa (D16; Barrio Guerrero de Aguadilla)',
+  },
+  camaraFigueroaEN: {
+    url: 'https://www.camara.pr.gov/en/team/reinaldo-rey-figueroa/',
+    label: 'Cámara · official profile of Reinaldo ‘Rey’ Figueroa (EN)',
+  },
+  sutraFigueroa: {
+    url: 'https://sutra.oslpr.org/legisladores/M-949-AL',
+    label: 'SUTRA · Reinaldo Figueroa Acevedo (M-949-AL, legislador 949, 2025–2028; Detalle Distrito 16)',
+  },
+  sutraDirectorioFigueroa: {
+    url: 'https://sutra.oslpr.org/directorio?nombre=Figueroa&cuatrienio=2025-2028',
+    label: 'SUTRA · directorio 2025–2028 (filtro nombre Figueroa; Reinaldo Figueroa Acevedo D16 PPD)',
+  },
+  ballotpediaFigueroa: {
+    url: 'https://ballotpedia.org/Reinaldo_Figueroa',
+    label: 'Ballotpedia · Reinaldo Figueroa (D16; apodo Rey; asumió 2 ene 2025; término 2 ene 2029; primaria 2,628)',
+  },
+  visionRC56: {
+    url: 'https://periodicovision.com/representante-del-distrito-16-busca-promover-el-turismo-y-mejorar-en-carreteras-de-la-region/',
+    label: 'Semanario Visión · primera iniciativa RC 56 (PR-112, PR-445, PR-446); 19 mar 2025',
+    published: '2025-03-19',
+  },
+  oceD16_2020: {
+    url: 'https://oce.pr.gov/auditorias-2020/auditorias-2020-representantes/distrito-16/',
+    label: 'OCE · auditorías 2020, representantes Distrito 16 (Cardona, Lassalle; no Figueroa)',
+  },
+  oce2016Reps: {
+    url: 'https://oce.pr.gov/auditorias-2016/auditorias-2016-representantes/',
+    label: 'OCE · auditorías 2016 representantes (el índice no lista el Distrito 16)',
+  },
+  camaraEducacion: {
+    url: 'https://www.camara.pr.gov/ova_dep/comision-de-educacion/',
+    label: 'Cámara · Comisión de Educación (lista a Figueroa; preside Tatiana Pérez Ramírez)',
+  },
+  sutraRC0056: {
+    url: 'https://sutra.oslpr.org/medidas/153039',
+    label: 'SUTRA · RC 56 (autor único; PR-112 / PR-445 / PR-446 D16; unanimidad 13 mar 2025)',
+  },
+  sutraPC0579: {
+    url: 'https://sutra.oslpr.org/medidas/155539',
+    label: 'SUTRA · PC 579 (autor único; empleo para convictos y exconvictos / SAAPE)',
+  },
+  sutraPC0760: {
+    url: 'https://sutra.oslpr.org/medidas/157300',
+    label: 'SUTRA · PC 760 (autor único; prioridad de traspaso tras 10 años en vivienda pública)',
+  },
+  sutraRCC0333: {
+    url: 'https://sutra.oslpr.org/medidas/160914',
+    label: 'SUTRA · RCC 333 (autor único; escuela Juana B. Guzmán, San Sebastián / ViveConect)',
+  },
+  sutraRC0699: {
+    url: 'https://sutra.oslpr.org/medidas/161222',
+    label: 'SUTRA · RC 699 (autor único; plan turístico costero Guajataca–Aguadilla)',
+  },
+  sutraRC0729: {
+    url: 'https://sutra.oslpr.org/medidas/161520',
+    label: 'SUTRA · RC 729 (autor único; demanda de empleo futura / sistema educativo)',
+  },
+  sutraRCC0388: {
+    url: 'https://sutra.oslpr.org/medidas/161938',
+    label: 'SUTRA · RCC 388 (autor único; Corredor Ecoturístico de Guajataca, Isabela)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
