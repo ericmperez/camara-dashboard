@@ -1368,6 +1368,40 @@ export const SRC = {
     label:
       'SUTRA · PC 455 (Autores 5; Rodríguez Torres, Martínez Soto, Román López, Pérez Ramírez y Fourquet Cordero)',
   },
+  camaraDomingo: {
+    url: 'https://www.camara.pr.gov/team/domingo-j-torres-garcia/',
+    label: 'Cámara · ficha oficial de Domingo J. Torres García (D25; Portavoz alterno PPD)',
+  },
+  sutraDomingo: {
+    url: 'https://sutra.oslpr.org/legisladores/M-958-AL',
+    label: 'SUTRA · Domingo J. Torres García (M-958-AL, 2025–2028; Distrito 25)',
+  },
+  sutraRC0497Domingo: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0497',
+    label: 'SUTRA · RC 497 (autor único; investigación carreteras D25)',
+  },
+  sutraPC0946Domingo: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0946',
+    label:
+      'SUTRA · PC 946 (autor único; Semana del Profesional de Recursos Humanos y Relaciones Laborales)',
+  },
+  sutraRCC0238Domingo: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0238',
+    label: 'SUTRA · RCC 238 (autor único; cancha / muro Escuela Intermedia Jardines de Ponce)',
+  },
+  sutraPC0278Domingo: {
+    url: 'https://sutra.oslpr.org/medidas/153486',
+    label:
+      'SUTRA · PC 278 (Autores 6; Fourquet, Torres García, Ferrer, Torres Cruz, Vargas Laureano y Martínez Soto)',
+  },
+  sutraRC0183Domingo: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0183',
+    label: 'SUTRA · RC 183 (Autores 2; Ferrer Santiago y Torres García)',
+  },
+  sutraRCC0171Domingo: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0171',
+    label: 'SUTRA · RCC 171 (Autores 2; Torres García y Torres Zamora; Escuela Luz Correa, Juana Díaz)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

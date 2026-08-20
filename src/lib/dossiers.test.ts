@@ -1956,6 +1956,78 @@ describe('dossiers 2025–2028', () => {
     expect(SRC.sutraPC0455Fourquet.url).toBe('https://sutra.oslpr.org/medidas/154467')
   })
 
+  it('expande la ficha de mesa de Domingo D25 con CEE 12,203 y SUTRA M-958-AL', () => {
+    const d25 = DOSSIERS['domingo-j-torres-garcia']
+    expect(DEEP_IDS.has('domingo-j-torres-garcia')).toBe(true)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['domingo-j-torres-garcia']).toBeDefined()
+    expect(MESA_IDS.includes('domingo-j-torres-garcia')).toBe(true)
+    expect(d25.bio).toMatch(/Distrito 25/)
+    expect(d25.bio).toMatch(/M-958-AL/)
+    expect(d25.bio).toMatch(/Portavoz alterno/)
+    expect(d25.career.join(' ')).toMatch(/12,203/)
+    expect(d25.career.join(' ')).toMatch(/42\.5%/)
+    expect(d25.career.join(' ')).toMatch(/28,743/)
+    expect(d25.career.join(' ')).toMatch(/Daniel Vega Ortiz/)
+    expect(d25.career.join(' ')).toMatch(/10,168/)
+    expect(d25.career.join(' ')).toMatch(/votes\.json/)
+    expect(d25.career.join(' ')).toMatch(/Portavoz alterno/)
+    expect(d25.aspirations).toHaveLength(3)
+    expect(d25.aspirations.join(' ')).toMatch(/RC 497/)
+    expect(d25.aspirations.join(' ')).toMatch(/PC 946/)
+    expect(d25.aspirations.join(' ')).toMatch(/RCC 238/)
+    expect(d25.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d25.aspirations.join(' ')).not.toMatch(
+      /PC 278|PC0278|RC 183|RC0183|RCC 171|RCC0171|PC 489|PC0489/,
+    )
+    expect(d25.committees).toEqual([])
+    expect(JSON.stringify(d25)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d25)).not.toMatch(/esposa|cónyuge|familia|Yolanda|padres/)
+    expect(d25.connections.map((c) => c.toId)).toEqual([
+      'angel-a-fourquet-cordero',
+      'hector-e-ferrer-santiago',
+      'jose-e-torres-zamora',
+    ])
+    expect(d25.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d25.connections[0]?.label).toMatch(/PC 278/)
+    expect(d25.connections[1]?.label).toMatch(/RC 183/)
+    expect(d25.connections[2]?.label).toMatch(/RCC 171/)
+    expect(d25.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d25.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraDomingo.url,
+        SRC.sutraDomingo.url,
+        SRC.wiki2024House.url,
+        SRC.sutraRC0497Domingo.url,
+        SRC.sutraPC0946Domingo.url,
+        SRC.sutraRCC0238Domingo.url,
+        SRC.sutraPC0278Domingo.url,
+        SRC.sutraRC0183Domingo.url,
+        SRC.sutraRCC0171Domingo.url,
+      ]),
+    )
+    expect(SRC.sutraDomingo.url).toBe('https://sutra.oslpr.org/legisladores/M-958-AL')
+    expect(SRC.camaraDomingo.url).toBe(
+      'https://www.camara.pr.gov/team/domingo-j-torres-garcia/',
+    )
+    expect(SRC.sutraRC0497Domingo.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0497',
+    )
+    expect(SRC.sutraPC0946Domingo.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0946',
+    )
+    expect(SRC.sutraRCC0238Domingo.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0238',
+    )
+    expect(SRC.sutraPC0278Domingo.url).toBe('https://sutra.oslpr.org/medidas/153486')
+    expect(SRC.sutraRC0183Domingo.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0183',
+    )
+    expect(SRC.sutraRCC0171Domingo.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0171',
+    )
+  })
+
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
     for (const dossier of Object.values(DOSSIERS)) {
       for (const connection of dossier.connections) {

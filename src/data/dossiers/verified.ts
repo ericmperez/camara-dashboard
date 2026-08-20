@@ -189,12 +189,51 @@ export const VERIFIED: Record<string, Dossier> = {
 
   'domingo-j-torres-garcia': {
     id: 'domingo-j-torres-garcia',
-    bio: null,
-    career: ['Portavoz alterno de la delegación del PPD (directorio oficial).'],
-    aspirations: [],
+    bio: 'Portavoz alterno PPD del Distrito 25. SUTRA lo lista como M-958-AL. Reelecto; asumió el 2 de enero de 2025. HECHO (ficha oficial): presidió Trabajo / transformación del sistema de retiro en el cuatrienio anterior. No preside comisión ahora (minoría PPD; applyCommissions / RC0002 no le dan silla).',
+    career: [
+      'Portavoz alterno de la delegación del PPD (directorio oficial).',
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PPD 12,203 (42.5%); PNP Daniel Vega Ortiz 10,168 (35.4%); PIP Gerardo Cruz López 3,953; PD Luis Antonio Yordán Frau 2,419; total 28,743. Hold PPD. votes.json coincide.',
+    ],
+    aspirations: [
+      'RC 497 (30 oct 2025): investigación carreteras D25 (Ponce, Jayuya, Juana Díaz) (SUTRA Autores = 1).',
+      'PC 946 (23 oct 2025): Semana del Profesional de Recursos Humanos y Relaciones Laborales (SUTRA Autores = 1).',
+      'RCC 238 (30 oct 2025): cancha / muro Escuela Intermedia Jardines de Ponce (SUTRA Autores = 1).',
+    ],
     committees: [],
-    connections: [],
-    sources: [],
+    connections: [
+      {
+        toId: 'angel-a-fourquet-cordero',
+        kind: 'fact',
+        label:
+          'Coautor del PC 278 con Ángel A. Fourquet Cordero, Héctor E. Ferrer Santiago, Ramón A. Torres Cruz, Swanny E. Vargas Laureano y Estrella Martínez Soto (SUTRA Autores 6); no implica alianza partidista',
+        sources: [SRC.sutraPC0278Domingo],
+      },
+      {
+        toId: 'hector-e-ferrer-santiago',
+        kind: 'fact',
+        label:
+          'Coautor de la RC 183 con Héctor E. Ferrer Santiago (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraRC0183Domingo],
+      },
+      {
+        toId: 'jose-e-torres-zamora',
+        kind: 'fact',
+        label:
+          'Coautor de la RCC 171 (Escuela Luz Correa, Juana Díaz) con José E. Torres Zamora (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraRCC0171Domingo],
+      },
+    ],
+    sources: [
+      SRC.camaraDomingo,
+      SRC.sutraDomingo,
+      SRC.wiki2024House,
+      SRC.sutraRC0497Domingo,
+      SRC.sutraPC0946Domingo,
+      SRC.sutraRCC0238Domingo,
+      SRC.sutraPC0278Domingo,
+      SRC.sutraRC0183Domingo,
+      SRC.sutraRCC0171Domingo,
+    ],
   },
 
   'denis-marquez-lebron': {
