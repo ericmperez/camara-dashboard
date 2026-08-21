@@ -1647,10 +1647,20 @@ export const SRC = {
     label:
       'SUTRA · RC 120 (autor único; análisis socioeconómico Comisión Región Este Central)',
   },
-  sutraPC0299Pena: {
-    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0299',
+  sutraRC0375Pena: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0375',
     label:
-      'SUTRA · PC 299 (Autores 8; Ley POW/MIA; Torres Zamora, Peña Ramírez y otros)',
+      'SUTRA · RC 375 (Autores 2; Medina Calderón y Peña Ramírez; enmiendas técnicas a RC 120)',
+  },
+  sutraPC0304Pena: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0304',
+    label:
+      'SUTRA · PC 304 (Autores 4; Franqui, Méndez, Charbonier y Peña; depósitos de fondos públicos)',
+  },
+  sutraPC1103Pena: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1103',
+    label:
+      'SUTRA · PC 1103 (Autores 2; Peña Ramírez y Méndez Núñez; cannabis medicinal / banca)',
   },
 } as const satisfies Record<string, DossierSource>
 

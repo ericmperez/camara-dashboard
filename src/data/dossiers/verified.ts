@@ -145,11 +145,25 @@ export const VERIFIED: Record<string, Dossier> = {
         sources: [SRC.metroInaugural],
       },
       {
-        toId: 'jose-e-torres-zamora',
+        toId: 'carmen-medina-calderon',
         kind: 'fact',
         label:
-          'Coautor del PC 299 (Ley POW/MIA) con José E. Torres Zamora y otros (SUTRA Autores 8); no implica alianza partidista',
-        sources: [SRC.sutraPC0299Pena],
+          'Coautora de la RC 375 (enmiendas técnicas a RC 120) con Carmen Medina Calderón (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraRC0375Pena],
+      },
+      {
+        toId: 'joel-i-franqui-atiles',
+        kind: 'fact',
+        label:
+          'Coautor del PC 304 (depósitos de fondos públicos) con Joel Franqui Atiles y otros (SUTRA Autores 4); no implica alianza partidista',
+        sources: [SRC.sutraPC0304Pena],
+      },
+      {
+        toId: 'carlos-johnny-mendez-nunez',
+        kind: 'fact',
+        label:
+          'Coautor del PC 1103 (cannabis medicinal / banca) con Carlos J. Méndez Núñez (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraPC1103Pena],
       },
     ],
     sources: [
@@ -161,7 +175,9 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraRC0476Pena,
       SRC.sutraRC0167Pena,
       SRC.sutraRC0120Pena,
-      SRC.sutraPC0299Pena,
+      SRC.sutraRC0375Pena,
+      SRC.sutraPC0304Pena,
+      SRC.sutraPC1103Pena,
     ],
   },
 

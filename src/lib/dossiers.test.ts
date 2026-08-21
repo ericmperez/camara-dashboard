@@ -2614,7 +2614,7 @@ describe('dossiers 2025–2028', () => {
     expect(d33.aspirations.join(' ')).toMatch(/Autores = 1/)
     expect(d33.aspirations.join(' ')).toMatch(/Gurabo/)
     expect(d33.aspirations.join(' ')).not.toMatch(
-      /PC 225|PC0225|RKC 21|RKC0021|PC 299|PC0299/,
+      /PC 225|PC0225|RKC 21|RKC0021|PC 299|PC0299|PC 698|PC0698|PC 965|PC0965|RC 377|RC0377/,
     )
     expect(VERIFIED['angel-r-pena-ramirez']?.committees).toEqual([])
     expect(d33.committees).toEqual(['Ética'])
@@ -2623,16 +2623,27 @@ describe('dossiers 2025–2028', () => {
     expect(d33.connections.map((c) => c.toId)).toEqual([
       'carlos-johnny-mendez-nunez',
       'yashira-lebron-rodriguez',
-      'jose-e-torres-zamora',
+      'carmen-medina-calderon',
+      'joel-i-franqui-atiles',
+      'carlos-johnny-mendez-nunez',
     ])
     expect(d33.connections.every((c) => c.kind === 'fact')).toBe(true)
     expect(d33.connections[0]?.label).toMatch(/vicepresidente/)
     expect(d33.connections[0]?.label).toMatch(/Méndez/)
+    expect(d33.connections[0]?.sources.map((s) => s.url)).toContain(SRC.metroInaugural.url)
     expect(d33.connections[1]?.label).toMatch(/vicepresidentes/)
-    expect(d33.connections[2]?.label).toMatch(/PC 299/)
-    expect(d33.connections[2]?.label).toMatch(/Torres Zamora/)
-    expect(d33.connections[2]?.label).toMatch(/Autores 8/)
-    expect(d33.connections[2]?.label).toMatch(/no implica alianza/)
+    expect(d33.connections[2]?.label).toMatch(/RC 375/)
+    expect(d33.connections[2]?.label).toMatch(/Medina Calderón/)
+    expect(d33.connections[2]?.label).toMatch(/Autores 2/)
+    expect(d33.connections[3]?.label).toMatch(/PC 304/)
+    expect(d33.connections[3]?.label).toMatch(/Franqui Atiles/)
+    expect(d33.connections[3]?.label).toMatch(/Autores 4/)
+    expect(d33.connections[4]?.label).toMatch(/PC 1103/)
+    expect(d33.connections[4]?.label).toMatch(/Méndez/)
+    expect(d33.connections[4]?.label).toMatch(/cannabis|banca/)
+    expect(d33.connections[4]?.label).toMatch(/Autores 2/)
+    expect(d33.connections.slice(2).every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d33.connections.some((c) => c.toId === 'jose-e-torres-zamora')).toBe(false)
     expect(d33.connections.some((c) => c.toId === 'christian-muriel-sanchez')).toBe(false)
     expect(
       DOSSIERS['christian-muriel-sanchez'].connections.some(
@@ -2663,10 +2674,13 @@ describe('dossiers 2025–2028', () => {
         SRC.sutraRC0476Pena.url,
         SRC.sutraRC0167Pena.url,
         SRC.sutraRC0120Pena.url,
-        SRC.sutraPC0299Pena.url,
+        SRC.sutraRC0375Pena.url,
+        SRC.sutraPC0304Pena.url,
+        SRC.sutraPC1103Pena.url,
       ]),
     )
     expect(d33.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(d33.sources.map((s) => s.url).join(' ')).not.toMatch(/PC0299|RC0377/)
     expect(SRC.sutraPena.url).toBe('https://sutra.oslpr.org/legisladores/M-966-AL')
     expect(SRC.sutraPena.url).not.toBe('https://sutra.oslpr.org/legisladores/M-743')
     expect(SRC.camaraPena.url).toBe('https://www.camara.pr.gov/team/angel-r-pena-ramirez/')
@@ -2679,8 +2693,14 @@ describe('dossiers 2025–2028', () => {
     expect(SRC.sutraRC0120Pena.url).toBe(
       'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0120',
     )
-    expect(SRC.sutraPC0299Pena.url).toBe(
-      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0299',
+    expect(SRC.sutraRC0375Pena.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0375',
+    )
+    expect(SRC.sutraPC0304Pena.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0304',
+    )
+    expect(SRC.sutraPC1103Pena.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1103',
     )
   })
 
