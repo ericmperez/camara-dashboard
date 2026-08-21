@@ -2252,6 +2252,87 @@ describe('dossiers 2025–2028', () => {
     )
   })
 
+  it('expande la ficha delgada de Hau D29 con CEE 12,837 y SUTRA M-962-AL', () => {
+    const d29 = DOSSIERS['gretchen-hau']
+    expect(DEEP_IDS.has('gretchen-hau')).toBe(false)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['gretchen-hau']).toBeDefined()
+    expect(d29.bio).toMatch(/Distrito 29/)
+    expect(d29.bio).toMatch(/Cidra y Cayey/)
+    expect(d29.bio).toMatch(/M-962-AL/)
+    expect(d29.bio).toMatch(/2 de enero de 2025/)
+    expect(d29.bio).toMatch(/Reelecta/)
+    expect(d29.bio).toMatch(/primera mujer del D29/)
+    expect(d29.career.join(' ')).toMatch(/12,837/)
+    expect(d29.career.join(' ')).toMatch(/46\.9%/)
+    expect(d29.career.join(' ')).toMatch(/27,347/)
+    expect(d29.career.join(' ')).toMatch(/Christopher García Figueroa/)
+    expect(d29.career.join(' ')).toMatch(/9,605/)
+    expect(d29.career.join(' ')).toMatch(/Rebecca I\. Cotto Morales/)
+    expect(d29.career.join(' ')).toMatch(/4,905/)
+    expect(d29.career.join(' ')).toMatch(/votes\.json/)
+    expect(d29.career.join(' ')).toMatch(/Hold PPD/)
+    expect(JSON.stringify(d29)).not.toMatch(/Primera Hora/)
+    expect(JSON.stringify(d29)).not.toMatch(/Guayama|Asociación de Alcaldes|senadora|Senado/)
+    expect(d29.aspirations).toHaveLength(3)
+    expect(d29.aspirations.join(' ')).toMatch(/RCC 246/)
+    expect(d29.aspirations.join(' ')).toMatch(/RCC 194/)
+    expect(d29.aspirations.join(' ')).toMatch(/RC 598/)
+    expect(d29.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d29.aspirations.join(' ')).not.toMatch(
+      /RC 152|RC0152|PC 725|PC0725|RCC 239|RCC0239|RCC 241|RCC0241/,
+    )
+    expect(d29.committees).toEqual([])
+    expect(VERIFIED['gretchen-hau']?.committees).toEqual([])
+    expect(JSON.stringify(d29)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d29)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d29.connections.map((c) => c.toId)).toEqual([
+      'lilibeth-lilly-rosas',
+      'edgardo-feliciano-sanchez',
+      'estrella-martinez-soto',
+    ])
+    expect(d29.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d29.connections[0]?.label).toMatch(/RCC 239/)
+    expect(d29.connections[0]?.label).toMatch(/Lilly|Lilibeth|Rosas/)
+    expect(d29.connections[1]?.label).toMatch(/RCC 239/)
+    expect(d29.connections[1]?.label).toMatch(/Feliciano/)
+    expect(d29.connections[2]?.label).toMatch(/RCC 241/)
+    expect(d29.connections[2]?.label).toMatch(/Estrella/)
+    expect(d29.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(townOverlapConnections('gretchen-hau')).toEqual([])
+    expect(d29.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraHau.url,
+        SRC.sutraHau.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraRCC0246Hau.url,
+        SRC.sutraRCC0194Hau.url,
+        SRC.sutraRC0598Hau.url,
+        SRC.sutraRCC0239Hau.url,
+        SRC.sutraRCC0241Hau.url,
+      ]),
+    )
+    expect(d29.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraHau.url).toBe('https://sutra.oslpr.org/legisladores/M-962-AL')
+    expect(SRC.camaraHau.url).toBe('https://www.camara.pr.gov/team/gretchen-hau/')
+    expect(SRC.sutraRCC0246Hau.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0246',
+    )
+    expect(SRC.sutraRCC0194Hau.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0194',
+    )
+    expect(SRC.sutraRC0598Hau.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0598',
+    )
+    expect(SRC.sutraRCC0239Hau.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0239',
+    )
+    expect(SRC.sutraRCC0241Hau.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0241',
+    )
+  })
+
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
     for (const dossier of Object.values(DOSSIERS)) {
       for (const connection of dossier.connections) {

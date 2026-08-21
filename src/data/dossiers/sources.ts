@@ -144,7 +144,7 @@ export const SRC = {
   },
   camaraHau: {
     url: 'https://www.camara.pr.gov/team/gretchen-hau/',
-    label: 'Cámara · ficha oficial de Gretchen Hau',
+    label: 'Cámara · ficha oficial de Gretchen Hau (D29; Cidra y Cayey)',
   },
   camaraEddie: {
     url: 'https://www.camara.pr.gov/team/eddie-charbonier-chinea/',
@@ -1504,6 +1504,34 @@ export const SRC = {
     url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1165',
     label:
       'SUTRA · PC 1165 (Autor Charbonier Chinea; Co-Autor Roque Gracia; transparencia operacional agua potable)',
+  },
+  sutraHau: {
+    url: 'https://sutra.oslpr.org/legisladores/M-962-AL',
+    label: 'SUTRA · Gretchen M. Hau (M-962-AL, 2025–2028; Distrito 29)',
+  },
+  sutraRCC0246Hau: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0246',
+    label: 'SUTRA · RCC 246 (autor único; alumbrado / semáforos Cidra y Cayey, D29)',
+  },
+  sutraRCC0194Hau: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0194',
+    label:
+      'SUTRA · RCC 194 (autor único; reparación cancha Escuela Regino Vega, Barrio Arenas, Cidra)',
+  },
+  sutraRC0598Hau: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0598',
+    label:
+      'SUTRA · RC 598 (autor único; petición de información Puente del Millón, PR-172, Cidra)',
+  },
+  sutraRCC0239Hau: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0239',
+    label:
+      'SUTRA · RCC 239 (Autores 3; Hau, Rosas Vargas y Feliciano Sánchez; prórroga 90 días LUMA/AAA)',
+  },
+  sutraRCC0241Hau: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0241',
+    label:
+      'SUTRA · RCC 241 (Autores 2; Hau y Martínez Soto; vallas de seguridad PR-52, puentes Cayey–Salinas)',
   },
 } as const satisfies Record<string, DossierSource>
 

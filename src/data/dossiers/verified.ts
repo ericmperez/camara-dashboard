@@ -1788,4 +1788,52 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraPC1165Roque,
     ],
   },
+
+  'gretchen-hau': {
+    id: 'gretchen-hau',
+    bio: 'Titular PPD del Distrito 29 (Cidra y Cayey). Reelecta; primera mujer del D29; asumió el 2 de enero de 2025. SUTRA la lista como M-962-AL.',
+    career: [
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PPD 12,837 (46.9%); PNP Christopher García Figueroa 9,605 (35.1%); MVC Rebecca I. Cotto Morales 4,905 (17.9%); total 27,347. Hold PPD. votes.json coincide.',
+    ],
+    aspirations: [
+      'RCC 246 (18 nov 2025): alumbrado / semáforos Cidra y Cayey, D29 (SUTRA Autores = 1).',
+      'RCC 194 (8 sep 2025): reparación cancha Escuela Regino Vega, Barrio Arenas, Cidra (SUTRA Autores = 1).',
+      'RC 598 (5 feb 2026): petición de información Puente del Millón, PR-172, Cidra (SUTRA Autores = 1).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'lilibeth-lilly-rosas',
+        kind: 'fact',
+        label:
+          'Coautora de la RCC 239 (prórroga 90 días LUMA/AAA para beneficiarios de ayudas federales) con Lilibeth Rosas Vargas y Edgardo Feliciano Sánchez (SUTRA Autores 3); no implica alianza partidista',
+        sources: [SRC.sutraRCC0239Hau],
+      },
+      {
+        toId: 'edgardo-feliciano-sanchez',
+        kind: 'fact',
+        label:
+          'Coautora de la RCC 239 (prórroga 90 días LUMA/AAA para beneficiarios de ayudas federales) con Lilibeth Rosas Vargas y Edgardo Feliciano Sánchez (SUTRA Autores 3); no implica alianza partidista',
+        sources: [SRC.sutraRCC0239Hau],
+      },
+      {
+        toId: 'estrella-martinez-soto',
+        kind: 'fact',
+        label:
+          'Coautora de la RCC 241 (vallas de seguridad PR-52, puentes Cayey–Salinas) con Estrella Martínez Soto (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraRCC0241Hau],
+      },
+    ],
+    sources: [
+      SRC.camaraHau,
+      SRC.sutraHau,
+      SRC.wiki2024House,
+      SRC.microjurisComisiones,
+      SRC.sutraRCC0246Hau,
+      SRC.sutraRCC0194Hau,
+      SRC.sutraRC0598Hau,
+      SRC.sutraRCC0239Hau,
+      SRC.sutraRCC0241Hau,
+    ],
+  },
 }

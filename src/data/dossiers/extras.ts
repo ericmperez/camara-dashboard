@@ -7,15 +7,6 @@ export const EXTRAS: Record<string, Partial<Dossier>> = {
     career: ['Presidente de Hacienda; también consta en su ficha oficial.'],
     sources: [SRC.camaraEddie, SRC.microjurisComisiones],
   },
-  'gretchen-hau': {
-    bio: 'Primera mujer directora ejecutiva de la Asociación de Alcaldes (2015–2019). Primera senadora del PPD por Guayama (2020). Titular del Distrito 29 desde 2023.',
-    career: [
-      'Directora ejecutiva de la Asociación de Alcaldes, 2015–2019.',
-      'Senadora del PPD por Guayama, electa en 2020.',
-      'Representante del Distrito 29 desde 2023.',
-    ],
-    sources: [SRC.camaraHau],
-  },
   'nelie-lebron-robles': {
     bio: 'Entra por la cláusula constitucional de minorías. Su origen electoral fue el Distrito 40; en el directorio oficial sienta el escaño como acumulación. No se usa el apellido Flores.',
     career: ['Tercer escaño del PIP en la Cámara, por ley de minorías.'],
