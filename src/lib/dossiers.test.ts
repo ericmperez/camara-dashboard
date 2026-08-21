@@ -73,7 +73,8 @@ describe('dossiers 2025–2028', () => {
     expect(overlaps.every((c) => c.kind === 'inference')).toBe(true)
     expect(overlaps.every((c) => c.sources.length === 0)).toBe(true)
     const facts = connectionsOf('roberto-lopez-roman').filter((c) => c.kind === 'fact')
-    expect(facts).toHaveLength(0)
+    expect(facts.every((c) => c.toId !== 'jose-conny-varela')).toBe(true)
+    expect(facts.length).toBeGreaterThan(0)
   })
 
   it('codifica la cadena de vacante del D31 con las URLs citadas', () => {
@@ -2415,6 +2416,76 @@ describe('dossiers 2025–2028', () => {
     )
     expect(SRC.sutraPC0981Sanabria.url).toBe(
       'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0981',
+    )
+  })
+
+  it('llena aspiraciones Autores=1 y conexiones de López Román D31 sin bajarlo a THIN_IDS', () => {
+    const d31 = DOSSIERS['roberto-lopez-roman']
+    expect(DEEP_IDS.has('roberto-lopez-roman')).toBe(true)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['roberto-lopez-roman']).toBeDefined()
+    expect(d31.bio).toMatch(/elección especial del 28 de septiembre de 2025/)
+    expect(d31.bio).toMatch(/Vimarie Peña Dávila/)
+    expect(d31.bio).toMatch(/677–634–414–337–82/)
+    expect(d31.career.join(' ')).toMatch(/votes\.json/)
+    expect(d31.career.join(' ')).toMatch(/677/)
+    expect(d31.career.join(' ')).toMatch(/31\.6%/)
+    expect(d31.career.join(' ')).toMatch(/2,144/)
+    expect(d31.career.join(' ')).toMatch(/Alberto Fradera/)
+    expect(d31.career.join(' ')).toMatch(/PC 1115/)
+    expect(d31.career.join(' ')).toMatch(/Trabajo y Asuntos Laborales/)
+    expect(d31.career.join(' ')).toMatch(/INFERENCIA/)
+    expect(d31.aspirations).toHaveLength(3)
+    expect(d31.aspirations.join(' ')).toMatch(/PC 1302/)
+    expect(d31.aspirations.join(' ')).toMatch(/RC 725/)
+    expect(d31.aspirations.join(' ')).toMatch(/PC 1345/)
+    expect(d31.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d31.aspirations.join(' ')).toMatch(/\$10\.50/)
+    expect(d31.aspirations.join(' ')).not.toMatch(
+      /PC 800|PC0800|PC 602|PC0602|PC 1042|PC1042|M-964-AL/,
+    )
+    expect(VERIFIED['roberto-lopez-roman']?.committees).toEqual([])
+    expect(d31.committees).toEqual(['Trabajo y Asuntos Laborales'])
+    expect(d31.connections.map((c) => c.toId)).toEqual([
+      'tatiana-perez-ramirez',
+      'eddie-charbonier-chinea',
+    ])
+    expect(d31.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d31.connections[0]?.label).toMatch(/PC 1115/)
+    expect(d31.connections[0]?.label).toMatch(/Tatiana/)
+    expect(d31.connections[1]?.label).toMatch(/PC 1321/)
+    expect(d31.connections[1]?.label).toMatch(/Charbonier|Eddie/)
+    expect(d31.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d31.connections.some((c) => c.toId === 'wilson-j-roman-lopez')).toBe(false)
+    expect(d31.connections.some((c) => c.toId === 'vimarie-pena-davila')).toBe(false)
+    expect(d31.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.ceeD31.url,
+        SRC.telemundoPC1115.url,
+        SRC.sutraLopez.url,
+        SRC.sutraPC1302Lopez.url,
+        SRC.sutraRC0725Lopez.url,
+        SRC.sutraPC1345Lopez.url,
+        SRC.sutraPC1115Lopez.url,
+        SRC.sutraPC1321Lopez.url,
+      ]),
+    )
+    expect(SRC.sutraLopez.url).toBe('https://sutra.oslpr.org/legisladores/M-982-AL')
+    expect(SRC.sutraLopez.url).not.toBe('https://sutra.oslpr.org/legisladores/M-964-AL')
+    expect(SRC.sutraPC1302Lopez.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1302',
+    )
+    expect(SRC.sutraRC0725Lopez.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0725',
+    )
+    expect(SRC.sutraPC1345Lopez.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1345',
+    )
+    expect(SRC.sutraPC1115Lopez.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1115',
+    )
+    expect(SRC.sutraPC1321Lopez.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1321',
     )
   })
 

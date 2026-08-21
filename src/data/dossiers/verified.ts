@@ -360,12 +360,32 @@ export const VERIFIED: Record<string, Dossier> = {
       'Bachillerato y maestría en ciencias políticas (FIU) y maestría en sociología (FLACSO, Buenos Aires).',
       'Trabajó con Marco Rubio cuando este presidía la Cámara de Representantes de la Florida.',
       'En el Senado de Puerto Rico: un cuatrienio como presidente de la Comisión de Relaciones Federales y seis años en la Comisión de Desarrollo Económico, Industria y Comercio.',
+      'Elección especial PNP del 28 de septiembre de 2025 (CEE XML / votes.json): 677 (31.6%) de 2,144; segundo Alberto Fradera 634; margen 43.',
       'Autor del PC 1115 para derogar la comisión evaluadora del salario mínimo; la Cámara lo aprobó 32–20 en junio de 2026.',
       'Preside Trabajo y Asuntos Laborales. En enero de 2025 RC0002 nombró a Vimarie Peña; el directorio de la comisión ahora lo lista a él.',
     ],
-    aspirations: [],
+    aspirations: [
+      'PC 1302 (5 jun 2026): declarar Patrimonio Cultural y Lugar de Valor Histórico el Jardín Botánico y Cultural de Caguas, Barrio Cañabón (SUTRA Autores = 1).',
+      'RC 725 (10 jun 2026): investigación de la Comisión de Trabajo sobre la viabilidad de $10.50/hora mínimo en el servicio público (SUTRA Autores = 1).',
+      'PC 1345 (10 ago 2026): Ley de Planificación Preventiva y Seguridad del Agua (SUTRA Autores = 1).',
+    ],
     committees: [],
-    connections: [],
+    connections: [
+      {
+        toId: 'tatiana-perez-ramirez',
+        kind: 'fact',
+        label:
+          'Autor del PC 1115 (derogar Ley 47-2021 / salario mínimo) con Co-Autora Tatiana Pérez Ramírez (SUTRA Autor 1 + Co-Autor); no implica alianza partidista',
+        sources: [SRC.sutraPC1115Lopez, SRC.telemundoPC1115],
+      },
+      {
+        toId: 'eddie-charbonier-chinea',
+        kind: 'fact',
+        label:
+          'Coautor del PC 1321 (selección de plan médico de empleados públicos) con Eddie Charbonier Chinea (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraPC1321Lopez],
+      },
+    ],
     sources: [
       SRC.wiprD31,
       SRC.metroD31,
@@ -376,6 +396,12 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.telemundoPC1115,
       SRC.camaraTrabajo,
       SRC.wikiLopez,
+      SRC.sutraLopez,
+      SRC.sutraPC1302Lopez,
+      SRC.sutraRC0725Lopez,
+      SRC.sutraPC1345Lopez,
+      SRC.sutraPC1115Lopez,
+      SRC.sutraPC1321Lopez,
     ],
   },
 

@@ -1562,6 +1562,35 @@ export const SRC = {
     label:
       'SUTRA · PC 981 (Autores 2; Sanabria Colón y Rodríguez Torres; Ley de terrenos de alto valor agrícola)',
   },
+  sutraLopez: {
+    url: 'https://sutra.oslpr.org/legisladores/M-982-AL',
+    label: 'SUTRA · Roberto J. López Román (M-982-AL, 2025–2028; Distrito 31)',
+  },
+  sutraPC1302Lopez: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1302',
+    label:
+      'SUTRA · PC 1302 (autor único; Patrimonio Cultural Jardín Botánico y Cultural de Caguas, Cañabón)',
+  },
+  sutraRC0725Lopez: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0725',
+    label:
+      'SUTRA · RC 725 (autor único; viabilidad de $10.50/hora mínimo en el servicio público)',
+  },
+  sutraPC1345Lopez: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1345',
+    label:
+      'SUTRA · PC 1345 (autor único; Ley de Planificación Preventiva y Seguridad del Agua)',
+  },
+  sutraPC1115Lopez: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1115',
+    label:
+      'SUTRA · PC 1115 (Autor López Román; Co-Autor Pérez Ramírez; derogar Ley 47-2021 / salario mínimo)',
+  },
+  sutraPC1321Lopez: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1321',
+    label:
+      'SUTRA · PC 1321 (Autores 2; Charbonier Chinea y López Román; plan médico de empleados públicos)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
