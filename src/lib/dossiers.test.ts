@@ -2335,6 +2335,89 @@ describe('dossiers 2025–2028', () => {
     )
   })
 
+  it('expande la ficha delgada de Sanabria D30 con CEE 13,651 y SUTRA M-963-AL', () => {
+    const d30 = DOSSIERS['fernando-sanabria-colon']
+    expect(DEEP_IDS.has('fernando-sanabria-colon')).toBe(false)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['fernando-sanabria-colon']).toBeDefined()
+    expect(d30.bio).toMatch(/Distrito 30/)
+    expect(d30.bio).toMatch(/Arroyo, Guayama, Salinas y Santa Isabel/)
+    expect(d30.bio).toMatch(/M-963-AL/)
+    expect(d30.bio).toMatch(/2 de enero de 2025/)
+    expect(d30.bio).toMatch(/Primer término/)
+    expect(d30.career.join(' ')).toMatch(/13,651/)
+    expect(d30.career.join(' ')).toMatch(/44\.3%/)
+    expect(d30.career.join(' ')).toMatch(/30,804/)
+    expect(d30.career.join(' ')).toMatch(/Luis Ortiz Lugo/)
+    expect(d30.career.join(' ')).toMatch(/13,331/)
+    expect(d30.career.join(' ')).toMatch(/Justo Echevarría/)
+    expect(d30.career.join(' ')).toMatch(/3,822/)
+    expect(d30.career.join(' ')).toMatch(/votes\.json/)
+    expect(d30.career.join(' ')).toMatch(/Ganancia PNP/)
+    expect(JSON.stringify(d30)).not.toMatch(/Primera Hora/)
+    expect(d30.aspirations).toHaveLength(3)
+    expect(d30.aspirations.join(' ')).toMatch(/RCC 297/)
+    expect(d30.aspirations.join(' ')).toMatch(/RC 313/)
+    expect(d30.aspirations.join(' ')).toMatch(/RC 136/)
+    expect(d30.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d30.aspirations.join(' ')).not.toMatch(
+      /RCC 129|RCC0129|RC 103|RC0103|PC 981|PC0981|PC 321|PC0321/,
+    )
+    expect(d30.committees).toEqual(['Región Sur'])
+    expect(VERIFIED['fernando-sanabria-colon']?.committees).toEqual([])
+    expect(JSON.stringify(d30)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d30)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d30.connections.map((c) => c.toId)).toEqual([
+      'carlos-johnny-mendez-nunez',
+      'ensol-a-rodriguez-torres',
+    ])
+    expect(d30.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d30.connections[0]?.label).toMatch(/RC 103/)
+    expect(d30.connections[0]?.label).toMatch(/Méndez/)
+    expect(d30.connections[1]?.label).toMatch(/PC 981/)
+    expect(d30.connections[1]?.label).toMatch(/Ensol/)
+    expect(d30.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d30.connections.some((c) => c.toId === 'vimarie-pena-davila')).toBe(false)
+    expect(d30.connections.some((c) => c.toId === 'gretchen-hau')).toBe(false)
+    const overlap = townOverlapConnections('fernando-sanabria-colon')
+    expect(overlap.some((c) => c.toId === 'estrella-martinez-soto' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d30.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraSanabria.url,
+        SRC.sutraSanabria.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraRCC0297Sanabria.url,
+        SRC.sutraRC0313Sanabria.url,
+        SRC.sutraRC0136Sanabria.url,
+        SRC.sutraRC0103Sanabria.url,
+        SRC.sutraPC0981Sanabria.url,
+      ]),
+    )
+    expect(d30.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraSanabria.url).toBe('https://sutra.oslpr.org/legisladores/M-963-AL')
+    expect(SRC.camaraSanabria.url).toBe(
+      'https://www.camara.pr.gov/team/fernando-sanabria-colon/',
+    )
+    expect(SRC.sutraRCC0297Sanabria.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0297',
+    )
+    expect(SRC.sutraRC0313Sanabria.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0313',
+    )
+    expect(SRC.sutraRC0136Sanabria.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0136',
+    )
+    expect(SRC.sutraRC0103Sanabria.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0103',
+    )
+    expect(SRC.sutraPC0981Sanabria.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0981',
+    )
+  })
+
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
     for (const dossier of Object.values(DOSSIERS)) {
       for (const connection of dossier.connections) {

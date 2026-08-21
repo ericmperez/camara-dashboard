@@ -1528,6 +1528,40 @@ export const SRC = {
     label:
       'SUTRA · RCC 241 (Autores 2; Hau y Martínez Soto; vallas de seguridad PR-52, puentes Cayey–Salinas)',
   },
+  camaraSanabria: {
+    url: 'https://www.camara.pr.gov/team/fernando-sanabria-colon/',
+    label:
+      'Cámara · ficha oficial de Fernando Sanabria Colón (D30; Presidente: Región Sur)',
+  },
+  sutraSanabria: {
+    url: 'https://sutra.oslpr.org/legisladores/M-963-AL',
+    label: 'SUTRA · Fernando Sanabria Colón (M-963-AL, 2025–2028; Distrito 30)',
+  },
+  sutraRCC0297Sanabria: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0297',
+    label:
+      'SUTRA · RCC 297 (autor único; investigación DTOP PR-1 Comunidad Las Ochenta, Salinas–Santa Isabel)',
+  },
+  sutraRC0313Sanabria: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0313',
+    label:
+      'SUTRA · RC 313 (autor único; investigación veteranos en Arroyo, Guayama, Salinas y Santa Isabel)',
+  },
+  sutraRC0136Sanabria: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0136',
+    label:
+      'SUTRA · RC 136 (autor único; investigación CDT / Sala de Emergencias de Santa Isabel)',
+  },
+  sutraRC0103Sanabria: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0103',
+    label:
+      'SUTRA · RC 103 (Autores 2; Méndez Núñez y Sanabria Colón; investigación Comisión Región Sur)',
+  },
+  sutraPC0981Sanabria: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0981',
+    label:
+      'SUTRA · PC 981 (Autores 2; Sanabria Colón y Rodríguez Torres; Ley de terrenos de alto valor agrícola)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

@@ -1836,4 +1836,45 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraRCC0241Hau,
     ],
   },
+
+  'fernando-sanabria-colon': {
+    id: 'fernando-sanabria-colon',
+    bio: 'Titular PNP del Distrito 30 (Arroyo, Guayama, Salinas y Santa Isabel). Primer término; asumió el 2 de enero de 2025. SUTRA lo lista como M-963-AL.',
+    career: [
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 13,651 (44.3%); PPD Luis Ortiz Lugo (incumbente) 13,331 (43.3%); PIP Justo Echevarría 3,822 (12.4%); total 30,804. Margen 320. Ganancia PNP. votes.json coincide.',
+    ],
+    aspirations: [
+      'RCC 297 (24 feb 2026): investigación DTOP PR-1 Comunidad Las Ochenta, Salinas, hasta Santa Isabel (marejadas) (SUTRA Autores = 1).',
+      'RC 313 (12 may 2025): investigación veteranos en Arroyo, Guayama, Salinas y Santa Isabel (Región Sur + Asuntos Federales) (SUTRA Autores = 1).',
+      'RC 136 (6 feb 2025): investigación CDT / Sala de Emergencias de Santa Isabel (SUTRA Autores = 1).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'carlos-johnny-mendez-nunez',
+        kind: 'fact',
+        label:
+          'Coautor de la RC 103 (investigación Comisión Región Sur) con Carlos J. Méndez Núñez (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraRC0103Sanabria],
+      },
+      {
+        toId: 'ensol-a-rodriguez-torres',
+        kind: 'fact',
+        label:
+          'Coautor del PC 981 (Ley de terrenos de alto valor agrícola) con Ensol Rodríguez Torres (SUTRA Autores 2; varios Co-Autores); no implica alianza partidista',
+        sources: [SRC.sutraPC0981Sanabria],
+      },
+    ],
+    sources: [
+      SRC.camaraSanabria,
+      SRC.sutraSanabria,
+      SRC.wiki2024House,
+      SRC.microjurisComisiones,
+      SRC.sutraRCC0297Sanabria,
+      SRC.sutraRC0313Sanabria,
+      SRC.sutraRC0136Sanabria,
+      SRC.sutraRC0103Sanabria,
+      SRC.sutraPC0981Sanabria,
+    ],
+  },
 }
