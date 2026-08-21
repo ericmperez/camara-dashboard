@@ -50,21 +50,23 @@ describe('dossiers 2025–2028', () => {
       'edgar-robles-rivera',
       'joel-i-franqui-atiles',
       'reinaldo-rey-figueroa',
+      'sol-y-higgins-cuadrado',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
-    const higgins = DOSSIERS['sol-y-higgins-cuadrado']
-    expect(higgins.bio).toBeNull()
-    expect(higgins.career).toEqual([])
-    expect(higgins.aspirations).toEqual([])
-    expect(higgins.committees).toEqual([])
-    expect(higgins.connections).toEqual([])
+    const carmen = DOSSIERS['carmen-medina-calderon']
+    expect(VERIFIED['carmen-medina-calderon']).toBeUndefined()
+    expect(carmen.bio).toBeNull()
+    expect(carmen.career).toEqual([])
+    expect(carmen.aspirations).toEqual([])
+    expect(carmen.committees).toEqual([])
+    expect(carmen.connections).toEqual([])
   })
 
   it('no marca el solape de pueblos como hecho', () => {
@@ -1510,7 +1512,7 @@ describe('dossiers 2025–2028', () => {
   it('expande la ficha delgada de Odalys D18 con CEE 16,515 y SUTRA M-951-AL', () => {
     const d18 = DOSSIERS['odalys-gonzalez-gonzalez']
     expect(DEEP_IDS.has('odalys-gonzalez-gonzalez')).toBe(false)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['odalys-gonzalez-gonzalez']).toBeDefined()
     expect(d18.bio).toMatch(/Distrito 18/)
     expect(d18.bio).toMatch(/M-951-AL/)
@@ -1561,7 +1563,7 @@ describe('dossiers 2025–2028', () => {
   it('expande la ficha delgada de Lilly D19 con CEE 10,994 y SUTRA M-952-AL', () => {
     const d19 = DOSSIERS['lilibeth-lilly-rosas']
     expect(DEEP_IDS.has('lilibeth-lilly-rosas')).toBe(false)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['lilibeth-lilly-rosas']).toBeDefined()
     expect(d19.bio).toMatch(/Distrito 19/)
     expect(d19.bio).toMatch(/M-952-AL/)
@@ -1619,7 +1621,7 @@ describe('dossiers 2025–2028', () => {
   it('expande la ficha delgada de Carlo D20 con CEE 11,541 y SUTRA M-953-AL', () => {
     const d20 = DOSSIERS['emilio-carlo-acosta']
     expect(DEEP_IDS.has('emilio-carlo-acosta')).toBe(false)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['emilio-carlo-acosta']).toBeDefined()
     expect(d20.bio).toMatch(/Distrito 20/)
     expect(d20.bio).toMatch(/M-953-AL/)
@@ -1675,7 +1677,7 @@ describe('dossiers 2025–2028', () => {
   it('expande la ficha delgada de Omayra D21 con CEE 15,279 y SUTRA M-954-AL', () => {
     const d21 = DOSSIERS['omayra-m-martinez-vazquez']
     expect(DEEP_IDS.has('omayra-m-martinez-vazquez')).toBe(false)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['omayra-m-martinez-vazquez']).toBeDefined()
     expect(d21.bio).toMatch(/Distrito 21/)
     expect(d21.bio).toMatch(/M-954-AL/)
@@ -1745,7 +1747,7 @@ describe('dossiers 2025–2028', () => {
   it('expande la ficha delgada de Joito D22 con CEE 17,765 y SUTRA M-955-AL', () => {
     const d22 = DOSSIERS['joe-joito-colon-rodriguez']
     expect(DEEP_IDS.has('joe-joito-colon-rodriguez')).toBe(false)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['joe-joito-colon-rodriguez']).toBeDefined()
     expect(d22.bio).toMatch(/Distrito 22/)
     expect(d22.bio).toMatch(/M-955-AL/)
@@ -1814,7 +1816,7 @@ describe('dossiers 2025–2028', () => {
   it('expande la ficha delgada de Ensol D23 con CEE 15,173 y SUTRA M-956-AL', () => {
     const d23 = DOSSIERS['ensol-a-rodriguez-torres']
     expect(DEEP_IDS.has('ensol-a-rodriguez-torres')).toBe(false)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['ensol-a-rodriguez-torres']).toBeDefined()
     expect(d23.bio).toMatch(/Distrito 23/)
     expect(d23.bio).toMatch(/M-956-AL/)
@@ -1886,7 +1888,7 @@ describe('dossiers 2025–2028', () => {
   it('expande la ficha delgada de Fourquet D24 con CEE 11,188 y SUTRA M-957-AL', () => {
     const d24 = DOSSIERS['angel-a-fourquet-cordero']
     expect(DEEP_IDS.has('angel-a-fourquet-cordero')).toBe(false)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['angel-a-fourquet-cordero']).toBeDefined()
     expect(d24.bio).toMatch(/Distrito 24/)
     expect(d24.bio).toMatch(/Ponce, parte/)
@@ -1960,7 +1962,7 @@ describe('dossiers 2025–2028', () => {
   it('expande la ficha de mesa de Domingo D25 con CEE 12,203 y SUTRA M-958-AL', () => {
     const d25 = DOSSIERS['domingo-j-torres-garcia']
     expect(DEEP_IDS.has('domingo-j-torres-garcia')).toBe(true)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['domingo-j-torres-garcia']).toBeDefined()
     expect(MESA_IDS.includes('domingo-j-torres-garcia')).toBe(true)
     expect(d25.bio).toMatch(/Distrito 25/)
@@ -2032,7 +2034,7 @@ describe('dossiers 2025–2028', () => {
   it('expande la ficha delgada de Josean D26 con CEE 17,906 y SUTRA M-959-AL', () => {
     const d26 = DOSSIERS['luis-josean-jimenez-torres']
     expect(DEEP_IDS.has('luis-josean-jimenez-torres')).toBe(false)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['luis-josean-jimenez-torres']).toBeDefined()
     expect(d26.bio).toMatch(/Distrito 26/)
     expect(d26.bio).toMatch(/M-959-AL/)
@@ -2102,7 +2104,7 @@ describe('dossiers 2025–2028', () => {
   it('expande la ficha delgada de Estrella D27 con CEE 13,470 y SUTRA M-960-AL', () => {
     const d27 = DOSSIERS['estrella-martinez-soto']
     expect(DEEP_IDS.has('estrella-martinez-soto')).toBe(false)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['estrella-martinez-soto']).toBeDefined()
     expect(d27.bio).toMatch(/Distrito 27/)
     expect(d27.bio).toMatch(/M-960-AL/)
@@ -2171,7 +2173,7 @@ describe('dossiers 2025–2028', () => {
   it('expande la ficha delgada de Roque D28 con CEE 16,649 y SUTRA M-961-AL', () => {
     const d28 = DOSSIERS['axel-chino-roque-gracia']
     expect(DEEP_IDS.has('axel-chino-roque-gracia')).toBe(false)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['axel-chino-roque-gracia']).toBeDefined()
     expect(d28.bio).toMatch(/Distrito 28/)
     expect(d28.bio).toMatch(/Comerío, Corozal, Naranjito y Barranquitas/)
@@ -2256,7 +2258,7 @@ describe('dossiers 2025–2028', () => {
   it('expande la ficha delgada de Hau D29 con CEE 12,837 y SUTRA M-962-AL', () => {
     const d29 = DOSSIERS['gretchen-hau']
     expect(DEEP_IDS.has('gretchen-hau')).toBe(false)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['gretchen-hau']).toBeDefined()
     expect(d29.bio).toMatch(/Distrito 29/)
     expect(d29.bio).toMatch(/Cidra y Cayey/)
@@ -2339,7 +2341,7 @@ describe('dossiers 2025–2028', () => {
   it('expande la ficha delgada de Sanabria D30 con CEE 13,651 y SUTRA M-963-AL', () => {
     const d30 = DOSSIERS['fernando-sanabria-colon']
     expect(DEEP_IDS.has('fernando-sanabria-colon')).toBe(false)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['fernando-sanabria-colon']).toBeDefined()
     expect(d30.bio).toMatch(/Distrito 30/)
     expect(d30.bio).toMatch(/Arroyo, Guayama, Salinas y Santa Isabel/)
@@ -2422,7 +2424,7 @@ describe('dossiers 2025–2028', () => {
   it('llena aspiraciones Autores=1 y conexiones de López Román D31 sin bajarlo a THIN_IDS', () => {
     const d31 = DOSSIERS['roberto-lopez-roman']
     expect(DEEP_IDS.has('roberto-lopez-roman')).toBe(true)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['roberto-lopez-roman']).toBeDefined()
     expect(d31.bio).toMatch(/elección especial del 28 de septiembre de 2025/)
     expect(d31.bio).toMatch(/Vimarie Peña Dávila/)
@@ -2492,7 +2494,7 @@ describe('dossiers 2025–2028', () => {
   it('expande la ficha delgada de Varela D32 con CEE 10,342 y SUTRA M-965-AL', () => {
     const d32 = DOSSIERS['jose-conny-varela']
     expect(DEEP_IDS.has('jose-conny-varela')).toBe(false)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['jose-conny-varela']).toBeDefined()
     expect(d32.bio).toMatch(/Distrito 32/)
     expect(d32.bio).toMatch(/Caguas/)
@@ -2581,7 +2583,7 @@ describe('dossiers 2025–2028', () => {
   it('llena aspiraciones Autores=1 y conexiones de Peña Ramírez D33 sin bajarlo a THIN_IDS', () => {
     const d33 = DOSSIERS['angel-r-pena-ramirez']
     expect(DEEP_IDS.has('angel-r-pena-ramirez')).toBe(true)
-    expect(DEEP_IDS.size).toBe(28)
+    expect(DEEP_IDS.size).toBe(29)
     expect(VERIFIED['angel-r-pena-ramirez']).toBeDefined()
     expect(MESA_IDS.includes('angel-r-pena-ramirez')).toBe(true)
     expect(d33.bio).toMatch(/Electo vicepresidente de la Cámara por unanimidad el 13 de enero de 2025/)
@@ -2701,6 +2703,101 @@ describe('dossiers 2025–2028', () => {
     )
     expect(SRC.sutraPC1103Pena.url).toBe(
       'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1103',
+    )
+  })
+
+  it('llena la ficha DEEP de Higgins Cuadrado D35 sin bajarla a THIN_IDS', () => {
+    const d35 = DOSSIERS['sol-y-higgins-cuadrado']
+    expect(DEEP_IDS.has('sol-y-higgins-cuadrado')).toBe(true)
+    expect(DEEP_IDS.size).toBe(29)
+    expect(VERIFIED['sol-y-higgins-cuadrado']).toBeDefined()
+    expect(d35.bio).toMatch(/Distrito 35/)
+    expect(d35.bio).toMatch(/Las Piedras/)
+    expect(d35.bio).toMatch(/Humacao/)
+    expect(d35.bio).toMatch(/Naguabo/)
+    expect(d35.bio).toMatch(/M-968-AL/)
+    expect(d35.bio).toMatch(/Primera mujer/)
+    expect(d35.bio).toMatch(/3 de noviembre de 2020/)
+    expect(d35.bio).toMatch(/segundo término/)
+    expect(d35.bio).toMatch(/2 de enero de 2025/)
+    expect(d35.bio).toMatch(/no preside comisión/)
+    expect(d35.bio).toMatch(/Portavoz PPD/)
+    expect(d35.bio).toMatch(/6 de noviembre de 2016/)
+    expect(d35.career.join(' ')).toMatch(/12,636/)
+    expect(d35.career.join(' ')).toMatch(/43\.1%/)
+    expect(d35.career.join(' ')).toMatch(/29,301/)
+    expect(d35.career.join(' ')).toMatch(/Jean Paul Carrillo Cáceres/)
+    expect(d35.career.join(' ')).toMatch(/10,936/)
+    expect(d35.career.join(' ')).toMatch(/Ricardo Díaz Maldonado/)
+    expect(d35.career.join(' ')).toMatch(/2,871/)
+    expect(d35.career.join(' ')).toMatch(/Rosanna Ortiz García/)
+    expect(d35.career.join(' ')).toMatch(/2,858/)
+    expect(d35.career.join(' ')).toMatch(/1,700/)
+    expect(d35.career.join(' ')).toMatch(/votes\.json/)
+    expect(d35.career.join(' ')).toMatch(/Hold PPD/)
+    expect(d35.career.join(' ')).toMatch(/2021–2024/)
+    expect(d35.career.join(' ')).toMatch(/Salud/)
+    expect(JSON.stringify(d35)).not.toMatch(/Primera Hora/)
+    expect(d35.aspirations.join(' ')).toMatch(/RC 94/)
+    expect(d35.aspirations.join(' ')).toMatch(/RC 69/)
+    expect(d35.aspirations.join(' ')).toMatch(/RC 170/)
+    expect(d35.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d35.aspirations.join(' ')).toMatch(/desempleo/)
+    expect(d35.aspirations.join(' ')).toMatch(/carreteras/)
+    expect(d35.aspirations.join(' ')).toMatch(/El Coquí/)
+    expect(d35.aspirations.join(' ')).not.toMatch(/RCC 249|RCC0249/)
+    expect(d35.committees).toEqual([])
+    expect(VERIFIED['sol-y-higgins-cuadrado']?.committees).toEqual([])
+    expect(JSON.stringify(d35)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d35)).not.toMatch(/esposa|cónyuge|familia|hija|hijo|madre/)
+    expect(d35.connections.map((c) => c.toId)).toEqual(['hector-e-ferrer-santiago'])
+    expect(d35.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d35.connections[0]?.label).toMatch(/RCC 38/)
+    expect(d35.connections[0]?.label).toMatch(/Ferrer/)
+    expect(d35.connections[0]?.label).toMatch(/Autores 13/)
+    expect(d35.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d35.connections.some((c) => c.toId === 'angel-r-pena-ramirez')).toBe(false)
+    expect(d35.connections.some((c) => c.toId === 'christian-muriel-sanchez')).toBe(false)
+    const overlap = townOverlapConnections('sol-y-higgins-cuadrado')
+    expect(overlap.some((c) => c.toId === 'angel-r-pena-ramirez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.some((c) => c.toId === 'christian-muriel-sanchez')).toBe(false)
+    expect(d35.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraHiggins.url,
+        SRC.sutraHiggins.url,
+        SRC.wiki2024House.url,
+        SRC.sutraRC0094Higgins.url,
+        SRC.sutraRC0069Higgins.url,
+        SRC.sutraRC0170Higgins.url,
+        SRC.sutraRC0062Higgins.url,
+        SRC.sutraRC0066Higgins.url,
+        SRC.sutraRCC0038Varela.url,
+      ]),
+    )
+    expect(d35.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraHiggins.url).toBe('https://sutra.oslpr.org/legisladores/M-968-AL')
+    expect(SRC.camaraHiggins.url).toBe(
+      'https://www.camara.pr.gov/team/sol-y-higgins-cuadrado/',
+    )
+    expect(SRC.sutraRC0094Higgins.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0094',
+    )
+    expect(SRC.sutraRC0069Higgins.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0069',
+    )
+    expect(SRC.sutraRC0170Higgins.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0170',
+    )
+    expect(SRC.sutraRC0062Higgins.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0062',
+    )
+    expect(SRC.sutraRC0066Higgins.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0066',
+    )
+    expect(SRC.sutraRCC0038Varela.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0038',
     )
   })
 

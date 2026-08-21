@@ -1662,6 +1662,39 @@ export const SRC = {
     label:
       'SUTRA · PC 1103 (Autores 2; Peña Ramírez y Méndez Núñez; cannabis medicinal / banca)',
   },
+  camaraHiggins: {
+    url: 'https://www.camara.pr.gov/team/sol-y-higgins-cuadrado/',
+    label: 'Cámara · ficha oficial de Sol Yamiz Higgins Cuadrado (D35; Las Piedras, Humacao, Naguabo)',
+  },
+  sutraHiggins: {
+    url: 'https://sutra.oslpr.org/legisladores/M-968-AL',
+    label: 'SUTRA · Sol Y. Higgins Cuadrado (M-968-AL, 2025–2028; Distrito 35)',
+  },
+  sutraRC0094Higgins: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0094',
+    label:
+      'SUTRA · RC 94 (autor único; investigación desempleo D35: Las Piedras, Humacao, Naguabo)',
+  },
+  sutraRC0069Higgins: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0069',
+    label:
+      'SUTRA · RC 69 (autor único; investigación carreteras D35: Las Piedras, Humacao, Naguabo)',
+  },
+  sutraRC0170Higgins: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0170',
+    label:
+      'SUTRA · RC 170 (autor único; investigación expansión El Coquí Landfill, Humacao)',
+  },
+  sutraRC0062Higgins: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0062',
+    label:
+      'SUTRA · RC 62 (autor único; investigación deserción escolar en escuelas públicas del D35)',
+  },
+  sutraRC0066Higgins: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0066',
+    label:
+      'SUTRA · RC 66 (autor único; investigación infraestructura y servicio de LUMA en el D35)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

@@ -1981,4 +1981,41 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraRCC0038Varela,
     ],
   },
+
+  'sol-y-higgins-cuadrado': {
+    id: 'sol-y-higgins-cuadrado',
+    bio: 'Titular PPD del Distrito 35 (Las Piedras, Humacao y Naguabo). Sol Yamiz Higgins Cuadrado; el roster la lista como Sol Y. Higgins Cuadrado. Primera mujer del distrito (electa el 3 de noviembre de 2020; reelecta en 2024; segundo término). Juramentó el 2 de enero de 2025 (ficha oficial). SUTRA la lista como M-968-AL. Minoría PPD: no preside comisión (RC0002 / CHAIRS). Portavoz PPD en Salud y Región Este (ficha oficial). Perdió la general del 6 de noviembre de 2016.',
+    career: [
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PPD 12,636 (43.1%); PNP Jean Paul Carrillo Cáceres 10,936 (37.3%); PIP Ricardo Díaz Maldonado 2,871 (9.8%); PD Rosanna Ortiz García 2,858 (9.7%); total 29,301. Margen 1,700. Hold PPD. votes.json coincide.',
+      'HECHO histórico (ficha oficial): presidió la Comisión de Salud en 2021–2024. No es la presidencia 2025 (hoy Salud es Gabriel Rodríguez Aguiló; RC0002 / CHAIRS).',
+    ],
+    aspirations: [
+      'RC 94 (31 ene 2025): investigación desempleo D35 (Las Piedras, Humacao, Naguabo) (SUTRA Autores = 1).',
+      'RC 69 (16 ene 2025): investigación carreteras D35 (Las Piedras, Humacao, Naguabo) (SUTRA Autores = 1).',
+      'RC 170 (24 feb 2025): investigación expansión El Coquí Landfill, Humacao (SUTRA Autores = 1).',
+      'RC 62 (16 ene 2025): investigación deserción escolar en escuelas públicas del D35 (SUTRA Autores = 1).',
+      'RC 66 (16 ene 2025): investigación infraestructura y servicio de LUMA en Las Piedras, Humacao y Naguabo (SUTRA Autores = 1).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'hector-e-ferrer-santiago',
+        kind: 'fact',
+        label:
+          'Coautora de la RCC 38 (ciudadanía por nacimiento) con Héctor Ferrer y la delegación PPD (SUTRA Autores 13); no implica alianza partidista',
+        sources: [SRC.sutraRCC0038Varela],
+      },
+    ],
+    sources: [
+      SRC.camaraHiggins,
+      SRC.sutraHiggins,
+      SRC.wiki2024House,
+      SRC.sutraRC0094Higgins,
+      SRC.sutraRC0069Higgins,
+      SRC.sutraRC0170Higgins,
+      SRC.sutraRC0062Higgins,
+      SRC.sutraRC0066Higgins,
+      SRC.sutraRCC0038Varela,
+    ],
+  },
 }
