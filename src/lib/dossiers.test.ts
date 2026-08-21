@@ -2489,6 +2489,95 @@ describe('dossiers 2025–2028', () => {
     )
   })
 
+  it('expande la ficha delgada de Varela D32 con CEE 10,342 y SUTRA M-965-AL', () => {
+    const d32 = DOSSIERS['jose-conny-varela']
+    expect(DEEP_IDS.has('jose-conny-varela')).toBe(false)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['jose-conny-varela']).toBeDefined()
+    expect(d32.bio).toMatch(/Distrito 32/)
+    expect(d32.bio).toMatch(/Caguas/)
+    expect(d32.bio).toMatch(/M-965-AL/)
+    expect(d32.bio).toMatch(/2 de enero de 2025/)
+    expect(d32.bio).toMatch(/Reelecto/)
+    expect(d32.bio).toMatch(/Portavoz PPD/)
+    expect(d32.bio).toMatch(/no preside comisión/)
+    expect(d32.career.join(' ')).toMatch(/10,342/)
+    expect(d32.career.join(' ')).toMatch(/40\.6%/)
+    expect(d32.career.join(' ')).toMatch(/25,480/)
+    expect(d32.career.join(' ')).toMatch(/Evelyn Aponte Vázquez/)
+    expect(d32.career.join(' ')).toMatch(/9,613/)
+    expect(d32.career.join(' ')).toMatch(/Maritza Maymí Hernández/)
+    expect(d32.career.join(' ')).toMatch(/3,415/)
+    expect(d32.career.join(' ')).toMatch(/George Mendoza Roque/)
+    expect(d32.career.join(' ')).toMatch(/2,110/)
+    expect(d32.career.join(' ')).toMatch(/votes\.json/)
+    expect(d32.career.join(' ')).toMatch(/Hold PPD/)
+    expect(d32.career.join(' ')).toMatch(/RC 352/)
+    expect(JSON.stringify(d32)).not.toMatch(/Primera Hora/)
+    expect(d32.aspirations).toHaveLength(3)
+    expect(d32.aspirations.join(' ')).toMatch(/RCC 225/)
+    expect(d32.aspirations.join(' ')).toMatch(/RC 522/)
+    expect(d32.aspirations.join(' ')).toMatch(/RC 352/)
+    expect(d32.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d32.aspirations.join(' ')).not.toMatch(
+      /RC 229|RC0229|PC 981|PC0981|RKC 3\b|RKC0003|RC 74|RC0074/,
+    )
+    expect(d32.committees).toEqual([])
+    expect(VERIFIED['jose-conny-varela']?.committees).toEqual([])
+    expect(JSON.stringify(d32)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d32)).not.toMatch(/esposa|cónyuge|familia|casado|hijos/)
+    expect(d32.connections.map((c) => c.toId)).toEqual([
+      'jose-e-torres-zamora',
+      'hector-e-ferrer-santiago',
+      'carlos-johnny-mendez-nunez',
+    ])
+    expect(d32.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d32.connections[0]?.label).toMatch(/RKC 27/)
+    expect(d32.connections[0]?.label).toMatch(/Torres Zamora/)
+    expect(d32.connections[1]?.label).toMatch(/RCC 38/)
+    expect(d32.connections[1]?.label).toMatch(/Ferrer/)
+    expect(d32.connections[2]?.label).toMatch(/RC 352/)
+    expect(d32.connections[2]?.label).toMatch(/Méndez/)
+    expect(
+      d32.connections
+        .filter((c) => c.toId !== 'carlos-johnny-mendez-nunez')
+        .every((c) => /no implica alianza/.test(c.label)),
+    ).toBe(true)
+    expect(d32.connections.some((c) => c.toId === 'roberto-lopez-roman')).toBe(false)
+    expect(d32.connections.some((c) => c.toId === 'domingo-j-torres-garcia')).toBe(false)
+    expect(d32.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraVarela.url,
+        SRC.sutraVarela.url,
+        SRC.wiki2024House.url,
+        SRC.sutraRCC0225Varela.url,
+        SRC.sutraRC0522Varela.url,
+        SRC.sutraRC0352Varela.url,
+        SRC.sutraRKC0027Varela.url,
+        SRC.sutraRCC0038Varela.url,
+        SRC.metroRC352.url,
+      ]),
+    )
+    expect(d32.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraVarela.url).toBe('https://sutra.oslpr.org/legisladores/M-965-AL')
+    expect(SRC.camaraVarela.url).toBe('https://www.camara.pr.gov/team/jose-conny-varela/')
+    expect(SRC.sutraRCC0225Varela.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0225',
+    )
+    expect(SRC.sutraRC0522Varela.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0522',
+    )
+    expect(SRC.sutraRC0352Varela.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0352',
+    )
+    expect(SRC.sutraRKC0027Varela.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RKC0027',
+    )
+    expect(SRC.sutraRCC0038Varela.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0038',
+    )
+  })
+
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
     for (const dossier of Object.values(DOSSIERS)) {
       for (const connection of dossier.connections) {

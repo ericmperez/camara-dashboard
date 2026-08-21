@@ -1903,4 +1903,44 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraPC0981Sanabria,
     ],
   },
+
+  'jose-conny-varela': {
+    id: 'jose-conny-varela',
+    bio: 'Titular PPD del Distrito 32 (Caguas). Reelecto; asumió el término el 2 de enero de 2025. SUTRA lo lista como M-965-AL. Minoría PPD: no preside comisión (RC0002 / CHAIRS). Portavoz PPD en lo Jurídico, Recreación y Deportes y Desarrollo Económico (ficha oficial).',
+    career: [
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PPD 10,342 (40.6%); PNP Evelyn Aponte Vázquez 9,613 (37.7%); MVC Maritza Maymí Hernández 3,415 (13.4%); PD George Mendoza Roque 2,110 (8.3%); total 25,480. Margen 729. Hold PPD. votes.json coincide.',
+    ],
+    aspirations: [
+      'RCC 225 (20 oct 2025): designar Ave. Degetau, Caguas, “Don Efraín López Neris” (SUTRA Autores = 1).',
+      'RC 522 (4 dic 2025): investigación planta de tratamiento Barrio Borinquen, Caguas (Comisión Región Este Central) (SUTRA Autores = 1).',
+      'RC 352 (2 jun 2025): investigación centros de inspección vehicular (Art. 12 Ley 22-2000) (SUTRA Autores = 1).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'jose-e-torres-zamora',
+        kind: 'fact',
+        label:
+          'Coautor de la RKC 27 (cargo de Vicegobernador) con José E. Torres Zamora (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraRKC0027Varela],
+      },
+      {
+        toId: 'hector-e-ferrer-santiago',
+        kind: 'fact',
+        label:
+          'Coautor de la RCC 38 (ciudadanía por nacimiento) con Héctor Ferrer y la delegación PPD (SUTRA Autores 13); no implica alianza partidista',
+        sources: [SRC.sutraRCC0038Varela],
+      },
+    ],
+    sources: [
+      SRC.camaraVarela,
+      SRC.sutraVarela,
+      SRC.wiki2024House,
+      SRC.sutraRCC0225Varela,
+      SRC.sutraRC0522Varela,
+      SRC.sutraRC0352Varela,
+      SRC.sutraRKC0027Varela,
+      SRC.sutraRCC0038Varela,
+    ],
+  },
 }

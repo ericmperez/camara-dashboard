@@ -1591,6 +1591,39 @@ export const SRC = {
     label:
       'SUTRA · PC 1321 (Autores 2; Charbonier Chinea y López Román; plan médico de empleados públicos)',
   },
+  camaraVarela: {
+    url: 'https://www.camara.pr.gov/team/jose-conny-varela/',
+    label: 'Cámara · ficha oficial de José ‘Conny’ Varela (D32; Caguas)',
+  },
+  sutraVarela: {
+    url: 'https://sutra.oslpr.org/legisladores/M-965-AL',
+    label: 'SUTRA · José M. Varela Fernández (M-965-AL, 2025–2028; Distrito 32)',
+  },
+  sutraRCC0225Varela: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0225',
+    label:
+      'SUTRA · RCC 225 (autor único; designar Ave. Degetau, Caguas, “Don Efraín López Neris”)',
+  },
+  sutraRC0522Varela: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0522',
+    label:
+      'SUTRA · RC 522 (autor único; investigación planta de tratamiento Barrio Borinquen, Caguas)',
+  },
+  sutraRC0352Varela: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0352',
+    label:
+      'SUTRA · RC 352 (autor único; investigación centros de inspección vehicular, Art. 12 Ley 22-2000)',
+  },
+  sutraRKC0027Varela: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RKC0027',
+    label:
+      'SUTRA · RKC 27 (Autores 2; Varela Fernández y Torres Zamora; cargo de Vicegobernador)',
+  },
+  sutraRCC0038Varela: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0038',
+    label:
+      'SUTRA · RCC 38 (Autores 13; delegación PPD; ciudadanía por nacimiento)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
