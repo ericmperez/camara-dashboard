@@ -2578,6 +2578,112 @@ describe('dossiers 2025–2028', () => {
     )
   })
 
+  it('llena aspiraciones Autores=1 y conexiones de Peña Ramírez D33 sin bajarlo a THIN_IDS', () => {
+    const d33 = DOSSIERS['angel-r-pena-ramirez']
+    expect(DEEP_IDS.has('angel-r-pena-ramirez')).toBe(true)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['angel-r-pena-ramirez']).toBeDefined()
+    expect(MESA_IDS.includes('angel-r-pena-ramirez')).toBe(true)
+    expect(d33.bio).toMatch(/Electo vicepresidente de la Cámara por unanimidad el 13 de enero de 2025/)
+    expect(d33.bio).toMatch(/sesión inaugural que eligió a Méndez/)
+    expect(d33.bio).toMatch(/Distrito 33/)
+    expect(d33.bio).toMatch(/San Lorenzo/)
+    expect(d33.bio).toMatch(/Juncos/)
+    expect(d33.bio).toMatch(/Las Piedras/)
+    expect(d33.bio).toMatch(/M-966-AL/)
+    expect(d33.bio).not.toMatch(/M-743/)
+    expect(d33.career.join(' ')).toMatch(/Vicepresidente/)
+    expect(d33.career.join(' ')).toMatch(/Ética/)
+    expect(d33.career.join(' ')).toMatch(/14,695/)
+    expect(d33.career.join(' ')).toMatch(/52\.3%/)
+    expect(d33.career.join(' ')).toMatch(/28,099/)
+    expect(d33.career.join(' ')).toMatch(/Güi Mojica Carrasquillo/)
+    expect(d33.career.join(' ')).toMatch(/8,292/)
+    expect(d33.career.join(' ')).toMatch(/Tati Santana Muñoz/)
+    expect(d33.career.join(' ')).toMatch(/3,621/)
+    expect(d33.career.join(' ')).toMatch(/Julio A\. Muriente Pérez/)
+    expect(d33.career.join(' ')).toMatch(/1,491/)
+    expect(d33.career.join(' ')).toMatch(/6,403/)
+    expect(d33.career.join(' ')).toMatch(/votes\.json/)
+    expect(d33.career.join(' ')).toMatch(/Hold PNP/)
+    expect(JSON.stringify(d33)).not.toMatch(/Primera Hora/)
+    expect(d33.aspirations).toHaveLength(3)
+    expect(d33.aspirations.join(' ')).toMatch(/RC 476/)
+    expect(d33.aspirations.join(' ')).toMatch(/RC 167/)
+    expect(d33.aspirations.join(' ')).toMatch(/RC 120/)
+    expect(d33.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d33.aspirations.join(' ')).toMatch(/Gurabo/)
+    expect(d33.aspirations.join(' ')).not.toMatch(
+      /PC 225|PC0225|RKC 21|RKC0021|PC 299|PC0299/,
+    )
+    expect(VERIFIED['angel-r-pena-ramirez']?.committees).toEqual([])
+    expect(d33.committees).toEqual(['Ética'])
+    expect(JSON.stringify(d33)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d33)).not.toMatch(/esposa|cónyuge|familia|casado|hijos/)
+    expect(d33.connections.map((c) => c.toId)).toEqual([
+      'carlos-johnny-mendez-nunez',
+      'yashira-lebron-rodriguez',
+      'jose-e-torres-zamora',
+    ])
+    expect(d33.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d33.connections[0]?.label).toMatch(/vicepresidente/)
+    expect(d33.connections[0]?.label).toMatch(/Méndez/)
+    expect(d33.connections[1]?.label).toMatch(/vicepresidentes/)
+    expect(d33.connections[2]?.label).toMatch(/PC 299/)
+    expect(d33.connections[2]?.label).toMatch(/Torres Zamora/)
+    expect(d33.connections[2]?.label).toMatch(/Autores 8/)
+    expect(d33.connections[2]?.label).toMatch(/no implica alianza/)
+    expect(d33.connections.some((c) => c.toId === 'christian-muriel-sanchez')).toBe(false)
+    expect(
+      DOSSIERS['christian-muriel-sanchez'].connections.some(
+        (c) => c.toId === 'angel-r-pena-ramirez',
+      ),
+    ).toBe(false)
+    expect(
+      DOSSIERS['yashira-lebron-rodriguez'].connections
+        .filter((c) => c.kind === 'fact')
+        .map((c) => c.toId),
+    ).toEqual(['carlos-johnny-mendez-nunez', 'angel-r-pena-ramirez'])
+    const overlap = townOverlapConnections('christian-muriel-sanchez')
+    expect(overlap.some((c) => c.toId === 'angel-r-pena-ramirez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(REPRESENTATIVES.find((r) => r.id === 'angel-r-pena-ramirez')?.municipalities).toEqual([
+      'San Lorenzo',
+      'Juncos',
+      'Las Piedras',
+    ])
+    expect(d33.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.metroInaugural.url,
+        SRC.microjurisComisiones.url,
+        SRC.camaraPena.url,
+        SRC.sutraPena.url,
+        SRC.wiki2024House.url,
+        SRC.sutraRC0476Pena.url,
+        SRC.sutraRC0167Pena.url,
+        SRC.sutraRC0120Pena.url,
+        SRC.sutraPC0299Pena.url,
+      ]),
+    )
+    expect(d33.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraPena.url).toBe('https://sutra.oslpr.org/legisladores/M-966-AL')
+    expect(SRC.sutraPena.url).not.toBe('https://sutra.oslpr.org/legisladores/M-743')
+    expect(SRC.camaraPena.url).toBe('https://www.camara.pr.gov/team/angel-r-pena-ramirez/')
+    expect(SRC.sutraRC0476Pena.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0476',
+    )
+    expect(SRC.sutraRC0167Pena.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0167',
+    )
+    expect(SRC.sutraRC0120Pena.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0120',
+    )
+    expect(SRC.sutraPC0299Pena.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0299',
+    )
+  })
+
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
     for (const dossier of Object.values(DOSSIERS)) {
       for (const connection of dossier.connections) {

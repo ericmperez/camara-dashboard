@@ -1624,6 +1624,34 @@ export const SRC = {
     label:
       'SUTRA · RCC 38 (Autores 13; delegación PPD; ciudadanía por nacimiento)',
   },
+  camaraPena: {
+    url: 'https://www.camara.pr.gov/team/angel-r-pena-ramirez/',
+    label: 'Cámara · ficha oficial de Ángel R. Peña Ramírez (D33; Vicepresidente)',
+  },
+  sutraPena: {
+    url: 'https://sutra.oslpr.org/legisladores/M-966-AL',
+    label: 'SUTRA · Ángel R. Peña Ramírez (M-966-AL, 2025–2028; Distrito 33)',
+  },
+  sutraRC0476Pena: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0476',
+    label:
+      'SUTRA · RC 476 (autor único; investigación carreteras D33: Las Piedras, Juncos, San Lorenzo y Gurabo)',
+  },
+  sutraRC0167Pena: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0167',
+    label:
+      'SUTRA · RC 167 (autor único; investigación carreteras D33 / Transportación e Infraestructura)',
+  },
+  sutraRC0120Pena: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0120',
+    label:
+      'SUTRA · RC 120 (autor único; análisis socioeconómico Comisión Región Este Central)',
+  },
+  sutraPC0299Pena: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0299',
+    label:
+      'SUTRA · PC 299 (Autores 8; Ley POW/MIA; Torres Zamora, Peña Ramírez y otros)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {

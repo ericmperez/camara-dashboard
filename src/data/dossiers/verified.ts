@@ -119,12 +119,17 @@ export const VERIFIED: Record<string, Dossier> = {
 
   'angel-r-pena-ramirez': {
     id: 'angel-r-pena-ramirez',
-    bio: 'Electo vicepresidente de la Cámara por unanimidad el 13 de enero de 2025, en la misma sesión inaugural que eligió a Méndez.',
+    bio: 'Electo vicepresidente de la Cámara por unanimidad el 13 de enero de 2025, en la misma sesión inaugural que eligió a Méndez. Titular PNP del Distrito 33 (San Lorenzo, Juncos y Las Piedras); SUTRA lo lista como M-966-AL.',
     career: [
       'Vicepresidente de la Cámara desde el 13 de enero de 2025.',
       'Presidente de la Comisión de Ética (RC0002, ene 2025).',
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 14,695 (52.3%); PPD Güi Mojica Carrasquillo 8,292 (29.5%); PIP Tati Santana Muñoz 3,621 (12.9%); MVC Julio A. Muriente Pérez 1,491 (5.3%); total 28,099. Margen 6,403. Hold PNP. votes.json coincide.',
     ],
-    aspirations: [],
+    aspirations: [
+      'RC 476 (14 oct 2025): investigación carreteras D33 (Las Piedras, Juncos, San Lorenzo y Gurabo) (Comisión Región Este Central) (SUTRA Autores = 1).',
+      'RC 167 (21 feb 2025): investigación carreteras D33 (Las Piedras, Juncos, San Lorenzo y Gurabo) (Comisión Transportación e Infraestructura) (SUTRA Autores = 1).',
+      'RC 120 (3 feb 2025): análisis socioeconómico Comisión Región Este Central (incluye Caguas, Humacao, Yabucoa, Maunabo, Patillas, Las Piedras, Juncos, San Lorenzo y Gurabo) (SUTRA Autores = 1).',
+    ],
     committees: [],
     connections: [
       {
@@ -139,8 +144,25 @@ export const VERIFIED: Record<string, Dossier> = {
         label: 'Electos vicepresidentes por unanimidad el 13 ene 2025',
         sources: [SRC.metroInaugural],
       },
+      {
+        toId: 'jose-e-torres-zamora',
+        kind: 'fact',
+        label:
+          'Coautor del PC 299 (Ley POW/MIA) con José E. Torres Zamora y otros (SUTRA Autores 8); no implica alianza partidista',
+        sources: [SRC.sutraPC0299Pena],
+      },
     ],
-    sources: [SRC.metroInaugural, SRC.microjurisComisiones],
+    sources: [
+      SRC.metroInaugural,
+      SRC.microjurisComisiones,
+      SRC.camaraPena,
+      SRC.sutraPena,
+      SRC.wiki2024House,
+      SRC.sutraRC0476Pena,
+      SRC.sutraRC0167Pena,
+      SRC.sutraRC0120Pena,
+      SRC.sutraPC0299Pena,
+    ],
   },
 
   'jose-e-torres-zamora': {
