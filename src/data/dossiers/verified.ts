@@ -1733,4 +1733,59 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraPC0455Estrella,
     ],
   },
+
+  'axel-chino-roque-gracia': {
+    id: 'axel-chino-roque-gracia',
+    bio: 'Titular PNP del Distrito 28 (Comerío, Corozal, Naranjito y Barranquitas). Primer término; asumió el 2 de enero de 2025. SUTRA lo lista como M-961-AL.',
+    career: [
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 16,649 (51.0%); PPD Juan Santiago Nieves (incumbente) 12,680 (38.8%); PIP Elsa Berríos López 3,322 (10.2%); total 32,651. Margen 3,969. Ganancia PNP. votes.json coincide.',
+    ],
+    aspirations: [
+      'PC 1137 (17 feb 2026): designar “Vamos Pa’ la Montaña” la Ruta Gastronómica y Panorámica (Naranjito, Corozal, Comerío, Barranquitas) (SUTRA Autores = 1).',
+      'RCC 328 (25 mar 2026): designar PR-814 km 3.5–5.5, Naranjito, con el nombre de José Antonio “Toñín” Cátala Berríos (SUTRA Autores = 1).',
+      'RCC 293 (17 feb 2026): denominar la cancha de la Escuela Francisco Roque Muñoz en Naranjito con el nombre de José Corretjer (SUTRA Autores = 1).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'carlos-johnny-mendez-nunez',
+        kind: 'fact',
+        label:
+          'Coautor del PC 822 (Compañía de Turismo como corporación pública) con Carlos J. Méndez Núñez y José E. Torres Zamora (SUTRA Autores 3) y Ángel Morey Noble (Co-Autor); no implica alianza partidista',
+        sources: [SRC.sutraPC0822Roque],
+      },
+      {
+        toId: 'jose-e-torres-zamora',
+        kind: 'fact',
+        label:
+          'Coautor del PC 822 (Compañía de Turismo como corporación pública) con Carlos J. Méndez Núñez y José E. Torres Zamora (SUTRA Autores 3) y Ángel Morey Noble (Co-Autor); no implica alianza partidista',
+        sources: [SRC.sutraPC0822Roque],
+      },
+      {
+        toId: 'angel-morey-noble',
+        kind: 'fact',
+        label:
+          'Coautor del PC 822 (Compañía de Turismo como corporación pública) con Carlos J. Méndez Núñez y José E. Torres Zamora (SUTRA Autores 3) y Ángel Morey Noble (Co-Autor); no implica alianza partidista',
+        sources: [SRC.sutraPC0822Roque],
+      },
+      {
+        toId: 'eddie-charbonier-chinea',
+        kind: 'fact',
+        label:
+          'Coautor del PC 1165 (Ley de Transparencia Operacional del Servicio de Agua Potable) con Eddie Charbonier Chinea (SUTRA Autor 1 + Co-Autor); no implica alianza partidista',
+        sources: [SRC.sutraPC1165Roque],
+      },
+    ],
+    sources: [
+      SRC.camaraRoque,
+      SRC.sutraRoque,
+      SRC.wiki2024House,
+      SRC.microjurisComisiones,
+      SRC.sutraPC1137Roque,
+      SRC.sutraRCC0328Roque,
+      SRC.sutraRCC0293Roque,
+      SRC.sutraPC0822Roque,
+      SRC.sutraPC1165Roque,
+    ],
+  },
 }

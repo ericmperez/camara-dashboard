@@ -2167,6 +2167,91 @@ describe('dossiers 2025–2028', () => {
     expect(SRC.sutraPC0455Estrella.url).toBe('https://sutra.oslpr.org/medidas/154467')
   })
 
+  it('expande la ficha delgada de Roque D28 con CEE 16,649 y SUTRA M-961-AL', () => {
+    const d28 = DOSSIERS['axel-chino-roque-gracia']
+    expect(DEEP_IDS.has('axel-chino-roque-gracia')).toBe(false)
+    expect(DEEP_IDS.size).toBe(28)
+    expect(VERIFIED['axel-chino-roque-gracia']).toBeDefined()
+    expect(d28.bio).toMatch(/Distrito 28/)
+    expect(d28.bio).toMatch(/Comerío, Corozal, Naranjito y Barranquitas/)
+    expect(d28.bio).toMatch(/M-961-AL/)
+    expect(d28.bio).toMatch(/2 de enero de 2025/)
+    expect(d28.career.join(' ')).toMatch(/16,649/)
+    expect(d28.career.join(' ')).toMatch(/51\.0%/)
+    expect(d28.career.join(' ')).toMatch(/32,651/)
+    expect(d28.career.join(' ')).toMatch(/Juan Santiago Nieves/)
+    expect(d28.career.join(' ')).toMatch(/12,680/)
+    expect(d28.career.join(' ')).toMatch(/Elsa Berríos López/)
+    expect(d28.career.join(' ')).toMatch(/3,322/)
+    expect(d28.career.join(' ')).toMatch(/votes\.json/)
+    expect(d28.career.join(' ')).toMatch(/Ganancia PNP/)
+    expect(JSON.stringify(d28)).not.toMatch(/Primera Hora/)
+    expect(d28.aspirations).toHaveLength(3)
+    expect(d28.aspirations.join(' ')).toMatch(/PC 1137/)
+    expect(d28.aspirations.join(' ')).toMatch(/RCC 328/)
+    expect(d28.aspirations.join(' ')).toMatch(/RCC 293/)
+    expect(d28.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d28.aspirations.join(' ')).not.toMatch(
+      /RCC 204|RCC0204|RC 87|RC0087|RC 312|RC0312|RC 38|RC0038|PC 822|PC0822|PC 1165|PC1165/,
+    )
+    expect(d28.committees).toEqual(['Turismo', 'Región Central'])
+    expect(VERIFIED['axel-chino-roque-gracia']?.committees).toEqual([])
+    expect(JSON.stringify(d28)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d28)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d28.connections.map((c) => c.toId)).toEqual([
+      'carlos-johnny-mendez-nunez',
+      'jose-e-torres-zamora',
+      'angel-morey-noble',
+      'eddie-charbonier-chinea',
+    ])
+    expect(d28.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d28.connections[0]?.label).toMatch(/PC 822/)
+    expect(d28.connections[1]?.label).toMatch(/PC 822/)
+    expect(d28.connections[2]?.label).toMatch(/PC 822/)
+    expect(d28.connections[2]?.label).toMatch(/Morey/)
+    expect(d28.connections[3]?.label).toMatch(/PC 1165/)
+    expect(d28.connections[3]?.label).toMatch(/Charbonier/)
+    expect(d28.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d28.connections.some((c) => c.toId === 'luis-josean-jimenez-torres')).toBe(false)
+    const overlap = townOverlapConnections('axel-chino-roque-gracia')
+    expect(overlap.some((c) => c.toId === 'luis-josean-jimenez-torres' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d28.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraRoque.url,
+        SRC.sutraRoque.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraPC1137Roque.url,
+        SRC.sutraRCC0328Roque.url,
+        SRC.sutraRCC0293Roque.url,
+        SRC.sutraPC0822Roque.url,
+        SRC.sutraPC1165Roque.url,
+      ]),
+    )
+    expect(d28.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraRoque.url).toBe('https://sutra.oslpr.org/legisladores/M-961-AL')
+    expect(SRC.camaraRoque.url).toBe(
+      'https://www.camara.pr.gov/team/axel-chino-roque-gracia/',
+    )
+    expect(SRC.sutraPC1137Roque.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1137',
+    )
+    expect(SRC.sutraRCC0328Roque.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0328',
+    )
+    expect(SRC.sutraRCC0293Roque.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0293',
+    )
+    expect(SRC.sutraPC0822Roque.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0822',
+    )
+    expect(SRC.sutraPC1165Roque.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1165',
+    )
+  })
+
   it('toda conexión guardada en data cita URL; el pueblo solo se infiere en runtime', () => {
     for (const dossier of Object.values(DOSSIERS)) {
       for (const connection of dossier.connections) {

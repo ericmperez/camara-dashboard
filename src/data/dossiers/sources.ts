@@ -1471,6 +1471,40 @@ export const SRC = {
     label:
       'SUTRA · PC 455 (Autores 5; Rodríguez Torres, Martínez Soto, Román López, Pérez Ramírez y Fourquet Cordero)',
   },
+  camaraRoque: {
+    url: 'https://www.camara.pr.gov/team/axel-chino-roque-gracia/',
+    label:
+      'Cámara · ficha oficial de Axel «Chino» Roque Gracia (D28; Presidente: Turismo y Región Central)',
+  },
+  sutraRoque: {
+    url: 'https://sutra.oslpr.org/legisladores/M-961-AL',
+    label: 'SUTRA · Axel Roque Gracia (M-961-AL, 2025–2028; Distrito 28)',
+  },
+  sutraPC1137Roque: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1137',
+    label:
+      'SUTRA · PC 1137 (autor único; “Vamos Pa’ la Montaña”, Ruta Gastronómica y Panorámica)',
+  },
+  sutraRCC0328Roque: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0328',
+    label:
+      'SUTRA · RCC 328 (autor único; PR-814 km 3.5–5.5, Naranjito / José Antonio “Toñín” Cátala Berríos)',
+  },
+  sutraRCC0293Roque: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0293',
+    label:
+      'SUTRA · RCC 293 (autor único; cancha Escuela Francisco Roque Muñoz, Naranjito / José Corretjer)',
+  },
+  sutraPC0822Roque: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0822',
+    label:
+      'SUTRA · PC 822 (Autores 3 + 1 co-autor; Méndez Núñez, Torres Zamora, Roque Gracia; Co-Autor Morey Noble)',
+  },
+  sutraPC1165Roque: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1165',
+    label:
+      'SUTRA · PC 1165 (Autor Charbonier Chinea; Co-Autor Roque Gracia; transparencia operacional agua potable)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
