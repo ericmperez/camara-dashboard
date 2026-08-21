@@ -2272,8 +2272,10 @@ describe('dossiers 2025–2028', () => {
     expect(d29.career.join(' ')).toMatch(/4,905/)
     expect(d29.career.join(' ')).toMatch(/votes\.json/)
     expect(d29.career.join(' ')).toMatch(/Hold PPD/)
+    expect(d29.career.join(' ')).toMatch(/Asociación de Alcaldes, 2015–2019/)
+    expect(d29.career.join(' ')).toMatch(/Senadora del PPD por Guayama, electa en 2020/)
+    expect(d29.career.join(' ')).toMatch(/Distrito 29 desde 2023/)
     expect(JSON.stringify(d29)).not.toMatch(/Primera Hora/)
-    expect(JSON.stringify(d29)).not.toMatch(/Guayama|Asociación de Alcaldes|senadora|Senado/)
     expect(d29.aspirations).toHaveLength(3)
     expect(d29.aspirations.join(' ')).toMatch(/RCC 246/)
     expect(d29.aspirations.join(' ')).toMatch(/RCC 194/)
@@ -2282,8 +2284,10 @@ describe('dossiers 2025–2028', () => {
     expect(d29.aspirations.join(' ')).not.toMatch(
       /RC 152|RC0152|PC 725|PC0725|RCC 239|RCC0239|RCC 241|RCC0241/,
     )
+    expect(d29.bio).not.toMatch(/Asociación de Alcaldes|Guayama/)
     expect(d29.committees).toEqual([])
     expect(VERIFIED['gretchen-hau']?.committees).toEqual([])
+    expect(JSON.stringify(d29)).not.toMatch(/presidenta de la Comisión/)
     expect(JSON.stringify(d29)).not.toMatch(/\$\d/)
     expect(JSON.stringify(d29)).not.toMatch(/esposa|cónyuge|familia/)
     expect(d29.connections.map((c) => c.toId)).toEqual([
@@ -2309,7 +2313,7 @@ describe('dossiers 2025–2028', () => {
         SRC.sutraRCC0246Hau.url,
         SRC.sutraRCC0194Hau.url,
         SRC.sutraRC0598Hau.url,
-        SRC.sutraRCC0239Hau.url,
+        SRC.sutraRCC0239Lilly.url,
         SRC.sutraRCC0241Hau.url,
       ]),
     )
@@ -2325,9 +2329,7 @@ describe('dossiers 2025–2028', () => {
     expect(SRC.sutraRC0598Hau.url).toBe(
       'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0598',
     )
-    expect(SRC.sutraRCC0239Hau.url).toBe(
-      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0239',
-    )
+    expect(SRC.sutraRCC0239Lilly.url).toBe('https://sutra.oslpr.org/medidas/159370')
     expect(SRC.sutraRCC0241Hau.url).toBe(
       'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0241',
     )

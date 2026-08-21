@@ -1807,14 +1807,14 @@ export const VERIFIED: Record<string, Dossier> = {
         kind: 'fact',
         label:
           'Coautora de la RCC 239 (prórroga 90 días LUMA/AAA para beneficiarios de ayudas federales) con Lilibeth Rosas Vargas y Edgardo Feliciano Sánchez (SUTRA Autores 3); no implica alianza partidista',
-        sources: [SRC.sutraRCC0239Hau],
+        sources: [SRC.sutraRCC0239Lilly],
       },
       {
         toId: 'edgardo-feliciano-sanchez',
         kind: 'fact',
         label:
           'Coautora de la RCC 239 (prórroga 90 días LUMA/AAA para beneficiarios de ayudas federales) con Lilibeth Rosas Vargas y Edgardo Feliciano Sánchez (SUTRA Autores 3); no implica alianza partidista',
-        sources: [SRC.sutraRCC0239Hau],
+        sources: [SRC.sutraRCC0239Lilly],
       },
       {
         toId: 'estrella-martinez-soto',
@@ -1832,7 +1832,7 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraRCC0246Hau,
       SRC.sutraRCC0194Hau,
       SRC.sutraRC0598Hau,
-      SRC.sutraRCC0239Hau,
+      SRC.sutraRCC0239Lilly,
       SRC.sutraRCC0241Hau,
     ],
   },

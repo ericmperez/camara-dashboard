@@ -1523,11 +1523,6 @@ export const SRC = {
     label:
       'SUTRA · RC 598 (autor único; petición de información Puente del Millón, PR-172, Cidra)',
   },
-  sutraRCC0239Hau: {
-    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0239',
-    label:
-      'SUTRA · RCC 239 (Autores 3; Hau, Rosas Vargas y Feliciano Sánchez; prórroga 90 días LUMA/AAA)',
-  },
   sutraRCC0241Hau: {
     url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0241',
     label:
