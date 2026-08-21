@@ -2018,4 +2018,44 @@ export const VERIFIED: Record<string, Dossier> = {
       SRC.sutraRCC0038Varela,
     ],
   },
+
+  'carmen-medina-calderon': {
+    id: 'carmen-medina-calderon',
+    bio: 'Titular PNP del Distrito 37 (Río Grande, Loíza y Canóvanas). Primer término; electa el 5 de noviembre de 2024; juramentó el 2 de enero de 2025 (ficha oficial). SUTRA la lista como M-970-AL. Preside la Comisión de la Región Este (ficha oficial / CHAIRS). Sucesora de Ángel Bulerín Ramos, quien se retiró.',
+    career: [
+      'Generales del 5 de noviembre de 2024 (Wikipedia / CEE 31 dic / votes.json): PNP 10,684 (40.6%); PPD Angel Osorio 9,616; PIP Reginald Michael Carrasquillo Maisonet 3,262 (12.4%); PD Héctor Andrés Santiago Ramos 2,727 (10.4%); total 26,289. Margen 1,068. Hold PNP. votes.json coincide.',
+    ],
+    aspirations: [
+      'RCC 379 (29 jun 2026): plan prioritario de obras en carreteras estatales de Loíza (SUTRA Autores = 1).',
+      'RCC 162 (4 ago 2025): plan prioritario de obras en carreteras estatales de Río Grande; por petición de Cadete Shadiel Graciani Escalona (SUTRA Autores = 1).',
+      'RCC 270 (29 ene 2026): AAA: plan de mantenimiento y OMP del acueducto/alcantarillado del D37 (Loíza, Río Grande, Canóvanas) (SUTRA Autores = 1).',
+    ],
+    committees: [],
+    connections: [
+      {
+        toId: 'angel-r-pena-ramirez',
+        kind: 'fact',
+        label:
+          'Coautora de la RC 375 (enmiendas técnicas a RC 120) con Ángel R. Peña Ramírez (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraRC0375Pena],
+      },
+      {
+        toId: 'joe-joito-colon-rodriguez',
+        kind: 'fact',
+        label:
+          'Coautora del PC 286 (Registro Digital de Agricultores y Productos Locales) con Joe ‘Joito’ Colón Rodríguez (SUTRA Autores 2); no implica alianza partidista',
+        sources: [SRC.sutraPC0286Joito],
+      },
+    ],
+    sources: [
+      SRC.camaraMedina,
+      SRC.sutraMedina,
+      SRC.wiki2024House,
+      SRC.sutraRCC0379Medina,
+      SRC.sutraRCC0162Medina,
+      SRC.sutraRCC0270Medina,
+      SRC.sutraRC0375Pena,
+      SRC.sutraPC0286Joito,
+    ],
+  },
 }

@@ -1695,6 +1695,29 @@ export const SRC = {
     label:
       'SUTRA · RC 66 (autor único; investigación infraestructura y servicio de LUMA en el D35)',
   },
+  camaraMedina: {
+    url: 'https://www.camara.pr.gov/team/carmen-medina-calderon/',
+    label: 'Cámara · ficha oficial de Carmen Medina Calderón (D37; Río Grande, Loíza, Canóvanas)',
+  },
+  sutraMedina: {
+    url: 'https://sutra.oslpr.org/legisladores/M-970-AL',
+    label: 'SUTRA · Carmen Medina Calderón (M-970-AL, 2025–2028; Distrito 37)',
+  },
+  sutraRCC0379Medina: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0379',
+    label:
+      'SUTRA · RCC 379 (autor único; plan prioritario de obras en carreteras estatales de Loíza)',
+  },
+  sutraRCC0162Medina: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0162',
+    label:
+      'SUTRA · RCC 162 (autor único; plan prioritario de obras en carreteras estatales de Río Grande)',
+  },
+  sutraRCC0270Medina: {
+    url: 'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0270',
+    label:
+      'SUTRA · RCC 270 (autor único; AAA: plan de mantenimiento y OMP del acueducto/alcantarillado D37)',
+  },
 } as const satisfies Record<string, DossierSource>
 
 export function officialSource(profileUrl: string, name: string): DossierSource {
