@@ -65,7 +65,7 @@ describe('dossiers 2025–2028', () => {
     expect(carmen.bio).toBeNull()
     expect(carmen.career).toEqual([])
     expect(carmen.aspirations).toEqual([])
-    expect(carmen.committees).toEqual([])
+    expect(carmen.committees).toEqual(['Región Este'])
     expect(carmen.connections).toEqual([])
   })
 
