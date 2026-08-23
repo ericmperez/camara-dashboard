@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Representative } from '../types'
+import { FACE_LAYOUT } from '../lib/faceLayout'
 import { strengthOf } from '../lib/strength'
 import { initials } from '../lib/text'
 import { electionFor, formatVotes } from '../lib/votes'
@@ -21,10 +22,21 @@ function Face({ url, name }: { url: string | null; name: string }) {
 
 export function FaceBoard({ reps, maxProjects, selectedId, onSelect }: Props) {
   return (
-    <div className="face-board" aria-label="Caras: quién es cada uno">
+    <div
+      className="face-board"
+      aria-label="Caras: quién es cada uno"
+      data-face-layout="one-screen"
+      data-face-cols={FACE_LAYOUT.phoneColumns}
+      data-face-card-max-h={FACE_LAYOUT.cardMaxHeight}
+      data-face-gap={FACE_LAYOUT.gap}
+    >
       {reps.map((rep) => {
         const score = strengthOf(rep, maxProjects)
         const election = electionFor(rep.id)
+        const voteBit =
+          election?.votes !== null && election?.votes !== undefined
+            ? `${formatVotes(election.votes)} votos`
+            : 'Sin voto popular'
         return (
           <article
             key={rep.id}
@@ -35,24 +47,25 @@ export function FaceBoard({ reps, maxProjects, selectedId, onSelect }: Props) {
           >
             <div className="face-shot">
               <Face url={rep.photoUrl} name={rep.name} />
-              <span className="face-color">{score.colorLabel}</span>
             </div>
             <div className="face-body">
-              <p className="face-seat">{rep.districtLabel}</p>
               <h2>{rep.name}</h2>
-              <p className="face-party">
-                {rep.party} · {score.colorLabel}
-              </p>
-              <p className="face-stat">
-                {election?.votes !== null && election?.votes !== undefined
-                  ? `${formatVotes(election.votes)} votos${election.margin !== null ? ` · +${formatVotes(election.margin)}` : ''}`
-                  : 'Sin voto popular'}
-              </p>
-              <p className="face-stat">
-                {score.projects} {score.projects === 1 ? 'proyecto' : 'proyectos'}
-              </p>
-              <p className="face-force" data-band={score.band}>
-                Fuerza {score.total}
+              <p className="face-meta">
+                <span className="face-seat">{rep.districtLabel}</span>
+                {' · '}
+                <span className="face-party">
+                  {rep.party} · {score.colorLabel}
+                </span>
+                {' · '}
+                <span className="face-stat">{voteBit}</span>
+                {' · '}
+                <span className="face-stat">
+                  {score.projects} {score.projects === 1 ? 'proyecto' : 'proyectos'}
+                </span>
+                {' · '}
+                <span className="face-force" data-band={score.band}>
+                  Fuerza {score.total}
+                </span>
               </p>
             </div>
           </article>
