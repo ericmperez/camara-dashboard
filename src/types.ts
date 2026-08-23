@@ -86,3 +86,25 @@ export type Dossier = {
   connections: DossierConnection[]
   sources: DossierSource[]
 }
+
+export const WHIP_STATUSES = [
+  'no-contactado',
+  'voto-que-puedo-coger',
+  'indeciso',
+  'si',
+  'no',
+] as const
+
+export type WhipStatus = (typeof WHIP_STATUSES)[number]
+
+export type WhipSeat = {
+  status: WhipStatus
+  note: string | null
+}
+
+export type WhipBoard = {
+  measureCode: string
+  title: string | null
+  updatedAt: string
+  seats: Record<string, WhipSeat>
+}
