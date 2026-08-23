@@ -5,6 +5,7 @@ import { Ficha } from './components/Ficha'
 import { Hemicycle } from './components/Hemicycle'
 import { PartyBlock } from './components/PartyBlock'
 import { RankBoard } from './components/RankBoard'
+import { WhipLeverage } from './components/WhipLeverage'
 import {
   ASSEMBLY,
   REPRESENTATIVES,
@@ -369,14 +370,23 @@ function App() {
           </button>
         </div>
       ) : view === 'voto' ? (
-        <FaceBoard
-          reps={visible}
-          maxProjects={maxProjects}
-          selectedId={selectedId}
-          onSelect={selectRep}
-          whipById={whipById}
-          onSetStatus={markVote}
-        />
+        <>
+          {selected ? (
+            <WhipLeverage rep={selected} />
+          ) : (
+            <p className="party-empty" role="status">
+              Elige un escaño para ver partido, cargo y palanca citada.
+            </p>
+          )}
+          <FaceBoard
+            reps={visible}
+            maxProjects={maxProjects}
+            selectedId={selectedId}
+            onSelect={selectRep}
+            whipById={whipById}
+            onSetStatus={markVote}
+          />
+        </>
       ) : view === 'caras' ? (
         <FaceBoard
           reps={visible}

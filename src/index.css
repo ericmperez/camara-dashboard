@@ -1066,6 +1066,40 @@ a {
 .face-card.whip-si { border-left-color: var(--whip-si); }
 .face-card.whip-no { border-left-color: var(--whip-no); }
 
+.whip-leverage {
+  margin: 8px 0 16px;
+  padding: 14px 16px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-left: 5px solid var(--gold);
+}
+
+.whip-leverage h3 {
+  margin: 0 0 8px;
+  font-family: Fraunces, serif;
+  font-size: 1.2rem;
+}
+
+.whip-leverage h4 {
+  margin: 12px 0 6px;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.whip-leverage p {
+  margin: 4px 0;
+}
+
+.whip-leverage-block ul {
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+}
+
+.whip-leverage-block li {
+  margin: 0 0 6px;
+}
+
 @media (min-width: 700px) {
   .whip-measure {
     grid-template-columns: 10rem 1fr;

@@ -288,4 +288,39 @@ describe('vista Voto', () => {
     expect(votoCard(siReps[0]!.name)).toHaveAttribute('data-whip', 'si')
     expect(votoCard(gettable[0]!.name)).toHaveAttribute('data-whip', 'voto-que-puedo-coger')
   })
+
+  it('al elegir un PPD muestra partido, CEE, HECHO e INFERENCIA, no alianza', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Voto' }))
+    await user.click(screen.getByRole('heading', { name: /varela/i }))
+
+    const panel = screen.getByLabelText(/palanca pública de/i)
+    expect(panel).toHaveTextContent(/PPD/)
+    expect(panel).toHaveTextContent(/minoría/)
+    expect(panel).toHaveTextContent(/Sin presidencia de comisión/)
+    expect(panel).toHaveTextContent(/Margen CEE/)
+    expect(panel).toHaveTextContent(/HECHO/)
+    expect(panel).toHaveTextContent(/Méndez/)
+    expect(panel).toHaveTextContent(/INFERENCIA/)
+    expect(panel).toHaveTextContent(/no es alianza/i)
+    expect(panel).not.toHaveTextContent(/aliado/i)
+  })
+
+  it('enseña presidencia CHAIRS y sin-voto sin inventar porcentaje', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Voto' }))
+
+    await user.click(screen.getByRole('heading', { name: /lópez román/i }))
+    const lopez = screen.getByLabelText(/palanca pública de/i)
+    expect(lopez).toHaveTextContent(/Trabajo y Asuntos Laborales/)
+    expect(lopez).toHaveTextContent(/margen 43/)
+
+    await user.click(screen.getByRole('heading', { name: /adriana gutiérrez/i }))
+    const adriana = screen.getByLabelText(/palanca pública de/i)
+    expect(adriana).toHaveTextContent(/sin-voto/)
+    expect(adriana).toHaveTextContent(/ley de minorías/i)
+    expect(adriana).not.toHaveTextContent(/%/)
+  })
 })
