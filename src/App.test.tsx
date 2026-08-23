@@ -10,7 +10,9 @@ describe('dashboard de la Cámara', () => {
   it('muestra el hemiciclo, el recuento y a los 53 representantes', () => {
     render(<App />)
     expect(
-      screen.getByRole('heading', { name: /quién está sentado ahora/i }),
+      screen.getByRole('heading', {
+        name: /quién está sentado — y de quién puedo coger el voto/i,
+      }),
     ).toBeInTheDocument()
     expect(screen.getByText('53 representantes')).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /36\s+PNP/i })).toBeInTheDocument()
@@ -207,5 +209,83 @@ describe('dashboard de la Cámara', () => {
     expect(within(cards[0]).getAllByText(/Distrito 1/).length).toBeGreaterThan(0)
     expect(within(cards[0]).queryByText(/Distrito 10/)).not.toBeInTheDocument()
     expect(within(cards[0]).getByRole('heading')).toHaveTextContent(/Charbonier/)
+  })
+})
+
+function votoCard(name: string) {
+  return screen.getByRole('heading', { name }).closest('article') as HTMLElement
+}
+
+describe('vista Voto', () => {
+  it('nombra la medida, enseña 53 escaños y el tally pinneado Sí 0 / 27', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Voto' }))
+
+    const pizarra = screen.getByLabelText(/pizarra de voto/i)
+    expect(pizarra).toBeInTheDocument()
+    const medida = screen.getByRole('textbox', { name: /nombre de la medida/i })
+    await user.type(medida, 'PC 1302')
+    expect(medida).toHaveValue('PC 1302')
+    await user.type(
+      screen.getByRole('textbox', { name: /título de la medida/i }),
+      'Oficina de Ayuda Vieques y Culebra',
+    )
+
+    expect(within(pizarra).getByText('Sí 0 / 27')).toBeInTheDocument()
+    expect(within(pizarra).getByText('Faltan 27')).toBeInTheDocument()
+    expect(within(pizarra).getByText(/no contactado 53/)).toBeInTheDocument()
+
+    const hemicycle = screen.getByLabelText(/hemiciclo de la cámara/i)
+    expect(hemicycle.querySelectorAll('button')).toHaveLength(53)
+    expect(hemicycle.querySelectorAll('[data-whip="no-contactado"]')).toHaveLength(53)
+    expect(screen.getAllByRole('article')).toHaveLength(53)
+  })
+
+  it('tiene chips de los cinco estados y no marca sí por ser PNP', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Voto' }))
+
+    const johnny = votoCard(/méndez/i)
+    expect(johnny).toHaveAttribute('data-whip', 'no-contactado')
+    const chips = within(johnny).getByRole('group', { name: /estado de/i })
+    expect(within(chips).getByRole('button', { name: 'no contactado' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    )
+    expect(within(chips).getByRole('button', { name: 'voto que puedo coger' })).toBeInTheDocument()
+    expect(within(chips).getByRole('button', { name: 'indeciso' })).toBeInTheDocument()
+    expect(within(chips).getByRole('button', { name: 'sí' })).toBeInTheDocument()
+    expect(within(chips).getByRole('button', { name: 'no' })).toBeInTheDocument()
+  })
+
+  it('al marcar sí y voto que puedo coger el tally cuenta contra 27', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Voto' }))
+
+    const siReps = REPRESENTATIVES.slice(0, 5)
+    const gettable = REPRESENTATIVES.slice(5, 8)
+    const noRep = REPRESENTATIVES[8]!
+
+    for (const rep of siReps) {
+      await user.click(within(votoCard(rep.name)).getByRole('button', { name: 'sí' }))
+    }
+    for (const rep of gettable) {
+      await user.click(
+        within(votoCard(rep.name)).getByRole('button', { name: 'voto que puedo coger' }),
+      )
+    }
+    await user.click(within(votoCard(noRep.name)).getByRole('button', { name: 'no' }))
+
+    const pizarra = screen.getByLabelText(/pizarra de voto/i)
+    expect(within(pizarra).getByText('Sí 5 / 27')).toBeInTheDocument()
+    expect(within(pizarra).getByText('Faltan 22')).toBeInTheDocument()
+    expect(within(pizarra).getByText(/puedo coger 3/)).toBeInTheDocument()
+    expect(within(pizarra).getByText(/no 1/)).toBeInTheDocument()
+    expect(within(pizarra).getByText(/no contactado 44/)).toBeInTheDocument()
+    expect(votoCard(siReps[0]!.name)).toHaveAttribute('data-whip', 'si')
+    expect(votoCard(gettable[0]!.name)).toHaveAttribute('data-whip', 'voto-que-puedo-coger')
   })
 })

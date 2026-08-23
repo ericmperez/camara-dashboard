@@ -22,10 +22,21 @@ import {
 } from './lib/filter'
 import { countDistrictsByParty, groupByParty, splitDistrictsByParty } from './lib/group'
 import { maxProjectCount } from './lib/strength'
+import {
+  NEED_FOR_MAJORITY,
+  WHIP_STATUS_LABELS,
+  WHIP_STATUSES,
+  emptyWhipBoard,
+  needForMajority,
+  setSeatStatus,
+  statusBreakdown,
+  statusOf,
+  yesCount,
+} from './lib/whip'
 import { PARTIES } from './types'
-import type { SeatKind } from './types'
+import type { SeatKind, WhipStatus } from './types'
 
-type ChamberView = 'caras' | 'hemiciclo' | 'ranking' | 'ficha' | 'conexiones'
+type ChamberView = 'caras' | 'hemiciclo' | 'ranking' | 'ficha' | 'conexiones' | 'voto'
 
 const VIEW_OPTIONS: { value: ChamberView; label: string }[] = [
   { value: 'caras', label: 'Caras' },
@@ -33,7 +44,10 @@ const VIEW_OPTIONS: { value: ChamberView; label: string }[] = [
   { value: 'ranking', label: 'Ranking' },
   { value: 'ficha', label: 'Ficha' },
   { value: 'conexiones', label: 'Conexiones' },
+  { value: 'voto', label: 'Voto' },
 ]
+
+const ROSTER_IDS = REPRESENTATIVES.map((rep) => rep.id)
 
 const SEAT_OPTIONS: { value: SeatKind; label: string }[] = [
   { value: 'all', label: 'Todos' },
@@ -45,6 +59,8 @@ function App() {
   const [filters, setFilters] = useState(emptyFilters)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [view, setView] = useState<ChamberView>('caras')
+  const [board, setBoard] = useState(() => emptyWhipBoard(ROSTER_IDS, ''))
+  const [votoColor, setVotoColor] = useState<'voto' | 'partido'>('voto')
 
   const sorted = useMemo(() => sortRepresentatives(REPRESENTATIVES), [])
   const visible = useMemo(
@@ -68,6 +84,17 @@ function App() {
     [selectedId, sorted],
   )
 
+  const yes = yesCount(board)
+  const need = needForMajority(board)
+  const breakdown = statusBreakdown(board)
+  const whipById = useMemo(() => {
+    const map: Record<string, WhipStatus> = {}
+    for (const [id, seat] of Object.entries(board.seats)) {
+      map[id] = seat.status
+    }
+    return map
+  }, [board])
+
   function selectRep(id: string) {
     setSelectedId(id)
     const node = document.getElementById(`rep-${id}`)
@@ -81,14 +108,28 @@ function App() {
     })
   }
 
+  function markVote(id: string, status: WhipStatus) {
+    setSelectedId(id)
+    setBoard((current) => setSeatStatus(current, id, status))
+  }
+
+  function setMeasureCode(value: string) {
+    setBoard((current) => ({ ...current, measureCode: value }))
+  }
+
+  function setMeasureTitle(value: string) {
+    setBoard((current) => ({ ...current, title: value.trim() ? value : null }))
+  }
+
   return (
     <div className="page">
       <header className="masthead">
         <p className="eyebrow">Cámara de Representantes de Puerto Rico</p>
-        <h1>Quién está sentado ahora</h1>
+        <h1>Quién está sentado — y de quién puedo coger el voto</h1>
         <p className="lede">
           {ASSEMBLY} · cuatrienio {TERM}. {REPRESENTATIVES.length} representantes
-          en el directorio oficial.
+          en el directorio oficial. Mayoría del cuerpo: {NEED_FOR_MAJORITY} de{' '}
+          {REPRESENTATIVES.length}.
         </p>
       </header>
 
@@ -106,48 +147,139 @@ function App() {
             </button>
           ))}
         </div>
-        {view === 'hemiciclo' ? (
+        {view === 'voto' ? (
+          <div className="whip-panel" aria-label="Pizarra de voto">
+            <div className="whip-measure">
+              <label>
+                Medida
+                <input
+                  type="text"
+                  value={board.measureCode}
+                  onChange={(event) => setMeasureCode(event.target.value)}
+                  placeholder="PC 1302"
+                  autoComplete="off"
+                  aria-label="Nombre de la medida"
+                />
+              </label>
+              <label>
+                Título
+                <input
+                  type="text"
+                  value={board.title ?? ''}
+                  onChange={(event) => setMeasureTitle(event.target.value)}
+                  placeholder="Título corto (opcional)"
+                  autoComplete="off"
+                  aria-label="Título de la medida"
+                />
+              </label>
+            </div>
+            <div className="whip-tally" aria-label="Mayoría del cuerpo">
+              <p className="whip-yes">Sí {yes} / {NEED_FOR_MAJORITY}</p>
+              <p className="whip-need">Faltan {need}</p>
+              <p className="whip-break">
+                puedo coger {breakdown['voto-que-puedo-coger']} · indeciso{' '}
+                {breakdown.indeciso} · no {breakdown.no} · no contactado{' '}
+                {breakdown['no-contactado']}
+              </p>
+            </div>
+            <div
+              className="whip-chips whip-chips-pinned"
+              role="group"
+              aria-label={
+                selected
+                  ? `Estado de ${selected.name}`
+                  : 'Estado de voto del escaño seleccionado'
+              }
+            >
+              {WHIP_STATUSES.map((value) => (
+                <button
+                  key={value}
+                  type="button"
+                  className={
+                    selected && statusOf(board, selected.id) === value ? 'is-on' : ''
+                  }
+                  aria-pressed={
+                    selected ? statusOf(board, selected.id) === value : false
+                  }
+                  disabled={!selected}
+                  onClick={() => {
+                    if (selected) markVote(selected.id, value)
+                  }}
+                >
+                  {WHIP_STATUS_LABELS[value]}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : null}
+        {view === 'hemiciclo' || view === 'voto' ? (
           <Hemicycle
             reps={sorted}
             selectedId={selectedId}
             onSelect={selectRep}
             maxProjects={maxProjects}
+            colorBy={view === 'voto' ? votoColor : 'party'}
+            whipById={view === 'voto' ? whipById : undefined}
           />
         ) : null}
-        <ul className="tally">
-          {PARTIES.map((party) => (
-            <li key={party}>
-              <button
-                type="button"
-                className={`tally-btn party-${party.toLowerCase()}${filters.party === party ? ' is-on' : ''}`}
-                aria-label={`${counts[party]} ${party}`}
-                aria-pressed={filters.party === party}
-                onClick={() =>
-                  setFilters((current) => ({
-                    ...current,
-                    party: current.party === party ? 'all' : party,
-                  }))
-                }
-              >
-                <span className="swatch" aria-hidden />
-                <strong>{counts[party]}</strong>
-                <span>{party}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
-        <p className="district-split">De los 40 de distrito</p>
-        <ul className="tally tally-district" aria-label="Los 40 escaños de distrito por partido">
-          {PARTIES.map((party) => (
-            <li key={`d-${party}`}>
-              <span className={`tally-static party-${party.toLowerCase()}`}>
-                <span className="swatch" aria-hidden />
-                <strong>{districtCounts[party]}</strong>
-                <span>{party === 'PPD' ? 'Populares' : party}</span>
-              </span>
-            </li>
-          ))}
-        </ul>
+        {view === 'voto' ? (
+          <div className="chips" role="group" aria-label="Color del hemiciclo">
+            <button
+              type="button"
+              className={votoColor === 'voto' ? 'is-on' : ''}
+              aria-pressed={votoColor === 'voto'}
+              onClick={() => setVotoColor('voto')}
+            >
+              Ver voto
+            </button>
+            <button
+              type="button"
+              className={votoColor === 'partido' ? 'is-on' : ''}
+              aria-pressed={votoColor === 'partido'}
+              onClick={() => setVotoColor('partido')}
+            >
+              Ver partido
+            </button>
+          </div>
+        ) : null}
+        {view === 'voto' ? null : (
+          <>
+            <ul className="tally">
+              {PARTIES.map((party) => (
+                <li key={party}>
+                  <button
+                    type="button"
+                    className={`tally-btn party-${party.toLowerCase()}${filters.party === party ? ' is-on' : ''}`}
+                    aria-label={`${counts[party]} ${party}`}
+                    aria-pressed={filters.party === party}
+                    onClick={() =>
+                      setFilters((current) => ({
+                        ...current,
+                        party: current.party === party ? 'all' : party,
+                      }))
+                    }
+                  >
+                    <span className="swatch" aria-hidden />
+                    <strong>{counts[party]}</strong>
+                    <span>{party}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <p className="district-split">De los 40 de distrito</p>
+            <ul className="tally tally-district" aria-label="Los 40 escaños de distrito por partido">
+              {PARTIES.map((party) => (
+                <li key={`d-${party}`}>
+                  <span className={`tally-static party-${party.toLowerCase()}`}>
+                    <span className="swatch" aria-hidden />
+                    <strong>{districtCounts[party]}</strong>
+                    <span>{party === 'PPD' ? 'Populares' : party}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </section>
 
       <section className="toolbar" aria-label="Buscar representante">
@@ -236,6 +368,15 @@ function App() {
             Ver a los 53
           </button>
         </div>
+      ) : view === 'voto' ? (
+        <FaceBoard
+          reps={visible}
+          maxProjects={maxProjects}
+          selectedId={selectedId}
+          onSelect={selectRep}
+          whipById={whipById}
+          onSetStatus={markVote}
+        />
       ) : view === 'caras' ? (
         <FaceBoard
           reps={visible}

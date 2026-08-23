@@ -4,6 +4,7 @@ import { WHIP_STATUSES } from '../types'
 import {
   DEFAULT_WHIP_STATUS,
   NEED_FOR_MAJORITY,
+  WHIP_STATUS_LABELS,
   defaultStatusFor,
   emptyWhipBoard,
   needForMajority,
@@ -30,6 +31,8 @@ describe('modelo de whip y tally 27/53', () => {
     ])
     expect(DEFAULT_WHIP_STATUS).toBe('no-contactado')
     expect(NEED_FOR_MAJORITY).toBe(27)
+    expect(WHIP_STATUS_LABELS.si).toBe('sí')
+    expect(WHIP_STATUS_LABELS['voto-que-puedo-coger']).toBe('voto que puedo coger')
   })
 
   it('abre una medida con 53 asientos en no-contactado, nunca sí por ser PNP', () => {

@@ -11,6 +11,11 @@
   --ppd: #c8102e;
   --pip: #1b7a2f;
   --pd: #0b8fad;
+  --whip-nc: #6b7785;
+  --whip-get: #c4841a;
+  --whip-und: #6b3fa0;
+  --whip-si: #1b7a2f;
+  --whip-no: #c8102e;
   --shadow: 0 10px 30px rgba(16, 35, 61, 0.08);
   color: var(--ink);
   background: var(--stone);
@@ -162,6 +167,11 @@ a {
 .seat-ppd { box-shadow: 0 0 0 2px var(--ppd); }
 .seat-pip { box-shadow: 0 0 0 2px var(--pip); }
 .seat-pd { box-shadow: 0 0 0 2px var(--pd); }
+.seat-whip-no-contactado { box-shadow: 0 0 0 2px var(--whip-nc); }
+.seat-whip-voto-que-puedo-coger { box-shadow: 0 0 0 2px var(--whip-get); }
+.seat-whip-indeciso { box-shadow: 0 0 0 2px var(--whip-und); }
+.seat-whip-si { box-shadow: 0 0 0 2px var(--whip-si); }
+.seat-whip-no { box-shadow: 0 0 0 2px var(--whip-no); }
 .seat-photo.is-selected {
   outline: 3px solid var(--gold);
   outline-offset: 2px;
@@ -949,6 +959,116 @@ a {
 @media (max-width: 520px) {
   .tally {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+.whip-panel {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  margin: 0 0 10px;
+  padding: 8px 4px 10px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+.whip-measure {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.whip-measure label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.whip-measure input {
+  min-height: 44px;
+  padding: 8px 12px;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+  border: 1px solid var(--ink);
+  background: var(--card);
+  color: var(--ink);
+}
+
+.whip-tally {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  align-items: baseline;
+  margin: 0 0 10px;
+}
+
+.whip-yes {
+  margin: 0;
+  font-family: Fraunces, serif;
+  font-size: 1.8rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.whip-need {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+
+.whip-break {
+  flex: 1 1 100%;
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.whip-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.whip-chips-pinned {
+  margin-top: 0;
+}
+
+.whip-chips button {
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid var(--rule);
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.whip-chips button.is-on {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.whip-chips button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.face-card.whip-no-contactado { border-left-color: var(--whip-nc); }
+.face-card.whip-voto-que-puedo-coger { border-left-color: var(--whip-get); }
+.face-card.whip-indeciso { border-left-color: var(--whip-und); }
+.face-card.whip-si { border-left-color: var(--whip-si); }
+.face-card.whip-no { border-left-color: var(--whip-no); }
+
+@media (min-width: 700px) {
+  .whip-measure {
+    grid-template-columns: 10rem 1fr;
   }
 }
 

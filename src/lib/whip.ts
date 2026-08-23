@@ -4,6 +4,14 @@ import { WHIP_STATUSES } from '../types'
 export const NEED_FOR_MAJORITY = 27
 export const DEFAULT_WHIP_STATUS: WhipStatus = 'no-contactado'
 
+export const WHIP_STATUS_LABELS: Record<WhipStatus, string> = {
+  'no-contactado': 'no contactado',
+  'voto-que-puedo-coger': 'voto que puedo coger',
+  indeciso: 'indeciso',
+  si: 'sí',
+  no: 'no',
+}
+
 export type WhipBreakdown = Record<WhipStatus, number>
 
 export function emptyWhipSeat(): WhipSeat {
@@ -43,6 +51,10 @@ export function setSeatStatus(
       [id]: { ...current, status },
     },
   }
+}
+
+export function statusOf(board: WhipBoard, id: string): WhipStatus {
+  return board.seats[id]?.status ?? DEFAULT_WHIP_STATUS
 }
 
 export function yesCount(board: WhipBoard): number {
