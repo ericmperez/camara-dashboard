@@ -38,9 +38,10 @@ describe('53 fichas delgadas en una pantalla', () => {
     expect(board?.[0]).toMatch(/--face-cols:\s*3/)
     expect(board?.[0]).toMatch(/--face-card-max-h:\s*44px/)
     expect(board?.[0]).toMatch(/--face-gap:\s*3px/)
+    expect(board?.[0]).toMatch(/grid-auto-rows:\s*var\(--face-card-max-h/)
 
     const card = css.match(/\.face-card\s*\{[^}]+\}/)
     expect(card?.[0]).toMatch(/height:\s*var\(--face-card-max-h/)
-    expect(card?.[0]).toMatch(/grid-template-columns:\s*36px 1fr/)
+    expect(card?.[0]).toMatch(/grid-template-columns:\s*32px 1fr/)
   })
 })

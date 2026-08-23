@@ -43,6 +43,7 @@ export function FaceBoard({ reps, maxProjects, selectedId, onSelect }: Props) {
             id={`rep-${rep.id}`}
             className={`face-card party-${rep.party.toLowerCase()}${selectedId === rep.id ? ' is-selected' : ''}`}
             data-party={rep.party}
+            title={`${rep.name} · ${rep.districtLabel} · ${rep.party} · ${score.colorLabel} · ${voteBit} · ${score.projects} ${score.projects === 1 ? 'proyecto' : 'proyectos'} · Fuerza ${score.total}`}
             onClick={() => onSelect(rep.id)}
           >
             <div className="face-shot">
@@ -51,20 +52,20 @@ export function FaceBoard({ reps, maxProjects, selectedId, onSelect }: Props) {
             <div className="face-body">
               <h2>{rep.name}</h2>
               <p className="face-meta">
-                <span className="face-seat">{rep.districtLabel}</span>
-                {' · '}
                 <span className="face-party">{rep.party}</span>
                 {' · '}
+                <span className="face-seat">{rep.districtLabel}</span>
+                {' · '}
                 <span className="face-color">{score.colorLabel}</span>
+                {' · '}
+                <span className="face-force" data-band={score.band}>
+                  Fuerza {score.total}
+                </span>
                 {' · '}
                 <span className="face-stat">{voteBit}</span>
                 {' · '}
                 <span className="face-stat">
                   {score.projects} {score.projects === 1 ? 'proyecto' : 'proyectos'}
-                </span>
-                {' · '}
-                <span className="face-force" data-band={score.band}>
-                  Fuerza {score.total}
                 </span>
               </p>
             </div>
