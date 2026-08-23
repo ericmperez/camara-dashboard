@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Connections } from './components/Connections'
 import { FaceBoard } from './components/FaceBoard'
 import { Ficha } from './components/Ficha'
@@ -34,6 +34,13 @@ import {
   statusOf,
   yesCount,
 } from './lib/whip'
+import {
+  WHIP_BANNER,
+  browserStorage,
+  loadActiveBoard,
+  persistBoard,
+  switchMeasure,
+} from './lib/whip-store'
 import { PARTIES } from './types'
 import type { SeatKind, WhipStatus } from './types'
 
@@ -60,7 +67,11 @@ function App() {
   const [filters, setFilters] = useState(emptyFilters)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [view, setView] = useState<ChamberView>('caras')
-  const [board, setBoard] = useState(() => emptyWhipBoard(ROSTER_IDS, ''))
+  const [board, setBoard] = useState(() => {
+    const storage = browserStorage()
+    return storage ? loadActiveBoard(ROSTER_IDS, storage) : emptyWhipBoard(ROSTER_IDS, '')
+  })
+  const [measureInput, setMeasureInput] = useState(board.measureCode)
   const [votoColor, setVotoColor] = useState<'voto' | 'partido'>('voto')
 
   const sorted = useMemo(() => sortRepresentatives(REPRESENTATIVES), [])
@@ -109,13 +120,26 @@ function App() {
     })
   }
 
+  useEffect(() => {
+    const storage = browserStorage()
+    if (!storage) return
+    persistBoard(board, ROSTER_IDS, storage)
+  }, [board])
+
   function markVote(id: string, status: WhipStatus) {
     setSelectedId(id)
     setBoard((current) => setSeatStatus(current, id, status))
   }
 
-  function setMeasureCode(value: string) {
-    setBoard((current) => ({ ...current, measureCode: value }))
+  function commitMeasure() {
+    const storage = browserStorage()
+    if (!storage) {
+      setBoard((current) => ({ ...current, measureCode: measureInput }))
+      return
+    }
+    const next = switchMeasure(board, measureInput, ROSTER_IDS, storage)
+    setBoard(next)
+    setMeasureInput(next.measureCode)
   }
 
   function setMeasureTitle(value: string) {
@@ -150,13 +174,22 @@ function App() {
         </div>
         {view === 'voto' ? (
           <div className="whip-panel" aria-label="Pizarra de voto">
+            <p className="whip-banner" role="note">
+              {WHIP_BANNER}
+            </p>
             <div className="whip-measure">
               <label>
                 Medida
                 <input
                   type="text"
-                  value={board.measureCode}
-                  onChange={(event) => setMeasureCode(event.target.value)}
+                  value={measureInput}
+                  onChange={(event) => setMeasureInput(event.target.value)}
+                  onBlur={commitMeasure}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter') {
+                      event.currentTarget.blur()
+                    }
+                  }}
                   placeholder="PC 1302"
                   autoComplete="off"
                   aria-label="Nombre de la medida"

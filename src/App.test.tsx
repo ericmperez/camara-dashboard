@@ -4,7 +4,10 @@ import { afterEach, describe, expect, it } from 'vitest'
 import App from './App'
 import { REPRESENTATIVES } from './data/representatives'
 
-afterEach(() => cleanup())
+afterEach(() => {
+  cleanup()
+  localStorage.clear()
+})
 
 describe('dashboard de la Cámara', () => {
   it('muestra el hemiciclo, el recuento y a los 53 representantes', () => {
@@ -322,5 +325,27 @@ describe('vista Voto', () => {
     expect(adriana).toHaveTextContent(/sin-voto/)
     expect(adriana).toHaveTextContent(/ley de minorías/i)
     expect(adriana).not.toHaveTextContent(/%/)
+  })
+
+  it('avisa que el tablero vive en este iPad y lo recupera al recargar', async () => {
+    const user = userEvent.setup()
+    const first = render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Voto' }))
+    expect(
+      screen.getByText(/esto vive en este ipad; no se sube al directorio público/i),
+    ).toBeInTheDocument()
+
+    const medida = screen.getByRole('textbox', { name: /nombre de la medida/i })
+    await user.type(medida, 'PC 1302')
+    await user.tab()
+    await user.click(within(votoCard(/méndez/i)).getByRole('button', { name: 'sí' }))
+    expect(screen.getByText('Sí 1 / 27')).toBeInTheDocument()
+    first.unmount()
+
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Voto' }))
+    expect(screen.getByRole('textbox', { name: /nombre de la medida/i })).toHaveValue('PC 1302')
+    expect(screen.getByText('Sí 1 / 27')).toBeInTheDocument()
+    expect(votoCard(/méndez/i)).toHaveAttribute('data-whip', 'si')
   })
 })
