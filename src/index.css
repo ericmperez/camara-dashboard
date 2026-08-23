@@ -269,7 +269,7 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.face-seat, .face-party, .face-stat {
+.face-seat, .face-party, .face-stat, .face-color {
   margin: 0;
   font-size: inherit;
   color: inherit;

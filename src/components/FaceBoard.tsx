@@ -53,9 +53,9 @@ export function FaceBoard({ reps, maxProjects, selectedId, onSelect }: Props) {
               <p className="face-meta">
                 <span className="face-seat">{rep.districtLabel}</span>
                 {' · '}
-                <span className="face-party">
-                  {rep.party} · {score.colorLabel}
-                </span>
+                <span className="face-party">{rep.party}</span>
+                {' · '}
+                <span className="face-color">{score.colorLabel}</span>
                 {' · '}
                 <span className="face-stat">{voteBit}</span>
                 {' · '}
