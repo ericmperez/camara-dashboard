@@ -46,6 +46,24 @@ export type RepMeasures = {
 
 export type ElectionEvent = 'generales-2024' | 'especial-2025' | 'ley-de-minorias'
 
+export type SeatRaceKind = 'distrito' | 'acumulacion'
+
+export type PriorVote = {
+  year: 2020
+  name: string
+  votes: number
+  pct: number
+  winner: boolean
+  kind: SeatRaceKind
+  district: number | null
+  comparable: boolean
+  sourceUrl: string
+  sourceLabel: string
+}
+
+export const CURVE_BANDS = ['sube', 'plano', 'baja', 'sin-par'] as const
+export type CurveBand = (typeof CURVE_BANDS)[number]
+
 export type ElectionResult = {
   event: ElectionEvent
   eventLabel: string
@@ -108,3 +126,6 @@ export type WhipBoard = {
   updatedAt: string
   seats: Record<string, WhipSeat>
 }
+
+export const REPEAT_BANDS = ['cerradura', 'solido', 'posible', 'vulnerable'] as const
+export type RepeatBand = (typeof REPEAT_BANDS)[number]

@@ -2,6 +2,10 @@ import type { Party, Representative, RosterFilters } from '../types'
 import { dossierSearchText } from './dossiers'
 import { matchesMeasureCode, measureSearchText } from './measures'
 import { profileSearchText } from './profile'
+import { curveSearchText } from './curve'
+import { playbookSearchText } from './playbook'
+import { repeatSearchText } from './repeat'
+import { tenureSearchText } from './tenure'
 import { normalize } from './text'
 
 const EMPTY_FILTERS: RosterFilters = {
@@ -36,6 +40,10 @@ function searchableWords(rep: Representative): string[] {
     ...identityWords(rep),
     ...tokensOf(measureSearchText(rep.id)),
     ...tokensOf(dossierSearchText(rep.id)),
+    ...tokensOf(repeatSearchText(rep)),
+    ...tokensOf(playbookSearchText(rep.id)),
+    ...tokensOf(curveSearchText(rep)),
+    ...tokensOf(tenureSearchText(rep)),
   ]
 }
 

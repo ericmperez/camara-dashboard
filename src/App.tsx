@@ -5,6 +5,9 @@ import { Ficha } from './components/Ficha'
 import { Hemicycle } from './components/Hemicycle'
 import { PartyBlock } from './components/PartyBlock'
 import { RankBoard } from './components/RankBoard'
+import { CurveBoard } from './components/CurveBoard'
+import { Playbook } from './components/Playbook'
+import { RepeatBoard } from './components/RepeatBoard'
 import { WhipLeverage } from './components/WhipLeverage'
 import {
   ASSEMBLY,
@@ -44,12 +47,24 @@ import {
 import { PARTIES } from './types'
 import type { SeatKind, WhipStatus } from './types'
 
-type ChamberView = 'caras' | 'hemiciclo' | 'ranking' | 'ficha' | 'conexiones' | 'voto'
+type ChamberView =
+  | 'caras'
+  | 'hemiciclo'
+  | 'ranking'
+  | 'repite'
+  | 'curva'
+  | 'oferta'
+  | 'ficha'
+  | 'conexiones'
+  | 'voto'
 
 const VIEW_OPTIONS: { value: ChamberView; label: string }[] = [
   { value: 'caras', label: 'Caras' },
   { value: 'hemiciclo', label: 'Hemiciclo' },
   { value: 'ranking', label: 'Ranking' },
+  { value: 'repite', label: 'Repite' },
+  { value: 'curva', label: 'Curva' },
+  { value: 'oferta', label: 'Oferta' },
   { value: 'ficha', label: 'Ficha' },
   { value: 'conexiones', label: 'Conexiones' },
   { value: 'voto', label: 'Voto' },
@@ -109,15 +124,19 @@ function App() {
 
   function selectRep(id: string) {
     setSelectedId(id)
-    const node = document.getElementById(`rep-${id}`)
-    if (!node || typeof node.scrollIntoView !== 'function') return
-    const reduceMotion =
-      typeof window.matchMedia === 'function' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    node.scrollIntoView({
-      behavior: reduceMotion ? 'auto' : 'smooth',
-      block: 'center',
-    })
+    if (view === 'voto' || view === 'conexiones') {
+      const node = document.getElementById(`rep-${id}`)
+      if (!node || typeof node.scrollIntoView !== 'function') return
+      const reduceMotion =
+        typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      node.scrollIntoView({
+        behavior: reduceMotion ? 'auto' : 'smooth',
+        block: 'center',
+      })
+      return
+    }
+    setView('ficha')
   }
 
   useEffect(() => {
@@ -391,7 +410,7 @@ function App() {
                 ? 'Elige un representante para ver su ficha.'
                 : 'Elige un representante para ver sus conexiones.'}
             </p>
-            <p>Selecciona en Caras, Hemiciclo o Ranking. Vacío si no hay fuente citada.</p>
+            <p>Selecciona en Caras, Hemiciclo, Ranking, Repite, Curva u Oferta. Vacío si no hay fuente citada.</p>
           </div>
         )
       ) : visible.length === 0 ? (
@@ -434,6 +453,12 @@ function App() {
           selectedId={selectedId}
           onSelect={selectRep}
         />
+      ) : view === 'repite' ? (
+        <RepeatBoard reps={visible} selectedId={selectedId} onSelect={selectRep} />
+      ) : view === 'curva' ? (
+        <CurveBoard reps={visible} selectedId={selectedId} onSelect={selectRep} />
+      ) : view === 'oferta' ? (
+        <Playbook reps={visible} selectedId={selectedId} onSelect={selectRep} />
       ) : (
         <div className="directory-groups" aria-label="Directorio">
           {groups.map((group) => (
@@ -460,8 +485,14 @@ function App() {
           CEE no publica el programa de trabajo; los proyectos salen de SUTRA.
           La fuerza es 0–100: hasta 50 del % de votos, hasta 35 de proyectos
           radicados y hasta 15 del cargo en el hemiciclo. Sin voto popular no
-          se inventa la parte electoral. Las fichas solo publican hechos
-          citados; el solape de pueblos es inferencia, no alianza.
+          se inventa la parte electoral. Repite 2028 mezcla margen CEE, años
+          en el escaño, cargo y redes públicas; no es encuesta. Curva resta
+          el % 2020 (noche) del % 2024 (certificado) solo si el escaño es el
+          mismo. Cuatrienios parten del año de asunción citado; si no hay
+          año, solo 2025–2028. Oferta es
+          capital político (invertir / ofrecer / portero), no dinero. Las
+          fichas solo publican hechos citados; el solape de pueblos es
+          inferencia, no alianza.
         </p>
       </footer>
     </div>

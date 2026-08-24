@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Representative, WhipStatus } from '../types'
+import { activityOf } from '../lib/activity'
 import { strengthOf } from '../lib/strength'
 import { initials } from '../lib/text'
 import { electionFor, formatVotes } from '../lib/votes'
@@ -36,6 +37,7 @@ export function FaceBoard({
       {reps.map((rep) => {
         const score = strengthOf(rep, maxProjects)
         const election = electionFor(rep.id)
+        const activity = activityOf(rep)
         const status = whipById?.[rep.id] ?? DEFAULT_WHIP_STATUS
         const whipClass = showWhip ? ` whip-${status}` : ''
         return (
@@ -65,6 +67,7 @@ export function FaceBoard({
               <p className="face-stat">
                 {score.projects} {score.projects === 1 ? 'proyecto' : 'proyectos'}
               </p>
+              <p className="face-doing">{activity.line}</p>
               {showWhip ? (
                 <div
                   className="whip-chips"

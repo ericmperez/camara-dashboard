@@ -1,5 +1,12 @@
 import { useState } from 'react'
+import { PLAYBOOK_BOOK_LABELS } from '../data/playbook'
+import { REPEAT_DISCLAIMER } from '../data/repeat-profiles'
+import { activityOf } from '../lib/activity'
+import { CURVE_BAND_LABELS, curveOf, formatDelta } from '../lib/curve'
+import { playbookOf } from '../lib/playbook'
+import { tenureOf } from '../lib/tenure'
 import { fichaFor, hasVerifiedBody } from '../lib/dossiers'
+import { REPEAT_BAND_LABELS, repeatOf } from '../lib/repeat'
 import { dossierFor, latestProjects } from '../lib/measures'
 import { PARTY_META } from '../lib/profile'
 import { initials, telHref } from '../lib/text'
@@ -18,6 +25,11 @@ export function Ficha({ rep }: Props) {
   const measures = dossierFor(rep.id)
   const preview = latestProjects(rep.id, 4)
   const election = electionFor(rep.id)
+  const activity = activityOf(rep)
+  const repeat = repeatOf(rep)
+  const play = playbookOf(rep.id)
+  const tenure = tenureOf(rep)
+  const curve = curveOf(rep)
 
   return (
     <section className="ficha" id="ficha" aria-label={`Ficha de ${rep.name}`}>
@@ -45,6 +57,87 @@ export function Ficha({ rep }: Props) {
           </p>
         </div>
       </header>
+
+      <section className="ficha-block is-first ficha-doing" aria-label="Qué está haciendo">
+        <h3>Qué está haciendo</h3>
+        <p>{activity.headline}</p>
+        {activity.themes.length > 0 ? (
+          <ul className="doing-themes">
+            {activity.themes.map((theme) => (
+              <li key={theme.id}>
+                {theme.label}
+                <span> {theme.count}</span>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        <p className="conn-note">{activity.disclaimer}</p>
+      </section>
+
+      <section className="ficha-block ficha-repeat" aria-label="Si repite en 2028">
+        <h3>Si repite en 2028</h3>
+        <p className="repeat-scoreline">
+          <strong>{repeat.score}</strong>
+          <span> · {REPEAT_BAND_LABELS[repeat.band]}</span>
+          {repeat.since ? ` · en el escaño desde ${repeat.since}` : ''}
+        </p>
+        <p>{repeat.why}</p>
+        <p>
+          <span className="eyebrow">Redes</span> {repeat.social}
+        </p>
+        <p className="conn-note">{repeat.socialNote}</p>
+        <p className="conn-note">{REPEAT_DISCLAIMER}</p>
+      </section>
+
+      <section className="ficha-block" aria-label="Cuatrienios">
+        <h3>Cuatrienios</h3>
+        <ol className="tenure-line">
+          {tenure.blocks.map((block) => (
+            <li key={block.label} className={block.current ? 'is-current' : undefined}>
+              {block.label}
+            </li>
+          ))}
+        </ol>
+        <p>
+          {tenure.cited
+            ? `En el escaño desde ${tenure.assumed} · ${tenure.count} ${tenure.count === 1 ? 'cuatrienio' : 'cuatrienios'} en esta línea.`
+            : tenure.source}
+        </p>
+        {tenure.cited ? <p className="conn-note">{tenure.source}</p> : null}
+      </section>
+
+      <section className="ficha-block" aria-label="Curva CEE">
+        <h3>Curva CEE 2020→2024</h3>
+        <p className="repeat-scoreline">
+          <strong data-band={curve.band}>{formatDelta(curve.delta)}</strong>
+          <span> · {CURVE_BAND_LABELS[curve.band]}</span>
+        </p>
+        <p>{curve.why}</p>
+        {curve.priorSourceUrl ? (
+          <p>
+            <a href={curve.priorSourceUrl} target="_blank" rel="noreferrer">
+              {curve.priorSourceLabel ?? 'CEE 2020'}
+            </a>
+          </p>
+        ) : null}
+      </section>
+
+      {play ? (
+        <section className="ficha-block" aria-label="Invertir u ofrecer">
+          <h3>{PLAYBOOK_BOOK_LABELS[play.book]}</h3>
+          <p className="playbook-move">{play.move}</p>
+          <p>
+            <span className="eyebrow">Popularidad</span> {play.popularity}
+          </p>
+          <p>
+            <span className="eyebrow">Redes</span> {play.social}
+          </p>
+          <p>
+            <span className="eyebrow">Qué ha dicho</span> {play.said}
+          </p>
+          {play.risk ? <p className="conn-note">{play.risk}</p> : null}
+        </section>
+      ) : null}
 
       <div className="ficha-grid">
         <section>
