@@ -30,7 +30,7 @@ describe('dossiers 2025–2028', () => {
     }
   })
 
-  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6 y Pérez Ortiz D7', () => {
+  it('profundiza la mesa (10), Aponte, Rivera Ruiz, López Román, Muriel, Ocasio, Hernández D3, Parés, Navarro D5, Morey D6, Pérez Ortiz D7, Pacheco D9, Pellé D10, Elinette D11, Feliciano D12, Nieves D13, Robles D14, Franqui D15, Figueroa D16, Higgins D35 y Medina D37', () => {
     const extra = [
       'jose-f-aponte-hernandez',
       'roberto-rivera-ruiz-de-porras',
@@ -42,21 +42,32 @@ describe('dossiers 2025–2028', () => {
       'jorge-navarro-suarez',
       'angel-morey-noble',
       'luis-perez-ortiz',
+      'felix-pacheco-burgos',
+      'pedro-j-pelle-santiago-guzman',
+      'elinette-gonzalez-aguayo',
+      'edgardo-feliciano-sanchez',
+      'jerry-nieves-rosario',
+      'edgar-robles-rivera',
+      'joel-i-franqui-atiles',
+      'reinaldo-rey-figueroa',
+      'sol-y-higgins-cuadrado',
+      'carmen-medina-calderon',
     ]
     for (const id of [...MESA_IDS, ...extra]) {
       expect(DEEP_IDS.has(id)).toBe(true)
       expect(VERIFIED[id]).toBeDefined()
     }
-    expect(DEEP_IDS.size).toBe(20)
+    expect(DEEP_IDS.size).toBe(30)
   })
 
   it('deja vacía la biografía de quien no tiene hecho verificado', () => {
-    const carlo = DOSSIERS['emilio-carlo-acosta']
-    expect(carlo.bio).toBeNull()
-    expect(carlo.career).toEqual([])
-    expect(carlo.aspirations).toEqual([])
-    expect(carlo.committees).toEqual([])
-    expect(carlo.connections).toEqual([])
+    const wanda = DOSSIERS['wanda-del-valle-correa']
+    expect(VERIFIED['wanda-del-valle-correa']).toBeUndefined()
+    expect(wanda.bio).toBeNull()
+    expect(wanda.career).toEqual([])
+    expect(wanda.aspirations).toEqual([])
+    expect(wanda.connections).toEqual([])
+    expect(wanda.committees).toEqual(['Asuntos de la Mujer'])
   })
 
   it('no marca el solape de pueblos como hecho', () => {
@@ -65,7 +76,8 @@ describe('dossiers 2025–2028', () => {
     expect(overlaps.every((c) => c.kind === 'inference')).toBe(true)
     expect(overlaps.every((c) => c.sources.length === 0)).toBe(true)
     const facts = connectionsOf('roberto-lopez-roman').filter((c) => c.kind === 'fact')
-    expect(facts).toHaveLength(0)
+    expect(facts.every((c) => c.toId !== 'jose-conny-varela')).toBe(true)
+    expect(facts.length).toBeGreaterThan(0)
   })
 
   it('codifica la cadena de vacante del D31 con las URLs citadas', () => {
@@ -615,6 +627,2257 @@ describe('dossiers 2025–2028', () => {
         SRC.cpaAsuntosMunicipales.url,
         SRC.microjurisComisiones.url,
       ]),
+    )
+  })
+
+  it('expande la ficha de mesa de Lebrón D8 con CEE 2024, OCE y SUTRA M-941-AL', () => {
+    const d8 = DOSSIERS['yashira-lebron-rodriguez']
+    expect(d8.bio).toMatch(/24 de julio de 1981/)
+    expect(d8.bio).toMatch(/primera mujer/i)
+    expect(d8.bio).toMatch(/23 de octubre de 2014/)
+    expect(d8.bio).toMatch(/ylebron@camara\.pr\.gov/)
+    expect(d8.bio).toMatch(/M-941-AL/)
+    expect(d8.bio).toMatch(/722-0801/)
+    expect(d8.bio).toMatch(/vicepresidenta/i)
+    expect(d8.career.join(' ')).toMatch(/Diego de Torres Vargas/)
+    expect(d8.career.join(' ')).toMatch(/Jesús Sánchez Erazo/)
+    expect(d8.career.join(' ')).toMatch(/Sthal/)
+    expect(d8.career.join(' ')).toMatch(/Toñito Silva|Antonio «Toñito» Silva/)
+    expect(d8.career.join(' ')).toMatch(/primaria PNP de 2024 cancelada/i)
+    expect(d8.career.join(' ')).toMatch(/13,006/)
+    expect(d8.career.join(' ')).toMatch(/Carlos A\. Sánchez Rivera/)
+    expect(d8.career.join(' ')).toMatch(/Jesús M\. Dávila/)
+    expect(d8.career.join(' ')).toMatch(/Abdiel Enrique Contreras Álvarez/)
+    expect(d8.career.join(' ')).toMatch(/27,087/)
+    expect(d8.career.join(' ')).toMatch(/Torres Zamora/)
+    expect(d8.career.join(' ')).toMatch(/Calendario/)
+    expect(d8.career.join(' ')).toMatch(/cuatrienio viejo|HECHO histórico/)
+    expect(d8.career.join(' ')).toMatch(/OCE-B-21-138/)
+    expect(d8.career.join(' ')).toMatch(/OCE-EB-24-160/)
+    expect(d8.career.join(' ')).toMatch(/monto no extraído/)
+    expect(d8.committees).toEqual([])
+    expect(d8.committees).not.toContain('Calendario y Reglas Especiales de Debate')
+    expect(DOSSIERS['jose-e-torres-zamora'].committees).toContain(
+      'Calendario y Reglas Especiales de Debate',
+    )
+    expect(JSON.stringify(d8)).not.toMatch(/esposa|cónyuge|yerno/)
+    expect(d8.aspirations.join(' ')).toMatch(/PC 420/)
+    expect(d8.aspirations.join(' ')).toMatch(/no se afirma autoría/)
+    expect(d8.aspirations.join(' ')).toMatch(/PC 101/)
+    expect(d8.aspirations.join(' ')).toMatch(/PC 107/)
+    expect(d8.aspirations.join(' ')).toMatch(/PC 385/)
+    expect(d8.aspirations.join(' ')).toMatch(/PC 672/)
+    expect(d8.aspirations.join(' ')).toMatch(/PC 1158/)
+    expect(d8.aspirations.join(' ')).toMatch(/PC 1331/)
+    expect(JSON.stringify(d8)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d8)).not.toMatch(/M-718/)
+    const facts = d8.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual(['carlos-johnny-mendez-nunez', 'angel-r-pena-ramirez'])
+    expect(facts).toHaveLength(2)
+    expect(d8.connections.some((c) => c.toId === 'luis-perez-ortiz')).toBe(false)
+    expect(d8.connections.some((c) => c.toId === 'felix-pacheco-burgos')).toBe(false)
+    const overlap = townOverlapConnections('yashira-lebron-rodriguez')
+    expect(overlap.some((c) => c.toId === 'luis-perez-ortiz' && c.kind === 'inference')).toBe(true)
+    expect(overlap.some((c) => c.toId === 'angel-morey-noble')).toBe(true)
+    expect(d8.connections.some((c) => c.kind === 'inference')).toBe(false)
+    expect(d8.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraYashira.url,
+        SRC.sutraYashira.url,
+        SRC.ballotpediaYashira.url,
+        SRC.wikiYashira.url,
+        SRC.wiki2024House.url,
+        SRC.oceYashira2020.url,
+        SRC.oceD08_2020.url,
+        SRC.oceYashira2024.url,
+        SRC.oceD08_2024.url,
+        SRC.oceD08_2024dl.url,
+        SRC.esNoticia100.url,
+        SRC.metroInaugural.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D9 de Pacheco con primaria 2024, CEE y OCE-EB-24-089', () => {
+    const d9 = DOSSIERS['felix-pacheco-burgos']
+    expect(d9.bio).toMatch(/3 de diciembre de 1988/)
+    expect(d9.bio).toMatch(/fpacheco@camara\.pr\.gov/)
+    expect(d9.bio).toMatch(/M-942-AL/)
+    expect(d9.bio).toMatch(/Seguridad Pública/)
+    expect(d9.career.join(' ')).toMatch(/Nancy Burgos/)
+    expect(d9.career.join(' ')).toMatch(/Félix Pacheco/)
+    expect(d9.career.join(' ')).toMatch(/cinco hermanos/)
+    expect(d9.career.join(' ')).toMatch(/Violanta Jiménez/)
+    expect(d9.career.join(' ')).toMatch(/Ana G\. Méndez/)
+    expect(d9.career.join(' ')).toMatch(/4,055/)
+    expect(d9.career.join(' ')).toMatch(/3,308/)
+    expect(d9.career.join(' ')).toMatch(/Morales Díaz/)
+    expect(d9.career.join(' ')).toMatch(/12,117/)
+    expect(d9.career.join(' ')).toMatch(/Noelia Ramos Vázquez/)
+    expect(d9.career.join(' ')).toMatch(/Gabriel Vicéns Rivera/)
+    expect(d9.career.join(' ')).toMatch(/Anabel Sánchez/)
+    expect(d9.career.join(' ')).toMatch(/26,292/)
+    expect(d9.career.join(' ')).toMatch(/variantes Gabriel Rivera y Anabel Ayala/)
+    expect(d9.career.join(' ')).toMatch(/OCE-B-21-250/)
+    expect(d9.career.join(' ')).toMatch(/No se le atribuye OCE-B-21-250/)
+    expect(d9.career.join(' ')).toMatch(/OCE-EB-24-089/)
+    expect(d9.career.join(' ')).toMatch(/monto no extraído/)
+    expect(JSON.stringify(d9)).not.toMatch(/esposa|cónyuge|yerno/)
+    expect(d9.aspirations.join(' ')).toMatch(/PC 406/)
+    expect(d9.aspirations.join(' ')).toMatch(/no se afirma autoría/)
+    expect(d9.aspirations.join(' ')).toMatch(/PC 631/)
+    expect(d9.aspirations.join(' ')).toMatch(/Experience/)
+    expect(d9.aspirations.join(' ')).toMatch(/RC 37/)
+    expect(d9.aspirations.join(' ')).toMatch(/Joseph González/)
+    expect(d9.aspirations.join(' ')).toMatch(/no implica alianza/)
+    expect(d9.aspirations.join(' ')).toMatch(/PC 1139/)
+    expect(d9.aspirations.join(' ')).toMatch(/PC 1144/)
+    expect(d9.aspirations.join(' ')).toMatch(/PC 633/)
+    expect(d9.committees).toEqual(['Seguridad Pública'])
+    expect(d9.connections).toEqual([])
+    expect(JSON.stringify(d9)).not.toMatch(/\$\d/)
+    expect(d9.connections.some((c) => c.toId === 'yashira-lebron-rodriguez')).toBe(false)
+    expect(d9.connections.some((c) => c.toId === 'luis-perez-ortiz')).toBe(false)
+    expect(d9.connections.some((c) => c.toId === 'carlos-johnny-mendez-nunez')).toBe(false)
+    const overlap = townOverlapConnections('felix-pacheco-burgos')
+    expect(overlap.some((c) => c.toId === 'yashira-lebron-rodriguez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.some((c) => c.toId === 'luis-perez-ortiz')).toBe(true)
+    expect(d9.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraPacheco.url,
+        SRC.sutraPacheco.url,
+        SRC.ballotpediaPacheco.url,
+        SRC.wiki2024House.url,
+        SRC.ocePacheco2024.url,
+        SRC.oceD09_2024dl.url,
+        SRC.oceD09_2020.url,
+        SRC.oce2024Reps.url,
+        SRC.voceroPC406.url,
+        SRC.voceroCuarteles.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D10 de Pellé con CEE 2024, OCE-EB-24-149 y sin montos inventados', () => {
+    const d10 = DOSSIERS['pedro-j-pelle-santiago-guzman']
+    expect(d10.id).toBe('pedro-j-pelle-santiago-guzman')
+    expect(d10.id).not.toBe('pedro-santiago-guzman')
+    expect(d10.bio).toMatch(/Distrito 10/)
+    expect(d10.bio).toMatch(/25 de marzo de 1961/)
+    expect(d10.bio).toMatch(/Wikipedia EN/)
+    expect(d10.bio).toMatch(/sin refs|References vacías/)
+    expect(d10.bio).toMatch(/No consta en la ficha oficial/)
+    expect(d10.bio).toMatch(/psantiago@camara\.pr\.gov/)
+    expect(d10.bio).toMatch(/M-943-AL/)
+    expect(d10.bio).toMatch(/Asuntos Interiores/)
+    expect(d10.career.join(' ')).toMatch(/10,528/)
+    expect(d10.career.join(' ')).toMatch(/42\.2%/)
+    expect(d10.career.join(' ')).toMatch(/24,927/)
+    expect(d10.career.join(' ')).toMatch(/Sahir I\. Pujols Vázquez/)
+    expect(d10.career.join(' ')).toMatch(/Sahir Vazquez/)
+    expect(d10.career.join(' ')).toMatch(/9,846/)
+    expect(d10.career.join(' ')).toMatch(/10,106/)
+    expect(d10.career.join(' ')).toMatch(/2 de enero de 2021/)
+    expect(d10.career.join(' ')).toMatch(/no se usa/)
+    expect(d10.career.join(' ')).not.toMatch(/9,709|9,359/)
+    expect(d10.career.join(' ')).toMatch(/totales publicados no coinciden/)
+    expect(d10.career.join(' ')).toMatch(/3,746–3,688/)
+    expect(d10.career.join(' ')).toMatch(/2,893–2,824/)
+    expect(d10.career.join(' ')).toMatch(/CEE HTML no extraído/)
+    expect(d10.career.join(' ')).toMatch(/No se certifica un par como CEE/)
+    expect(d10.career.join(' ')).toMatch(/vicealcalde/)
+    expect(d10.career.join(' ')).toMatch(/Autoatribución/)
+    expect(d10.career.join(' ')).toMatch(/14,100 dólares/)
+    expect(d10.career.join(' ')).toMatch(/Montos de pensión no publicados/)
+    expect(d10.career.join(' ')).toMatch(/Sistema de Retiro/)
+    expect(d10.career.join(' ')).toMatch(/No se afirma vicepresidencia de Salud/)
+    expect(d10.career.join(' ')).toMatch(/OCE-EB-24-149/)
+    expect(d10.career.join(' ')).toMatch(/OCE-18-020/)
+    expect(d10.career.join(' ')).toMatch(/monto no extraído/)
+    expect(d10.career.join(' ')).toMatch(/No se le atribuyen OCE-EB-24-150/)
+    expect(d10.career.join(' ')).toMatch(/Asuntos Internos/)
+    expect(d10.career.join(' ')).toMatch(/Interiores vs Internos/)
+    expect(d10.aspirations.join(' ')).toMatch(/RC 756/)
+    expect(d10.aspirations.join(' ')).toMatch(/PC 651/)
+    expect(d10.aspirations.join(' ')).toMatch(/no implica alianza/)
+    expect(d10.committees).toEqual(['Asuntos Internos'])
+    expect(d10.committees).not.toContain('Sistema de Retiro')
+    const facts = d10.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual(['lisie-j-burgos-muniz'])
+    expect(facts[0].label).toMatch(/no implica alianza/)
+    expect(d10.connections.some((c) => c.toId === 'maria-de-lourdes-ramos-rivera')).toBe(false)
+    expect(JSON.stringify(d10)).not.toMatch(/\$\d/)
+    expect(d10.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraPelle.url,
+        SRC.sutraPelle.url,
+        SRC.ballotpediaPelle.url,
+        SRC.wikiPelle.url,
+        SRC.wiki2024House.url,
+        SRC.ocePelle2024.url,
+        SRC.oceD10_2024.url,
+        SRC.ocePelle2020.url,
+        SRC.oceD10_2020.url,
+        SRC.ocePelle2016.url,
+        SRC.telemundoPellePrimaria.url,
+        SRC.metroPellePrimaria.url,
+        SRC.victoria840Pelle2016.url,
+        SRC.metroDietasPelle.url,
+        SRC.metroPC651.url,
+        SRC.sutraPC651.url,
+        SRC.ceeElectos2012.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D11 de Elinette con CEE 2024, OCE-EB-24-029 y sin monto', () => {
+    const d11 = DOSSIERS['elinette-gonzalez-aguayo']
+    expect(d11.id).toBe('elinette-gonzalez-aguayo')
+    expect(d11.bio).toMatch(/27 de agosto de 1973/)
+    expect(d11.bio).toMatch(/elgonzalez@camara\.pr\.gov/)
+    expect(d11.bio).toMatch(/M-944-AL/)
+    expect(d11.bio).toMatch(/622-4486/)
+    expect(d11.career.join(' ')).toMatch(/11,262/)
+    expect(d11.career.join(' ')).toMatch(/43\.2%/)
+    expect(d11.career.join(' ')).toMatch(/OCE-EB-24-029/)
+    expect(d11.career.join(' ')).toMatch(/monto no extraído/)
+    expect(d11.career.join(' ')).toMatch(/Rossner Marrero/)
+    expect(d11.career.join(' ')).toMatch(/Angel de Leon/)
+    expect(d11.career.join(' ')).toMatch(/Wikipedia EN y ES/)
+    expect(d11.career.join(' ')).toMatch(/no se presenta como XML CEE/)
+    expect(d11.career.join(' ')).toMatch(/No se le atribuyen OCE-EB-24-030/)
+    expect(d11.career.join(' ')).toMatch(/no se le atribuyen en solitario RCC 191/)
+    expect(d11.career.join(' ')).toMatch(/PC 1079/)
+    expect(d11.career.join(' ')).toMatch(/no autoría/)
+    expect(d11.career.join(' ')).toMatch(/no es pariente/)
+    expect(d11.career.join(' ')).not.toMatch(/LinkedIn/)
+    expect(d11.aspirations.join(' ')).toMatch(/RCC 58|Res\. Conj\. 19-2025/)
+    expect(d11.aspirations.join(' ')).toMatch(/RC 557/)
+    expect(d11.aspirations.join(' ')).toMatch(/RC 489/)
+    expect(d11.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d11.committees).toEqual(['Recursos Naturales'])
+    expect(JSON.stringify(d11)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d11)).not.toMatch(/M-943-AL/)
+    const facts = d11.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual(['edgardo-feliciano-sanchez', 'jose-f-aponte-hernandez'])
+    expect(facts.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d11.connections.some((c) => c.toId === 'carlos-johnny-mendez-nunez')).toBe(false)
+    expect(d11.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraElinette.url,
+        SRC.sutraElinette.url,
+        SRC.ballotpediaElinette.url,
+        SRC.wiki2024House.url,
+        SRC.wiki2024HouseES.url,
+        SRC.oceElinette2024.url,
+        SRC.oceD11_2024.url,
+        SRC.oceD11_2020.url,
+        SRC.sutraRCC0058.url,
+        SRC.sutraRCC0191.url,
+        SRC.wiprRCC58.url,
+        SRC.victoria840PC1079.url,
+        SRC.metroPC269.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D12 de Feliciano con CEE 11,869, OCE-B-21-340 y montos extraídos', () => {
+    const d12 = DOSSIERS['edgardo-feliciano-sanchez']
+    expect(d12.id).toBe('edgardo-feliciano-sanchez')
+    expect(d12.bio).toMatch(/30 de enero de 1976/)
+    expect(d12.bio).toMatch(/efeliciano@camara\.pr\.gov/)
+    expect(d12.bio).toMatch(/M-945-AL/)
+    expect(d12.bio).toMatch(/622-4965/)
+    expect(d12.bio).toMatch(/Morovis, Manatí y Vega Baja/)
+    expect(d12.bio).toMatch(/no incluyen Vega Alta/)
+    expect(d12.bio).toMatch(/portavoz/)
+    expect(d12.career.join(' ')).toMatch(/11,869/)
+    expect(d12.career.join(' ')).toMatch(/39\.8%/)
+    expect(d12.career.join(' ')).toMatch(/12,116/)
+    expect(d12.career.join(' ')).toMatch(/OCE-B-21-340/)
+    expect(d12.career.join(' ')).toMatch(/15,594\.97/)
+    expect(d12.career.join(' ')).toMatch(/1\.29/)
+    expect(d12.career.join(' ')).toMatch(/5,509\.83/)
+    expect(d12.career.join(' ')).toMatch(/OCE-NMA-2023-037/)
+    expect(d12.career.join(' ')).toMatch(/250 dólares/)
+    expect(d12.career.join(' ')).not.toMatch(/monto no extraído/)
+    expect(d12.career.join(' ')).not.toMatch(/11,574/)
+    expect(d12.career.join(' ')).not.toMatch(/11,807/)
+    expect(d12.career.join(' ')).toMatch(/Jesús \(Nolo\) Figueroa/)
+    expect(d12.career.join(' ')).toMatch(/Anamari Ojeda Vilá/)
+    expect(d12.career.join(' ')).toMatch(/No se le atribuyen OCE-B-21-339/)
+    expect(d12.career.join(' ')).toMatch(/sin docket 2024 publicado para D12/)
+    expect(d12.career.join(' ')).toMatch(/No se afirma que Omar sea Luis O/)
+    expect(d12.career.join(' ')).toMatch(/HECHO histórico/)
+    expect(d12.career.join(' ')).toMatch(/ENDI 1 mar 2024/)
+    expect(d12.career.join(' ')).toMatch(/applyCommissions no lo marca presidente/)
+    expect(d12.career.join(' ')).toMatch(/no se le atribuyen en solitario RCC 191/)
+    expect(d12.career.join(' ')).toMatch(/No se tratan RCC 39 ni RCC 338/)
+    expect(d12.aspirations.join(' ')).toMatch(/RCC 40/)
+    expect(d12.aspirations.join(' ')).toMatch(/RCC 41/)
+    expect(d12.aspirations.join(' ')).toMatch(/RCC 43/)
+    expect(d12.aspirations.join(' ')).toMatch(/RCC 61/)
+    expect(d12.aspirations.join(' ')).toMatch(/RCC 159/)
+    expect(d12.aspirations.join(' ')).toMatch(/RCC 211/)
+    expect(d12.aspirations.join(' ')).toMatch(/RCC 281/)
+    expect(d12.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d12.aspirations.join(' ')).not.toMatch(/RCC 39|RCC 338/)
+    expect(d12.committees).toEqual([])
+    expect(d12.committees).not.toContain('Recursos Naturales')
+    expect(d12.committees).not.toContain('Región Norte')
+    expect(JSON.stringify(d12)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d12)).not.toMatch(/M-944-AL/)
+    const facts = d12.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual([
+      'elinette-gonzalez-aguayo',
+      'jerry-nieves-rosario',
+      'gabriel-rodriguez-aguilo',
+    ])
+    expect(facts.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d12.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraFeliciano.url,
+        SRC.sutraFeliciano.url,
+        SRC.ballotpediaFeliciano.url,
+        SRC.wiki2024House.url,
+        SRC.oceFeliciano2020.url,
+        SRC.oceD12_2020.url,
+        SRC.oce2024Reps.url,
+        SRC.endiPlasticosFeliciano.url,
+        SRC.sutraRCC0040.url,
+        SRC.sutraRCC0191.url,
+        SRC.sutraPC0275.url,
+        SRC.sutraPC1184.url,
+        SRC.sutraRCC0055.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D13 de Nieves con CEE 12,518, OCE-EB-24-096 y sin monto', () => {
+    const d13 = DOSSIERS['jerry-nieves-rosario']
+    expect(d13.id).toBe('jerry-nieves-rosario')
+    expect(d13.id).not.toBe('jerry-zahamir-nieves-rosario')
+    expect(d13.bio).toMatch(/Jerry Zahamir Nieves Rosario/)
+    expect(d13.bio).toMatch(/26 de octubre de 1988/)
+    expect(d13.bio).toMatch(/Arecibo/)
+    expect(d13.bio).toMatch(/Ballotpedia vs ficha/)
+    expect(d13.bio).toMatch(/Manatí/)
+    expect(d13.bio).toMatch(/jnieves@camara\.pr\.gov/)
+    expect(d13.bio).toMatch(/M-946-AL/)
+    expect(d13.bio).toMatch(/723-6136/)
+    expect(d13.bio).toMatch(/Región Norte/)
+    expect(d13.career.join(' ')).toMatch(/12,518/)
+    expect(d13.career.join(' ')).toMatch(/45\.8%/)
+    expect(d13.career.join(' ')).toMatch(/27,337/)
+    expect(d13.career.join(' ')).toMatch(/3,506/)
+    expect(d13.career.join(' ')).toMatch(/Yulixa Paredes Albarrán/)
+    expect(d13.career.join(' ')).toMatch(/Kevin C\. Cruz Chacón/)
+    expect(d13.career.join(' ')).toMatch(/Teresa Vélez Rolón/)
+    expect(d13.career.join(' ')).toMatch(/Yulixa Albarán/)
+    expect(d13.career.join(' ')).toMatch(/Alexis Valle Martínez/)
+    expect(d13.career.join(' ')).toMatch(/3,931/)
+    expect(d13.career.join(' ')).toMatch(/3,520/)
+    expect(d13.career.join(' ')).toMatch(/7,451/)
+    expect(d13.career.join(' ')).toMatch(/Hector Diaz Vanga/)
+    expect(d13.career.join(' ')).toMatch(/CEE HTML no extraído/)
+    expect(d13.career.join(' ')).toMatch(/PDF locked/)
+    expect(d13.career.join(' ')).toMatch(/Gabriel Rodríguez Aguiló/)
+    expect(d13.career.join(' ')).toMatch(/25 de marzo de 2022/)
+    expect(d13.career.join(' ')).toMatch(/Open seat|open seat|Primera vez/i)
+    expect(d13.career.join(' ')).toMatch(/OCE-EB-24-096/)
+    expect(d13.career.join(' ')).toMatch(/monto no extraído/)
+    expect(d13.career.join(' ')).toMatch(/No se le atribuyen OCE-EB-24-097/)
+    expect(d13.career.join(' ')).toMatch(/OCE-A-21-052/)
+    expect(d13.career.join(' ')).toMatch(/Sin docket 2020 a su nombre/)
+    expect(d13.career.join(' ')).toMatch(/Alondra Paola Nieves Dalmau/)
+    expect(d13.career.join(' ')).toMatch(/no es dinastía/)
+    expect(d13.career.join(' ')).toMatch(/heredó de su madre/)
+    expect(d13.career.join(' ')).toMatch(/no se infiere cargo/)
+    expect(d13.career.join(' ')).toMatch(/no se le atribuye en solitario el PC 1184/)
+    expect(d13.career.join(' ')).not.toMatch(/OCE-EB-24-096.*\d[\d,]+\.\d{2} dólares/)
+    expect(d13.aspirations.join(' ')).toMatch(/PC 512/)
+    expect(d13.aspirations.join(' ')).toMatch(/Sabor de las Atenas/)
+    expect(d13.aspirations.join(' ')).toMatch(/PR-685/)
+    expect(d13.aspirations.join(' ')).toMatch(/PC 1173/)
+    expect(d13.aspirations.join(' ')).toMatch(/RCC 57/)
+    expect(d13.aspirations.join(' ')).toMatch(/RCC 50/)
+    expect(d13.aspirations.join(' ')).toMatch(/RC 282/)
+    expect(d13.aspirations.join(' ')).toMatch(/RCC 84/)
+    expect(d13.aspirations.join(' ')).toMatch(/RC 416/)
+    expect(d13.aspirations.join(' ')).toMatch(/RCC 385/)
+    expect(d13.aspirations.join(' ')).toMatch(/PC 1237/)
+    expect(d13.aspirations.join(' ')).toMatch(/Ríos Grande de Arecibo/)
+    expect(d13.aspirations.join(' ')).toMatch(/RC 29/)
+    expect(d13.aspirations.join(' ')).toMatch(/Islote/)
+    expect(d13.aspirations.join(' ')).toMatch(/RCC 300/)
+    expect(d13.aspirations.join(' ')).toMatch(/Finca Banco A/)
+    expect(d13.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d13.career.join(' ')).toMatch(/RCC 24/)
+    expect(d13.career.join(' ')).toMatch(/PC 243/)
+    expect(d13.career.join(' ')).toMatch(/Edgar Robles Rivera/)
+    expect(d13.committees).toEqual(['Región Norte'])
+    expect(d13.committees).not.toContain('Recreación y Deportes')
+    expect(d13.committees).not.toContain('Salud')
+    expect(JSON.stringify(d13)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d13)).not.toMatch(/M-945-AL/)
+    const facts = d13.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual([
+      'gabriel-rodriguez-aguilo',
+      'gabriel-rodriguez-aguilo',
+      'edgar-robles-rivera',
+      'edgardo-feliciano-sanchez',
+    ])
+    expect(facts[0].label).toMatch(/Sucesión/)
+    expect(facts[1].label).toMatch(/RCC 24/)
+    expect(facts[1].label).toMatch(/PC 243/)
+    expect(facts[2].label).toMatch(/PC 243/)
+    expect(facts.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d13.connections.some((c) => c.toId === 'carlos-johnny-mendez-nunez')).toBe(false)
+    expect(d13.connections.some((c) => c.kind === 'inference')).toBe(false)
+    const overlap = townOverlapConnections('jerry-nieves-rosario')
+    expect(overlap.some((c) => c.toId === 'edgardo-feliciano-sanchez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.some((c) => c.toId === 'edgar-robles-rivera')).toBe(true)
+    expect(d13.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraJerry.url,
+        SRC.sutraJerry.url,
+        SRC.sutraDirectorio.url,
+        SRC.ballotpediaJerry.url,
+        SRC.wiki2024House.url,
+        SRC.oceJerry2024.url,
+        SRC.oceD13_2024.url,
+        SRC.oceD13_2020.url,
+        SRC.voceroPapeletaPNP2024.url,
+        SRC.insPC512.url,
+        SRC.sutraPC0512.url,
+        SRC.sutraPC1173.url,
+        SRC.sutraPC1184.url,
+        SRC.sutraRCC0057.url,
+        SRC.sutraRCC0050.url,
+        SRC.sutraRC0282.url,
+        SRC.sutraRCC0084.url,
+        SRC.sutraRC0416.url,
+        SRC.sutraRCC0385.url,
+        SRC.sutraPC1237.url,
+        SRC.sutraRC0029.url,
+        SRC.sutraRCC0300.url,
+        SRC.sutraRCC0024.url,
+        SRC.sutraPC0243.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D14 de Robles con CEE 13,087, OCE-EB-24-103 y sin monto', () => {
+    const d14 = DOSSIERS['edgar-robles-rivera']
+    expect(d14.id).toBe('edgar-robles-rivera')
+    expect(d14.id).not.toBe('edgard-robles-rivera')
+    expect(d14.bio).toMatch(/Edgar Robles Rivera/)
+    expect(d14.bio).toMatch(/Arecibo/)
+    expect(d14.bio).toMatch(/Hatillo/)
+    expect(d14.bio).toMatch(/Asuntos del Consumidor/)
+    expect(d14.bio).toMatch(/ficha oficial es delgada/)
+    expect(d14.bio).toMatch(/erobles@camara\.pr\.gov/)
+    expect(d14.bio).toMatch(/M-947-AL/)
+    expect(d14.bio).toMatch(/725-9189/)
+    expect(d14.career.join(' ')).toMatch(/13,087/)
+    expect(d14.career.join(' ')).toMatch(/43\.0%/)
+    expect(d14.career.join(' ')).toMatch(/30,431/)
+    expect(d14.career.join(' ')).toMatch(/1,403/)
+    expect(d14.career.join(' ')).toMatch(/Juan Carlos Colón González/)
+    expect(d14.career.join(' ')).toMatch(/Daniel Batista Crespo/)
+    expect(d14.career.join(' ')).toMatch(/Karina García/)
+    expect(d14.career.join(' ')).toMatch(/Deniel Batista/)
+    expect(d14.career.join(' ')).toMatch(/Karina Garcia/)
+    expect(d14.career.join(' ')).toMatch(/Karina M\. García Medina/)
+    expect(d14.career.join(' ')).toMatch(/Abraham Cortés Vélez/)
+    expect(d14.career.join(' ')).toMatch(/6,146/)
+    expect(d14.career.join(' ')).toMatch(/2,525/)
+    expect(d14.career.join(' ')).toMatch(/8,671/)
+    expect(d14.career.join(' ')).toMatch(/CEE HTML\/XML no extraído/)
+    expect(d14.career.join(' ')).toMatch(/José González Mercado/)
+    expect(d14.career.join(' ')).toMatch(/alcalde de Arecibo/)
+    expect(d14.career.join(' ')).toMatch(/Open seat|open seat|Primera vez/i)
+    expect(d14.career.join(' ')).toMatch(/sitio de campaña, no ficha oficial/)
+    expect(d14.career.join(' ')).toMatch(/21 de septiembre de 1975/)
+    expect(d14.career.join(' ')).toMatch(/La ficha de Cámara no publica fecha de nacimiento/)
+    expect(d14.career.join(' ')).toMatch(/Juan Robles Pantoja/)
+    expect(d14.career.join(' ')).toMatch(/padre de dos/)
+    expect(d14.career.join(' ')).toMatch(/no es dinastía/)
+    expect(d14.career.join(' ')).toMatch(/La Meseta/)
+    expect(d14.career.join(' ')).toMatch(/Caleb/)
+    expect(d14.career.join(' ')).toMatch(/Débora/)
+    expect(d14.career.join(' ')).toMatch(/opinión firmada/)
+    expect(d14.career.join(' ')).toMatch(/no está en la ficha de Cámara/)
+    expect(d14.career.join(' ')).toMatch(/OCE-EB-24-103/)
+    expect(d14.career.join(' ')).toMatch(/PDF locked/)
+    expect(d14.career.join(' ')).toMatch(/monto no extraído/)
+    expect(d14.career.join(' ')).toMatch(/No se le atribuyen OCE-EB-24-104/)
+    expect(d14.career.join(' ')).toMatch(/OCE-B-21-120/)
+    expect(d14.career.join(' ')).toMatch(/Sin docket 2020 a su nombre/)
+    expect(d14.career.join(' ')).toMatch(/no se le atribuye en solitario el PC 243/)
+    expect(d14.career.join(' ')).toMatch(/PC 180/)
+    expect(d14.career.join(' ')).toMatch(/no es suyo solo/)
+    expect(d14.career.join(' ')).toMatch(/Swanny E\. Vargas Laureano/)
+    expect(d14.career.join(' ')).toMatch(/Joe Colón Rodríguez/)
+    expect(d14.career.join(' ')).toMatch(/PC 385/)
+    expect(d14.career.join(' ')).not.toMatch(/11,423/)
+    expect(d14.career.join(' ')).not.toMatch(/OCE-EB-24-103.*\d[\d,]+\.\d{2} dólares/)
+    expect(d14.aspirations.join(' ')).not.toMatch(/PC 180/)
+    expect(d14.aspirations.join(' ')).toMatch(/RC 249/)
+    expect(d14.aspirations.join(' ')).toMatch(/iluminación/)
+    expect(d14.aspirations.join(' ')).toMatch(/RC 289/)
+    expect(d14.aspirations.join(' ')).toMatch(/no anuncian el precio/)
+    expect(d14.aspirations.join(' ')).toMatch(/RC 317/)
+    expect(d14.aspirations.join(' ')).toMatch(/PC 786/)
+    expect(d14.aspirations.join(' ')).toMatch(/PC 833/)
+    expect(d14.aspirations.join(' ')).toMatch(/RC 649/)
+    expect(d14.aspirations.join(' ')).toMatch(/residenciales públicos/)
+    expect(d14.aspirations.join(' ')).toMatch(/RC 668/)
+    expect(d14.aspirations.join(' ')).toMatch(/La Puntilla/)
+    expect(d14.aspirations.join(' ')).toMatch(/El Fuerte/)
+    expect(d14.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d14.aspirations.join(' ')).not.toMatch(/PC 632/)
+    expect(d14.aspirations.join(' ')).not.toMatch(/RC 719/)
+    expect(d14.committees).toEqual(['Asuntos del Consumidor'])
+    expect(d14.committees).not.toContain('Región Norte')
+    expect(d14.committees).not.toContain('Salud')
+    expect(JSON.stringify(d14)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d14)).not.toMatch(/M-946-AL/)
+    expect(JSON.stringify(d14)).not.toMatch(/sengov/)
+    const facts = d14.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual([
+      'jerry-nieves-rosario',
+      'gabriel-rodriguez-aguilo',
+      'swanny-e-vargas-laureano',
+      'joe-joito-colon-rodriguez',
+    ])
+    expect(facts[0].label).toMatch(/PC 243/)
+    expect(facts[1].label).toMatch(/PC 243/)
+    expect(facts[2].label).toMatch(/PC 180/)
+    expect(facts[3].label).toMatch(/PC 180/)
+    expect(facts.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d14.connections.some((c) => c.kind === 'inference')).toBe(false)
+    const overlap = townOverlapConnections('edgar-robles-rivera')
+    expect(overlap.some((c) => c.toId === 'jerry-nieves-rosario' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.some((c) => c.toId === 'joel-i-franqui-atiles')).toBe(true)
+    expect(d14.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraRobles.url,
+        SRC.camaraRoblesEN.url,
+        SRC.sutraRobles.url,
+        SRC.sutraDirectorio.url,
+        SRC.ballotpediaRobles.url,
+        SRC.wiki2024House.url,
+        SRC.wiki2024HouseES.url,
+        SRC.oceRobles2024.url,
+        SRC.oceD14_2024.url,
+        SRC.oceD14_2020.url,
+        SRC.campaignRobles.url,
+        SRC.islaNewsRoblesPapa.url,
+        SRC.visionPC180.url,
+        SRC.sutraPC0180.url,
+        SRC.sutraPC0243.url,
+        SRC.sutraPC0786.url,
+        SRC.sutraPC0833.url,
+        SRC.sutraRC0249.url,
+        SRC.sutraRC0289.url,
+        SRC.sutraRC0317.url,
+        SRC.sutraRC0649.url,
+        SRC.sutraRC0668.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D15 de Franqui con CEE 17,679, OCE-B-21-198 y 31,571.58 dólares', () => {
+    const d15 = DOSSIERS['joel-i-franqui-atiles']
+    expect(d15.id).toBe('joel-i-franqui-atiles')
+    expect(d15.bio).toMatch(/Joel I\. Franqui Atiles/)
+    expect(d15.bio).toMatch(/Hatillo/)
+    expect(d15.bio).toMatch(/Camuy/)
+    expect(d15.bio).toMatch(/Quebradillas/)
+    expect(d15.bio).toMatch(/Desarrollo Económico/)
+    expect(d15.bio).toMatch(/ficha oficial es delgada/)
+    expect(d15.bio).toMatch(/NO tiene línea Presidente/)
+    expect(d15.bio).toMatch(/jfranqui@camara\.pr\.gov/)
+    expect(d15.bio).toMatch(/M-948-AL/)
+    expect(d15.bio).toMatch(/legislador numérico 948/)
+    expect(d15.bio).toMatch(/721-4949/)
+    expect(d15.bio).toMatch(/Phone: Economic Development Commission/)
+    expect(d15.bio).toMatch(/no es un número de teléfono/)
+    expect(d15.bio).toMatch(/no consta en la ficha oficial/)
+    expect(d15.bio).toMatch(/2 de enero de 2017/)
+    expect(d15.bio).toMatch(/2 de enero de 2029/)
+    expect(d15.career.join(' ')).toMatch(/17,679/)
+    expect(d15.career.join(' ')).toMatch(/51\.6%/)
+    expect(d15.career.join(' ')).toMatch(/34,258/)
+    expect(d15.career.join(' ')).toMatch(/7,625/)
+    expect(d15.career.join(' ')).toMatch(/Iván Serrano/)
+    expect(d15.career.join(' ')).toMatch(/Iván Serrano Cordero/)
+    expect(d15.career.join(' ')).toMatch(/10,054/)
+    expect(d15.career.join(' ')).toMatch(/Abiatar Ramos Jiménez/)
+    expect(d15.career.join(' ')).toMatch(/Fernando Babilonia Aguilar/)
+    expect(d15.career.join(' ')).toMatch(/Primaria PNP 2024 cancelada/)
+    expect(d15.career.join(' ')).not.toMatch(/14,497/)
+    expect(d15.career.join(' ')).toMatch(/15,312/)
+    expect(d15.career.join(' ')).toMatch(/14,769/)
+    expect(d15.career.join(' ')).toMatch(/No se certifica un par como CEE HTML/)
+    expect(d15.career.join(' ')).toMatch(/César A\. Hernández Alfonzo/)
+    expect(d15.career.join(' ')).toMatch(/Gladys M\. Canals Portalatín/)
+    expect(d15.career.join(' ')).toMatch(/Totales de votos 2016 no extraídos/)
+    expect(d15.career.join(' ')).toMatch(/OCE-18-014/)
+    expect(d15.career.join(' ')).toMatch(/monto no extraído/)
+    expect(d15.career.join(' ')).toMatch(/OCE-B-21-198/)
+    expect(d15.career.join(' ')).toMatch(/31,571\.58 dólares/)
+    expect(d15.career.join(' ')).toMatch(/Amigos Joel Franqui Atiles/)
+    expect(d15.career.join(' ')).toMatch(/Joel Isaac Franqui Atiles/)
+    expect(d15.career.join(' ')).toMatch(/Juan José Peraza Batista/)
+    expect(d15.career.join(' ')).toMatch(/OCE-NMA-2022-148/)
+    expect(d15.career.join(' ')).toMatch(/no hay auditoría 2024 publicada a su nombre/)
+    expect(d15.career.join(' ')).toMatch(/Irelis Pérez Cintrón/)
+    expect(d15.career.join(' ')).toMatch(/Learn & Grow/)
+    expect(d15.career.join(' ')).toMatch(/no hay récord público citado de un familiar sentado/)
+    expect(d15.career.join(' ')).toMatch(/Alejito Cubero Padín/)
+    expect(d15.career.join(' ')).toMatch(/Gabriel ‘Gaby’ Hernández/)
+    expect(d15.career.join(' ')).toMatch(/Heriberto Vélez/)
+    expect(d15.career.join(' ')).toMatch(/Maam Vale/)
+    expect(d15.career.join(' ')).toMatch(/Carlos E\. Román Román/)
+    expect(d15.career.join(' ')).toMatch(/no se afirma que asistiera/)
+    expect(d15.career.join(' ')).toMatch(/Brenda Pérez/)
+    expect(d15.career.join(' ')).toMatch(/Héctor ‘Gaby’ González/)
+    expect(d15.career.join(' ')).toMatch(/no se le atribuyen en solitario RCC 226/)
+    expect(d15.career.join(' ')).toMatch(/primer autor Carlos/)
+    expect(d15.aspirations.join(' ')).toMatch(/PC 684/)
+    expect(d15.aspirations.join(' ')).toMatch(/Túnel Oscuro/)
+    expect(d15.aspirations.join(' ')).toMatch(/RCC 145/)
+    expect(d15.aspirations.join(' ')).toMatch(/Finca Nolla/)
+    expect(d15.aspirations.join(' ')).toMatch(/RCC 146/)
+    expect(d15.aspirations.join(' ')).toMatch(/Área Escénica/)
+    expect(d15.aspirations.join(' ')).toMatch(/RCC 147/)
+    expect(d15.aspirations.join(' ')).toMatch(/Cavernas del Río Camuy/)
+    expect(d15.aspirations.join(' ')).toMatch(/PC 682/)
+    expect(d15.aspirations.join(' ')).toMatch(/PC 683/)
+    expect(d15.aspirations.join(' ')).toMatch(/PC 685/)
+    expect(d15.aspirations.join(' ')).toMatch(/RC 341/)
+    expect(d15.aspirations.join(' ')).toMatch(/PC 699/)
+    expect(d15.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d15.aspirations.join(' ')).not.toMatch(/RCC 226/)
+    expect(d15.aspirations.join(' ')).not.toMatch(/RCC 92/)
+    expect(d15.committees).toEqual(['Desarrollo Económico'])
+    expect(JSON.stringify(d15)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d15)).not.toMatch(/OCE-EB-24/)
+    expect(JSON.stringify(d15)).not.toMatch(/M-947-AL/)
+    expect(JSON.stringify(d15)).not.toMatch(/sengov/)
+    const facts = d15.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual([
+      'carlos-johnny-mendez-nunez',
+      'edgar-robles-rivera',
+      'jerry-nieves-rosario',
+    ])
+    expect(facts[0].label).toMatch(/oficina de Camuy/)
+    expect(facts[1].label).toMatch(/oficina de Camuy/)
+    expect(facts[2].label).toMatch(/oficina de Camuy/)
+    expect(facts.every((c) => c.sources.some((s) => s.url === SRC.visionFranquiCamuy.url))).toBe(
+      true,
+    )
+    expect(facts.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d15.connections.some((c) => c.kind === 'inference')).toBe(false)
+    const overlap = townOverlapConnections('joel-i-franqui-atiles')
+    expect(overlap.some((c) => c.toId === 'edgar-robles-rivera' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d15.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraFranqui.url,
+        SRC.sutraFranqui.url,
+        SRC.sutraDirectorioFranqui.url,
+        SRC.ballotpediaFranqui.url,
+        SRC.wiki2024House.url,
+        SRC.wiki2020House.url,
+        SRC.oceFranqui2020.url,
+        SRC.oce2024Reps.url,
+        SRC.visionFranquiCamuy.url,
+        SRC.primeraHoraFranquiEsposa.url,
+        SRC.sutraPC0684.url,
+        SRC.sutraRCC0145.url,
+        SRC.sutraRCC0146.url,
+        SRC.sutraRCC0147.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+  })
+
+  it('codifica el D16 de Figueroa con CEE 13,298, sin OCE y RC 56 Autores=1', () => {
+    const d16 = DOSSIERS['reinaldo-rey-figueroa']
+    expect(d16.id).toBe('reinaldo-rey-figueroa')
+    expect(d16.bio).toMatch(/Reinaldo ‘Rey’ Figueroa|Reinaldo Figueroa Acevedo/)
+    expect(d16.bio).toMatch(/Figueroa Acevedo/)
+    expect(d16.bio).toMatch(/Distrito 16/)
+    expect(d16.bio).toMatch(/Isabela/)
+    expect(d16.bio).toMatch(/San Sebastián/)
+    expect(d16.bio).toMatch(/Aguadilla/)
+    expect(d16.bio).toMatch(/Barrio Guerrero/)
+    expect(d16.bio).toMatch(/PPD/)
+    expect(d16.bio).toMatch(/24 de febrero de 1971/)
+    expect(d16.bio).toMatch(/Educación Física/)
+    expect(d16.bio).toMatch(/Mayagüez|RUM/)
+    expect(d16.bio).toMatch(/reifigueroa@camara\.pr\.gov/)
+    expect(d16.bio).toMatch(/M-949-AL/)
+    expect(d16.bio).toMatch(/legislador numérico 949/)
+    expect(d16.bio).toMatch(/977-2456/)
+    expect(d16.bio).toMatch(/2 de enero de 2025/)
+    expect(d16.bio).toMatch(/2 de enero de 2029/)
+    expect(d16.bio).toMatch(/no preside comisión|Minoría PPD/)
+    expect(d16.career.join(' ')).toMatch(/Centro de Ayuda a Niños con impedimentos/)
+    expect(d16.career.join(' ')).toMatch(/Liga de baloncesto de Isabela/)
+    expect(d16.career.join(' ')).toMatch(/Pequeñas Ligas/)
+    expect(d16.career.join(' ')).toMatch(/Club de Leones/)
+    expect(d16.career.join(' ')).toMatch(/últimos 4 años/)
+    expect(d16.career.join(' ')).toMatch(/Legislatura Municipal/)
+    expect(d16.career.join(' ')).toMatch(/13,298/)
+    expect(d16.career.join(' ')).toMatch(/40\.0%/)
+    expect(d16.career.join(' ')).toMatch(/33,597/)
+    expect(d16.career.join(' ')).toMatch(/1,693/)
+    expect(d16.career.join(' ')).toMatch(/Liza I\. Alfaro Mercado/)
+    expect(d16.career.join(' ')).toMatch(/11,605/)
+    expect(d16.career.join(' ')).toMatch(/Ángel Lebrón/)
+    expect(d16.career.join(' ')).toMatch(/5,555/)
+    expect(d16.career.join(' ')).toMatch(/Reynaldo Acevedo Vélez/)
+    expect(d16.career.join(' ')).toMatch(/3,139/)
+    expect(d16.career.join(' ')).toMatch(/Hold PPD/)
+    expect(d16.career.join(' ')).toMatch(/13,289/)
+    expect(d16.career.join(' ')).toMatch(/11,579/)
+    expect(d16.career.join(' ')).toMatch(/Pedro Lebrón Santiago/)
+    expect(d16.career.join(' ')).toMatch(/5,550/)
+    expect(d16.career.join(' ')).toMatch(/3,130/)
+    expect(d16.career.join(' ')).toMatch(/33,548/)
+    expect(d16.career.join(' ')).toMatch(/12,478/)
+    expect(d16.career.join(' ')).toMatch(/9,871/)
+    expect(d16.career.join(' ')).toMatch(/5,240/)
+    expect(d16.career.join(' ')).toMatch(/2,998/)
+    expect(d16.career.join(' ')).toMatch(/30,587/)
+    expect(d16.career.join(' ')).toMatch(/No se certifica un par como CEE HTML/)
+    expect(d16.career.join(' ')).toMatch(/2,628/)
+    expect(d16.career.join(' ')).toMatch(/David Cruz Hernández/)
+    expect(d16.career.join(' ')).toMatch(/1,761/)
+    expect(d16.career.join(' ')).toMatch(/Orlando Cortes Mejías/)
+    expect(d16.career.join(' ')).toMatch(/588/)
+    expect(d16.career.join(' ')).toMatch(/Esther Soto/)
+    expect(d16.career.join(' ')).toMatch(/133/)
+    expect(d16.career.join(' ')).toMatch(/5,110/)
+    expect(d16.career.join(' ')).toMatch(/Eladio J\. Cardona Quiles/)
+    expect(d16.career.join(' ')).toMatch(/28 de diciembre de 2023/)
+    expect(d16.career.join(' ')).toMatch(/no hay auditoría OCE publicada a su nombre/)
+    expect(d16.career.join(' ')).toMatch(/no lista el Distrito 16/)
+    expect(d16.career.join(' ')).toMatch(/OCE-B-21-145/)
+    expect(d16.career.join(' ')).toMatch(/miembro/)
+    expect(d16.career.join(' ')).toMatch(/portavoz PPD/)
+    expect(d16.career.join(' ')).toMatch(/Tatiana Pérez Ramírez/)
+    expect(d16.career.join(' ')).toMatch(/No se afirma que Figueroa la preside/)
+    expect(d16.career.join(' ')).toMatch(/Pilar Barbosa/)
+    expect(d16.career.join(' ')).toMatch(/NO ENCONTRADO/)
+    expect(d16.career.join(' ')).toMatch(/no hay récord público citado de un familiar sentado/)
+    expect(d16.career.join(' ')).not.toMatch(/esposa|cónyuge|yerno/)
+    expect(d16.career.join(' ')).toMatch(/OCE-PB-24-002/)
+    expect(d16.career.join(' ')).toMatch(/No se le atribuyen/)
+    expect(d16.career.join(' ')).toMatch(/Boys & Girls Club/)
+    expect(d16.career.join(' ')).toMatch(/Ricky/)
+    expect(d16.career.join(' ')).toMatch(/RC 74/)
+    expect(d16.career.join(' ')).toMatch(/PC 812/)
+    expect(d16.career.join(' ')).toMatch(/No se afirma autoría SUTRA/)
+    expect(d16.career.join(' ')).toMatch(/RC 56/)
+    expect(d16.aspirations.join(' ')).toMatch(/RC 56|RC0056/)
+    expect(d16.aspirations.join(' ')).toMatch(/PR-112/)
+    expect(d16.aspirations.join(' ')).toMatch(/PR-445/)
+    expect(d16.aspirations.join(' ')).toMatch(/PR-446/)
+    expect(d16.aspirations.join(' ')).toMatch(/RCC 93/)
+    expect(d16.aspirations.join(' ')).toMatch(/Doris L\. Chaparro Ríos/)
+    expect(d16.aspirations.join(' ')).toMatch(/RCC 94/)
+    expect(d16.aspirations.join(' ')).toMatch(/RCC 95/)
+    expect(d16.aspirations.join(' ')).toMatch(/RC 391/)
+    expect(d16.aspirations.join(' ')).toMatch(/RCC 210/)
+    expect(d16.aspirations.join(' ')).toMatch(/RC 500/)
+    expect(d16.aspirations.join(' ')).toMatch(/PC 579/)
+    expect(d16.aspirations.join(' ')).toMatch(/PC 760/)
+    expect(d16.aspirations.join(' ')).toMatch(/RCC 333/)
+    expect(d16.aspirations.join(' ')).toMatch(/Juana B\. Guzmán/)
+    expect(d16.aspirations.join(' ')).toMatch(/RC 699/)
+    expect(d16.aspirations.join(' ')).toMatch(/Guajataca/)
+    expect(d16.aspirations.join(' ')).toMatch(/RC 729/)
+    expect(d16.aspirations.join(' ')).toMatch(/RCC 388/)
+    expect(d16.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d16.committees).toEqual([])
+    expect(d16.committees).not.toContain('Educación')
+    expect(JSON.stringify(d16)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d16)).not.toMatch(/M-948-AL/)
+    expect(JSON.stringify(d16)).not.toMatch(/OCE-EB-24/)
+    const facts = d16.connections.filter((c) => c.kind === 'fact')
+    expect(facts.map((c) => c.toId)).toEqual([
+      'hector-e-ferrer-santiago',
+      'tatiana-perez-ramirez',
+      'ricardo-chino-rey-ocasio-ramos',
+    ])
+    expect(facts[0].label).toMatch(/PC 812/)
+    expect(facts[0].label).toMatch(/no se afirma autoría SUTRA/)
+    expect(facts[1].label).toMatch(/Pilar Barbosa|Educación/)
+    expect(facts[2].label).toMatch(/Pilar Barbosa/)
+    expect(facts.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d16.connections.some((c) => c.toId === 'wilson-j-roman-lopez')).toBe(false)
+    expect(d16.connections.some((c) => c.kind === 'inference')).toBe(false)
+    const overlap = townOverlapConnections('reinaldo-rey-figueroa')
+    expect(overlap.some((c) => c.toId === 'wilson-j-roman-lopez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.every((c) => c.kind === 'inference')).toBe(true)
+    expect(d16.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraFigueroa.url,
+        SRC.camaraFigueroaEN.url,
+        SRC.sutraFigueroa.url,
+        SRC.sutraDirectorioFigueroa.url,
+        SRC.ballotpediaFigueroa.url,
+        SRC.wiki2024House.url,
+        SRC.wiki2024HouseES.url,
+        SRC.visionRC56.url,
+        SRC.oce2024Reps.url,
+        SRC.oce2024PrimariasReps.url,
+        SRC.oceD16_2020.url,
+        SRC.camaraEducacion.url,
+        SRC.camaraPilarBarbosa.url,
+        SRC.primeraHoraPC812.url,
+        SRC.islaNewsAAA210.url,
+        SRC.sutraRC0056.url,
+        SRC.sutraRCC0093.url,
+        SRC.sutraRCC0210.url,
+        SRC.sutraRC0500.url,
+        SRC.sutraPC0579.url,
+        SRC.sutraPC0760.url,
+        SRC.sutraRCC0333.url,
+        SRC.sutraRC0699.url,
+        SRC.sutraRC0729.url,
+        SRC.sutraRCC0388.url,
+        SRC.microjurisComisiones.url,
+      ]),
+    )
+    expect(SRC.sutraDirectorioFigueroa.url).toBe('https://sutra.oslpr.org/directorio?page=14')
+    expect(SRC.sutraFigueroa.url).toBe('https://sutra.oslpr.org/legisladores/M-949-AL')
+  })
+
+  it('expande la ficha de mesa de Wilson D17 con CEE 14,615 y SUTRA M-950-AL', () => {
+    const d17 = DOSSIERS['wilson-j-roman-lopez']
+    expect(d17.bio).toMatch(/Portavoz alterno/)
+    expect(d17.bio).toMatch(/No es Roberto López Román/)
+    expect(d17.bio).toMatch(/M-950-AL/)
+    expect(d17.career.join(' ')).toMatch(/14,615/)
+    expect(d17.career.join(' ')).toMatch(/46\.8%/)
+    expect(d17.career.join(' ')).toMatch(/31,260/)
+    expect(d17.career.join(' ')).toMatch(/Kenneth Sanabria Domenech/)
+    expect(d17.career.join(' ')).toMatch(/11,141/)
+    expect(d17.aspirations).toHaveLength(3)
+    expect(d17.aspirations.join(' ')).toMatch(/PC 1129/)
+    expect(d17.aspirations.join(' ')).toMatch(/PC 1128/)
+    expect(d17.aspirations.join(' ')).toMatch(/RCC 120/)
+    expect(d17.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d17.committees).toEqual([])
+    expect(d17.connections).toEqual([])
+    expect(JSON.stringify(d17)).not.toMatch(/\$\d/)
+    expect(d17.connections.some((c) => c.toId === 'reinaldo-rey-figueroa')).toBe(false)
+    expect(d17.connections.some((c) => c.toId === 'carlos-johnny-mendez-nunez')).toBe(false)
+    const overlap = townOverlapConnections('wilson-j-roman-lopez')
+    expect(overlap.some((c) => c.toId === 'reinaldo-rey-figueroa' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d17.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraWilson.url,
+        SRC.sutraWilson.url,
+        SRC.ballotpediaWilson.url,
+        SRC.wiki2024House.url,
+      ]),
+    )
+    expect(SRC.sutraWilson.url).toBe('https://sutra.oslpr.org/legisladores/M-950-AL')
+  })
+
+  it('expande la ficha delgada de Odalys D18 con CEE 16,515 y SUTRA M-951-AL', () => {
+    const d18 = DOSSIERS['odalys-gonzalez-gonzalez']
+    expect(DEEP_IDS.has('odalys-gonzalez-gonzalez')).toBe(false)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['odalys-gonzalez-gonzalez']).toBeDefined()
+    expect(d18.bio).toMatch(/Distrito 18/)
+    expect(d18.bio).toMatch(/M-951-AL/)
+    expect(d18.bio).toMatch(/2 de enero de 2025/)
+    expect(d18.career.join(' ')).toMatch(/16,515/)
+    expect(d18.career.join(' ')).toMatch(/47\.7%/)
+    expect(d18.career.join(' ')).toMatch(/34,636/)
+    expect(d18.career.join(' ')).toMatch(/Jessie Cortés Ramos/)
+    expect(d18.career.join(' ')).toMatch(/14,206/)
+    expect(d18.aspirations).toHaveLength(3)
+    expect(d18.aspirations.join(' ')).toMatch(/PC 677/)
+    expect(d18.aspirations.join(' ')).toMatch(/PC 675/)
+    expect(d18.aspirations.join(' ')).toMatch(/RC 315/)
+    expect(d18.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d18.aspirations.join(' ')).not.toMatch(/PC 1214|PC1214/)
+    expect(d18.committees).toEqual(['Región Oeste'])
+    expect(JSON.stringify(d18)).not.toMatch(/\$\d/)
+    expect(d18.connections.map((c) => c.toId)).toEqual([
+      'wilson-j-roman-lopez',
+      'jose-j-perez-cordero',
+    ])
+    expect(d18.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d18.connections[0]?.label).toMatch(/PC 638/)
+    expect(d18.connections[1]?.label).toMatch(/PC 344/)
+    expect(d18.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d18.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraOdalys.url,
+        SRC.sutraOdalys.url,
+        SRC.ballotpediaOdalys.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraPC0677.url,
+        SRC.sutraPC0675.url,
+        SRC.sutraRC0315.url,
+        SRC.sutraPC0638.url,
+        SRC.sutraPC0344Odalys.url,
+      ]),
+    )
+    expect(SRC.sutraOdalys.url).toBe('https://sutra.oslpr.org/legisladores/M-951-AL')
+    expect(SRC.sutraPC0675.url).toBe('https://sutra.oslpr.org/medidas/155872')
+    expect(SRC.sutraRC0315.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0315',
+    )
+    expect(SRC.sutraPC0344Odalys.url).toBe('https://sutra.oslpr.org/medidas/153883')
+  })
+
+  it('expande la ficha delgada de Lilly D19 con CEE 10,994 y SUTRA M-952-AL', () => {
+    const d19 = DOSSIERS['lilibeth-lilly-rosas']
+    expect(DEEP_IDS.has('lilibeth-lilly-rosas')).toBe(false)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['lilibeth-lilly-rosas']).toBeDefined()
+    expect(d19.bio).toMatch(/Distrito 19/)
+    expect(d19.bio).toMatch(/M-952-AL/)
+    expect(d19.bio).toMatch(/2 de enero de 2025/)
+    expect(d19.career.join(' ')).toMatch(/10,994/)
+    expect(d19.career.join(' ')).toMatch(/40\.7%/)
+    expect(d19.career.join(' ')).toMatch(/27,020/)
+    expect(d19.career.join(' ')).toMatch(/Edson Rodríguez/)
+    expect(d19.career.join(' ')).toMatch(/9,311/)
+    expect(d19.career.join(' ')).toMatch(/votes\.json/)
+    expect(d19.career.join(' ')).not.toMatch(/9,027|22,581/)
+    expect(d19.aspirations).toHaveLength(3)
+    expect(d19.aspirations.join(' ')).toMatch(/PC 731/)
+    expect(d19.aspirations.join(' ')).toMatch(/RC 359/)
+    expect(d19.aspirations.join(' ')).toMatch(/RC 232/)
+    expect(d19.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d19.aspirations.join(' ')).not.toMatch(/RC 61|RCC 239|PC 885|RC 198/)
+    expect(d19.committees).toEqual([])
+    expect(JSON.stringify(d19)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d19)).not.toMatch(/Efraín|De Jesús|esposa|cónyuge/)
+    expect(d19.connections.map((c) => c.toId)).toEqual([
+      'ramon-torres-cruz',
+      'gretchen-hau',
+      'edgardo-feliciano-sanchez',
+      'reinaldo-rey-figueroa',
+      'hector-e-ferrer-santiago',
+    ])
+    expect(d19.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d19.connections[0]?.label).toMatch(/RC 61/)
+    expect(d19.connections[1]?.label).toMatch(/RCC 239/)
+    expect(d19.connections[3]?.label).toMatch(/PC 885/)
+    expect(d19.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d19.connections.some((c) => c.toId === 'odalys-gonzalez-gonzalez')).toBe(false)
+    expect(d19.connections.some((c) => c.toId === 'emilio-carlo-acosta')).toBe(false)
+    expect(d19.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraLilly.url,
+        SRC.sutraLilly.url,
+        SRC.ballotpediaLilly.url,
+        SRC.wiki2024House.url,
+        SRC.sutraPC0731.url,
+        SRC.sutraRC0359.url,
+        SRC.sutraRC0232.url,
+        SRC.sutraRC0061Lilly.url,
+        SRC.sutraRCC0239Lilly.url,
+        SRC.sutraPC0885Lilly.url,
+      ]),
+    )
+    expect(SRC.sutraLilly.url).toBe('https://sutra.oslpr.org/legisladores/M-952-AL')
+    expect(SRC.sutraPC0731.url).toBe('https://sutra.oslpr.org/medidas/156529')
+    expect(SRC.sutraRC0359.url).toBe('https://sutra.oslpr.org/medidas/156435')
+    expect(SRC.sutraRC0232.url).toBe('https://sutra.oslpr.org/medidas/154676')
+  })
+
+  it('expande la ficha delgada de Carlo D20 con CEE 11,541 y SUTRA M-953-AL', () => {
+    const d20 = DOSSIERS['emilio-carlo-acosta']
+    expect(DEEP_IDS.has('emilio-carlo-acosta')).toBe(false)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['emilio-carlo-acosta']).toBeDefined()
+    expect(d20.bio).toMatch(/Distrito 20/)
+    expect(d20.bio).toMatch(/M-953-AL/)
+    expect(d20.bio).toMatch(/2 de enero de 2025/)
+    expect(d20.career.join(' ')).toMatch(/11,541/)
+    expect(d20.career.join(' ')).toMatch(/38\.1%/)
+    expect(d20.career.join(' ')).toMatch(/30,314/)
+    expect(d20.career.join(' ')).toMatch(/Joel Sánchez Ayala/)
+    expect(d20.career.join(' ')).toMatch(/11,180/)
+    expect(d20.career.join(' ')).toMatch(/votes\.json/)
+    expect(d20.career.join(' ')).toMatch(/Ganancia PNP/)
+    expect(d20.aspirations).toHaveLength(3)
+    expect(d20.aspirations.join(' ')).toMatch(/PC 933/)
+    expect(d20.aspirations.join(' ')).toMatch(/PC 1226/)
+    expect(d20.aspirations.join(' ')).toMatch(/RC 218/)
+    expect(d20.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d20.aspirations.join(' ')).not.toMatch(/PC 773|PC 1214|PC1214|Ley 15-2026/)
+    expect(d20.committees).toEqual([])
+    expect(JSON.stringify(d20)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d20)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d20.connections.map((c) => c.toId)).toEqual([
+      'carlos-johnny-mendez-nunez',
+      'christian-muriel-sanchez',
+      'odalys-gonzalez-gonzalez',
+      'nelie-lebron-robles',
+    ])
+    expect(d20.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d20.connections[0]?.label).toMatch(/PC 773/)
+    expect(d20.connections[2]?.label).toMatch(/PC 1214/)
+    expect(d20.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d20.connections.some((c) => c.toId === 'lilibeth-lilly-rosas')).toBe(false)
+    expect(d20.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraCarlo.url,
+        SRC.sutraCarlo.url,
+        SRC.ballotpediaCarlo.url,
+        SRC.wiki2024House.url,
+        SRC.sutraPC0933.url,
+        SRC.sutraPC1226.url,
+        SRC.sutraRC0218.url,
+        SRC.sutraPC0773Carlo.url,
+        SRC.sutraPC1214Carlo.url,
+      ]),
+    )
+    expect(SRC.sutraCarlo.url).toBe('https://sutra.oslpr.org/legisladores/M-953-AL')
+    expect(SRC.sutraPC0933.url).toBe('https://sutra.oslpr.org/medidas/159061')
+    expect(SRC.sutraPC1226.url).toBe('https://sutra.oslpr.org/medidas/161007')
+    expect(SRC.sutraRC0218.url).toBe('https://sutra.oslpr.org/medidas/154455')
+    expect(SRC.sutraPC0773Carlo.url).toBe('https://sutra.oslpr.org/medidas/157806')
+    expect(SRC.sutraPC1214Carlo.url).toBe('https://sutra.oslpr.org/medidas/160913')
+  })
+
+  it('expande la ficha delgada de Omayra D21 con CEE 15,279 y SUTRA M-954-AL', () => {
+    const d21 = DOSSIERS['omayra-m-martinez-vazquez']
+    expect(DEEP_IDS.has('omayra-m-martinez-vazquez')).toBe(false)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['omayra-m-martinez-vazquez']).toBeDefined()
+    expect(d21.bio).toMatch(/Distrito 21/)
+    expect(d21.bio).toMatch(/M-954-AL/)
+    expect(d21.bio).toMatch(/2 de enero de 2025/)
+    expect(d21.career.join(' ')).toMatch(/15,279/)
+    expect(d21.career.join(' ')).toMatch(/44\.8%/)
+    expect(d21.career.join(' ')).toMatch(/34,141/)
+    expect(d21.career.join(' ')).toMatch(/Joey Cuevas/)
+    expect(d21.career.join(' ')).toMatch(/13,778/)
+    expect(d21.career.join(' ')).toMatch(/votes\.json/)
+    expect(JSON.stringify(d21)).not.toMatch(/José Cuevas|Luis Santiago|Leonardo Vázquez/)
+    expect(d21.career.join(' ')).not.toMatch(/12,488|42\.57|El Sol|Primera Hora/)
+    expect(d21.aspirations).toHaveLength(3)
+    expect(d21.aspirations.join(' ')).toMatch(/PC 694/)
+    expect(d21.aspirations.join(' ')).toMatch(/RC 77/)
+    expect(d21.aspirations.join(' ')).toMatch(/RC 261/)
+    expect(d21.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d21.aspirations.join(' ')).not.toMatch(
+      /RCC 369|RKC 21|RC 198|PC 165|PC 32|PC 27|RC 286|PC 601|PC 351/,
+    )
+    expect(d21.committees).toEqual(['Vivienda y Desarrollo Urbano'])
+    expect(JSON.stringify(d21)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d21)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d21.connections.map((c) => c.toId)).toEqual([
+      'carlos-johnny-mendez-nunez',
+      'tatiana-perez-ramirez',
+      'carlos-johnny-mendez-nunez',
+      'emilio-carlo-acosta',
+    ])
+    expect(d21.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d21.connections[0]?.label).toMatch(/PC 32/)
+    expect(d21.connections[1]?.label).toMatch(/PC 32/)
+    expect(d21.connections[2]?.label).toMatch(/PC 27/)
+    expect(d21.connections[3]?.label).toMatch(/RC 286/)
+    expect(d21.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d21.connections.some((c) => c.toId === 'lilibeth-lilly-rosas')).toBe(false)
+    expect(d21.connections.some((c) => c.toId === 'ensol-a-rodriguez-torres')).toBe(false)
+    expect(d21.connections.some((c) => c.toId === 'fernando-sanabria-colon')).toBe(false)
+    const overlap = townOverlapConnections('omayra-m-martinez-vazquez')
+    expect(overlap.some((c) => c.toId === 'ensol-a-rodriguez-torres' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d21.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraOmayra.url,
+        SRC.sutraOmayra.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraPC0694.url,
+        SRC.sutraRC0077Omayra.url,
+        SRC.sutraRC0261Omayra.url,
+        SRC.sutraPC0032Omayra.url,
+        SRC.sutraPC0027Omayra.url,
+        SRC.sutraRC0286Omayra.url,
+      ]),
+    )
+    expect(d21.sources.map((s) => s.url).join(' ')).not.toMatch(/periodicoelsolpr|primerahora/)
+    expect(SRC.sutraOmayra.url).toBe('https://sutra.oslpr.org/legisladores/M-954-AL')
+    expect(SRC.sutraPC0694.url).toBe('https://sutra.oslpr.org/medidas/156127')
+    expect(SRC.sutraRC0077Omayra.url).toBe('https://sutra.oslpr.org/medidas/153208')
+    expect(SRC.sutraRC0261Omayra.url).toBe('https://sutra.oslpr.org/medidas/155176')
+    expect(SRC.sutraPC0032Omayra.url).toBe('https://sutra.oslpr.org/medidas/152537')
+    expect(SRC.sutraPC0027Omayra.url).toBe('https://sutra.oslpr.org/medidas/152521')
+    expect(SRC.sutraRC0286Omayra.url).toBe('https://sutra.oslpr.org/medidas/155443')
+  })
+
+  it('expande la ficha delgada de Joito D22 con CEE 17,765 y SUTRA M-955-AL', () => {
+    const d22 = DOSSIERS['joe-joito-colon-rodriguez']
+    expect(DEEP_IDS.has('joe-joito-colon-rodriguez')).toBe(false)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['joe-joito-colon-rodriguez']).toBeDefined()
+    expect(d22.bio).toMatch(/Distrito 22/)
+    expect(d22.bio).toMatch(/M-955-AL/)
+    expect(d22.bio).toMatch(/2 de enero de 2025/)
+    expect(d22.career.join(' ')).toMatch(/17,765/)
+    expect(d22.career.join(' ')).toMatch(/47\.0%/)
+    expect(d22.career.join(' ')).toMatch(/37,780/)
+    expect(d22.career.join(' ')).toMatch(/Jorge Alfredo Rivera/)
+    expect(d22.career.join(' ')).toMatch(/16,362/)
+    expect(d22.career.join(' ')).toMatch(/votes\.json/)
+    expect(JSON.stringify(d22)).not.toMatch(/15,?398|Metro/)
+    expect(d22.career.join(' ')).not.toMatch(/primaria|Joe A\./)
+    expect(d22.aspirations).toHaveLength(3)
+    expect(d22.aspirations.join(' ')).toMatch(/RC 145/)
+    expect(d22.aspirations.join(' ')).toMatch(/PC 388/)
+    expect(d22.aspirations.join(' ')).toMatch(/PC 686/)
+    expect(d22.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d22.aspirations.join(' ')).not.toMatch(
+      /PC 286|PC0286|RC 43|RC0043|RC 137|RC0137|PC 1181|RC 264/,
+    )
+    expect(d22.committees).toEqual(['Agricultura'])
+    expect(JSON.stringify(d22)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d22)).not.toMatch(/esposa|cónyuge|familia|padre|madre|padres/)
+    expect(d22.connections.map((c) => c.toId)).toEqual([
+      'edgar-robles-rivera',
+      'swanny-e-vargas-laureano',
+      'carlos-johnny-mendez-nunez',
+      'carmen-medina-calderon',
+    ])
+    expect(d22.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d22.connections[0]?.label).toMatch(/PC 180/)
+    expect(d22.connections[1]?.label).toMatch(/PC 180/)
+    expect(d22.connections[2]?.label).toMatch(/RC 43/)
+    expect(d22.connections[3]?.label).toMatch(/PC 286/)
+    expect(d22.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d22.connections.some((c) => c.toId === 'ensol-a-rodriguez-torres')).toBe(false)
+    expect(d22.connections.some((c) => c.toId === 'domingo-j-torres-garcia')).toBe(false)
+    expect(d22.connections.some((c) => c.toId === 'axel-chino-roque-gracia')).toBe(false)
+    const overlap = townOverlapConnections('joe-joito-colon-rodriguez')
+    expect(overlap.some((c) => c.toId === 'ensol-a-rodriguez-torres' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d22.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraJoito.url,
+        SRC.sutraJoito.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraRC0145Joito.url,
+        SRC.sutraPC0388Joito.url,
+        SRC.sutraPC0686Joito.url,
+        SRC.sutraPC0180.url,
+        SRC.sutraRC0043Joito.url,
+        SRC.sutraPC0286Joito.url,
+      ]),
+    )
+    expect(d22.sources.map((s) => s.url).join(' ')).not.toMatch(/periodicoelsolpr|primerahora|nelpr/)
+    expect(SRC.sutraJoito.url).toBe('https://sutra.oslpr.org/legisladores/M-955-AL')
+    expect(SRC.sutraRC0145Joito.url).toBe('https://sutra.oslpr.org/medidas/153757')
+    expect(SRC.sutraPC0388Joito.url).toBe('https://sutra.oslpr.org/medidas/154156')
+    expect(SRC.sutraPC0686Joito.url).toBe('https://sutra.oslpr.org/medidas/155986')
+    expect(SRC.sutraRC0043Joito.url).toBe('https://sutra.oslpr.org/medidas/152949')
+    expect(SRC.sutraPC0286Joito.url).toBe('https://sutra.oslpr.org/medidas/153433')
+  })
+
+  it('expande la ficha delgada de Ensol D23 con CEE 15,173 y SUTRA M-956-AL', () => {
+    const d23 = DOSSIERS['ensol-a-rodriguez-torres']
+    expect(DEEP_IDS.has('ensol-a-rodriguez-torres')).toBe(false)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['ensol-a-rodriguez-torres']).toBeDefined()
+    expect(d23.bio).toMatch(/Distrito 23/)
+    expect(d23.bio).toMatch(/M-956-AL/)
+    expect(d23.bio).toMatch(/2 de enero de 2025/)
+    expect(d23.career.join(' ')).toMatch(/15,173/)
+    expect(d23.career.join(' ')).toMatch(/43\.1%/)
+    expect(d23.career.join(' ')).toMatch(/35,238/)
+    expect(d23.career.join(' ')).toMatch(/Cheito Rivera Madera/)
+    expect(d23.career.join(' ')).toMatch(/13,361/)
+    expect(d23.career.join(' ')).toMatch(/votes\.json/)
+    expect(JSON.stringify(d23)).not.toMatch(/11,?952|11,?624|La Perla|Yorres|José Rivera Madera/)
+    expect(d23.career.join(' ')).not.toMatch(/primaria/)
+    expect(d23.aspirations).toHaveLength(3)
+    expect(d23.aspirations.join(' ')).toMatch(/PC 660/)
+    expect(d23.aspirations.join(' ')).toMatch(/PC 807/)
+    expect(d23.aspirations.join(' ')).toMatch(/PC 849/)
+    expect(d23.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d23.aspirations.join(' ')).not.toMatch(
+      /PC 414|PC0414|PC 559|PC0559|PC 165|PC0165|RC 44|RC0044|RC 326|RC0326/,
+    )
+    expect(d23.committees).toEqual(['Juventud'])
+    expect(JSON.stringify(d23)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d23)).not.toMatch(/esposa|cónyuge|familia|LGBTQ|nació/)
+    expect(d23.connections.map((c) => c.toId)).toEqual([
+      'elinette-gonzalez-aguayo',
+      'carlos-johnny-mendez-nunez',
+      'lilibeth-lilly-rosas',
+      'swanny-e-vargas-laureano',
+    ])
+    expect(d23.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d23.connections[0]?.label).toMatch(/PC 414/)
+    expect(d23.connections[1]?.label).toMatch(/RC 44/)
+    expect(d23.connections[2]?.label).toMatch(/RC 44/)
+    expect(d23.connections[3]?.label).toMatch(/RC 44/)
+    expect(d23.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d23.connections.some((c) => c.toId === 'joe-joito-colon-rodriguez')).toBe(false)
+    expect(d23.connections.some((c) => c.toId === 'omayra-m-martinez-vazquez')).toBe(false)
+    const overlap = townOverlapConnections('ensol-a-rodriguez-torres')
+    expect(overlap.some((c) => c.toId === 'joe-joito-colon-rodriguez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.some((c) => c.toId === 'omayra-m-martinez-vazquez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d23.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraEnsol.url,
+        SRC.sutraEnsol.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraPC0660Ensol.url,
+        SRC.sutraPC0807Ensol.url,
+        SRC.sutraPC0849Ensol.url,
+        SRC.sutraPC0414Ensol.url,
+        SRC.sutraRC0044Ensol.url,
+      ]),
+    )
+    expect(d23.sources.map((s) => s.url).join(' ')).not.toMatch(
+      /periodicoelsolpr|primerahora|ballotpedia|yorres/i,
+    )
+    expect(SRC.sutraEnsol.url).toBe('https://sutra.oslpr.org/legisladores/M-956-AL')
+    expect(SRC.sutraPC0660Ensol.url).toBe('https://sutra.oslpr.org/medidas/155858')
+    expect(SRC.sutraPC0807Ensol.url).toBe('https://sutra.oslpr.org/medidas/158082')
+    expect(SRC.sutraPC0849Ensol.url).toBe('https://sutra.oslpr.org/medidas/158413')
+    expect(SRC.sutraPC0414Ensol.url).toBe('https://sutra.oslpr.org/medidas/154286')
+    expect(SRC.sutraRC0044Ensol.url).toBe('https://sutra.oslpr.org/medidas/152950')
+  })
+
+  it('expande la ficha delgada de Fourquet D24 con CEE 11,188 y SUTRA M-957-AL', () => {
+    const d24 = DOSSIERS['angel-a-fourquet-cordero']
+    expect(DEEP_IDS.has('angel-a-fourquet-cordero')).toBe(false)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['angel-a-fourquet-cordero']).toBeDefined()
+    expect(d24.bio).toMatch(/Distrito 24/)
+    expect(d24.bio).toMatch(/Ponce, parte/)
+    expect(d24.bio).toMatch(/M-957-AL/)
+    expect(d24.bio).toMatch(/2 de enero de 2025/)
+    expect(JSON.stringify(d24)).not.toMatch(/Jayuya|Juana Díaz/)
+    expect(d24.career.join(' ')).toMatch(/11,188/)
+    expect(d24.career.join(' ')).toMatch(/44\.4%/)
+    expect(d24.career.join(' ')).toMatch(/25,184/)
+    expect(d24.career.join(' ')).toMatch(/Doris Alvarado Golderos/)
+    expect(d24.career.join(' ')).toMatch(/8,508/)
+    expect(d24.career.join(' ')).toMatch(/votes\.json/)
+    expect(JSON.stringify(d24)).not.toMatch(/10,?787|Primera Hora/)
+    expect(d24.aspirations).toHaveLength(3)
+    expect(d24.aspirations.join(' ')).toMatch(/PC 652/)
+    expect(d24.aspirations.join(' ')).toMatch(/RC 439/)
+    expect(d24.aspirations.join(' ')).toMatch(/RC 434/)
+    expect(d24.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d24.aspirations.join(' ')).not.toMatch(
+      /PC 278|PC0278|PC 653|PC0653|RC 177|RC0177|RCC 177|RCC0177|RKC 15|RKC0015/,
+    )
+    expect(d24.committees).toEqual([])
+    expect(JSON.stringify(d24)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d24)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d24.connections.map((c) => c.toId)).toEqual([
+      'domingo-j-torres-garcia',
+      'hector-e-ferrer-santiago',
+      'ramon-torres-cruz',
+      'ensol-a-rodriguez-torres',
+    ])
+    expect(d24.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d24.connections[0]?.label).toMatch(/PC 278/)
+    expect(d24.connections[1]?.label).toMatch(/PC 278/)
+    expect(d24.connections[2]?.label).toMatch(/PC 278/)
+    expect(d24.connections[3]?.label).toMatch(/PC 455/)
+    expect(d24.connections[3]?.label).toMatch(/Ensol/)
+    expect(d24.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d24.connections.some((c) => c.toId === 'joe-joito-colon-rodriguez')).toBe(false)
+    const overlap = townOverlapConnections('angel-a-fourquet-cordero')
+    expect(overlap.some((c) => c.toId === 'ensol-a-rodriguez-torres' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d24.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraFourquet.url,
+        SRC.sutraFourquet.url,
+        SRC.wiki2024House.url,
+        SRC.sutraPC0652Fourquet.url,
+        SRC.sutraRC0439Fourquet.url,
+        SRC.sutraRC0434Fourquet.url,
+        SRC.sutraPC0278Fourquet.url,
+        SRC.sutraPC0455Fourquet.url,
+      ]),
+    )
+    expect(d24.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora/i)
+    expect(SRC.sutraFourquet.url).toBe('https://sutra.oslpr.org/legisladores/M-957-AL')
+    expect(SRC.camaraFourquet.url).toBe(
+      'https://www.camara.pr.gov/team/angel-a-fourquet-cordero/',
+    )
+    expect(SRC.sutraPC0652Fourquet.url).toBe('https://sutra.oslpr.org/medidas/155850')
+    expect(SRC.sutraRC0439Fourquet.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0439',
+    )
+    expect(SRC.sutraRC0434Fourquet.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0434',
+    )
+    expect(SRC.sutraPC0278Fourquet.url).toBe('https://sutra.oslpr.org/medidas/153486')
+    expect(SRC.sutraPC0455Fourquet.url).toBe('https://sutra.oslpr.org/medidas/154467')
+  })
+
+  it('expande la ficha de mesa de Domingo D25 con CEE 12,203 y SUTRA M-958-AL', () => {
+    const d25 = DOSSIERS['domingo-j-torres-garcia']
+    expect(DEEP_IDS.has('domingo-j-torres-garcia')).toBe(true)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['domingo-j-torres-garcia']).toBeDefined()
+    expect(MESA_IDS.includes('domingo-j-torres-garcia')).toBe(true)
+    expect(d25.bio).toMatch(/Distrito 25/)
+    expect(d25.bio).toMatch(/M-958-AL/)
+    expect(d25.bio).toMatch(/Portavoz alterno/)
+    expect(d25.career.join(' ')).toMatch(/12,203/)
+    expect(d25.career.join(' ')).toMatch(/42\.5%/)
+    expect(d25.career.join(' ')).toMatch(/28,743/)
+    expect(d25.career.join(' ')).toMatch(/Daniel Vega Ortiz/)
+    expect(d25.career.join(' ')).toMatch(/10,168/)
+    expect(d25.career.join(' ')).toMatch(/votes\.json/)
+    expect(d25.career.join(' ')).toMatch(/Portavoz alterno/)
+    expect(d25.aspirations).toHaveLength(3)
+    expect(d25.aspirations.join(' ')).toMatch(/RC 497/)
+    expect(d25.aspirations.join(' ')).toMatch(/PC 946/)
+    expect(d25.aspirations.join(' ')).toMatch(/RCC 238/)
+    expect(d25.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d25.aspirations.join(' ')).not.toMatch(
+      /PC 278|PC0278|RC 183|RC0183|RCC 171|RCC0171|PC 489|PC0489/,
+    )
+    expect(d25.committees).toEqual([])
+    expect(JSON.stringify(d25)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d25)).not.toMatch(/esposa|cónyuge|familia|Yolanda|padres/)
+    expect(d25.connections.map((c) => c.toId)).toEqual([
+      'angel-a-fourquet-cordero',
+      'hector-e-ferrer-santiago',
+      'jose-e-torres-zamora',
+    ])
+    expect(d25.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d25.connections[0]?.label).toMatch(/PC 278/)
+    expect(d25.connections[1]?.label).toMatch(/RC 183/)
+    expect(d25.connections[2]?.label).toMatch(/RCC 171/)
+    expect(d25.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d25.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraDomingo.url,
+        SRC.sutraDomingo.url,
+        SRC.wiki2024House.url,
+        SRC.sutraRC0497Domingo.url,
+        SRC.sutraPC0946Domingo.url,
+        SRC.sutraRCC0238Domingo.url,
+        SRC.sutraPC0278Domingo.url,
+        SRC.sutraRC0183Domingo.url,
+        SRC.sutraRCC0171Domingo.url,
+      ]),
+    )
+    expect(SRC.sutraDomingo.url).toBe('https://sutra.oslpr.org/legisladores/M-958-AL')
+    expect(SRC.camaraDomingo.url).toBe(
+      'https://www.camara.pr.gov/team/domingo-j-torres-garcia/',
+    )
+    expect(SRC.sutraRC0497Domingo.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0497',
+    )
+    expect(SRC.sutraPC0946Domingo.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0946',
+    )
+    expect(SRC.sutraRCC0238Domingo.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0238',
+    )
+    expect(SRC.sutraPC0278Domingo.url).toBe('https://sutra.oslpr.org/medidas/153486')
+    expect(SRC.sutraRC0183Domingo.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0183',
+    )
+    expect(SRC.sutraRCC0171Domingo.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0171',
+    )
+  })
+
+  it('expande la ficha delgada de Josean D26 con CEE 17,906 y SUTRA M-959-AL', () => {
+    const d26 = DOSSIERS['luis-josean-jimenez-torres']
+    expect(DEEP_IDS.has('luis-josean-jimenez-torres')).toBe(false)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['luis-josean-jimenez-torres']).toBeDefined()
+    expect(d26.bio).toMatch(/Distrito 26/)
+    expect(d26.bio).toMatch(/M-959-AL/)
+    expect(d26.bio).toMatch(/2 de enero de 2025/)
+    expect(d26.career.join(' ')).toMatch(/17,906/)
+    expect(d26.career.join(' ')).toMatch(/50\.7%/)
+    expect(d26.career.join(' ')).toMatch(/35,334/)
+    expect(d26.career.join(' ')).toMatch(/Chui Hernández Arroyo/)
+    expect(d26.career.join(' ')).toMatch(/15,512/)
+    expect(d26.career.join(' ')).toMatch(/votes\.json/)
+    expect(d26.career.join(' ')).toMatch(/Ganancia PNP/)
+    expect(JSON.stringify(d26)).not.toMatch(/Primera Hora|14,?169|Yadira Díaz|Díaz Santos/)
+    expect(d26.aspirations).toHaveLength(3)
+    expect(d26.aspirations.join(' ')).toMatch(/RCC 212/)
+    expect(d26.aspirations.join(' ')).toMatch(/RCC 256/)
+    expect(d26.aspirations.join(' ')).toMatch(/PC 711/)
+    expect(d26.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d26.aspirations.join(' ')).not.toMatch(
+      /RCC 334|RCC0334|RCC 192|RCC0192|RKC 39|RKC0039|RC 231|RC0231|RC 129|RC0129|RC 89|RC0089|RC 90|RC0090|PC 408|PC 839|RC 738/,
+    )
+    expect(d26.committees).toEqual(['Recreación y Deportes'])
+    expect(VERIFIED['luis-josean-jimenez-torres']?.committees).toEqual([])
+    expect(JSON.stringify(d26)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d26)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d26.connections.map((c) => c.toId)).toEqual([
+      'jerry-nieves-rosario',
+      'joel-i-franqui-atiles',
+      'carmen-medina-calderon',
+    ])
+    expect(d26.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d26.connections[0]?.label).toMatch(/PC 1053/)
+    expect(d26.connections[1]?.label).toMatch(/PC 923/)
+    expect(d26.connections[2]?.label).toMatch(/RC 688/)
+    expect(d26.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d26.connections.some((c) => c.toId === 'estrella-martinez-soto')).toBe(false)
+    const overlap = townOverlapConnections('luis-josean-jimenez-torres')
+    expect(overlap.some((c) => c.toId === 'estrella-martinez-soto' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d26.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraJosean.url,
+        SRC.sutraJosean.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraRCC0212Josean.url,
+        SRC.sutraRCC0256Josean.url,
+        SRC.sutraPC0711Josean.url,
+        SRC.sutraPC1053Josean.url,
+        SRC.sutraPC0923Josean.url,
+        SRC.sutraRC0688Josean.url,
+      ]),
+    )
+    expect(d26.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraJosean.url).toBe('https://sutra.oslpr.org/legisladores/M-959-AL')
+    expect(SRC.camaraJosean.url).toBe(
+      'https://www.camara.pr.gov/team/luis-josean-jimenez-torres/',
+    )
+    expect(SRC.sutraRCC0212Josean.url).toBe('https://sutra.oslpr.org/medidas/158774')
+    expect(SRC.sutraRCC0256Josean.url).toBe('https://sutra.oslpr.org/medidas/159570')
+    expect(SRC.sutraPC0711Josean.url).toBe('https://sutra.oslpr.org/medidas/156424')
+    expect(SRC.sutraPC1053Josean.url).toBe('https://sutra.oslpr.org/medidas/159772')
+    expect(SRC.sutraPC0923Josean.url).toBe('https://sutra.oslpr.org/medidas/159041')
+    expect(SRC.sutraRC0688Josean.url).toBe('https://sutra.oslpr.org/medidas/161096')
+  })
+
+  it('expande la ficha delgada de Estrella D27 con CEE 13,470 y SUTRA M-960-AL', () => {
+    const d27 = DOSSIERS['estrella-martinez-soto']
+    expect(DEEP_IDS.has('estrella-martinez-soto')).toBe(false)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['estrella-martinez-soto']).toBeDefined()
+    expect(d27.bio).toMatch(/Distrito 27/)
+    expect(d27.bio).toMatch(/M-960-AL/)
+    expect(d27.bio).toMatch(/2 de enero de 2025/)
+    expect(d27.career.join(' ')).toMatch(/13,470/)
+    expect(d27.career.join(' ')).toMatch(/42\.3%/)
+    expect(d27.career.join(' ')).toMatch(/31,826/)
+    expect(d27.career.join(' ')).toMatch(/Adriach Bermúdez Ortiz/)
+    expect(d27.career.join(' ')).toMatch(/12,069/)
+    expect(d27.career.join(' ')).toMatch(/votes\.json/)
+    expect(d27.career.join(' ')).toMatch(/Hold PPD/)
+    expect(JSON.stringify(d27)).not.toMatch(/Primera Hora/)
+    expect(d27.aspirations).toHaveLength(3)
+    expect(d27.aspirations.join(' ')).toMatch(/RCC 381/)
+    expect(d27.aspirations.join(' ')).toMatch(/RCC 313/)
+    expect(d27.aspirations.join(' ')).toMatch(/RCC 181/)
+    expect(d27.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d27.aspirations.join(' ')).not.toMatch(
+      /RCC 151|RCC0151|PC 278|PC0278|PC 455|PC0455|RC 198|RC0198|RKC 14|RKC0014|PC 390|PC 345/,
+    )
+    expect(d27.committees).toEqual([])
+    expect(VERIFIED['estrella-martinez-soto']?.committees).toEqual([])
+    expect(JSON.stringify(d27)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d27)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d27.connections.map((c) => c.toId)).toEqual([
+      'angel-a-fourquet-cordero',
+      'domingo-j-torres-garcia',
+      'ensol-a-rodriguez-torres',
+    ])
+    expect(d27.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d27.connections[0]?.label).toMatch(/PC 278/)
+    expect(d27.connections[1]?.label).toMatch(/PC 278/)
+    expect(d27.connections[2]?.label).toMatch(/PC 455/)
+    expect(d27.connections[2]?.label).toMatch(/Ensol/)
+    expect(d27.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d27.connections.some((c) => c.toId === 'luis-josean-jimenez-torres')).toBe(false)
+    const overlap = townOverlapConnections('estrella-martinez-soto')
+    expect(overlap.some((c) => c.toId === 'luis-josean-jimenez-torres' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d27.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraEstrella.url,
+        SRC.sutraEstrella.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraRCC0381Estrella.url,
+        SRC.sutraRCC0313Estrella.url,
+        SRC.sutraRCC0181Estrella.url,
+        SRC.sutraPC0278Estrella.url,
+        SRC.sutraPC0455Estrella.url,
+      ]),
+    )
+    expect(d27.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraEstrella.url).toBe('https://sutra.oslpr.org/legisladores/M-960-AL')
+    expect(SRC.camaraEstrella.url).toBe(
+      'https://www.camara.pr.gov/team/estrella-martinez-soto/',
+    )
+    expect(SRC.sutraRCC0381Estrella.url).toBe('https://sutra.oslpr.org/medidas/161733')
+    expect(SRC.sutraRCC0313Estrella.url).toBe('https://sutra.oslpr.org/medidas/160720')
+    expect(SRC.sutraRCC0181Estrella.url).toBe('https://sutra.oslpr.org/medidas/158091')
+    expect(SRC.sutraPC0278Estrella.url).toBe('https://sutra.oslpr.org/medidas/153486')
+    expect(SRC.sutraPC0455Estrella.url).toBe('https://sutra.oslpr.org/medidas/154467')
+  })
+
+  it('expande la ficha delgada de Roque D28 con CEE 16,649 y SUTRA M-961-AL', () => {
+    const d28 = DOSSIERS['axel-chino-roque-gracia']
+    expect(DEEP_IDS.has('axel-chino-roque-gracia')).toBe(false)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['axel-chino-roque-gracia']).toBeDefined()
+    expect(d28.bio).toMatch(/Distrito 28/)
+    expect(d28.bio).toMatch(/Comerío, Corozal, Naranjito y Barranquitas/)
+    expect(d28.bio).toMatch(/M-961-AL/)
+    expect(d28.bio).toMatch(/2 de enero de 2025/)
+    expect(d28.career.join(' ')).toMatch(/16,649/)
+    expect(d28.career.join(' ')).toMatch(/51\.0%/)
+    expect(d28.career.join(' ')).toMatch(/32,651/)
+    expect(d28.career.join(' ')).toMatch(/Juan Santiago Nieves/)
+    expect(d28.career.join(' ')).toMatch(/12,680/)
+    expect(d28.career.join(' ')).toMatch(/Elsa Berríos López/)
+    expect(d28.career.join(' ')).toMatch(/3,322/)
+    expect(d28.career.join(' ')).toMatch(/votes\.json/)
+    expect(d28.career.join(' ')).toMatch(/Ganancia PNP/)
+    expect(JSON.stringify(d28)).not.toMatch(/Primera Hora/)
+    expect(d28.aspirations).toHaveLength(3)
+    expect(d28.aspirations.join(' ')).toMatch(/PC 1137/)
+    expect(d28.aspirations.join(' ')).toMatch(/RCC 328/)
+    expect(d28.aspirations.join(' ')).toMatch(/RCC 293/)
+    expect(d28.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d28.aspirations.join(' ')).not.toMatch(
+      /RCC 204|RCC0204|RC 87|RC0087|RC 312|RC0312|RC 38|RC0038|PC 822|PC0822|PC 1165|PC1165/,
+    )
+    expect(d28.committees).toEqual(['Turismo', 'Región Central'])
+    expect(VERIFIED['axel-chino-roque-gracia']?.committees).toEqual([])
+    expect(JSON.stringify(d28)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d28)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d28.connections.map((c) => c.toId)).toEqual([
+      'carlos-johnny-mendez-nunez',
+      'jose-e-torres-zamora',
+      'angel-morey-noble',
+      'eddie-charbonier-chinea',
+    ])
+    expect(d28.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d28.connections[0]?.label).toMatch(/PC 822/)
+    expect(d28.connections[1]?.label).toMatch(/PC 822/)
+    expect(d28.connections[2]?.label).toMatch(/PC 822/)
+    expect(d28.connections[2]?.label).toMatch(/Morey/)
+    expect(d28.connections[3]?.label).toMatch(/PC 1165/)
+    expect(d28.connections[3]?.label).toMatch(/Charbonier/)
+    expect(d28.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d28.connections.some((c) => c.toId === 'luis-josean-jimenez-torres')).toBe(false)
+    const overlap = townOverlapConnections('axel-chino-roque-gracia')
+    expect(overlap.some((c) => c.toId === 'luis-josean-jimenez-torres' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d28.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraRoque.url,
+        SRC.sutraRoque.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraPC1137Roque.url,
+        SRC.sutraRCC0328Roque.url,
+        SRC.sutraRCC0293Roque.url,
+        SRC.sutraPC0822Roque.url,
+        SRC.sutraPC1165Roque.url,
+      ]),
+    )
+    expect(d28.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraRoque.url).toBe('https://sutra.oslpr.org/legisladores/M-961-AL')
+    expect(SRC.camaraRoque.url).toBe(
+      'https://www.camara.pr.gov/team/axel-chino-roque-gracia/',
+    )
+    expect(SRC.sutraPC1137Roque.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1137',
+    )
+    expect(SRC.sutraRCC0328Roque.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0328',
+    )
+    expect(SRC.sutraRCC0293Roque.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0293',
+    )
+    expect(SRC.sutraPC0822Roque.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0822',
+    )
+    expect(SRC.sutraPC1165Roque.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1165',
+    )
+  })
+
+  it('expande la ficha delgada de Hau D29 con CEE 12,837 y SUTRA M-962-AL', () => {
+    const d29 = DOSSIERS['gretchen-hau']
+    expect(DEEP_IDS.has('gretchen-hau')).toBe(false)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['gretchen-hau']).toBeDefined()
+    expect(d29.bio).toMatch(/Distrito 29/)
+    expect(d29.bio).toMatch(/Cidra y Cayey/)
+    expect(d29.bio).toMatch(/M-962-AL/)
+    expect(d29.bio).toMatch(/2 de enero de 2025/)
+    expect(d29.bio).toMatch(/Reelecta/)
+    expect(d29.bio).toMatch(/primera mujer del D29/)
+    expect(d29.career.join(' ')).toMatch(/12,837/)
+    expect(d29.career.join(' ')).toMatch(/46\.9%/)
+    expect(d29.career.join(' ')).toMatch(/27,347/)
+    expect(d29.career.join(' ')).toMatch(/Christopher García Figueroa/)
+    expect(d29.career.join(' ')).toMatch(/9,605/)
+    expect(d29.career.join(' ')).toMatch(/Rebecca I\. Cotto Morales/)
+    expect(d29.career.join(' ')).toMatch(/4,905/)
+    expect(d29.career.join(' ')).toMatch(/votes\.json/)
+    expect(d29.career.join(' ')).toMatch(/Hold PPD/)
+    expect(d29.career.join(' ')).toMatch(/Asociación de Alcaldes, 2015–2019/)
+    expect(d29.career.join(' ')).toMatch(/Senadora del PPD por Guayama, electa en 2020/)
+    expect(d29.career.join(' ')).toMatch(/Distrito 29 desde 2023/)
+    expect(JSON.stringify(d29)).not.toMatch(/Primera Hora/)
+    expect(d29.aspirations).toHaveLength(3)
+    expect(d29.aspirations.join(' ')).toMatch(/RCC 246/)
+    expect(d29.aspirations.join(' ')).toMatch(/RCC 194/)
+    expect(d29.aspirations.join(' ')).toMatch(/RC 598/)
+    expect(d29.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d29.aspirations.join(' ')).not.toMatch(
+      /RC 152|RC0152|PC 725|PC0725|RCC 239|RCC0239|RCC 241|RCC0241/,
+    )
+    expect(d29.bio).not.toMatch(/Asociación de Alcaldes|Guayama/)
+    expect(d29.committees).toEqual([])
+    expect(VERIFIED['gretchen-hau']?.committees).toEqual([])
+    expect(JSON.stringify(d29)).not.toMatch(/presidenta de la Comisión/)
+    expect(JSON.stringify(d29)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d29)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d29.connections.map((c) => c.toId)).toEqual([
+      'lilibeth-lilly-rosas',
+      'edgardo-feliciano-sanchez',
+      'estrella-martinez-soto',
+    ])
+    expect(d29.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d29.connections[0]?.label).toMatch(/RCC 239/)
+    expect(d29.connections[0]?.label).toMatch(/Lilly|Lilibeth|Rosas/)
+    expect(d29.connections[1]?.label).toMatch(/RCC 239/)
+    expect(d29.connections[1]?.label).toMatch(/Feliciano/)
+    expect(d29.connections[2]?.label).toMatch(/RCC 241/)
+    expect(d29.connections[2]?.label).toMatch(/Estrella/)
+    expect(d29.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(townOverlapConnections('gretchen-hau')).toEqual([])
+    expect(d29.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraHau.url,
+        SRC.sutraHau.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraRCC0246Hau.url,
+        SRC.sutraRCC0194Hau.url,
+        SRC.sutraRC0598Hau.url,
+        SRC.sutraRCC0239Lilly.url,
+        SRC.sutraRCC0241Hau.url,
+      ]),
+    )
+    expect(d29.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraHau.url).toBe('https://sutra.oslpr.org/legisladores/M-962-AL')
+    expect(SRC.camaraHau.url).toBe('https://www.camara.pr.gov/team/gretchen-hau/')
+    expect(SRC.sutraRCC0246Hau.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0246',
+    )
+    expect(SRC.sutraRCC0194Hau.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0194',
+    )
+    expect(SRC.sutraRC0598Hau.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0598',
+    )
+    expect(SRC.sutraRCC0239Lilly.url).toBe('https://sutra.oslpr.org/medidas/159370')
+    expect(SRC.sutraRCC0241Hau.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0241',
+    )
+  })
+
+  it('expande la ficha delgada de Sanabria D30 con CEE 13,651 y SUTRA M-963-AL', () => {
+    const d30 = DOSSIERS['fernando-sanabria-colon']
+    expect(DEEP_IDS.has('fernando-sanabria-colon')).toBe(false)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['fernando-sanabria-colon']).toBeDefined()
+    expect(d30.bio).toMatch(/Distrito 30/)
+    expect(d30.bio).toMatch(/Arroyo, Guayama, Salinas y Santa Isabel/)
+    expect(d30.bio).toMatch(/M-963-AL/)
+    expect(d30.bio).toMatch(/2 de enero de 2025/)
+    expect(d30.bio).toMatch(/Primer término/)
+    expect(d30.career.join(' ')).toMatch(/13,651/)
+    expect(d30.career.join(' ')).toMatch(/44\.3%/)
+    expect(d30.career.join(' ')).toMatch(/30,804/)
+    expect(d30.career.join(' ')).toMatch(/Luis Ortiz Lugo/)
+    expect(d30.career.join(' ')).toMatch(/13,331/)
+    expect(d30.career.join(' ')).toMatch(/Justo Echevarría/)
+    expect(d30.career.join(' ')).toMatch(/3,822/)
+    expect(d30.career.join(' ')).toMatch(/votes\.json/)
+    expect(d30.career.join(' ')).toMatch(/Ganancia PNP/)
+    expect(JSON.stringify(d30)).not.toMatch(/Primera Hora/)
+    expect(d30.aspirations).toHaveLength(3)
+    expect(d30.aspirations.join(' ')).toMatch(/RCC 297/)
+    expect(d30.aspirations.join(' ')).toMatch(/RC 313/)
+    expect(d30.aspirations.join(' ')).toMatch(/RC 136/)
+    expect(d30.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d30.aspirations.join(' ')).not.toMatch(
+      /RCC 129|RCC0129|RC 103|RC0103|PC 981|PC0981|PC 321|PC0321/,
+    )
+    expect(d30.committees).toEqual(['Región Sur'])
+    expect(VERIFIED['fernando-sanabria-colon']?.committees).toEqual([])
+    expect(JSON.stringify(d30)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d30)).not.toMatch(/esposa|cónyuge|familia/)
+    expect(d30.connections.map((c) => c.toId)).toEqual([
+      'carlos-johnny-mendez-nunez',
+      'ensol-a-rodriguez-torres',
+    ])
+    expect(d30.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d30.connections[0]?.label).toMatch(/RC 103/)
+    expect(d30.connections[0]?.label).toMatch(/Méndez/)
+    expect(d30.connections[1]?.label).toMatch(/PC 981/)
+    expect(d30.connections[1]?.label).toMatch(/Ensol/)
+    expect(d30.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d30.connections.some((c) => c.toId === 'vimarie-pena-davila')).toBe(false)
+    expect(d30.connections.some((c) => c.toId === 'gretchen-hau')).toBe(false)
+    const overlap = townOverlapConnections('fernando-sanabria-colon')
+    expect(overlap.some((c) => c.toId === 'estrella-martinez-soto' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d30.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraSanabria.url,
+        SRC.sutraSanabria.url,
+        SRC.wiki2024House.url,
+        SRC.microjurisComisiones.url,
+        SRC.sutraRCC0297Sanabria.url,
+        SRC.sutraRC0313Sanabria.url,
+        SRC.sutraRC0136Sanabria.url,
+        SRC.sutraRC0103Sanabria.url,
+        SRC.sutraPC0981Sanabria.url,
+      ]),
+    )
+    expect(d30.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraSanabria.url).toBe('https://sutra.oslpr.org/legisladores/M-963-AL')
+    expect(SRC.camaraSanabria.url).toBe(
+      'https://www.camara.pr.gov/team/fernando-sanabria-colon/',
+    )
+    expect(SRC.sutraRCC0297Sanabria.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0297',
+    )
+    expect(SRC.sutraRC0313Sanabria.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0313',
+    )
+    expect(SRC.sutraRC0136Sanabria.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0136',
+    )
+    expect(SRC.sutraRC0103Sanabria.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0103',
+    )
+    expect(SRC.sutraPC0981Sanabria.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0981',
+    )
+  })
+
+  it('llena aspiraciones Autores=1 y conexiones de López Román D31 sin bajarlo a THIN_IDS', () => {
+    const d31 = DOSSIERS['roberto-lopez-roman']
+    expect(DEEP_IDS.has('roberto-lopez-roman')).toBe(true)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['roberto-lopez-roman']).toBeDefined()
+    expect(d31.bio).toMatch(/elección especial del 28 de septiembre de 2025/)
+    expect(d31.bio).toMatch(/Vimarie Peña Dávila/)
+    expect(d31.bio).toMatch(/677–634–414–337–82/)
+    expect(d31.career.join(' ')).toMatch(/votes\.json/)
+    expect(d31.career.join(' ')).toMatch(/677/)
+    expect(d31.career.join(' ')).toMatch(/31\.6%/)
+    expect(d31.career.join(' ')).toMatch(/2,144/)
+    expect(d31.career.join(' ')).toMatch(/Alberto Fradera/)
+    expect(d31.career.join(' ')).toMatch(/PC 1115/)
+    expect(d31.career.join(' ')).toMatch(/Trabajo y Asuntos Laborales/)
+    expect(d31.career.join(' ')).toMatch(/INFERENCIA/)
+    expect(d31.aspirations).toHaveLength(3)
+    expect(d31.aspirations.join(' ')).toMatch(/PC 1302/)
+    expect(d31.aspirations.join(' ')).toMatch(/RC 725/)
+    expect(d31.aspirations.join(' ')).toMatch(/PC 1345/)
+    expect(d31.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d31.aspirations.join(' ')).toMatch(/\$10\.50/)
+    expect(d31.aspirations.join(' ')).not.toMatch(
+      /PC 800|PC0800|PC 602|PC0602|PC 1042|PC1042|M-964-AL/,
+    )
+    expect(VERIFIED['roberto-lopez-roman']?.committees).toEqual([])
+    expect(d31.committees).toEqual(['Trabajo y Asuntos Laborales'])
+    expect(d31.connections.map((c) => c.toId)).toEqual([
+      'tatiana-perez-ramirez',
+      'eddie-charbonier-chinea',
+    ])
+    expect(d31.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d31.connections[0]?.label).toMatch(/PC 1115/)
+    expect(d31.connections[0]?.label).toMatch(/Tatiana/)
+    expect(d31.connections[1]?.label).toMatch(/PC 1321/)
+    expect(d31.connections[1]?.label).toMatch(/Charbonier|Eddie/)
+    expect(d31.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d31.connections.some((c) => c.toId === 'wilson-j-roman-lopez')).toBe(false)
+    expect(d31.connections.some((c) => c.toId === 'vimarie-pena-davila')).toBe(false)
+    expect(d31.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.ceeD31.url,
+        SRC.telemundoPC1115.url,
+        SRC.sutraLopez.url,
+        SRC.sutraPC1302Lopez.url,
+        SRC.sutraRC0725Lopez.url,
+        SRC.sutraPC1345Lopez.url,
+        SRC.sutraPC1115Lopez.url,
+        SRC.sutraPC1321Lopez.url,
+      ]),
+    )
+    expect(SRC.sutraLopez.url).toBe('https://sutra.oslpr.org/legisladores/M-982-AL')
+    expect(SRC.sutraLopez.url).not.toBe('https://sutra.oslpr.org/legisladores/M-964-AL')
+    expect(SRC.sutraPC1302Lopez.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1302',
+    )
+    expect(SRC.sutraRC0725Lopez.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0725',
+    )
+    expect(SRC.sutraPC1345Lopez.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1345',
+    )
+    expect(SRC.sutraPC1115Lopez.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1115',
+    )
+    expect(SRC.sutraPC1321Lopez.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1321',
+    )
+  })
+
+  it('expande la ficha delgada de Varela D32 con CEE 10,342 y SUTRA M-965-AL', () => {
+    const d32 = DOSSIERS['jose-conny-varela']
+    expect(DEEP_IDS.has('jose-conny-varela')).toBe(false)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['jose-conny-varela']).toBeDefined()
+    expect(d32.bio).toMatch(/Distrito 32/)
+    expect(d32.bio).toMatch(/Caguas/)
+    expect(d32.bio).toMatch(/M-965-AL/)
+    expect(d32.bio).toMatch(/2 de enero de 2025/)
+    expect(d32.bio).toMatch(/Reelecto/)
+    expect(d32.bio).toMatch(/Portavoz PPD/)
+    expect(d32.bio).toMatch(/no preside comisión/)
+    expect(d32.career.join(' ')).toMatch(/10,342/)
+    expect(d32.career.join(' ')).toMatch(/40\.6%/)
+    expect(d32.career.join(' ')).toMatch(/25,480/)
+    expect(d32.career.join(' ')).toMatch(/Evelyn Aponte Vázquez/)
+    expect(d32.career.join(' ')).toMatch(/9,613/)
+    expect(d32.career.join(' ')).toMatch(/Maritza Maymí Hernández/)
+    expect(d32.career.join(' ')).toMatch(/3,415/)
+    expect(d32.career.join(' ')).toMatch(/George Mendoza Roque/)
+    expect(d32.career.join(' ')).toMatch(/2,110/)
+    expect(d32.career.join(' ')).toMatch(/votes\.json/)
+    expect(d32.career.join(' ')).toMatch(/Hold PPD/)
+    expect(d32.career.join(' ')).toMatch(/RC 352/)
+    expect(JSON.stringify(d32)).not.toMatch(/Primera Hora/)
+    expect(d32.aspirations).toHaveLength(3)
+    expect(d32.aspirations.join(' ')).toMatch(/RCC 225/)
+    expect(d32.aspirations.join(' ')).toMatch(/RC 522/)
+    expect(d32.aspirations.join(' ')).toMatch(/RC 352/)
+    expect(d32.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d32.aspirations.join(' ')).not.toMatch(
+      /RC 229|RC0229|PC 981|PC0981|RKC 3\b|RKC0003|RC 74|RC0074/,
+    )
+    expect(d32.committees).toEqual([])
+    expect(VERIFIED['jose-conny-varela']?.committees).toEqual([])
+    expect(JSON.stringify(d32)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d32)).not.toMatch(/esposa|cónyuge|familia|casado|hijos/)
+    expect(d32.connections.map((c) => c.toId)).toEqual([
+      'jose-e-torres-zamora',
+      'hector-e-ferrer-santiago',
+      'carlos-johnny-mendez-nunez',
+    ])
+    expect(d32.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d32.connections[0]?.label).toMatch(/RKC 27/)
+    expect(d32.connections[0]?.label).toMatch(/Torres Zamora/)
+    expect(d32.connections[1]?.label).toMatch(/RCC 38/)
+    expect(d32.connections[1]?.label).toMatch(/Ferrer/)
+    expect(d32.connections[2]?.label).toMatch(/RC 352/)
+    expect(d32.connections[2]?.label).toMatch(/Méndez/)
+    expect(
+      d32.connections
+        .filter((c) => c.toId !== 'carlos-johnny-mendez-nunez')
+        .every((c) => /no implica alianza/.test(c.label)),
+    ).toBe(true)
+    expect(d32.connections.some((c) => c.toId === 'roberto-lopez-roman')).toBe(false)
+    expect(d32.connections.some((c) => c.toId === 'domingo-j-torres-garcia')).toBe(false)
+    expect(d32.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraVarela.url,
+        SRC.sutraVarela.url,
+        SRC.wiki2024House.url,
+        SRC.sutraRCC0225Varela.url,
+        SRC.sutraRC0522Varela.url,
+        SRC.sutraRC0352Varela.url,
+        SRC.sutraRKC0027Varela.url,
+        SRC.sutraRCC0038Varela.url,
+        SRC.metroRC352.url,
+      ]),
+    )
+    expect(d32.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraVarela.url).toBe('https://sutra.oslpr.org/legisladores/M-965-AL')
+    expect(SRC.camaraVarela.url).toBe('https://www.camara.pr.gov/team/jose-conny-varela/')
+    expect(SRC.sutraRCC0225Varela.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0225',
+    )
+    expect(SRC.sutraRC0522Varela.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0522',
+    )
+    expect(SRC.sutraRC0352Varela.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0352',
+    )
+    expect(SRC.sutraRKC0027Varela.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RKC0027',
+    )
+    expect(SRC.sutraRCC0038Varela.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0038',
+    )
+  })
+
+  it('llena aspiraciones Autores=1 y conexiones de Peña Ramírez D33 sin bajarlo a THIN_IDS', () => {
+    const d33 = DOSSIERS['angel-r-pena-ramirez']
+    expect(DEEP_IDS.has('angel-r-pena-ramirez')).toBe(true)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['angel-r-pena-ramirez']).toBeDefined()
+    expect(MESA_IDS.includes('angel-r-pena-ramirez')).toBe(true)
+    expect(d33.bio).toMatch(/Electo vicepresidente de la Cámara por unanimidad el 13 de enero de 2025/)
+    expect(d33.bio).toMatch(/sesión inaugural que eligió a Méndez/)
+    expect(d33.bio).toMatch(/Distrito 33/)
+    expect(d33.bio).toMatch(/San Lorenzo/)
+    expect(d33.bio).toMatch(/Juncos/)
+    expect(d33.bio).toMatch(/Las Piedras/)
+    expect(d33.bio).toMatch(/M-966-AL/)
+    expect(d33.bio).not.toMatch(/M-743/)
+    expect(d33.career.join(' ')).toMatch(/Vicepresidente/)
+    expect(d33.career.join(' ')).toMatch(/Ética/)
+    expect(d33.career.join(' ')).toMatch(/14,695/)
+    expect(d33.career.join(' ')).toMatch(/52\.3%/)
+    expect(d33.career.join(' ')).toMatch(/28,099/)
+    expect(d33.career.join(' ')).toMatch(/Güi Mojica Carrasquillo/)
+    expect(d33.career.join(' ')).toMatch(/8,292/)
+    expect(d33.career.join(' ')).toMatch(/Tati Santana Muñoz/)
+    expect(d33.career.join(' ')).toMatch(/3,621/)
+    expect(d33.career.join(' ')).toMatch(/Julio A\. Muriente Pérez/)
+    expect(d33.career.join(' ')).toMatch(/1,491/)
+    expect(d33.career.join(' ')).toMatch(/6,403/)
+    expect(d33.career.join(' ')).toMatch(/votes\.json/)
+    expect(d33.career.join(' ')).toMatch(/Hold PNP/)
+    expect(JSON.stringify(d33)).not.toMatch(/Primera Hora/)
+    expect(d33.aspirations).toHaveLength(3)
+    expect(d33.aspirations.join(' ')).toMatch(/RC 476/)
+    expect(d33.aspirations.join(' ')).toMatch(/RC 167/)
+    expect(d33.aspirations.join(' ')).toMatch(/RC 120/)
+    expect(d33.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d33.aspirations.join(' ')).toMatch(/Gurabo/)
+    expect(d33.aspirations.join(' ')).not.toMatch(
+      /PC 225|PC0225|RKC 21|RKC0021|PC 299|PC0299|PC 698|PC0698|PC 965|PC0965|RC 377|RC0377/,
+    )
+    expect(VERIFIED['angel-r-pena-ramirez']?.committees).toEqual([])
+    expect(d33.committees).toEqual(['Ética'])
+    expect(JSON.stringify(d33)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d33)).not.toMatch(/esposa|cónyuge|familia|casado|hijos/)
+    expect(d33.connections.map((c) => c.toId)).toEqual([
+      'carlos-johnny-mendez-nunez',
+      'yashira-lebron-rodriguez',
+      'carmen-medina-calderon',
+      'joel-i-franqui-atiles',
+      'carlos-johnny-mendez-nunez',
+    ])
+    expect(d33.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d33.connections[0]?.label).toMatch(/vicepresidente/)
+    expect(d33.connections[0]?.label).toMatch(/Méndez/)
+    expect(d33.connections[0]?.sources.map((s) => s.url)).toContain(SRC.metroInaugural.url)
+    expect(d33.connections[1]?.label).toMatch(/vicepresidentes/)
+    expect(d33.connections[2]?.label).toMatch(/RC 375/)
+    expect(d33.connections[2]?.label).toMatch(/Medina Calderón/)
+    expect(d33.connections[2]?.label).toMatch(/Autores 2/)
+    expect(d33.connections[3]?.label).toMatch(/PC 304/)
+    expect(d33.connections[3]?.label).toMatch(/Franqui Atiles/)
+    expect(d33.connections[3]?.label).toMatch(/Autores 4/)
+    expect(d33.connections[4]?.label).toMatch(/PC 1103/)
+    expect(d33.connections[4]?.label).toMatch(/Méndez/)
+    expect(d33.connections[4]?.label).toMatch(/cannabis|banca/)
+    expect(d33.connections[4]?.label).toMatch(/Autores 2/)
+    expect(d33.connections.slice(2).every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d33.connections.some((c) => c.toId === 'jose-e-torres-zamora')).toBe(false)
+    expect(d33.connections.some((c) => c.toId === 'christian-muriel-sanchez')).toBe(false)
+    expect(
+      DOSSIERS['christian-muriel-sanchez'].connections.some(
+        (c) => c.toId === 'angel-r-pena-ramirez',
+      ),
+    ).toBe(false)
+    expect(
+      DOSSIERS['yashira-lebron-rodriguez'].connections
+        .filter((c) => c.kind === 'fact')
+        .map((c) => c.toId),
+    ).toEqual(['carlos-johnny-mendez-nunez', 'angel-r-pena-ramirez'])
+    const overlap = townOverlapConnections('christian-muriel-sanchez')
+    expect(overlap.some((c) => c.toId === 'angel-r-pena-ramirez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(REPRESENTATIVES.find((r) => r.id === 'angel-r-pena-ramirez')?.municipalities).toEqual([
+      'San Lorenzo',
+      'Juncos',
+      'Las Piedras',
+    ])
+    expect(d33.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.metroInaugural.url,
+        SRC.microjurisComisiones.url,
+        SRC.camaraPena.url,
+        SRC.sutraPena.url,
+        SRC.wiki2024House.url,
+        SRC.sutraRC0476Pena.url,
+        SRC.sutraRC0167Pena.url,
+        SRC.sutraRC0120Pena.url,
+        SRC.sutraRC0375Pena.url,
+        SRC.sutraPC0304Pena.url,
+        SRC.sutraPC1103Pena.url,
+      ]),
+    )
+    expect(d33.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(d33.sources.map((s) => s.url).join(' ')).not.toMatch(/PC0299|RC0377/)
+    expect(SRC.sutraPena.url).toBe('https://sutra.oslpr.org/legisladores/M-966-AL')
+    expect(SRC.sutraPena.url).not.toBe('https://sutra.oslpr.org/legisladores/M-743')
+    expect(SRC.camaraPena.url).toBe('https://www.camara.pr.gov/team/angel-r-pena-ramirez/')
+    expect(SRC.sutraRC0476Pena.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0476',
+    )
+    expect(SRC.sutraRC0167Pena.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0167',
+    )
+    expect(SRC.sutraRC0120Pena.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0120',
+    )
+    expect(SRC.sutraRC0375Pena.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0375',
+    )
+    expect(SRC.sutraPC0304Pena.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC0304',
+    )
+    expect(SRC.sutraPC1103Pena.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=PC1103',
+    )
+  })
+
+  it('llena la ficha DEEP de Higgins Cuadrado D35 sin bajarla a THIN_IDS', () => {
+    const d35 = DOSSIERS['sol-y-higgins-cuadrado']
+    expect(DEEP_IDS.has('sol-y-higgins-cuadrado')).toBe(true)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['sol-y-higgins-cuadrado']).toBeDefined()
+    expect(d35.bio).toMatch(/Distrito 35/)
+    expect(d35.bio).toMatch(/Las Piedras/)
+    expect(d35.bio).toMatch(/Humacao/)
+    expect(d35.bio).toMatch(/Naguabo/)
+    expect(d35.bio).toMatch(/M-968-AL/)
+    expect(d35.bio).toMatch(/Primera mujer/)
+    expect(d35.bio).toMatch(/3 de noviembre de 2020/)
+    expect(d35.bio).toMatch(/segundo término/)
+    expect(d35.bio).toMatch(/2 de enero de 2025/)
+    expect(d35.bio).toMatch(/no preside comisión/)
+    expect(d35.bio).toMatch(/Portavoz PPD/)
+    expect(d35.bio).toMatch(/6 de noviembre de 2016/)
+    expect(d35.career.join(' ')).toMatch(/12,636/)
+    expect(d35.career.join(' ')).toMatch(/43\.1%/)
+    expect(d35.career.join(' ')).toMatch(/29,301/)
+    expect(d35.career.join(' ')).toMatch(/Jean Paul Carrillo Cáceres/)
+    expect(d35.career.join(' ')).toMatch(/10,936/)
+    expect(d35.career.join(' ')).toMatch(/Ricardo Díaz Maldonado/)
+    expect(d35.career.join(' ')).toMatch(/2,871/)
+    expect(d35.career.join(' ')).toMatch(/Rosanna Ortiz García/)
+    expect(d35.career.join(' ')).toMatch(/2,858/)
+    expect(d35.career.join(' ')).toMatch(/1,700/)
+    expect(d35.career.join(' ')).toMatch(/votes\.json/)
+    expect(d35.career.join(' ')).toMatch(/Hold PPD/)
+    expect(d35.career.join(' ')).toMatch(/2021–2024/)
+    expect(d35.career.join(' ')).toMatch(/Salud/)
+    expect(JSON.stringify(d35)).not.toMatch(/Primera Hora/)
+    expect(d35.aspirations.join(' ')).toMatch(/RC 94/)
+    expect(d35.aspirations.join(' ')).toMatch(/RC 69/)
+    expect(d35.aspirations.join(' ')).toMatch(/RC 170/)
+    expect(d35.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d35.aspirations.join(' ')).toMatch(/desempleo/)
+    expect(d35.aspirations.join(' ')).toMatch(/carreteras/)
+    expect(d35.aspirations.join(' ')).toMatch(/El Coquí/)
+    expect(d35.aspirations.join(' ')).not.toMatch(/RCC 249|RCC0249/)
+    expect(d35.committees).toEqual([])
+    expect(VERIFIED['sol-y-higgins-cuadrado']?.committees).toEqual([])
+    expect(JSON.stringify(d35)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d35)).not.toMatch(/esposa|cónyuge|familia|hija|hijo|madre/)
+    expect(d35.connections.map((c) => c.toId)).toEqual(['hector-e-ferrer-santiago'])
+    expect(d35.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d35.connections[0]?.label).toMatch(/RCC 38/)
+    expect(d35.connections[0]?.label).toMatch(/Ferrer/)
+    expect(d35.connections[0]?.label).toMatch(/Autores 13/)
+    expect(d35.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d35.connections.some((c) => c.toId === 'angel-r-pena-ramirez')).toBe(false)
+    expect(d35.connections.some((c) => c.toId === 'christian-muriel-sanchez')).toBe(false)
+    const overlap = townOverlapConnections('sol-y-higgins-cuadrado')
+    expect(overlap.some((c) => c.toId === 'angel-r-pena-ramirez' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(overlap.some((c) => c.toId === 'christian-muriel-sanchez')).toBe(false)
+    expect(d35.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraHiggins.url,
+        SRC.sutraHiggins.url,
+        SRC.wiki2024House.url,
+        SRC.sutraRC0094Higgins.url,
+        SRC.sutraRC0069Higgins.url,
+        SRC.sutraRC0170Higgins.url,
+        SRC.sutraRC0062Higgins.url,
+        SRC.sutraRC0066Higgins.url,
+        SRC.sutraRCC0038Varela.url,
+      ]),
+    )
+    expect(d35.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraHiggins.url).toBe('https://sutra.oslpr.org/legisladores/M-968-AL')
+    expect(SRC.camaraHiggins.url).toBe(
+      'https://www.camara.pr.gov/team/sol-y-higgins-cuadrado/',
+    )
+    expect(SRC.sutraRC0094Higgins.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0094',
+    )
+    expect(SRC.sutraRC0069Higgins.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0069',
+    )
+    expect(SRC.sutraRC0170Higgins.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0170',
+    )
+    expect(SRC.sutraRC0062Higgins.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0062',
+    )
+    expect(SRC.sutraRC0066Higgins.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0066',
+    )
+    expect(SRC.sutraRCC0038Varela.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0038',
+    )
+  })
+
+  it('llena la ficha DEEP de Medina Calderón D37 sin bajarla a THIN_IDS', () => {
+    const d37 = DOSSIERS['carmen-medina-calderon']
+    expect(DEEP_IDS.has('carmen-medina-calderon')).toBe(true)
+    expect(DEEP_IDS.size).toBe(30)
+    expect(VERIFIED['carmen-medina-calderon']).toBeDefined()
+    expect(d37.bio).toMatch(/Distrito 37/)
+    expect(d37.bio).toMatch(/Río Grande/)
+    expect(d37.bio).toMatch(/Loíza/)
+    expect(d37.bio).toMatch(/Canóvanas/)
+    expect(d37.bio).toMatch(/M-970-AL/)
+    expect(d37.bio).toMatch(/primer término/i)
+    expect(d37.bio).toMatch(/2 de enero de 2025/)
+    expect(d37.bio).toMatch(/Región Este/)
+    expect(d37.bio).toMatch(/Ángel Bulerín Ramos/)
+    expect(d37.career.join(' ')).toMatch(/10,684/)
+    expect(d37.career.join(' ')).toMatch(/40\.6%/)
+    expect(d37.career.join(' ')).toMatch(/26,289/)
+    expect(d37.career.join(' ')).toMatch(/Angel Osorio/)
+    expect(d37.career.join(' ')).toMatch(/9,616/)
+    expect(d37.career.join(' ')).toMatch(/1,068/)
+    expect(d37.career.join(' ')).toMatch(/votes\.json/)
+    expect(d37.career.join(' ')).toMatch(/Hold PNP/)
+    expect(JSON.stringify(d37)).not.toMatch(/Primera Hora/)
+    expect(d37.aspirations.join(' ')).toMatch(/RCC 379/)
+    expect(d37.aspirations.join(' ')).toMatch(/RCC 162/)
+    expect(d37.aspirations.join(' ')).toMatch(/RCC 270/)
+    expect(d37.aspirations.join(' ')).toMatch(/Autores = 1/)
+    expect(d37.aspirations.join(' ')).toMatch(/Loíza/)
+    expect(d37.aspirations.join(' ')).toMatch(/Río Grande/)
+    expect(d37.aspirations.join(' ')).not.toMatch(/PC 1179|PC1179|RCC 378|RCC0378/)
+    expect(d37.committees).toEqual(['Región Este'])
+    expect(VERIFIED['carmen-medina-calderon']?.committees).toEqual([])
+    expect(JSON.stringify(d37)).not.toMatch(/\$\d/)
+    expect(JSON.stringify(d37)).not.toMatch(/esposa|cónyuge|familia|hija|hijo|madre|padre/)
+    expect(d37.connections.map((c) => c.toId)).toEqual([
+      'angel-r-pena-ramirez',
+      'joe-joito-colon-rodriguez',
+    ])
+    expect(d37.connections.every((c) => c.kind === 'fact')).toBe(true)
+    expect(d37.connections[0]?.label).toMatch(/RC 375/)
+    expect(d37.connections[0]?.label).toMatch(/Peña/)
+    expect(d37.connections[0]?.label).toMatch(/Autores 2/)
+    expect(d37.connections[1]?.label).toMatch(/PC 286/)
+    expect(d37.connections.every((c) => /no implica alianza/.test(c.label))).toBe(true)
+    expect(d37.connections.some((c) => c.toId === 'wanda-del-valle-correa')).toBe(false)
+    const overlap = townOverlapConnections('carmen-medina-calderon')
+    expect(overlap.some((c) => c.toId === 'wanda-del-valle-correa' && c.kind === 'inference')).toBe(
+      true,
+    )
+    expect(d37.sources.map((s) => s.url)).toEqual(
+      expect.arrayContaining([
+        SRC.camaraMedina.url,
+        SRC.sutraMedina.url,
+        SRC.wiki2024House.url,
+        SRC.sutraRCC0379Medina.url,
+        SRC.sutraRCC0162Medina.url,
+        SRC.sutraRCC0270Medina.url,
+        SRC.sutraRC0375Pena.url,
+      ]),
+    )
+    expect(d37.sources.map((s) => s.url).join(' ')).not.toMatch(/primerahora|ballotpedia/i)
+    expect(SRC.sutraMedina.url).toBe('https://sutra.oslpr.org/legisladores/M-970-AL')
+    expect(SRC.camaraMedina.url).toBe(
+      'https://www.camara.pr.gov/team/carmen-medina-calderon/',
+    )
+    expect(SRC.sutraRCC0379Medina.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0379',
+    )
+    expect(SRC.sutraRCC0162Medina.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0162',
+    )
+    expect(SRC.sutraRCC0270Medina.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RCC0270',
+    )
+    expect(SRC.sutraRC0375Pena.url).toBe(
+      'https://sutra.oslpr.org/medidas?cuatrienio_id=2025&num_medida=RC0375',
     )
   })
 
