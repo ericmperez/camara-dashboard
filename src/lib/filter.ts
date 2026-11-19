@@ -1,3 +1,4 @@
+import { DEFAULT_PARTY } from '../config'
 import type { Party, Representative, RosterFilters } from '../types'
 import { dossierSearchText } from './dossiers'
 import { matchesMeasureCode, measureSearchText } from './measures'
@@ -16,6 +17,10 @@ const EMPTY_FILTERS: RosterFilters = {
 
 export function emptyFilters(): RosterFilters {
   return { ...EMPTY_FILTERS }
+}
+
+export function defaultFilters(): RosterFilters {
+  return { query: '', party: DEFAULT_PARTY, seat: 'all' }
 }
 
 function tokensOf(value: string): string[] {

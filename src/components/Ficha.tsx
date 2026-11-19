@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { PLAYBOOK_BOOK_LABELS } from '../data/playbook'
 import { REPEAT_DISCLAIMER } from '../data/repeat-profiles'
-import { activityOf } from '../lib/activity'
 import { CURVE_BAND_LABELS, curveOf, formatDelta } from '../lib/curve'
 import { playbookOf } from '../lib/playbook'
 import { tenureOf } from '../lib/tenure'
 import { fichaFor, hasVerifiedBody } from '../lib/dossiers'
 import { REPEAT_BAND_LABELS, repeatOf } from '../lib/repeat'
+import { districtElections } from '../lib/outlook'
+import { formatUsd, oceBalancesUrl, oceFor, oceNote, oceSearchUrl } from '../lib/oce'
 import { dossierFor, latestProjects } from '../lib/measures'
 import { PARTY_META } from '../lib/profile'
 import { initials, telHref } from '../lib/text'
@@ -25,8 +26,9 @@ export function Ficha({ rep }: Props) {
   const measures = dossierFor(rep.id)
   const preview = latestProjects(rep.id, 4)
   const election = electionFor(rep.id)
-  const activity = activityOf(rep)
   const repeat = repeatOf(rep)
+  const history = districtElections(rep.district)
+  const oce = oceFor(rep.id)
   const play = playbookOf(rep.id)
   const tenure = tenureOf(rep)
   const curve = curveOf(rep)
@@ -58,23 +60,7 @@ export function Ficha({ rep }: Props) {
         </div>
       </header>
 
-      <section className="ficha-block is-first ficha-doing" aria-label="Qué está haciendo">
-        <h3>Qué está haciendo</h3>
-        <p>{activity.headline}</p>
-        {activity.themes.length > 0 ? (
-          <ul className="doing-themes">
-            {activity.themes.map((theme) => (
-              <li key={theme.id}>
-                {theme.label}
-                <span> {theme.count}</span>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-        <p className="conn-note">{activity.disclaimer}</p>
-      </section>
-
-      <section className="ficha-block ficha-repeat" aria-label="Si repite en 2028">
+      <section className="ficha-block is-first ficha-repeat" aria-label="Si repite en 2028">
         <h3>Si repite en 2028</h3>
         <p className="repeat-scoreline">
           <strong>{repeat.score}</strong>
@@ -207,6 +193,58 @@ export function Ficha({ rep }: Props) {
           <p className="party-empty">Sin recuento CEE en el harvest.</p>
         </section>
       )}
+
+      <section className="ficha-block" aria-label="Escrutinios del distrito">
+        <h3>Escrutinios del distrito</h3>
+        {rep.district == null ? (
+          <p className="party-empty">Acumulación: no hay escrutinio de distrito.</p>
+        ) : (
+          <ol>
+            {history.map((row) => (
+              <li key={row.year}>
+                <a href={row.sourceUrl} target="_blank" rel="noreferrer">
+                  {row.year}
+                  {row.alternate ? ' · fuente alterna' : ''}
+                </a>
+                {`: ${row.winner} (${formatVotes(row.winnerVotes)}) contra ${row.second} (${formatVotes(row.secondVotes)}). ${row.sourceLabel}`}
+              </li>
+            ))}
+          </ol>
+        )}
+      </section>
+
+      <section className="ficha-block" aria-label="Recaudos OCE">
+        <h3>Recaudos (OCE)</h3>
+        {oce ? (
+          <>
+            <p>
+              {oce.committeeName}. Ingresos {formatUsd(oce.income)} · gastos {formatUsd(oce.expenses)}.
+            </p>
+            <p>
+              {oce.event} · {oce.period}
+              {oce.filedAt ? ` · radicado ${oce.filedAt}` : ''}.
+            </p>
+            <p>
+              <a href={oce.sourceUrl} target="_blank" rel="noreferrer">
+                Informe {oce.reportNumber}
+              </a>
+            </p>
+            <p className="conn-note">{oceNote()}</p>
+          </>
+        ) : (
+          <p className="party-empty">
+            Sin cifra automática para este representante. La consulta pública está en{' '}
+            <a href={oceSearchUrl()} target="_blank" rel="noreferrer">
+              serviciosenlinea.oce.pr.gov
+            </a>
+            . El balance acumulado sigue en{' '}
+            <a href={oceBalancesUrl()} target="_blank" rel="noreferrer">
+              el tablero de la OCE
+            </a>
+            .
+          </p>
+        )}
+      </section>
 
       {measures ? (
         <section className="rep-bills ficha-block" aria-label={`Proyectos de ${rep.name}`}>

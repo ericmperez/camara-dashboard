@@ -41,7 +41,7 @@ describe('quién está sólido para repetir', () => {
 
   it('usa el margen CEE vivo, no un número inventado', () => {
     const navarro = repeatOf(rep('jorge-navarro-suarez'))
-    expect(navarro.margin).toBe(8102)
+    expect(navarro.margin).toBe(7768)
     expect(navarro.pct).toBe(48.1)
     expect(rankByRepeat(REPRESENTATIVES).map((item) => item.id)).toContain(
       'yashira-lebron-rodriguez',

@@ -7,6 +7,7 @@ import { PartyBlock } from './components/PartyBlock'
 import { RankBoard } from './components/RankBoard'
 import { CurveBoard } from './components/CurveBoard'
 import { Playbook } from './components/Playbook'
+import { OutlookBoard } from './components/OutlookBoard'
 import { RepeatBoard } from './components/RepeatBoard'
 import { WhipLeverage } from './components/WhipLeverage'
 import {
@@ -17,8 +18,10 @@ import {
   TERM,
   UPDATED_LABEL,
 } from './data/representatives'
+import { DEFAULT_PARTY } from './config'
 import {
   countByParty,
+  defaultFilters,
   emptyFilters,
   filterRepresentatives,
   hasActiveFilters,
@@ -53,6 +56,7 @@ type ChamberView =
   | 'ranking'
   | 'repite'
   | 'curva'
+  | '2028'
   | 'oferta'
   | 'ficha'
   | 'conexiones'
@@ -64,6 +68,7 @@ const VIEW_OPTIONS: { value: ChamberView; label: string }[] = [
   { value: 'ranking', label: 'Ranking' },
   { value: 'repite', label: 'Repite' },
   { value: 'curva', label: 'Curva' },
+  { value: '2028', label: '2028' },
   { value: 'oferta', label: 'Oferta' },
   { value: 'ficha', label: 'Ficha' },
   { value: 'conexiones', label: 'Conexiones' },
@@ -79,7 +84,7 @@ const SEAT_OPTIONS: { value: SeatKind; label: string }[] = [
 ]
 
 function App() {
-  const [filters, setFilters] = useState(emptyFilters)
+  const [filters, setFilters] = useState(defaultFilters)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [view, setView] = useState<ChamberView>('caras')
   const [board, setBoard] = useState(() => {
@@ -93,6 +98,14 @@ function App() {
   const visible = useMemo(
     () => filterRepresentatives(sorted, filters),
     [sorted, filters],
+  )
+  const outlookReps = useMemo(
+    () =>
+      filterRepresentatives(
+        REPRESENTATIVES.filter((rep) => rep.party === DEFAULT_PARTY),
+        { ...filters, party: 'all' },
+      ),
+    [filters],
   )
   const counts = useMemo(() => countByParty(REPRESENTATIVES), [])
   const districtCounts = useMemo(() => countDistrictsByParty(REPRESENTATIVES), [])
@@ -271,7 +284,7 @@ function App() {
             selectedId={selectedId}
             onSelect={selectRep}
             maxProjects={maxProjects}
-            colorBy={view === 'voto' ? votoColor : 'party'}
+            colorBy={view === 'voto' && votoColor === 'voto' ? 'voto' : 'party'}
             whipById={view === 'voto' ? whipById : undefined}
           />
         ) : null}
@@ -391,9 +404,11 @@ function App() {
       </section>
 
       <p className="result-count" aria-live="polite">
-        {visible.length === REPRESENTATIVES.length
-          ? `${visible.length} representantes`
-          : `${visible.length} de ${REPRESENTATIVES.length}`}
+        {view === '2028'
+          ? `${outlookReps.length} del PNP en 2028`
+          : visible.length === REPRESENTATIVES.length
+            ? `${visible.length} representantes`
+            : `${visible.length} de ${REPRESENTATIVES.length}`}
       </p>
 
       {view === 'ficha' || view === 'conexiones' ? (
@@ -413,7 +428,7 @@ function App() {
             <p>Selecciona en Caras, Hemiciclo, Ranking, Repite, Curva u Oferta. Vacío si no hay fuente citada.</p>
           </div>
         )
-      ) : visible.length === 0 ? (
+      ) : view !== '2028' && visible.length === 0 ? (
         <div className="empty" role="status">
           <p>Nadie coincide con esa búsqueda.</p>
           <p>Prueba un pueblo, un apellido o un número de distrito del 1 al 40.</p>
@@ -457,6 +472,8 @@ function App() {
         <RepeatBoard reps={visible} selectedId={selectedId} onSelect={selectRep} />
       ) : view === 'curva' ? (
         <CurveBoard reps={visible} selectedId={selectedId} onSelect={selectRep} />
+      ) : view === '2028' ? (
+        <OutlookBoard reps={outlookReps} selectedId={selectedId} onSelect={selectRep} />
       ) : view === 'oferta' ? (
         <Playbook reps={visible} selectedId={selectedId} onSelect={selectRep} />
       ) : (

@@ -27,6 +27,34 @@ describe('votos de la CEE', () => {
     expect(electionFor('denis-marquez-lebron')?.votes).toBe(192404)
   })
 
+  it('guarda al segundo real de D1 a D5, no al tercero', () => {
+    expect(electionFor('eddie-charbonier-chinea')).toMatchObject({
+      runnerUp: 'Pedro Cardona Roig',
+      runnerUpVotes: 7889,
+      margin: 3072,
+    })
+    expect(electionFor('ricardo-chino-rey-ocasio-ramos')).toMatchObject({
+      runnerUp: 'Joel Vázquez Rosario',
+      runnerUpVotes: 8314,
+      margin: 441,
+    })
+    expect(electionFor('jose-hernandez-concepcion')).toMatchObject({
+      runnerUp: 'Eva Prados Rodríguez',
+      runnerUpVotes: 9085,
+      margin: 712,
+    })
+    expect(electionFor('victor-l-pares-otero')).toMatchObject({
+      runnerUp: 'Adriana Gutiérrez Colón',
+      runnerUpVotes: 10866,
+      margin: 344,
+    })
+    expect(electionFor('jorge-navarro-suarez')).toMatchObject({
+      runnerUp: 'Gabriel Casal Nazario',
+      runnerUpVotes: 6980,
+      margin: 7768,
+    })
+  })
+
   it('no usa floats en el margen: votos enteros', () => {
     const eddie = electionFor('eddie-charbonier-chinea')!
     expect(Number.isInteger(eddie.votes)).toBe(true)

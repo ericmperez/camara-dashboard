@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { REPRESENTATIVES } from '../data/representatives'
 import {
   countByParty,
+  defaultFilters,
   emptyFilters,
   filterRepresentatives,
   hasActiveFilters,
@@ -167,6 +168,12 @@ describe('sort + counts', () => {
       PIP: 0,
       PD: 1,
     })
+  })
+
+  it('el filtro de la presidencia abre en el PNP y se puede vaciar', () => {
+    expect(defaultFilters().party).toBe('PNP')
+    expect(emptyFilters().party).toBe('all')
+    expect(hasActiveFilters(defaultFilters())).toBe(true)
   })
 
   it('hasActiveFilters distingue el estado inicial', () => {
