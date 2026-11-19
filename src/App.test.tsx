@@ -10,19 +10,26 @@ afterEach(() => {
 })
 
 describe('dashboard de la Cámara', () => {
-  it('muestra el hemiciclo, el recuento y a los 53 representantes', () => {
+  it('abre en el PNP y deja ver a los 53 si se quita el filtro', async () => {
+    const user = userEvent.setup()
+    const pnp = REPRESENTATIVES.filter((rep) => rep.party === 'PNP')
     render(<App />)
     expect(
       screen.getByRole('heading', {
         name: /quién está sentado — y de quién puedo coger el voto/i,
       }),
     ).toBeInTheDocument()
-    expect(screen.getByText('53 representantes')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /36\s+PNP/i })).toBeInTheDocument()
+    expect(screen.getByText(`${pnp.length} de 53`)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /36\s+PNP/i })).toHaveAttribute('aria-pressed', 'true')
     expect(screen.getByRole('heading', { name: /méndez/i })).toBeInTheDocument()
-    expect(screen.getAllByRole('article')).toHaveLength(53)
+    expect(screen.queryByRole('heading', { name: /ferrer santiago/i })).not.toBeInTheDocument()
+    expect(screen.getAllByRole('article')).toHaveLength(pnp.length)
     expect(screen.getAllByText('Azul').length).toBeGreaterThan(0)
     expect(screen.getByText(/fuerza 100/i)).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /quitar filtros/i }))
+    expect(screen.getByText('53 representantes')).toBeInTheDocument()
+    expect(screen.getAllByRole('article')).toHaveLength(53)
+    expect(screen.getByRole('heading', { name: /ferrer santiago/i })).toBeInTheDocument()
   })
 
   it('cambia entre caras, hemiciclo, ranking, ficha y conexiones', async () => {
@@ -45,6 +52,7 @@ describe('dashboard de la Cámara', () => {
     expect(within(curva).getAllByRole('article')[0]).toHaveTextContent(/wanda/i)
     expect(within(curva).getAllByRole('article')[0]).toHaveTextContent('+14.0')
     expect(screen.getByText(/chinas con chinas/i)).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /quitar filtros/i }))
     await user.click(screen.getByRole('button', { name: 'Oferta' }))
     const oferta = screen.getByLabelText(/a quién invertir/i)
     expect(within(oferta).getAllByRole('article')).toHaveLength(16)
@@ -99,6 +107,7 @@ describe('dashboard de la Cámara', () => {
     expect(within(split).getByText('30')).toBeInTheDocument()
     expect(within(split).getByText('Populares')).toBeInTheDocument()
     expect(within(split).getByText('10')).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /quitar filtros/i }))
     await user.click(screen.getByRole('button', { name: 'Hemiciclo' }))
     await user.click(screen.getByRole('button', { name: /por distrito/i }))
     expect(screen.getAllByRole('article')).toHaveLength(40)
@@ -163,13 +172,17 @@ describe('dashboard de la Cámara', () => {
     expect(within(card as HTMLElement).getByText(gabriel.phone!)).toBeInTheDocument()
   })
 
-  it('seleccionar en Caras abre la ficha y lee qué está haciendo', async () => {
+  it('seleccionar en Caras abre la ficha sin el bloque de qué está haciendo', async () => {
     const user = userEvent.setup()
     render(<App />)
     await user.click(screen.getByRole('heading', { name: /lópez román/i }))
     const ficha = screen.getByLabelText(/ficha de/i)
     expect(ficha).toHaveTextContent(/Vimarie Peña Dávila/)
-    expect(within(ficha).getByRole('heading', { name: /qué está haciendo/i })).toBeInTheDocument()
+    expect(within(ficha).queryByRole('heading', { name: /qué está haciendo/i })).not.toBeInTheDocument()
+    expect(within(ficha).getByRole('heading', { name: /escrutinios del distrito/i })).toBeInTheDocument()
+    expect(ficha).toHaveTextContent(/fuente alterna/)
+    expect(ficha).toHaveTextContent(/2016/)
+    expect(within(ficha).getByRole('heading', { name: /recaudos \(oce\)/i })).toBeInTheDocument()
     expect(within(ficha).getByRole('heading', { name: /si repite en 2028/i })).toBeInTheDocument()
     expect(within(ficha).getByRole('heading', { name: /cuatrienios/i })).toBeInTheDocument()
     expect(within(ficha).getByRole('heading', { name: /curva cee/i })).toBeInTheDocument()
@@ -219,6 +232,7 @@ describe('dashboard de la Cámara', () => {
   it('no inventa un porcentaje para escaños de minorías sin voto', async () => {
     const user = userEvent.setup()
     render(<App />)
+    await user.click(screen.getByRole('button', { name: /quitar filtros/i }))
     await user.click(screen.getByRole('heading', { name: /adriana gutiérrez/i }))
     await user.click(screen.getByRole('button', { name: 'Ficha' }))
     const ficha = screen.getByLabelText(/ficha de/i)
@@ -238,9 +252,23 @@ describe('dashboard de la Cámara', () => {
     expect(within(cards[0]).queryByText(/Distrito 10/)).not.toBeInTheDocument()
     expect(within(cards[0]).getByRole('heading')).toHaveTextContent(/Charbonier/)
   })
+
+  it('la vista 2028 lista solo al PNP y marca la especial del 31', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: '2028' }))
+    const board = screen.getByLabelText(/pronóstico 2028 del pnp/i)
+    const pnp = REPRESENTATIVES.filter((rep) => rep.party === 'PNP')
+    expect(within(board).getAllByRole('article')).toHaveLength(pnp.length)
+    expect(within(board).queryByRole('heading', { name: /ferrer santiago/i })).not.toBeInTheDocument()
+    const lopez = within(board).getByRole('heading', { name: /lópez román/i }).closest('article')
+    expect(lopez).toHaveTextContent('45%')
+    expect(lopez).toHaveTextContent('En riesgo')
+    expect(lopez).toHaveTextContent('Especial D31')
+  })
 })
 
-function votoCard(name: string) {
+function votoCard(name: string | RegExp) {
   return screen.getByRole('heading', { name }).closest('article') as HTMLElement
 }
 
@@ -249,6 +277,7 @@ describe('vista Voto', () => {
     const user = userEvent.setup()
     render(<App />)
     await user.click(screen.getByRole('button', { name: 'Voto' }))
+    await user.click(screen.getByRole('button', { name: /quitar filtros/i }))
 
     const pizarra = screen.getByLabelText(/pizarra de voto/i)
     expect(pizarra).toBeInTheDocument()
@@ -292,6 +321,7 @@ describe('vista Voto', () => {
     const user = userEvent.setup()
     render(<App />)
     await user.click(screen.getByRole('button', { name: 'Voto' }))
+    await user.click(screen.getByRole('button', { name: /quitar filtros/i }))
 
     const siReps = REPRESENTATIVES.slice(0, 5)
     const gettable = REPRESENTATIVES.slice(5, 8)
@@ -321,6 +351,7 @@ describe('vista Voto', () => {
     const user = userEvent.setup()
     render(<App />)
     await user.click(screen.getByRole('button', { name: 'Voto' }))
+    await user.click(screen.getByRole('button', { name: /quitar filtros/i }))
     await user.click(screen.getByRole('heading', { name: /varela/i }))
 
     const panel = screen.getByLabelText(/palanca pública de/i)
@@ -345,6 +376,7 @@ describe('vista Voto', () => {
     expect(lopez).toHaveTextContent(/Trabajo y Asuntos Laborales/)
     expect(lopez).toHaveTextContent(/margen 43/)
 
+    await user.click(screen.getByRole('button', { name: /quitar filtros/i }))
     await user.click(screen.getByRole('heading', { name: /adriana gutiérrez/i }))
     const adriana = screen.getByLabelText(/palanca pública de/i)
     expect(adriana).toHaveTextContent(/sin-voto/)

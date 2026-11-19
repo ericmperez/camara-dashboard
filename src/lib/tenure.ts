@@ -21,7 +21,7 @@ export type TenureRead = {
 }
 
 function cycleStartOf(year: number): number {
-  let start = HOUSE_CYCLES[0]
+  let start: number = HOUSE_CYCLES[0]
   for (const cycle of HOUSE_CYCLES) {
     if (cycle <= year) start = cycle
   }

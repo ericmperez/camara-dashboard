@@ -8,6 +8,10 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
+      workbox: {
+        // medidas.json ya deja el bundle por encima del tope de 2 MiB.
+        maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
+      },
       manifest: {
         name: 'Cámara de Representantes de Puerto Rico',
         short_name: 'La Cámara',
